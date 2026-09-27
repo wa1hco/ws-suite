@@ -1,0 +1,183 @@
+[[SETTINGS_RADIO]]
+=== Radio
+
+image::settings-radio.png["Paramètres, onglet Radio",align="center"]
+
+==== Transceiver
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Transceiver*
+|Le modèle de votre transceiver, ou un programme de contrôle qui gère le transceiver (DX Lab Suite
+Commander, Flrig, Ham Radio Deluxe, Hamlib NET rigctl, OmniRig Rig 1/2,
+TCI Client). *Aucun* signifie pas de contrôle CAT.
+
+|*Intervalle d'interrogation*
+|Fréquence à laquelle WS lit la fréquence et le mode du transceiver. 1 à 3 s conviennent à la plupart des
+transceivers. Grisé pour les transceivers qui signalent eux-mêmes les changements.
+|===
+
+==== Contrôle CAT
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Port*
+|Le port série de votre interface CAT (p. ex. COM3 ou /dev/ttyUSB0). Pour un
+programme de contrôle, il devient *Serveur réseau* ou *Serveur TCI*
+(`host:port`) ; laissez-le vide pour la valeur par défaut sur cet ordinateur. Pour
+quelques kits SDR, il devient *Périphérique USB*.
+
+|*Débit (bauds)* / *Bits de données* / *Bits de stop*
+|Doivent correspondre au menu CAT de votre transceiver. *Par défaut* conserve la valeur que Hamlib
+connaît pour votre modèle.
+
+|*Contrôle de flux*
+|En général *Aucun*. Quelques transceivers, notamment certains Kenwood, nécessitent
+*Matériel* (RTS/CTS). Un mauvais réglage rend le CAT muet.
+
+|*Forcer les lignes de contrôle* *DTR:* / *RTS:*
+|Maintient DTR ou RTS en permanence à *Haut* ou *Bas*, p. ex. pour alimenter une
+interface. Laissez vide sauf si vous savez que c'est nécessaire. Non disponible pour une
+ligne utilisée pour le PTT sur le même port.
+|===
+
+==== Mettre à jour Hamlib
+
+Ces options proviennent de WSJT-X Improved et n'existent pas dans WSJT-X. Elles ne fonctionnent
+que sous Windows ; sous Linux et macOS, le cadre s'appelle *Hamlib Version*
+et affiche simplement la version utilisée.
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*64 bits* / *32 bits*
+|La DLL Hamlib à télécharger. Choisissez celle qui correspond à votre installation de WS.
+
+|*Mettre à jour Hamlib*
+|Télécharge la dernière DLL Hamlib, qui ajoute ou corrige souvent la prise en charge de transceivers.
+La DLL actuelle est conservée comme sauvegarde. Redémarrez WS pour utiliser la nouvelle.
+
+|*Annuler la mise à jour*
+|Revient à la DLL sauvegardée, là encore après un redémarrage.
+
+|*Utilisée* / *Sauvegardée*
+|La version de Hamlib qu'utilise WS et la version de la sauvegarde.
+|===
+
+==== Méthode PTT
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*VOX*
+|Le VOX du transceiver commute l'émetteur. Aucune interface n'est nécessaire.
+
+|*CAT*
+|PTT par commande CAT, si le transceiver le permet. Généralement le bon choix
+avec un programme de contrôle comme OmniRig ou Flrig.
+
+|*DTR* / *RTS*
+|Une ligne de contrôle série commute le transceiver. Beaucoup de transceivers USB peuvent affecter cette ligne au
+PTT (Icom : USB SEND, Yaesu : PC KEYING). *RTS* n'est pas disponible sur le
+port CAT avec le contrôle de flux *Matériel*.
+
+|*Port*
+|Port série pour *DTR* / *RTS* ; peut être le même que le port CAT. La valeur
+*CAT* sert aux interfaces comme OmniRig qui commutent les lignes à distance.
+
+|*Activer le Blocage TX*
+|Pour les stations qui partagent une bande avec un transceiver prioritaire (PTT *DTR* / *RTS*
+uniquement) : un autre programme peut empêcher WS d'émettre pendant que ce transceiver émet.
+|===
+
+==== Source audio d'émission
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Arrière/Données* / *Façade/Micro*
+|Sélectionne par CAT l'entrée audio Tx du transceiver, si celui-ci le permet.
+Actif uniquement avec la méthode PTT *CAT*. *Arrière/Données* est généralement le meilleur choix.
+|===
+
+==== Mode
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Aucun* / *USB* / *Data/Pkt*
+|Le mode que WS règle sur le transceiver. *Data/Pkt* si votre transceiver le propose (cela
+sélectionne souvent l'entrée audio arrière et un filtre plus large), sinon *USB*.
+*Aucun* ne modifie pas le mode.
+|===
+
+==== Fonctionnement split
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Transceiver*
+|Utilise le split propre du transceiver (VFO A et B).
+
+|*Fake It*
+|Utilise uniquement le VFO A et le réaccorde à chaque émission. Fonctionne avec tout transceiver.
+
+|*Aucun*
+|Pas de split (déconseillé).
+|===
+
+En split, WS déplace la fréquence Tx du cadran par pas de 500 Hz pour que l'audio Tx
+reste entre 1500 et 2000 Hz. Les harmoniques audio tombent alors hors du
+filtre du transceiver et votre signal reste propre. Cela s'applique en FT4, FT8 et
+FST4, et dans tous les modes lorsque *Activer les fonctions VHF et sous-mode* est désactivé.
+Le suivi Doppler nécessite aussi le split.
+
+==== Tester CAT et Tester PTT
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Tester CAT*
+|Se connecte au transceiver avec ces paramètres. Vert : OK. Rouge : erreur, avec
+un message.
+
+|*Tester PTT*
+|Commute l'émetteur sans audio ; cliquez de nouveau pour relâcher. Vérifiez que
+votre transceiver et votre interface commutent comme prévu. Avec *VOX*, utilisez plutôt *Accord* dans la
+fenêtre principale.
+|===
+
+==== Données du transceiver
+
+Ces options proviennent de WSJT-X Improved et n'existent pas dans WSJT-X.
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Afficher PWR, SWR et ALC*
+|Pendant l'émission, affiche la puissance de sortie (en watts, à côté du curseur *Puiss*)
+ainsi que le SWR et l'ALC dans la barre d'état. Au-dessus de 1,5, le champ SWR devient
+jaune, au-dessus de 2,0 rouge. Nécessite un transceiver qui fournit ces valeurs ; non
+disponible avec *Aucun*, OmniRig, DX Lab Suite Commander, Ham Radio Deluxe
+ou les Kenwood TS-480/850/870.
+
+|*Arrêter Tx si SWR > 2.5*
+|Arrête immédiatement l'émission et affiche un avertissement. Vérifiez votre antenne.
+
+|*Mettre en évidence ALC > 50%* / *Mettre en évidence ALC > 90%*
+|Le champ d'état devient jaune / rouge quand l'ALC dépasse la limite, pour que vous
+remarquiez la surmodulation.
+|===
+
+Les trois dernières options nécessitent *Afficher PWR, SWR et ALC*.

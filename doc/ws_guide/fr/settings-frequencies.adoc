@@ -1,0 +1,103 @@
+[[SETTINGS_FREQUENCIES]]
+=== Fréquences
+
+image::settings-frequencies.png["Paramètres, onglet Fréquences",align="center"]
+
+==== Étalonnage de fréquence
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Pente* / *Ordonnée à l'origine*
+|Corrige une erreur connue du cadran de votre transceiver : +
+`rig frequency = Intercept + (1 + Slope / 1 000 000) × f` +
+avec *Ordonnée à l'origine* (Intercept) en Hz et *Pente* (Slope) en ppm. Les fréquences envoyées au transceiver et
+relues depuis celui-ci sont corrigées, de sorte que WS affiche la fréquence réelle. Laissez
+les deux à 0 si votre transceiver est précis.
+|===
+
+TIP: La façon de mesurer ces valeurs est décrite sous _Frequency Calibration_
+dans le guide utilisateur WSJT-X (mode FreqCal).
+
+==== Fréquences de travail
+
+Les fréquences proposées dans le sélecteur de bande de la fenêtre principale. WS n'affiche
+que les entrées de votre *Région IARU* (onglet *Général*) et du mode en cours.
+Double-cliquez sur une cellule pour la modifier.
+
+[cols="2,5",options="header"]
+|===
+|Colonne |Fonction
+
+|*Région IARU* / *Mode*
+|Où et pour quel mode l'entrée est proposée. Les entrées avec *Toutes* sont
+proposées partout / dans tous les modes.
+
+|*Fréquence*
+|La fréquence du cadran en MHz.
+
+|*Préf*
+|L'entrée préférée pour sa bande et son mode. WS l'utilise quand vous cliquez sur un bouton
+de bande (menu:Affichage[]) ou quand il change de bande de lui-même (saut de bande). Une
+seule entrée par bande et par mode peut être préférée.
+
+|*Description*
+|Votre propre libellé pour l'entrée, affiché dans le sélecteur de bande.
+
+|*Date/heure de début* / *Date/heure de fin*
+|L'entrée n'est proposée que pendant cette période, p. ex. pour une DXpédition. Vide = toujours.
+|===
+
+Un clic droit sur le tableau donne accès à ces actions :
+
+[cols="2,5",options="header"]
+|===
+|Élément de menu |Fonction
+
+|*Supprimer*
+|Supprime les entrées sélectionnées.
+
+|*Insérer ...*
+|Ajoute une entrée : *Région IARU*, *Mode*, *Fréquence (MHz)*, *Préférée pour
+bande/mode*, *Description* et une plage de dates facultative.
+
+|*Charger ...*
+|Remplace la liste par celle d'un fichier `.qrg` ou `.qrg.json` (WS demande d'abord confirmation).
+
+|*Enregistrer sous ...*
+|Enregistre la liste dans un fichier ; un nom se terminant par `.qrg.json` donne un fichier JSON.
+Si des entrées sont sélectionnées, WS demande s'il faut n'enregistrer que celles-ci.
+
+|*Fusionner ...*
+|Ajoute à la liste les entrées d'un fichier `.qrg` ou `.qrg.json`.
+
+|*Réinitialiser*
+|Restaure la liste par défaut (WS demande d'abord confirmation).
+|===
+
+==== Informations de station
+
+Détails de votre station par bande. Double-cliquez sur une cellule pour la modifier.
+
+[cols="2,5",options="header"]
+|===
+|Colonne |Fonction
+
+|*Bande*
+|La bande à laquelle s'applique la ligne.
+
+|*Décalage*
+|Ajouté à la fréquence affichée pour obtenir la fréquence du transceiver, pour les
+transverters. Exemple : 144 MHz avec une FI de 28 MHz nécessite -116 MHz. 0 par défaut.
+
+|*Description de l'antenne*
+|Envoyée à PSK Reporter tant que vous êtes sur cette bande.
+|===
+
+Un clic droit sur le tableau donne accès à *Supprimer* (supprime les lignes sélectionnées) et
+*Insérer ...* (ajoute une ligne : *Bande*, *Décalage (MHz)*, *Antenne*).
+
+TIP: Pour créer rapidement des lignes, sélectionnez des entrées dans *Fréquences de travail* (kbd:[Ctrl]+kbd:[A]
+pour toutes) et faites-les glisser sur *Informations de station*. Complétez ensuite les décalages et
+les antennes.

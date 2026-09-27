@@ -1,0 +1,34 @@
+== 三種 GUI 版本
+
+WS 一律提供**三種 GUI 版本**。它們的功能、選單與設定都相同；
+只有主視窗的排列方式不同。每個版本都有各自的安裝程式。
+
+[cols="1,3",options="header"]
+|===
+|版本 |適用於
+
+|**WS**（標準版）
+|熟悉的 WSJT-X 版面。這是預設的下載版本。
+
+|**WS AL**（替代版面）
+|較精簡的視窗，搭配較大的波段活動窗格，減少捲動。
+
+|**WS Widescreen**
+|寬螢幕：控制項移到側邊，解碼窗格可使用完整高度。
+|===
+
+.WS，標準版面
+image::WS.png[WS 標準版面,align="center"]
+
+.WS AL，替代版面
+image::WS-AL.png[WS AL 版面,align="center"]
+
+.WS Widescreen
+image::WS-widescreen.png[WS Widescreen 版面,align="center"]
+
+TIP: 您可以將各版本並列安裝在不同資料夾中加以比較。
+它們都使用同一個設定檔（`WS.ini`），因此您的配置會沿用。
+WS 第一次啟動時會接收既有 WSJT-X 安裝的設定。
+
+若要同時執行多個執行個體，請以各自的 `--rig-name=NAME` 啟動每一個；
+每個執行個體便會保有自己的設定檔。

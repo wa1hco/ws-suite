@@ -1,0 +1,83 @@
+[[SETTINGS_ALERTS]]
+=== Notifiche
+
+image::settings-alerts.png["Impostazioni, scheda Notifiche",align="center"]
+
+WS può annunciare le decodifiche selezionate con brevi avvisi vocali ("New DXCC",
+"My Call" e così via). Le notifiche fanno parte di ogni installazione di WS e vengono
+sempre riprodotte sul dispositivo audio predefinito del computer, di solito il suo
+altoparlante.
+
+WARNING: Le notifiche sonore richiedono un secondo dispositivo audio. Il rig *non* deve essere
+collegato tramite il dispositivo audio predefinito, altrimenti le notifiche vengono trasmesse.
+Un rig con scheda audio USB integrata (IC-7300, FT-991 e simili) soddisfa
+questo requisito. Fai una prova prima di attivarle (vedi *Prova* più sotto).
+
+==== Notifiche sonore
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Voci*
+|Seleziona la voce per le notifiche. Un'installazione standard ha una sola voce, *predefinita*.
+
+|*Prova*
+|Riproduce un annuncio di prova sul dispositivo audio predefinito, così puoi verificare
+da dove escono le notifiche.
+
+|*Nuovo DXCC* / *Nuovo DXCC sulla Banda*
+|Un'entità DXCC non ancora lavorata / non ancora lavorata sulla banda corrente.
+
+|*Nuovo Continente* / *Nuovo Continente sulla Banda*
+|Un continente non ancora lavorato / non ancora lavorato su questa banda.
+
+|*Nuova Zona CQ* / *Nuova Zona CQ sulla Banda*
+|Una zona CQ non ancora lavorata / non ancora lavorata su questa banda.
+
+|*Nuova Zona ITU* / *Nuovo Zona ITU sulla Banda*
+|Una zona ITU non ancora lavorata / non ancora lavorata su questa banda.
+
+|*Nuovo Stato USA* / *Nuovo Stato USA sulla Banda*
+|Uno dei 50 Stati USA non ancora lavorato / non ancora lavorato su questa banda.
+Lo stato viene ricavato dal nominativo, oppure dalla griglia se questa indica un solo stato.
+
+|*Nuova Griglia* / *Nuova Griglia sulla Banda*
+|Un locatore non ancora lavorato / non ancora lavorato su questa banda. Contano solo i messaggi con una griglia.
+
+|*Il mio Nominativo*
+|Un messaggio indirizzato a te.
+
+|*Chiamata DX o Griglia DX nel messaggio*
+|Il nominativo nel campo *Nominativo DX*, o la griglia nel campo *Griglia DX*, compare in una decodifica.
+
+|*CQ nel messaggio*
+|Qualsiasi chiamata CQ.
+
+|*Nominativi, griglie, prefissi e chiamate direzionali ricercati*
+|Una decodifica corrisponde alle tue voci *Evidenzia in arancione* o *Evidenzia in blu* nella
+scheda *Colori* (solo mentre quell'evidenziazione è attiva), oppure a una voce della lista Accetta
+mentre menu:Filtri[Evidenzia le voci della lista Accetta] è spuntato.
+
+|*Messaggio.ricevuto*
+|Arriva un messaggio di QSY per il tuo nominativo o per il Nominativo DX. Solo i messaggi di QSY
+attivano questa notifica, quindi resta rara.
+
+|*Abilita Notifiche sonore*
+|Interruttore generale: nessun suono di notifica mentre è spento. Il pulsante diventa verde
+quando è attivo. Su Windows, WS riproduce allora anche un breve suono di prova all'avvio.
+|===
+
+Le categorie sopra la linea richiedono *Mostra DXCC, griglia e stato lavorato
+prima* spuntato nella scheda *Generale*.
+
+Le notifiche funzionano indipendentemente dall'evidenziazione nella scheda *Colori*. Ma
+vedi quale decodifica ha attivato una notifica solo se l'evidenziazione corrispondente
+è attiva lì, quindi abilita le stesse categorie in entrambe le schede.
+
+NOTE: Le stazioni nella lista Ignora (aggiunte con il pulsante *Ignorare* sotto
+*Griglia DX*) non attivano notifiche tranne *Il mio Nominativo*, a meno che la casella *BP* (bypass)
+non sia spuntata. Svuota la lista con menu:File[Cancella elenco ignorati].
+
+TIP: Con il band hopping spento, fai clic destro sul pulsante *Band Hopping* nella
+finestra principale per una prova più lunga del dispositivo audio predefinito.

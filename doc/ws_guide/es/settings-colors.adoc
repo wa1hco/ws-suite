@@ -1,0 +1,122 @@
+[[SETTINGS_COLORS]]
+=== Colores
+
+image::settings-colors.png["Ajustes, pestaña Colores",align="center"]
+
+==== Resaltado de decodificaciones
+
+WS colorea las decodificaciones por categoría. Todo salvo *CQ en el mensaje*,
+*Mi indicativo en el mensaje*, *Mensaje transmitido* y *Usuario LoTW* requiere
+*Mostrar DXCC, locator y estado trabajado anteriormente* en la pestaña *General*.
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|Lista de resaltado
+|Una línea por categoría; su casilla la activa. Arrastre las líneas arriba o abajo
+para fijar la prioridad: gana la línea superior. El color de letras y el de fondo son
+independientes, así que un color "sin definir" se toma de la siguiente línea activada inferior.
+
+|Menú de clic derecho
+|*Color de letras ...* / *Color de fondo ...* eligen un color,
+*Reiniciar color de letras* / *Reiniciar Color de fondo* lo quitan.
+*Restablece este elemento a los valores predeterminados* restablece el valor predeterminado de WSJT-X de esa línea.
+
+|*CQ en el mensaje*, *Mi indicativo en el mensaje*, *Mensaje transmitido*
+|Llamadas CQ, CQDX y QRZ; decodificaciones dirigidas a usted; mensajes enviados por usted.
+
+|*Nuevo DXCC*, *Nuevo continente*, *Nueva zona CQ*, *Nueva zona ITU*, *Nuevo estado de EE. UU.*, *Nuevo locator*, *Nuevo indicativo*
+|Aún no está en su log. Las variantes *... en banda*: aún no trabajado en la
+banda actual.
+
+|*Usuario LoTW*
+|La estación ha subido su log a LoTW dentro del plazo fijado en
+<<LOTW_VALIDATION,Validación de usuario de LoTW>>.
+
+|*Restablecer el resaltado a los valores predeterminados de WSJT-X*
+|Los colores y el orden originales de WSJT-X. Una instalación nueva empieza con ellos.
+
+|*Restablecer el resaltado a los valores predeterminados de WS*
+|El esquema de WS, con colores pastel que también van bien con el estilo oscuro. Los usuarios
+de LoTW se muestran en negro, las demás estaciones en rojo oscuro; un CQ de una estación
+que ya ha trabajado recibe un fondo gris.
+
+|*Procesar nuevamente log ADIF*
+|Vuelve a leer `wsjtx_log.adi` y reconstruye el estado de trabajado anteriormente. El
+botón muestra el número de QSO. Puede sustituir este archivo por una exportación ADIF
+de su programa de log.
+
+|*Destacar por modo*
+|El estado de trabajado anteriormente se lleva por modo.
+
+|*Solo campos de locator buscados*
+|Un locator cuenta como nuevo solo si su campo (los dos primeros caracteres, p. ej. JO)
+no se ha trabajado.
+
+|*Incluir entidades WAE adicionales*
+|Muestra con su propio nombre las entidades adicionales DARC WAE / CQ Marathon (p. ej. Sicily, Shetland Is.).
+Desmarcado, se muestran como su país DXCC.
+
+|*Resaltar también los mensajes con 73 o RR73*
+|Los mensajes 73 y RR73 se resaltan como los CQ y reciben las marcas de país y de
+trabajado anteriormente. También pasan el filtro *Solo CQ*, que entonces se
+rotula *CQ/73*. Activado por defecto.
+
+|*Resaltar todos los mensajes*
+|Cada mensaje decodificado se resalta como un CQ y recibe las marcas de país y de
+trabajado anteriormente, no solo las llamadas CQ (y los mensajes 73 con la opción
+anterior). Desactivado por defecto.
+
+|*Resaltar naranja:* / *Resaltar azul:*
+|Texto blanco sobre fondo naranja / azul para los indicativos, locators,
+prefijos y direcciones de CQ escritos en el cuadro inferior. Estas entradas también
+disparan la alerta *Indicativos, locators, prefijos y llamadas direccionales buscados* de la pestaña *Alertas*.
+|===
+
+Entradas para *Resaltar naranja* y *Resaltar azul* (mayúsculas o minúsculas):
+
+* Indicativos: una coma tras cada indicativo, incluido el último: `K1JT, DG2YCB,`
+* Locators: `JO33, JN58,`
+* Prefijos de 2 o 3 caracteres entre punto y coma: `;DL;KH6;`. Un prefijo
+  de una letra como `;K;` solo coincide con indicativos que tienen un dígito en segunda posición
+  (K1ABC, no KH6ABC).
+* Todos los indicativos que empiezan por una letra: `;K*;`. Excluya prefijos poniéndolos
+  entre signos de exclamación: `;K*;!KH6!KL!KP!`
+* Direcciones de CQ con una coma antes y después: `,EU,` marca "CQ EU ...".
+
+[[LOTW_VALIDATION]]
+==== Validación de usuario de LoTW
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Enlace del archivo CSV de los usuarios* / *Buscar ahora*
+|Origen de la lista de la ARRL de usuarios de LoTW y sus fechas de última subida.
+*Buscar ahora* descarga una copia nueva. WS la descarga por sí mismo solo cuando falta el
+archivo y el resaltado *Usuario LoTW* está activado.
+
+|*Fecha última subida a LoTW inferior a*
+|Las estaciones cuentan como usuarios de LoTW solo si su última subida es más reciente.
+|===
+
+==== Descargas
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Descargar último CTY.dat*
+|Actualiza los datos de países, zonas y prefijos desde country-files.com y
+vuelve a procesar el log. *Versión archivo CTY* muestra la versión en uso.
+
+|*Descargar la base de datos de estados de EE. UU. por indicativo*
+|Datos de indicativo a estado para *Mostrar estados de EE. UU.* (pestaña *General*), usados cuando un
+mensaje no tiene un locator utilizable. *BD de estados por indicativo* muestra su tamaño y fecha.
+
+|*Descargar CALL3.TXT para uso terrestre* / *Descargar CALL3.TXT para EME*
+|Base de datos de indicativos y locators para el botón *Buscar* y para la búsqueda profunda
+de JT4/JT65; la versión EME está pensada para la búsqueda profunda de JT65. El archivo anterior
+se conserva como `CALL3_backup.TXT`. *Versión archivo CALL3* muestra la versión.
+|===

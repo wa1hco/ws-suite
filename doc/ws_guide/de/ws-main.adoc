@@ -1,0 +1,73 @@
+= WS-Benutzerhandbuch
+:doctype: book
+:lang: de
+:toc: left
+:toc-title: Inhalt
+:toclevels: 2
+:icons: font
+:imagesdir: ../en/images
+:experimental:
+:notitle:
+
+image::ws-header.png[WS - Programmpaket für digitale Weak-Signal-Betriebsarten,682,126]
+
+[discrete]
+== WS-Benutzerhandbuch
+
+[preface]
+== Über dieses Handbuch
+
+WS ist ein Programmpaket für die digitale Weak-Signal-Kommunikation im
+Amateurfunk: *WS* (das Hauptprogramm), *WS-MAP* (Breitband-Monitor für
+Q65/FT8) und *EME65* (Breitband-JT65/Q65 für EME). WS ist aus _WSJT-X_
+hervorgegangen und hieß früher _WSJT-X Improved_. Alle Betriebsarten und die
+grundlegenden Betriebsabläufe sind dieselben wie in WSJT-X; dafür bleibt das
+https://wsjt.sourceforge.io/wsjtx-doc/wsjtx-main-3.0.0-rc1.html[WSJT-X User Guide]
+die Referenz.
+
+Dieses Handbuch ist bewusst kurz gehalten. Es erklärt jedes Menü und jede
+Einstellung von WS sowie das, was WS gegenüber WSJT-X hinzufügt.
+
+include::intro-variants.adoc[]
+
+include::main-window.adoc[]
+
+[[MENUS]]
+== Menüs
+
+Die Menüs sind in allen drei GUI-Varianten gleich.
+
+image::menubar.png[WS-Menüleiste]
+
+include::menus-1.adoc[]
+
+include::menus-2.adoc[]
+
+[[SETTINGS]]
+== Einstellungen
+
+Öffnen Sie das Fenster *Einstellungen* mit menu:Datei[Einstellungen] oder kbd:[F2].
+Die Einstellungen werden pro Konfiguration gespeichert (siehe <<MENU_CONFIGURATIONS>>).
+Wenn Sie den Mauszeiger über ein Bedienelement halten, erscheint sein Tooltip.
+
+include::settings-general.adoc[]
+
+include::settings-radio.adoc[]
+
+include::settings-audio.adoc[]
+
+include::settings-txmacros.adoc[]
+
+include::settings-reporting.adoc[]
+
+include::settings-frequencies.adoc[]
+
+include::settings-colors.adoc[]
+
+include::settings-advanced.adoc[]
+
+include::settings-alerts.adoc[]
+
+include::settings-filters.adoc[]
+
+include::support.adoc[]

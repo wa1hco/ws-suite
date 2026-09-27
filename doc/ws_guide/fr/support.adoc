@@ -1,0 +1,11 @@
+[[SUPPORT]]
+== Assistance
+
+Le meilleur endroit pour obtenir de l'aide est la liste de diffusion
+https://sourceforge.net/projects/wsjt-x-improved/lists/wsjt-x-improved-community/[wsjt-x-improved-community]
+ou le https://groups.io/g/wsjtgroup[WSJT Group]. Quelqu'un ayant des centres
+d'intérêt et un équipement semblables a très probablement déjà résolu le même problème.
+Vous devez vous inscrire à une liste avant de pouvoir y poster.
+
+Envoyez de préférence vos rapports de bogues et demandes de fonctionnalités à la
+liste wsjt-x-improved-community.

@@ -1,0 +1,187 @@
+[[SETTINGS_GENERAL]]
+=== General
+
+image::settings-general.png["Settings, General tab",align="center"]
+
+==== Station Details
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*My Call*
+|Your callsign.
+
+|*My Grid*
+|Your Maidenhead locator, preferably 6 characters (e.g. CM87ux).
+Distances and azimuths are calculated from it.
+
+|*AutoGrid*
+|Lets external programs (e.g. a GPS helper) change *My Grid*.
+
+|*IARU Region*
+|Region 1: Europe, Africa, Middle East, northern Asia. Region 2: the
+Americas. Region 3: southern Asia and the Pacific. Selects the matching
+default frequencies.
+
+|*Message generation for type 2 compound callsign holders*
+|Only for calls with an add-on prefix or suffix that is not in the
+short list (menu:Help[List of Type 1 prefixes and suffixes]). Chooses which
+generated message (Tx1, Tx3 or Tx6) carries your full call.
+|===
+
+==== Display
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Start new period decodes at top*
+|Each period starts at the top of Band Activity and does not scroll
+away, so you can double-click while decoding is still running.
+
+|*Blank line between decoding periods*
+|Separator line between periods in Band Activity.
+
+|*Show blank line with time stamp*
+|The separator line also shows the UTC of the period.
+
+|*Display distance in miles*
+|Miles instead of kilometres.
+
+|*Highlight DX Call* / *Highlight DX Grid*
+|Marks the call and the grid of your current QSO partner in the messages.
+
+|*Tx messages to Rx frequency window*
+|Your own transmitted messages also appear in the Rx Frequency pane.
+
+|*Highlight RRR/RR73/73 in messages for us*
+|Makes the end of a QSO easy to spot.
+
+|*Show DXCC, grid, and worked-before status*
+|Adds the country and the new-DXCC / new-grid / worked-before marks to
+decodes. Required for the highlighting on the *Colors* tab.
+
+|*Show principal prefix instead of country name*
+|Shorter: "DL" instead of "Fed. Rep. of Germany".
+
+|*Show DXCC for all messages*
+|Adds the country to every message, not only to CQ calls.
+
+|*Font...* / *Decoded Text Font...*
+|Font for the whole program / for the Band Activity and Rx Frequency panes.
+|===
+
+==== Behavior
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Monitor off at startup*
+|WS starts without decoding until you click *Monitor*.
+
+|*Monitor returns to last used frequency*
+|Switching *Monitor* on returns to the last monitored frequency.
+Unchecked, the current rig frequency is kept.
+
+|*Double-click on call sets Tx enable*
+|Double-clicking a decode starts transmitting at once.
+
+|*Disable Tx after sending 73*
+|*Enable Tx* turns off after a 73 or free-text message.
+
+|*Calling CQ forces Call 1st*
+|When you call CQ, *Call 1st* is checked so WS answers the first caller automatically.
+
+|*Alternate F1-F6 bindings*
+|Switches the kbd:[F1]–kbd:[F6] shortcuts for the Tx messages to the contest
+assignment (see menu:Help[Keyboard shortcuts]).
+
+|*Enable VHF and submode features*
+|Shows the VHF/UHF/microwave controls (submodes, averaging, Sh, auto-QSY
+and so on). Turn it off on HF: it disables wideband JT65 multi-decoding.
+
+|*Allow Tx frequency changes while transmitting*
+|Uncheck if your rig cannot process CAT commands during Tx (often needed with split).
+
+|*Decode after EME delay*
+|Starts decoding later in 1-minute modes, so EME signals delayed by
+about 2.5 s are included.
+
+|*Single decode*
+|For JT4, JT65, Q65 and FST4: decodes only near the Rx frequency
+(within *F Tol*) instead of searching the whole passband. In JT4/JT65/Q65
+the two panes become *Single-Period Decodes* and *Average Decodes*.
+
+|*Tune watchdog*
+|Stops *Tune* after the set number of seconds.
+
+|*MSK144/Q65: Tx until 73 is received*
+|Keeps sending until the other station's 73 arrives, at most 10
+attempts. Helpful for difficult VHF/UHF/SHF QSOs.
+
+|*Auto-open/close Astronomical data window*
+|Opens the Astronomical Data window when you switch to Q65 or JT65 with
+*Decode after EME delay* on, and closes it when no longer needed.
+
+|*kHz entry without k (restart required)*
+|In the frequency box, "164" followed by kbd:[Enter] means +164 kHz within
+the current MHz (438.065 -> 438.164 MHz). Handy for jumping between EME
+segments from the numeric keypad.
+
+|*Turn progress bar red while transmitting*
+|Makes Tx easy to see at a glance.
+
+|*CW ID after 73* / *ID Interval*
+|Sends a CW ID after every 73 or free text / every N minutes (0 = off),
+always in the quiet part of the period.
+
+|*Tx watchdog*
+|Stops unattended transmissions after the set number of minutes.
+|===
+
+==== Additional features
+
+These options come from WSJT-X Improved and are not in WSJT-X.
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Show US States*
+|Maps grid locators to US States and Canadian Provinces (useful without
+JTAlert). Some grids span several states; then all are listed.
+
+|*Enable Wait features*
+|Turns *Wait and Reply*, *Wait and Call* and *Wait and Pounce* on (default).
+See <<WAIT_FEATURES>>.
+
+|*Clear DX Call after QSO* / *Clear DX Grid after QSO*
+|Empties the DX Call / DX Grid box when the QSO is logged.
+
+|*Show distance in messages with grid* / *Show azimuth in messages with grid*
+|Adds distance and great-circle azimuth to every message with a valid locator.
+
+|*Erase decodes after band change* / *Erase decodes after mode change*
+|Clears Band Activity when you change band / mode.
+
+|*Alternate Erase button behavior*
+|*Erase* works like in JTDX: left-click clears Band Activity,
+right-click clears Rx Frequency, double-click clears both.
+
+|*Set Rx frequency to Tx frequency after QSO*
+|After logging, Rx moves to your Tx frequency.
+
+|*Band hopping every minute*
+|With band hopping on, WS normally changes band every other minute.
+Check this to change band every minute.
+
+|*Align DXCC/distance/azimuth* and the two number boxes
+|Lines country, distance and azimuth up in columns. The first box sets
+the spaces between message and country (also without *Align*), the
+second the spaces between country and distance/azimuth.
+|===
+
+NOTE: If you use a callsign with an add-on prefix or suffix, or want to
+work such a station, read _Nonstandard Callsigns_ in the WSJT-X User Guide.

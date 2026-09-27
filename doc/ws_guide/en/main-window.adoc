@@ -1,0 +1,309 @@
+[[MAIN_WINDOW]]
+== Main window
+
+The main window of WS looks and works like the WSJT-X main window, with
+extra buttons and more mouse actions. The WSJT-X User Guide describes the
+standard controls. This chapter covers only what is new or different in
+WS: everything you operate outside the menus and the *Settings* dialog.
+menu:Help[Special mouse commands] gives a short summary.
+
+image::WS.png[WS main window,align="center"]
+
+[[WAIT_FEATURES]]
+=== Wait features
+
+The Wait features finish a QSO for you when the other station does not
+answer at once or fades out in QSB. They all need *Auto Seq* checked and
+*Enable Wait features* on the *General* tab (on by default, see
+<<SETTINGS_GENERAL>>).
+
+WARNING: With a Wait feature armed, a received message can switch your
+rig to transmit without you touching anything. Keep your amplifier, ATU
+and antenna ready, or disarm the feature.
+
+[cols="2,5",options="header"]
+|===
+|Feature |How it works
+
+|*Wait and Reply*
+|Armed automatically while a callsign is in *DX Call* and *Enable Tx* is
+off. When that station calls you (a message with your call and his call,
+without 73), WS switches *Enable Tx* on and continues the QSO. It also
+sends RR73 again if the other station did not copy the first one. Works
+in FT2, FT4, FT8, FST4, JT4, JT9, JT65, MSK144 and Q65. Tx turns off
+again after 8 periods (12 in MSK144).
+
+|*Wait and Call*
+|Click the *DX Call* button (it turns red). When the station in *DX Call*
+reappears with CQ, RRR, RR73 or 73, WS calls him up to three times.
+Works in FT2, FT4, FT8, FST4, MSK144 and Q65, in normal operation or as
+FT8 Hound. Disarmed by *Halt Tx*, *Stop*, switching *Enable Tx* off,
+clicking *DX Call* again, or as soon as the station answers you (the QSO
+then continues normally).
+
+|*Wait and Pounce*
+|Select a *CQ:* mode other than *CQ: None* (see <<CQ_SELECTOR>>), then
+right-click *Enable Tx* (it turns orange). WS answers the next CQ: the
+first one, or the most distant, strongest or weakest station of the
+period. Right-click *Enable Tx* again, or click *Halt Tx* or *Stop*, to
+disarm. Not available as Fox.
+|===
+
+Wait and Pounce respects the filters. For example, WS can wait only for CQ
+calls with a certain prefix, grid, callsign or keyword. With *Filters for
+Wait & Pounce only* all decodes stay visible, but Wait and Pounce answers
+only stations that pass the filters (see <<SETTINGS_FILTERS>>).
+
+*Enable Tx* and *DX Call* turn yellow whenever a received message may
+switch Tx on: with a callsign in *DX Call*, *Auto Seq* on and the Wait
+features enabled, and always in Hound mode. Right-click *DX Call* to
+clear *DX Call*, *DX Grid* and the standard messages; this disarms Wait
+and Reply and Wait and Call at once.
+
+[[CQ_SELECTOR]]
+=== CQ: selector and Ignore List
+
+The *CQ:* box next to *Auto Seq* is visible when *Auto Seq* is checked.
+
+[cols="2,5",options="header"]
+|===
+|Selection |Result
+
+|*CQ: None*
+|Standard WSJT-X behaviour.
+
+|*CQ: First*
+|When you call CQ, WS answers the first station that calls you. With Wait
+and Pounce, it answers the first CQ.
+
+|*CQ: Max Dist*
+|Picks the most distant station (a grid is needed to calculate the distance).
+
+|*CQ: Max dB* / *CQ: Min dB*
+|Picks the strongest / weakest station.
+|===
+
+The *Ignore* button (or kbd:[Ctrl+I]) puts the callsign in *DX Call* on
+the Ignore List. With menu:Filters[Ignore stations from Ignore List]
+checked, the *CQ:* modes (Wait and Pounce) skip these stations;
+menu:Filters[Hide stations from Ignore List] removes them from Band
+Activity. Clear the list with menu:File[Erase Ignore List]. See
+<<MENU_FILTERS>> for the other *Ignore* and *Hide* options.
+
+[[MOUSE_SHORTCUTS]]
+=== Mouse and button shortcuts
+
+==== Wide Graph
+
+[cols="2,5",options="header"]
+|===
+|Action |Result
+
+|Left-click
+|Sets the Rx frequency.
+
+|Right-click / kbd:[Shift]+left-click
+|Sets the Tx frequency.
+
+|Right double-click / kbd:[Ctrl]+left-click
+|Sets Rx and Tx to the same frequency (Rx = Tx).
+
+|*Bars* checkbox
+|Shows the Rx (green) and Tx (red) frequency bars on the waterfall.
+
+|*Freq* checkbox
+|A tooltip shows the audio frequency under the mouse pointer.
+
+|*Time stamp*
+|Shows the UTC on the waterfall on the *Left* or *Right*, or *Off*.
+|===
+
+==== Callsigns on the waterfall
+
+With menu:View[Callsigns on waterfall > Show decoded callsigns] (or *Show
+Callsigns* in the Wide Graph), decoded calls appear as labels on the
+waterfall at their frequency: red for the call in *DX Call*, green for
+CQ, black for the rest. The *× TR* box sets how many periods a label
+stays; *Clear* removes all labels. Left-click a label to put the call and
+grid in *DX Call* / *DX Grid*, set Rx to that signal, set *Tx even/1st*
+for the reply and generate the standard messages. Font, transparency and
+position are in the *View* menu (see <<MENU_VIEW>>). In Q65,
+menu:Decode[Disable clicks on waterfall] turns label clicks off.
+
+==== Buttons
+
+[cols="2,5",options="header"]
+|===
+|Action |Result
+
+|Right-click *Tune*
+|Starts the ATU of the rig via CAT. The button reads *Tuning* for 6 s;
+right-click again to stop. Needs a Hamlib rig model that supports tuning.
+
+|Right-click *Enable Tx*
+|Arms or disarms Wait and Pounce (<<WAIT_FEATURES>>).
+
+|Click *DX Call* / right-click *DX Call*
+|Arms Wait and Call / clears *DX Call*, *DX Grid* and the messages.
+
+|Right-click *Lookup* / *Add* / *Ignore*
+|Looks up the call in *DX Call* on qrz.com / hamqth.com / qrzcq.com in your browser.
+
+|*Erase*
+|With *Alternate Erase button behavior* (<<SETTINGS_GENERAL>>): click
+clears Band Activity, right-click clears Rx Frequency, double-click clears
+both.
+
+|Right-click *Decode*
+|Clears a hung decoder.
+
+|Right-click *CQ only*
+|Shows only messages that contain the call in *DX Call*. The box turns red
+and reads *DX Call*; right-click again to go back.
+
+|Right-click *Tx5*
+|Keeps your Tx5 free text (yellow) so it is not cleared.
+
+|Right-click *Tx even/1st*
+|Freezes the checkbox. Right-click the *MSK* button to unfreeze.
+// CHECK: Uwe will test whether the FT8 button also unfreezes (Help text and tooltip say so; the code only does it for MSK).
+
+|Right-click *H*
+|Switches SuperFox mode on or off.
+
+|Right-click *FT8*
+|Switches the last used Special Operating Activity on or off.
+
+|Right-click *Q65* / *JT65*
+|Switches to Q65 Pileup mode / JT9.
+
+|Mouse wheel over the dial frequency, or left-click / right-click
+|Changes the dial frequency by -1 kHz / +1 kHz.
+|===
+
+[[BAND_BUTTONS]]
+=== Band buttons
+
+menu:View[Band Buttons] adds a row of band buttons, in all three GUI
+variants. Click a button to go to the frequency of the current mode in
+your frequency list. In FT8, FT4 and FT2, right-click 80 m to 10 m to go
+to the FT8 DXpedition frequency of that band (6 m: FT8 only).
+menu:View[VHF / UHF Buttons] switches the row to the bands from 8 m to
+13 cm.
+
+On 2 m, a right-click goes to 4 m (Regions 1 and 3) or 1.25 m (Region 2);
+on 70 cm, a right-click goes to 23 cm.
+
+[[MAIN_FILTERS]]
+=== Filters in the main window
+
+The status label at the bottom left shows when filters hide decodes: it
+changes from green *Receiving* to cyan *Receiving, Filters On*. Check *BP*
+(bypass) to switch all filters off for a while without losing their
+settings; the label then reads *Receiving, Filters bypassed*. The filter
+lists are set up on the *Filters* tab (<<SETTINGS_FILTERS>>); quick
+filters are in the *Filters* menu (<<MENU_FILTERS>>).
+
+[[BAND_ACTIVITY_INFO]]
+=== Distance, azimuth and US States
+
+If a message contains a valid locator, Band Activity can show the
+distance and great-circle azimuth, lined up in columns with the country.
+With *Show US States*, the US State or Canadian Province is shown too.
+Turn these on and set the column spacing on the *General* tab
+(<<SETTINGS_GENERAL>>).
+
+[[CONTEST_NAME]]
+=== Contest name and comments
+
+With *CQ with individual contest name* and a *Contest name* of up to 4 letters (e.g. PACC)
+on the *Advanced* tab, WS calls "CQ PACC" instead of "CQ TEST" or
+"CQ RU" when a Special Operating Activity is active (FT modes, MSK144,
+Q65; not as Fox or Hound).
+
+With *Special operating activity to comments* on the *Reporting* tab
+(<<SETTINGS_REPORTING>>), the *Log QSO* comment is filled with the
+activity, e.g. "EU VHF Contest", "ARRL Field Day" or, with an individual
+contest name, "PACC Contest". Retained comments and *dB reports to
+comments* take priority.
+
+[[LIVECQ_CHECKS]]
+=== LiveCQ: who heard me
+
+With *Enable Q65 LiveCQ* on the *Reporting* tab (<<SETTINGS_REPORTING>>)
+and mode Q65, WS asks the LiveCQ server once per period which stations
+have decoded your call. Those stations get a check mark and a bright
+green frame on their waterfall label, and a check mark in the Active
+Stations window in Q65 Pileup mode. So the DX can pick callers that
+really copy him. The bottom of the Active Stations window shows
+*LiveCQ connected* or a red *LiveCQ NO CONNECTION*.
+
+[[TX_INHIBIT]]
+=== TX Inhibit
+
+With *Enable TX Inhibit* on the *Radio* tab (<<SETTINGS_RADIO>>), another
+program can hold WS off the air while a priority radio on the same band
+transmits. The status label then shows *Inhibit*.
+
+[[WSMAP_CLICKS]]
+=== Click-to-work from WS-MAP and EME65
+
+With menu:Decode[Accept WS-MAP/EME65 click events] checked, clicking a
+callsign in WS-MAP or EME65 sets *DX Call*, *DX Grid*, the frequency, the
+Tx period and the submode in WS. A double-click there can also switch
+*Enable Tx* on. This works in JT65 and Q65 with *Enable VHF and submode
+features*. WS also processes the decodes forwarded by EME65.
+Your *DX Call* and *DX Grid* are sent back, so WS-MAP or EME65 can follow
+them.
+
+If several WS instances watch the same source, click *Claim WS-MAP* in the
+one that should act on clicks. Choose the source with
+menu:Decode[WS-MAP/EME65 source] (see <<MENU_DECODE>>).
+
+[[QSY_WINDOWS]]
+=== Message Creator and QSY Monitor
+
+These windows help you arrange a QSY with your QSO partner, for example
+from an EME frequency to another band.
+
+[cols="2,5",options="header"]
+|===
+|Window |What it does
+
+|menu:View[Message Creator]
+|Builds a short QSY request (band, mode and kHz) for the station in *DX
+Call*, puts it in the free-text message and switches *Enable Tx* on.
+
+|menu:View[Enable Message Popups]
+|When a received message asks you to QSY, a popup shows the request and
+lets you answer OKQSY or NOQSY.
+
+|menu:View[QSY Monitor]
+|Lists all QSY requests heard, with UTC, call, frequency and mode.
+|===
+
+[[DIAGNOSTIC_MODE]]
+=== Diagnostic mode
+
+Diagnostic mode collects data to find problems with WS or with its rig
+control (Hamlib errors, COM ports that do not respond, and so on).
+
+. Select menu:Save[Diagnostic mode].
+. Close and restart WS, then reproduce the fault.
+. Close WS as soon as the fault has appeared: the log files grow quickly.
+
+WS creates a `logs` folder on your desktop (with a subfolder per
+`--rig-name` instance) containing `ws_syslog.log` and `WS_RigControl.log`.
+Open them with a text editor, or send them to the developers. Diagnostic
+mode switches itself off the next time WS closes; to cancel it earlier,
+select menu:Save[Default event logging].
+
+[[DARK_STYLE]]
+=== Dark style
+
+menu:View[Use Dark Style] switches WS to a dark theme at once, without a
+restart. It also adapts the waterfall lines and the button colours. With
+dark style, choose softer (pastel) background colours on the *Colors* tab.
+See <<MENU_VIEW>>.
+
+image::WS-AL_dark_style.png[WS AL in dark style,align="center"]

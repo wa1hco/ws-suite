@@ -1,0 +1,83 @@
+[[SETTINGS_ALERTS]]
+=== Alerts
+
+image::settings-alerts.png["Settings, Alerts tab",align="center"]
+
+WS can announce selected decodes with short spoken alerts ("New DXCC",
+"My Call" and so on). Alerts are part of every WS installation and are
+always played on the default audio device of your computer, usually its
+loudspeaker.
+
+WARNING: Audio alerts need a second sound device. Your rig must *not* be
+connected via the default audio device, or the alerts are transmitted.
+A rig with a built-in USB sound card (IC-7300, FT-991 and similar) meets
+this requirement. Test before enabling (see *Test* below).
+
+==== Audio Alerts
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Voices*
+|Selects the voice for the alerts. A standard installation has one voice, *default*.
+
+|*Test*
+|Plays a test announcement on the default audio device, so you can check
+where the alerts come out.
+
+|*New DXCC* / *New DXCC on Band*
+|A DXCC entity you have not worked yet / not worked on the current band.
+
+|*New Continent* / *New Continent on Band*
+|A continent not worked yet / not worked on this band.
+
+|*New CQ Zone* / *New CQ Zone on Band*
+|A CQ zone not worked yet / not worked on this band.
+
+|*New ITU Zone* / *New ITU Zone on Band*
+|An ITU zone not worked yet / not worked on this band.
+
+|*New US State* / *New US State on Band*
+|One of the 50 US States not worked yet / not worked on this band.
+The state is taken from the callsign, or from the grid if that points to one state only.
+
+|*New Grid* / *New Grid on Band*
+|A grid locator not worked yet / not worked on this band. Only messages with a grid count.
+
+|*My Call*
+|A message addressed to you.
+
+|*DX Call or DX Grid in message*
+|The callsign in the *DX Call* box, or the grid in the *DX Grid* box, appears in a decode.
+
+|*CQ in message*
+|Any CQ call.
+
+|*Wanted callsigns, grids, prefixes and directional calls*
+|A decode matches your *Highlight orange* or *Highlight blue* entries on
+the *Colors* tab (only while that highlighting is on), or a Whitelist
+entry while menu:Filters[Highlight Whitelist entries] is checked.
+
+|*Message received*
+|A QSY message for your call or for the DX Call arrives. Only QSY messages
+trigger this alert, so it stays rare.
+
+|*Enable Audio Alerts*
+|Master switch: no alert sounds while it is off. The button turns green
+when on. On Windows, WS then also plays a short test sound at startup.
+|===
+
+The categories above the line need *Show DXCC, grid, and worked-before
+status* checked on the *General* tab.
+
+Alerts work independently of the highlighting on the *Colors* tab. But
+you only see which decode triggered an alert if the matching highlight
+is switched on there, so enable the same categories on both tabs.
+
+NOTE: Stations on the Ignore List (added with the *Ignore* button below
+*DX Grid*) trigger no alerts except *My Call*, unless the *BP* (bypass)
+checkbox is checked. Clear the list with menu:File[Erase Ignore List].
+
+TIP: With band hopping off, right-click the *Band Hopping* button on the
+main window for a longer test of the default audio device.

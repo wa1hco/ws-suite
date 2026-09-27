@@ -1,0 +1,122 @@
+[[SETTINGS_COLORS]]
+=== Colori
+
+image::settings-colors.png["Impostazioni, scheda Colori",align="center"]
+
+==== Evidenziazione delle decodifiche
+
+WS colora le decodifiche per categoria. Tutto tranne *CQ nel messaggio*,
+*Il mio Nominativo nel messaggio*, *Messaggio Trasmesso* e *Utente LoTW* richiede
+*Mostra DXCC, griglia e stato lavorato prima* nella scheda *Generale*.
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|Elenco di evidenziazione
+|Una riga per categoria; la sua casella di spunta la attiva. Trascina le righe in su o in giù
+per impostare la priorità: vince la riga più in alto. Primo piano e sfondo sono
+separati, quindi un colore "non impostato" viene preso dalla successiva riga attiva più in basso.
+
+|Menu del clic destro
+|*Colore di primo piano ...* / *Colore di sfondo ...* scelgono un colore,
+*Annullare colore di primo piano* / *Annullare colore di sfondo* lo rimuovono.
+*Reimposta questa voce ai valori predefiniti* ripristina il valore predefinito WSJT-X di quella riga.
+
+|*CQ nel messaggio*, *Il mio Nominativo nel messaggio*, *Messaggio Trasmesso*
+|Chiamate CQ, CQDX e QRZ; decodifiche indirizzate a te; messaggi inviati da te.
+
+|*Nuovo DXCC*, *Nuovo Continente*, *Nuova Zona CQ*, *Nuova Zona ITU*, *Nuovo Stato USA*, *Nuova Griglia*, *Nuovo Nominativo*
+|Non ancora nel tuo log. Le varianti *... sulla Banda*: non ancora lavorati sulla
+banda corrente.
+
+|*Utente LoTW*
+|La stazione ha caricato il suo log su LoTW entro il periodo impostato in
+<<LOTW_VALIDATION,Convalida dell'utente Logbook of the World>>.
+
+|*Ripristina l'evidenziazione al valore predefinito WSJT-X*
+|I colori e l'ordine originali di WSJT-X. Una nuova installazione parte con questi.
+
+|*Ripristina evidenziazione ai valori WS*
+|Lo schema di WS, con colori pastello adatti anche allo stile scuro. Gli utenti
+LoTW sono mostrati in nero, le altre stazioni in rosso scuro; un CQ da una stazione
+già lavorata riceve uno sfondo grigio.
+
+|*Eseguire nuovamente la scansione del registro ADIF*
+|Rilegge `wsjtx_log.adi` e ricostruisce lo stato di già lavorato. Il
+pulsante mostra il numero di QSO. Puoi sostituire questo file con un'esportazione ADIF
+dal tuo programma di log.
+
+|*Evidenzia per modalità*
+|Lo stato di già lavorato viene tenuto separato per modo.
+
+|*Solo Campi griglia ricercati*
+|Una griglia conta come nuova solo se il suo campo (i primi due caratteri, ad es. JO)
+non è stato lavorato.
+
+|*Includi entità WAE extra*
+|Mostra con il proprio nome le entità extra DARC WAE / CQ Marathon (ad es. Sicily, Shetland Is.).
+Se non spuntato, vengono mostrate come il loro paese DXCC.
+
+|*Evidenziare anche i messaggi con 73 o RR73*
+|I messaggi 73 e RR73 vengono evidenziati come i CQ e ricevono i contrassegni di paese e
+già lavorato. Superano anche il filtro *Solo CQ*, che viene allora
+etichettato *CQ/73*. Attivo per impostazione predefinita.
+
+|*Evidenziare tutti i messaggi*
+|Ogni messaggio decodificato viene evidenziato come un CQ e riceve i contrassegni di paese e
+già lavorato, non solo le chiamate CQ (e i messaggi 73 con l'opzione
+precedente). Spento per impostazione predefinita.
+
+|*Evidenzia in arancione:* / *Evidenzia in blu:*
+|Testo bianco su sfondo arancione / blu per i nominativi, le griglie,
+i prefissi e le direzioni CQ inseriti nel riquadro sottostante. Queste voci attivano
+anche la notifica *Wanted* nella scheda *Notifiche*.
+|===
+
+Voci per *Evidenzia in arancione* ed *Evidenzia in blu* (maiuscole o minuscole):
+
+* Nominativi: una virgola dopo ogni nominativo, compreso l'ultimo: `K1JT, DG2YCB,`
+* Griglie: `JO33, JN58,`
+* Prefissi di 2 o 3 caratteri tra punti e virgola: `;DL;KH6;`. Un prefisso
+  di una sola lettera come `;K;` corrisponde solo a nominativi con una cifra in seconda posizione
+  (K1ABC, non KH6ABC).
+* Tutti i nominativi che iniziano con una lettera: `;K*;`. Escludi dei prefissi mettendoli
+  tra punti esclamativi: `;K*;!KH6!KL!KP!`
+* Direzioni CQ con una virgola prima e dopo: `,EU,` evidenzia "CQ EU ...".
+
+[[LOTW_VALIDATION]]
+==== Convalida dell'utente Logbook of the World
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*URL del file CSV degli utenti* / *Scarica ora*
+|Fonte dell'elenco ARRL degli utenti LoTW e delle date del loro ultimo caricamento.
+*Scarica ora* scarica una copia aggiornata. WS lo scarica da solo solo quando il
+file manca e l'evidenziazione *Utente LoTW* è attiva.
+
+|*Periodo dell'ultimo caricamento inferiore a*
+|Le stazioni contano come utenti LoTW solo se il loro ultimo caricamento è più recente.
+|===
+
+==== Download
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Scarica l'ultimo CTY.dat*
+|Aggiorna i dati di paesi, zone e prefissi da country-files.com e
+riscansiona il log. *Versione del file CTY* mostra la versione in uso.
+
+|*Scarica il database degli stati dei nominativi USA*
+|Dati nominativo-stato per *Mostra Stati USA* (scheda *Generale*), usati quando un
+messaggio non ha una griglia utilizzabile. *DB stati nominativi* ne mostra dimensione e data.
+
+|*Scarica CALL3.TXT per uso terrestre* / *Scarica CALL3.TXT per EME*
+|Database di nominativi e griglie per il pulsante *Ricerca* e per la Deep Search JT4/JT65;
+la versione EME è pensata per la Deep Search JT65. Il file precedente
+viene conservato come `CALL3_backup.TXT`. *Versione del file CALL3* mostra la versione.
+|===

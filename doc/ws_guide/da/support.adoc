@@ -1,0 +1,11 @@
+[[SUPPORT]]
+== Support
+
+Det bedste sted at få hjælp er mailinglisten
+https://sourceforge.net/projects/wsjt-x-improved/lists/wsjt-x-improved-community/[wsjt-x-improved-community]
+eller https://groups.io/g/wsjtgroup[WSJT Group]. En person med
+lignende interesser og udstyr har højst sandsynligt allerede løst det samme
+problem. Du skal tilmelde dig en liste, før du kan skrive til den.
+
+Send helst fejlrapporter og ønsker om nye funktioner til
+listen wsjt-x-improved-community.

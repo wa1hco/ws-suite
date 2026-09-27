@@ -1,0 +1,200 @@
+[[SETTINGS_GENERAL]]
+=== Általános
+
+image::settings-general.png["Beállítások, Általános fül",align="center"]
+
+==== Saját állomás adatok
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Hívójel*
+|Az Ön hívójele.
+
+|*QRA*
+|Az Ön Maidenhead lokátora, lehetőleg 6 karakteresen (pl. CM87ux). A
+távolságok és az irányszögek ebből számítódnak.
+
+|*AutoQRA*
+|Lehetővé teszi, hogy külső programok (pl. egy GPS-segédprogram)
+módosítsák a *QRA* mezőt.
+
+|*IARU Region*
+|1. régió: Európa, Afrika, Közel-Kelet, Észak-Ázsia. 2. régió: Amerika.
+3. régió: Dél-Ázsia és a csendes-óceáni térség. A megfelelő
+alapértelmezett frekvenciákat választja ki.
+
+|*Üzenet létrehozása a 2.típusú összetett hívójel használatakor*
+|Csak olyan hívójelekhez, amelyek kiegészítő prefixe vagy suffixe nem
+szerepel a rövid listában (menu:Súgó[Az 1.típusú prefixek és suffixek listája]).
+Kiválasztja, melyik generált üzenet (Tx1, Tx3 vagy Tx6) tartalmazza a teljes
+hívójelét.
+|===
+
+==== Megjelenítés
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Új periódus dekódolásának kezdése fentről*
+|Minden periódus a Sáv-aktivitás tetején kezdődik és nem gördül el, így
+dupla kattintással választhat, miközben a dekódolás még fut.
+
+|*Üres sor a dekódolási periódusok között*
+|Elválasztó sor a periódusok között a Sáv-aktivitásban.
+
+|*Üres sor megjelenítése időbélyeggel*
+|Az elválasztó sor a periódus UTC idejét is mutatja.
+
+|*Távolság megjelenítése mérföldben*
+|Kilométer helyett mérföld.
+
+|*DX hívójel kiemelése* / *DX QRA kiemelése*
+|Megjelöli az üzenetekben az aktuális QSO-partner hívójelét és lokátorát.
+
+|*Tx üzenetek az Rx-frekvencia ablakban*
+|A saját adott üzenetei is megjelennek az Rx-frekvencia panelen.
+
+|*RRR/RR73/73 kiemelése a nekünk szóló üzenetekben*
+|Könnyen észrevehetővé teszi a QSO végét.
+
+|*DXCC, QRA és volt QSO állapot megjelenítése*
+|A dekódolásokhoz hozzáadja az országot és az új DXCC / új lokátor / volt
+QSO jelöléseket. A *Színek* fül kiemeléseihez szükséges.
+
+|*Fő prefix megjelenítése az ország neve helyett*
+|Rövidebb: "DL" a "Fed. Rep. of Germany" helyett.
+
+|*DXCC megjelenítése minden üzenetnél*
+|Minden üzenethez hozzáadja az országot, nem csak a CQ-hívásokhoz.
+
+|*Alkalmazás betű...* / *Dekódolt szöveg betű...*
+|Betűtípus az egész programhoz / a Sáv-aktivitás és az Rx-frekvencia
+panelhez.
+|===
+
+==== Viselkedés
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Induláskor a Vétel ki van kapcsolva*
+|A WS dekódolás nélkül indul, amíg nem kattint a *Vétel* gombra.
+
+|*A Vétel visszatér a legutóbbi frekvenciára*
+|A *Vétel* bekapcsolásakor visszatér a legutóbb figyelt frekvenciára.
+Bejelölés nélkül a rádió aktuális frekvenciája marad.
+
+|*Dupla klikk a hívójelre, Tx engedélyezése*
+|Egy dekódolásra duplán kattintva azonnal indul az adás.
+
+|*Tx letiltása a 73 elküldése után*
+|A *Tx enged* kikapcsol egy 73 vagy szabad szöveges üzenet után.
+
+|*CQ-ra válasz az 1.Hívás-választóból*
+|CQ hívásakor bejelöli az *1.Hívás* opciót, így a WS automatikusan az első
+hívónak válaszol.
+
+|*Alternatív F1-F6 hozzárendelések*
+|A Tx üzenetek kbd:[F1]–kbd:[F6] gyorsbillentyűit a versenykiosztásra
+váltja (lásd menu:Súgó[Gyorsbillentyűk]).
+
+|*VHF és almód funkciók engedélyezése*
+|Megjeleníti a VHF/UHF/mikrohullámú kezelőszerveket (almódok, átlagolás,
+Sh, auto-QSY stb.). HF-en kapcsolja ki: kikapcsolja a szélessávú JT65
+többszörös dekódolást.
+
+|*Tx frekvencia változtatások engedélyezése adás közben*
+|Vegye ki a jelölést, ha a rádió adás közben nem tudja feldolgozni a CAT
+parancsokat (split esetén gyakran szükséges).
+
+|*Dekódolás az EME késedelem után*
+|Az 1 perces módokban később kezdi a dekódolást, így a kb. 2,5 s-mal
+késleltetett EME jelek is belekerülnek.
+
+|*Egyszeres dekódolás*
+|JT4, JT65, Q65 és FST4 esetén: a teljes áteresztősáv átkeresése helyett
+csak az Rx frekvencia közelében (*F Tol* tartományon belül) dekódol.
+JT4/JT65/Q65 módban a két panel neve *Egy periódusú dekódolások* és
+*Átlag dekódolások* lesz.
+
+|*Hangolás watchdog*
+|A beállított számú másodperc után leállítja a *Hangolás* funkciót.
+
+|*MSK144/Q65: Tx, amíg 73 nem érkezik*
+|Addig ad, amíg a másik állomás 73-a meg nem érkezik, legfeljebb 10
+próbálkozásig. Nehéz VHF/UHF/SHF QSO-knál hasznos.
+
+|*Csillagászati adatok ablak automatikus megnyitása/bezárása*
+|Megnyitja a Csillagászati adatok ablakot, ha bekapcsolt *Dekódolás az EME
+késedelem után* mellett Q65 vagy JT65 módra vált, és bezárja, ha már nincs
+rá szükség.
+
+|*kHz megadás k nélkül (újraindítás szükséges)*
+|A frekvenciamezőben a "164", majd kbd:[Enter] +164 kHz-t jelent az
+aktuális MHz-on belül (438,065 -> 438,164 MHz). Kényelmes az EME
+szegmensek közötti ugráshoz a numerikus billentyűzetről.
+
+|*Folyamatjelző sáv piros adás közben*
+|Egy pillantással láthatóvá teszi az adást.
+
+|*CW ID adása a 73 után* / *ID időköz*
+|CW azonosítót küld minden 73 vagy szabad szöveg után / N percenként
+(0 = ki), mindig a periódus csendes részében.
+
+|*Tx watchdog*
+|A beállított számú perc után leállítja a felügyelet nélküli adást.
+|===
+
+==== További funkciók
+
+Ezek az opciók a WSJT-X Improved-ból származnak, a WSJT-X-ben nincsenek
+meg.
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*USA államok megjelenítése*
+|A lokátorokat USA államokhoz és kanadai tartományokhoz rendeli (JTAlert
+nélkül hasznos). Egyes lokátorok több államra is kiterjednek; ekkor
+mindegyik megjelenik.
+
+|*Várás funkciók engedélyezése*
+|Bekapcsolja a *Wait and Reply*, a *Wait and Call* és a *Wait and Pounce*
+funkciót (alapértelmezés). Lásd <<WAIT_FEATURES>>.
+
+|*DX Hívójel törlése QSO után* / *DX QRA törlése QSO után*
+|A QSO naplózásakor kiüríti a DX hívójel / DX lokátor mezőt.
+
+|*Távolság megjelenítése QRA-t tartalmazó üzeneteknél* / *Azimut megjelenítése QRA-t tartalmazó üzeneteknél*
+|Minden érvényes lokátort tartalmazó üzenethez hozzáadja a távolságot és a
+nagykör szerinti irányszöget.
+
+|*Dekódolások törlése sávváltás után* / *Dekódolások törlése üzemmódváltás után*
+|Sáv- / módváltáskor törli a Sáv-aktivitást.
+
+|*Alternatív Törlés gomb működés*
+|A *Törlés* a JTDX-hez hasonlóan működik: a bal kattintás a
+Sáv-aktivitást, a jobb kattintás az Rx-frekvenciát, a dupla kattintás
+mindkettőt törli.
+
+|*Rx frekvencia beállítása a Tx frekvenciára QSO után*
+|Naplózás után az Rx a Tx frekvenciára kerül.
+
+|*Sávugrás percenként*
+|Bekapcsolt sávugrásnál a WS normál esetben kétpercenként vált sávot.
+Jelölje be, ha percenként szeretne sávot váltani.
+
+|*DXCC/távolság/azimut igazítása* és a két számmező
+|Oszlopokba rendezi az országot, a távolságot és az irányszöget. Az első
+mező az üzenet és az ország közötti szóközök számát adja meg (igazítás
+nélkül is), a második az ország és a távolság/irányszög közöttiekét.
+|===
+
+NOTE: Ha kiegészítő prefixszel vagy suffixszel ellátott hívójelet használ,
+vagy ilyen állomással szeretne forgalmazni, olvassa el a WSJT-X
+felhasználói kézikönyv _Nonstandard Callsigns_ fejezetét.

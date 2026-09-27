@@ -1,0 +1,332 @@
+[[MAIN_WINDOW]]
+== Főablak
+
+A WS főablaka úgy néz ki és úgy működik, mint a WSJT-X főablaka, további
+gombokkal és több egérművelettel. A szabványos kezelőszerveket a WSJT-X
+felhasználói kézikönyve írja le. Ez a fejezet csak azt tárgyalja, ami a
+WS-ben új vagy eltérő: mindazt, amit a menükön és a *Beállítások*
+párbeszédablakon kívül kezel. A menu:Súgó[Speciális egérparancsok] rövid
+összefoglalót ad.
+
+image::WS.png[A WS főablaka,align="center"]
+
+[[WAIT_FEATURES]]
+=== Várás funkciók
+
+A Várás funkciók befejezik Ön helyett a QSO-t, ha a másik állomás nem
+válaszol azonnal, vagy QSB miatt elhalkul. Mindegyikhez be kell kapcsolni
+az *Auto-Vál.* opciót és az *Általános* fülön a *Várás funkciók
+engedélyezése* opciót (alapértelmezésben be van kapcsolva, lásd
+<<SETTINGS_GENERAL>>).
+
+WARNING: Élesített Várás funkciónál egy vett üzenet adásra kapcsolhatja a
+rádiót anélkül, hogy bármihez hozzányúlna. Tartsa üzemkész állapotban a
+végfokot, az antennaillesztőt és az antennát, vagy kapcsolja ki a funkciót.
+
+[cols="2,5",options="header"]
+|===
+|Funkció |Működés
+
+|*Wait and Reply*
+|Automatikusan élesedik, amíg a *DX Hívójel* mezőben hívójel van és a *Tx
+enged* ki van kapcsolva. Amikor az az állomás hívja Önt (egy üzenet az Ön
+és az ő hívójelével, 73 nélkül), a WS bekapcsolja a *Tx enged* gombot és
+folytatja a QSO-t. Újra elküldi az RR73-at is, ha a másik állomás nem
+vette az elsőt. FT2, FT4, FT8, FST4, JT4, JT9, JT65, MSK144 és Q65 módban
+működik. Az adás 8 periódus után (MSK144-ben 12 után) ismét kikapcsol.
+
+|*Wait and Call*
+|Kattintson a *DX Hívójel* gombra (pirosra vált). Amikor a *DX Hívójel*
+mezőben lévő állomás ismét megjelenik CQ, RRR, RR73 vagy 73 üzenettel, a
+WS legfeljebb háromszor hívja. FT2, FT4, FT8, FST4, MSK144 és Q65 módban
+működik, normál üzemben vagy FT8 Hound-ként. Kikapcsolja a *Tx Állj*, a
+*Stop*, a *Tx enged* kikapcsolása, a *DX Hívójel* újbóli megnyomása, vagy
+ha az állomás válaszol Önnek (a QSO ekkor normálisan folytatódik).
+
+|*Wait and Pounce*
+|Válasszon a *CQ: None* kivételével egy *CQ:* módot (lásd <<CQ_SELECTOR>>),
+majd kattintson jobb gombbal a *Tx enged* gombra (narancssárgára vált). A
+WS a következő CQ-ra válaszol: a periódus első, legtávolabbi, legerősebb
+vagy leggyengébb állomására. A kikapcsoláshoz kattintson ismét jobb
+gombbal a *Tx enged* gombra, vagy nyomja meg a *Tx Állj* vagy a *Stop*
+gombot. Fox-ként nem használható.
+|===
+
+A Wait and Pounce figyelembe veszi a szűrőket. A WS például csak adott
+prefixű, lokátorú, hívójelű vagy kulcsszót tartalmazó CQ-hívásokra
+várhat. A *Filters for Wait & Pounce only* opcióval minden dekódolás
+látható marad, de a Wait and Pounce csak a szűrőkön átjutó állomásoknak
+válaszol (lásd <<SETTINGS_FILTERS>>).
+
+A *Tx enged* és a *DX Hívójel* sárgára vált, amikor egy vett üzenet
+bekapcsolhatja az adást: ha a *DX Hívójel* mezőben hívójel van, az
+*Auto-Vál.* be van kapcsolva és a Várás funkciók engedélyezve vannak,
+valamint Hound módban mindig. Jobb kattintás a *DX Hívójel* gombra törli a
+*DX Hívójel* és a *DX QRA* mezőt és a szabványos üzeneteket; ez egyszerre
+kikapcsolja a Wait and Reply és a Wait and Call funkciót.
+
+[[CQ_SELECTOR]]
+=== A CQ: választó és a mellőzési lista
+
+Az *Auto-Vál.* melletti *CQ:* mező akkor látható, ha az *Auto-Vál.* be van
+kapcsolva.
+
+[cols="2,5",options="header"]
+|===
+|Választás |Eredmény
+
+|*CQ: None*
+|A WSJT-X szokásos működése.
+
+|*CQ: First*
+|Ha Ön hív CQ-t, a WS az elsőként hívó állomásnak válaszol. Wait and
+Pounce esetén az első CQ-ra válaszol.
+
+|*CQ: Max Dist*
+|A legtávolabbi állomást választja (a távolság kiszámításához lokátor kell).
+
+|*CQ: Max dB* / *CQ: Min dB*
+|A legerősebb / leggyengébb állomást választja.
+|===
+
+A *Mellőz* gomb (vagy kbd:[Ctrl+I]) a *DX Hívójel* mezőben lévő hívójelet a
+mellőzési listára teszi. Bekapcsolt
+menu:Szűrők[A mellőzési listán szereplő állomások mellőzése] esetén a
+*CQ:* módok (Wait and Pounce) kihagyják ezeket az állomásokat; a
+menu:Szűrők[A mellőzési listán szereplő állomások elrejtése] eltávolítja
+őket a Sáv-aktivitásból. A listát a
+menu:Fájl[Mellőzési lista törlése] törli. A további mellőző és elrejtő
+opciókat lásd: <<MENU_FILTERS>>.
+
+[[MOUSE_SHORTCUTS]]
+=== Egér- és gombparancsok
+
+==== Széles-grafikon
+
+[cols="2,5",options="header"]
+|===
+|Művelet |Eredmény
+
+|Bal kattintás
+|Beállítja az Rx frekvenciát.
+
+|Jobb kattintás / kbd:[Shift]+bal kattintás
+|Beállítja a Tx frekvenciát.
+
+|Jobb dupla kattintás / kbd:[Ctrl]+bal kattintás
+|Az Rx-et és a Tx-et azonos frekvenciára állítja (Rx = Tx).
+
+|*Oszlopok* jelölőnégyzet
+|Megjeleníti a vízesésen az Rx (zöld) és a Tx (piros) frekvenciasávot.
+
+|*Frekv* jelölőnégyzet
+|Egy buboréksúgó mutatja az egérmutató alatti hangfrekvenciát.
+
+|*Időbélyeg*
+|Kiírja az UTC-t a vízesésre *Bal* vagy *Jobb* oldalon, vagy *Ki*.
+|===
+
+==== Hívójelek a vízesésen
+
+A menu:Nézet[Hívójelek a vízesésen > Dekódolt hívójelek megjelenítése]
+(vagy a Széles-grafikonon a *Hívójelek mutatása*) opcióval a dekódolt
+hívójelek címkeként jelennek meg a vízesésen a saját frekvenciájukon:
+pirossal a *DX Hívójel* mezőben lévő hívójel, zölddel a CQ, feketével a
+többi. A *× TR* mező adja meg, hány periódusig marad meg egy címke; a
+*Törlés* eltávolít minden címkét. Bal kattintás egy címkére a hívójelet és
+a lokátort a *DX Hívójel* / *DX QRA* mezőbe teszi, az Rx-et arra a jelre
+állítja, beállítja a válaszhoz a *TX páros/1.* opciót és elkészíti a
+szabványos üzeneteket. A betűtípus, az átlátszóság és a pozíció a *Nézet*
+menüben található (lásd <<MENU_VIEW>>). Q65-ben a
+menu:Dekódolás[Kattintások letiltása a vízesésen] kikapcsolja a címkékre kattintást.
+
+==== Gombok
+
+[cols="2,5",options="header"]
+|===
+|Művelet |Eredmény
+
+|Jobb kattintás: *Hangolás*
+|CAT-on keresztül elindítja a rádió antennaillesztőjét. A gomb 6 s-ig a
+*Tuning* feliratot mutatja; a leállításhoz kattintson ismét jobb gombbal.
+Hangolást támogató Hamlib rádiómodell kell hozzá.
+
+|Jobb kattintás: *Tx enged*
+|Élesíti vagy kikapcsolja a Wait and Pounce funkciót (<<WAIT_FEATURES>>).
+
+|Kattintás: *DX Hívójel* / jobb kattintás: *DX Hívójel*
+|Élesíti a Wait and Call funkciót / törli a *DX Hívójel* és a *DX QRA*
+mezőt és az üzeneteket.
+
+|Jobb kattintás: *Keresés* / *Hozzáad* / *Mellőz*
+|Megkeresi a *DX Hívójel* mezőben lévő hívójelet a qrz.com / hamqth.com / qrzcq.com oldalon a böngészőben.
+
+|*Törlés*
+|Az *Alternatív Törlés gomb működés* opcióval (<<SETTINGS_GENERAL>>): a
+kattintás a Sáv-aktivitást, a jobb kattintás az Rx-frekvenciát, a dupla
+kattintás mindkettőt törli.
+
+|Jobb kattintás: *Dekódolás*
+|Feloldja a lefagyott dekódert.
+
+|Jobb kattintás: *Csak CQ*
+|Csak azokat az üzeneteket mutatja, amelyek a *DX Hívójel* mezőben lévő
+hívójelet tartalmazzák. A mező pirosra vált, felirata *DX Hívójel*; a
+visszatéréshez kattintson ismét jobb gombbal.
+
+|Jobb kattintás: *Tx5*
+|Megtartja a Tx5 szabad szövegét (sárga), így az nem törlődik.
+
+|Jobb kattintás: *TX páros/1.*
+|Rögzíti a jelölőnégyzetet. A feloldáshoz kattintson jobb gombbal az *MSK*
+gombra.
+// CHECK: Uwe will test whether the FT8 button also unfreezes (Help text and tooltip say so; the code only does it for MSK).
+
+|Jobb kattintás: *H*
+|Be- vagy kikapcsolja a SuperFox módot.
+
+|Jobb kattintás: *FT8*
+|Be- vagy kikapcsolja a legutóbb használt speciális tevékenységet.
+
+|Jobb kattintás: *Q65* / *JT65*
+|Átvált Q65 Pileup módra / JT9-re.
+
+|Egérgörgő a tárcsafrekvencia fölött, vagy bal / jobb kattintás
+|A tárcsafrekvenciát -1 kHz / +1 kHz lépéssel változtatja.
+|===
+
+[[BAND_BUTTONS]]
+=== Sáv gombok
+
+A menu:Nézet[Sáv gombok] egy sor sávválasztó gombot ad hozzá, mindhárom
+grafikus változatban. Egy gombra kattintva a frekvencialistájában az
+aktuális módhoz tartozó frekvenciára lép. FT8, FT4 és FT2 módban a 80 m és
+10 m közötti gombokra jobb gombbal kattintva az adott sáv FT8 DXpedíciós
+frekvenciájára lép (6 m: csak FT8). A menu:Nézet[VHF / UHF gombok] a sort
+a 8 m és 13 cm közötti sávokra váltja.
+
+2 m-en a jobb kattintás 4 m-re (1. és 3. régió) vagy 1,25 m-re (2. régió)
+lép; 70 cm-en a jobb kattintás 23 cm-re lép.
+
+[[MAIN_FILTERS]]
+=== Szűrők a főablakban
+
+A bal alsó állapotcímke jelzi, ha szűrők rejtenek el dekódolásokat: a zöld
+*Vétel* feliratból cián *Receiving, Filters On* lesz. A *BP* (bypass)
+bekapcsolásával egy időre az összes szűrőt kikapcsolhatja a beállításaik
+elvesztése nélkül; a címke ekkor *Receiving, Filters bypassed* feliratot
+mutat. A szűrőlistákat a *Szűrők* fülön állíthatja be
+(<<SETTINGS_FILTERS>>); a gyorsszűrők a *Szűrők* menüben vannak
+(<<MENU_FILTERS>>).
+
+[[BAND_ACTIVITY_INFO]]
+=== Távolság, irány és USA államok
+
+Ha egy üzenet érvényes lokátort tartalmaz, a Sáv-aktivitás megjelenítheti
+a távolságot és a nagykör szerinti irányszöget, oszlopokba rendezve az
+országgal együtt. Az *USA államok megjelenítése* opcióval az USA állam
+vagy a kanadai tartomány is megjelenik. Ezeket az *Általános* fülön
+kapcsolhatja be, és ott állíthatja az oszloptávolságot is
+(<<SETTINGS_GENERAL>>).
+
+[[CONTEST_NAME]]
+=== Versenynév és megjegyzések
+
+A *Haladó* fülön beállított *CQ egyedi versenynévvel* opcióval és egy
+legfeljebb 4 betűs *Verseny neve* (pl. PACC) megadásával a WS "CQ TEST"
+vagy "CQ RU" helyett "CQ PACC"-t hív, ha speciális tevékenység aktív (FT
+módok, MSK144, Q65; Fox és Hound szerepben nem).
+
+A *Riport* fülön (<<SETTINGS_REPORTING>>) a *Speciális tevékenység a
+megjegyzésbe* opcióval a *Log QSO* megjegyzés a tevékenység nevével
+töltődik ki, pl. "EU VHF Contest", "ARRL Field Day" vagy egyedi
+versenynévvel "PACC Contest". A megtartott megjegyzések és a *dB riport
+mentése a megjegyzéshez* elsőbbséget élveznek.
+
+[[LIVECQ_CHECKS]]
+=== LiveCQ: ki hallott engem
+
+A *Riport* fülön (<<SETTINGS_REPORTING>>) bekapcsolt *Q65 LiveCQ
+engedélyezése* opcióval Q65 módban a WS periódusonként egyszer
+megkérdezi a LiveCQ szervert, mely állomások dekódolták az Ön hívójelét.
+Ezek az állomások pipát és élénkzöld keretet kapnak a vízesés-címkéjükön,
+Q65 Pileup módban pedig pipát az Aktív állomások ablakban. Így a DX
+azokat a hívókat választhatja, akik valóban veszik őt. Az Aktív állomások
+ablak alján *LiveCQ connected* vagy piros *LiveCQ NO CONNECTION* felirat
+látható.
+
+[[TX_INHIBIT]]
+=== TX tiltás
+
+A *Rádió* fülön (<<SETTINGS_RADIO>>) bekapcsolt *TX tiltás engedélyezése*
+opcióval egy másik program visszatarthatja a WS-t az adástól, amíg egy
+ugyanazon a sávon működő, elsőbbséget élvező rádió ad. Az állapotcímke
+ekkor a *Tiltás* feliratot mutatja.
+
+[[WSMAP_CLICKS]]
+=== Kattintással forgalmazás a WS-MAP és az EME65 programból
+
+Bekapcsolt menu:Dekódolás[WS-MAP/EME65 kattintási események fogadása]
+esetén a WS-MAP vagy az EME65 programban egy hívójelre kattintva a WS
+beállítja a *DX Hívójel* és a *DX QRA* mezőt, a frekvenciát, a Tx
+periódust és az almódot. Ott egy dupla kattintás a *Tx enged* gombot is
+bekapcsolhatja. Ez JT65 és Q65 módban működik, bekapcsolt *VHF és almód
+funkciók engedélyezése* mellett. A WS feldolgozza az EME65 által
+továbbított dekódolásokat is. A *DX Hívójel* és a *DX QRA* visszaküldésre
+kerül, így a WS-MAP vagy az EME65 követni tudja őket.
+
+Ha több WS példány figyeli ugyanazt a forrást, abban kattintson a *WS-MAP
+lefoglalása* gombra, amelyiknek a kattintásokra reagálnia kell. A forrást
+a menu:Dekódolás[WS-MAP/EME65 forrás] menüpontban választhatja ki (lásd
+<<MENU_DECODE>>).
+
+[[QSY_WINDOWS]]
+=== Üzenetkészítő és QSY figyelő
+
+Ezek az ablakok segítenek QSY-t egyeztetni a QSO-partnerrel, például egy
+EME frekvenciáról egy másik sávra.
+
+[cols="2,5",options="header"]
+|===
+|Ablak |Mire szolgál
+
+|menu:Nézet[Üzenetkészítő]
+|Rövid QSY-kérést állít össze (sáv, mód és kHz) a *DX Hívójel* mezőben
+lévő állomásnak, beteszi a szabad szöveges üzenetbe és bekapcsolja a *Tx
+enged* gombot.
+
+|menu:Nézet[Felugró üzenetek engedélyezése]
+|Ha egy vett üzenet QSY-t kér Öntől, egy felugró ablak mutatja a kérést,
+és OKQSY vagy NOQSY válasszal felelhet.
+
+|menu:Nézet[QSY figyelő]
+|Felsorolja az összes hallott QSY-kérést UTC-vel, hívójellel,
+frekvenciával és móddal.
+|===
+
+[[DIAGNOSTIC_MODE]]
+=== Diagnosztikai mód
+
+A diagnosztikai mód adatokat gyűjt a WS vagy a rádióvezérlés hibáinak
+felderítéséhez (Hamlib-hibák, nem válaszoló COM portok stb.).
+
+. Válassza a menu:Mentés[Diagnosztikai mód] menüpontot.
+. Zárja be és indítsa újra a WS-t, majd idézze elő a hibát.
+. Zárja be a WS-t, amint a hiba jelentkezett: a naplófájlok gyorsan nőnek.
+
+A WS az asztalon létrehoz egy `logs` mappát (`--rig-name` példányonként
+egy-egy almappával), amely a `ws_syslog.log` és a `WS_RigControl.log`
+fájlt tartalmazza. Nyissa meg őket szövegszerkesztővel, vagy küldje el a
+fejlesztőknek. A diagnosztikai mód a WS következő bezárásakor magától
+kikapcsol; korábbi visszavonásához válassza a
+menu:Mentés[Alapértelmezett eseménynaplózás] menüpontot.
+
+[[DARK_STYLE]]
+=== Sötét stílus
+
+A menu:Nézet[Sötét stílus használata] azonnal, újraindítás nélkül sötét
+témára váltja a WS-t. A vízesés vonalait és a gombok színeit is
+hozzáigazítja. Sötét stílusnál a *Színek* fülön válasszon lágyabb (pasztell)
+háttérszíneket. Lásd <<MENU_VIEW>>.
+
+image::WS-AL_dark_style.png[WS AL sötét stílusban,align="center"]

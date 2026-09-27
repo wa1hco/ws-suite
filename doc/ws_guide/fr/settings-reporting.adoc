@@ -1,0 +1,162 @@
+[[SETTINGS_REPORTING]]
+=== Rapports
+
+image::settings-reporting.png["Paramètres, onglet Rapports",align="center"]
+
+==== Consignation
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Emplacement du journal* / *Sélectionner*
+|Le fichier ADIF dans lequel WS écrit vos QSO. Par défaut, `wsjtx_log.adi` dans le
+répertoire de données de WS. *Sélectionner* choisit un fichier `.adi` existant ou en nomme un nouveau.
+Après *OK*, WS passe à ce fichier et le relit pour le statut déjà contacté.
+
+|*Proposer de consigner le QSO*
+|Ouvre la fenêtre *Consigner QSO* partiellement remplie quand vous envoyez 73 ou un message
+en texte libre. Désactive *Consigner automatiquement*.
+
+|*Indicatif opérateur*
+|L'indicatif de l'opérateur, s'il diffère de l'indicatif de la station. Il est
+inscrit dans le champ *Opérateur* de l'entrée du journal.
+
+|*Consigner automatiquement*
+|Consigne un QSO terminé sans afficher la fenêtre *Consigner QSO*. Désactive *Proposer
+de consigner le QSO*.
+
+|*Concours uniquement*
+|Avec *Consigner automatiquement* : ne consigne automatiquement que pendant une activité
+de concours (NA VHF, EU VHF, WW Digi, ARRL Digi, Field Day, RTTY Roundup).
+Les autres QSO ouvrent la fenêtre *Consigner QSO*. Les QSO en Fox sont toujours consignés automatiquement.
+
+|*Remplir les locators manquants avec 'ZZ00'*
+|Consigne `ZZ00` comme locator quand l'autre station n'en a pas envoyé.
+
+|*Consigner les locators à 4 caractères*
+|Raccourcit à 4 caractères les locators à 6 caractères dans le journal.
+
+|*Consigner la fréquence du cadran au lieu de la fréquence Tx*
+|Consigne la fréquence du cadran du transceiver. Décoché, WS consigne la fréquence du cadran plus
+votre décalage audio Tx.
+
+|*Convertir le mode en RTTY*
+|Consigne les QSO JT9 en mode RTTY, pour les logiciels de journal qui ne connaissent pas JT9.
+
+|*Reports dB dans les commentaires*
+|Écrit le mode et les reports envoyés et reçus dans *Commentaires*
+(p. ex. `FT8  Sent: -10  Rcvd: -12`), pour les logiciels de journal qui refusent ces
+reports.
+
+|*Activité spéciale dans les commentaires*
+|Écrit l'activité spéciale active dans *Commentaires*, p. ex.
+"EU VHF Contest" ou "F/H mode". Avec un nom de concours spécifique comme
+PACC, "PACC Contest" est utilisé. Non appliqué lorsque *Reports dB dans les commentaires* est
+activé ou que le commentaire est conservé dans la fenêtre *Consigner QSO*.
+|===
+
+TIP: Les envois vers Cloudlog ou Wavelog se configurent dans l'onglet *Avancé*.
+
+==== PSK Reporter
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Activer les spots PSK Reporter*
+|Envoie les détails de votre station et les stations que vous décodez à
+https://pskreporter.info[PSK Reporter]. Le texte de l'antenne provient de
+*Informations de station* dans l'onglet *Fréquences* pour la bande en cours.
+Les décodages de fichiers enregistrés ne sont pas envoyés.
+
+|*Utiliser une connexion TCP/IP*
+|Utilise TCP au lieu d'UDP. Nécessaire uniquement si vos rapports UDP se perdent en route.
+|===
+
+==== LiveCQ
+
+LiveCQ est un service web qui liste en direct l'activité Q65 (et JT65 VHF) et
+montre qui entend qui.
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Activer Q65 LiveCQ*
+|Interrupteur principal (activé par défaut). Envoie vos décodages Q65, et vos décodages JT65
+à partir de 50 MHz, vers les destinations cochées ci-dessous. En Q65, il
+récupère aussi les coches vertes "who heard me".
+
+|*W3SZ (w3sz.com)* et nom du programme
+|Envoie uniquement les messages de type CQ au LiveCQ de W3SZ, les mêmes rapports que WS-MAP et
+EME65 y envoient. La liste déroulante choisit le nom de programme transmis :
+*WSJTX* (comme avant le changement de nom) ou *WS*.
+
+|*N6NU (livecq.n6nu.org)*
+|Destination complète (activée par défaut) : CQ et messages dirigés. C'est la source
+des coches vertes et elle est requise pour le trafic *Q65 Pileup* (onglet *Avancé*).
+
+|*Personnalisé:* et URL
+|Envoie uniquement les messages de type CQ à votre propre serveur LiveCQ, p. ex.
+`\http://localhost:3000/api/livecq_update`. Sans effet tant que l'URL est vide.
+Avec *N6NU* désactivé, les coches vertes sont récupérées sur ce serveur.
+|===
+
+NOTE: Les décodages de fichiers enregistrés sont envoyés uniquement au serveur N6NU, marqués de sorte que le
+site les masque par défaut.
+
+==== Serveur UDP
+
+WS envoie son état, ses décodages et les QSO consignés par UDP à des programmes compagnons
+comme JTAlert ou GridTracker.
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Serveur UDP*
+|Adresse du programme destinataire, normalement `127.0.0.1` (par défaut). Avec une
+adresse de groupe multicast (p. ex. `239.255.0.1`), plusieurs programmes peuvent écouter en
+même temps. Adresses IPv4 uniquement.
+
+|*Port du serveur UDP*
+|Port du programme destinataire, 2237 par défaut. 0 = pas de messages UDP.
+
+|*Interfaces sortantes* / *TTL multicast*
+|Affichés uniquement pour une adresse multicast. L'interface de bouclage suffit pour
+les programmes sur le même ordinateur. Laissez le TTL à 1 pour que le trafic reste dans votre
+réseau local.
+
+|*Accepter les requêtes UDP*
+|Permet au programme compagnon de piloter WS, p. ex. de démarrer un QSO avec une station sur laquelle vous
+avez cliqué dans ce programme. Décoché, les requêtes sont ignorées.
+
+|*Notifier les requêtes UDP acceptées*
+|Met la fenêtre de WS au premier plan quand une requête est acceptée. L'effet
+dépend du système d'exploitation.
+
+|*Une requête UDP acceptée restaure la fenêtre*
+|Restaure une fenêtre de WS réduite quand une requête est acceptée.
+
+|*Mode de compatibilité WSJT-X*
+|Identifie WS comme "WSJT-X" au lieu de "WS" (p. ex. "WSJT-X - rig"), pour les
+programmes qui ne reconnaissent que WSJT-X. Prend effet immédiatement.
+|===
+
+==== Serveur UDP secondaire
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Activer la diffusion ADIF des contacts consignés*
+|Envoie chaque QSO consigné sous forme d'enregistrement ADIF par UDP, p. ex. vers N1MM Logger+.
+
+|*Nom du serveur ou adresse IP*
+|Adresse du programme destinataire, généralement `127.0.0.1`.
+
+|*Port du serveur*
+|Port UDP du programme destinataire ; 2333 pour N1MM Logger+ (par défaut).
+0 = rien n'est envoyé.
+|===

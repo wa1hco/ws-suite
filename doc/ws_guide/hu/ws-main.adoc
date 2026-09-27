@@ -1,0 +1,74 @@
+= WS felhasználói kézikönyv
+:doctype: book
+:lang: hu
+:toc: left
+:toc-title: Tartalom
+:toclevels: 2
+:icons: font
+:imagesdir: ../en/images
+:experimental:
+:notitle:
+
+image::ws-header.png[WS - gyengejeles digitális üzemmódok programcsomagja,682,126]
+
+[discrete]
+== WS felhasználói kézikönyv
+
+[preface]
+== A kézikönyvről
+
+A WS gyengejeles digitális amatőrrádiós összeköttetésekhez készült
+programcsomag: *WS* (a főprogram), *WS-MAP* (szélessávú Q65/FT8 monitor)
+és *EME65* (szélessávú JT65/Q65 EME-hez). A WS a _WSJT-X_-ből nőtt ki, és
+korábban _WSJT-X Improved_ néven volt ismert. Minden üzemmód és az alapvető
+üzemi eljárások megegyeznek a WSJT-X-éivel; ezekhez továbbra is a
+https://wsjt.sourceforge.io/wsjtx-doc/wsjtx-main-3.0.0-rc1.html[WSJT-X User Guide]
+a referencia.
+
+Ez a kézikönyv szándékosan rövid. Bemutatja a WS minden menüjét és minden
+beállítását, valamint azt, amit a WS a WSJT-X-hez képest hozzáad.
+
+include::intro-variants.adoc[]
+
+include::main-window.adoc[]
+
+[[MENUS]]
+== Menük
+
+A menük mindhárom grafikus változatban azonosak.
+
+image::menubar.png[A WS menüsora]
+
+include::menus-1.adoc[]
+
+include::menus-2.adoc[]
+
+[[SETTINGS]]
+== Beállítások
+
+A *Beállítások* ablakot a menu:Fájl[Beállítások...] menüponttal vagy a
+kbd:[F2] billentyűvel nyithatja meg. A beállítások konfigurációnként
+tárolódnak (lásd <<MENU_CONFIGURATIONS>>). Bármely kezelőszerv fölé víve az
+egeret megjelenik a buboréksúgója.
+
+include::settings-general.adoc[]
+
+include::settings-radio.adoc[]
+
+include::settings-audio.adoc[]
+
+include::settings-txmacros.adoc[]
+
+include::settings-reporting.adoc[]
+
+include::settings-frequencies.adoc[]
+
+include::settings-colors.adoc[]
+
+include::settings-advanced.adoc[]
+
+include::settings-alerts.adoc[]
+
+include::settings-filters.adoc[]
+
+include::support.adoc[]

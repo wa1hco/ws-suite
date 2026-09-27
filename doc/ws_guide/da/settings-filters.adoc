@@ -1,0 +1,73 @@
+[[SETTINGS_FILTERS]]
+=== Filtre
+
+image::settings-filters.png["Indstillinger, fanen Filtre",align="center"]
+
+Filtrene bestemmer, hvilke dekodninger der vises i ruden *Bånd Aktivitet*.
+Listerne på denne fane virker sammen med hurtigfiltrene i menuen *Filtre*
+(se <<MENU_FILTERS>>), hvor du også slår områdefiltrene
+til og fra.
+
+Mens et filter skjuler dekodninger, skifter statusfeltet nederst til venstre i
+hovedvinduet fra grøn "Receiving" til cyan "Receiving, Filters On".
+
+Vil du se alt igen for en stund, så markér *BP* (bypass) i
+hovedvinduet: alle filtre ignoreres, og feltet viser "Receiving, Filters
+bypassed". Fjern markeringen for at vende tilbage til dine filtre.
+
+NOTE: Blacklist, Whitelist og Always Pass slås automatisk fra
+i Special Operating-modes, så du ikke går glip af en station. Blacklist og
+Whitelist forbliver aktive for Hounds.
+
+==== Filterlister
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Områder 1-4*
+|Op til fire landenavne, eller dele af navne, til punkterne *Skjul stationer fra
+område 1-4* og *Fremhæv stationer fra område 1-4* i menuen
+*Filtre*; menupunkterne viser derefter din tekst. Skriv navnet, som
+WS viser det, f.eks. `Japan`, `U.S.A.` eller `Canary Is.`.
+
+|*Blacklist* +
+*Skjul msg, der indeholder følgende kaldesignaler eller nøgleord*
+|Skjuler meddelelser, der indeholder en af posterne: hele kaldesignaler, dele
+af kaldesignaler, grids eller ord (f.eks. piratkaldesignaler eller contest-meddelelser).
+
+|*Whitelist* +
+*Vis kun meddelser, der indeholder følgende kaldesignaler eller nøgleord*
+|Viser kun meddelelser, der indeholder en af posterne; alle andre
+skjules, bortset fra dem på Always Pass-listen.
+
+|*Always Pass* +
+*Vis altid msg med følgende nøgleord*
+|Meddelelser med disse poster vises altid, også selvom Blacklist,
+Whitelist eller et Skjul-punkt for et område, et kontinent eller tidligere kørte
+stationer ville skjule dem.
+|===
+
+Hver liste har tolv felter, én post pr. felt. Posterne konverteres
+til store bogstaver. En liste virker kun, mens dens afkrydsningsfelt er markeret.
+
+==== Valgmuligheder
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Anvend kun filtre på kaldesignalerne fra de kaldende stationer*
+|Listerne sammenholdes kun med den kaldende station (normalt det
+andet ord, det tredje ved retnings-CQ'er som `CQ NA`). En post
+skal så matche begyndelsen af kaldesignalet, så et præfiks som `JA` virker.
+Ikke markeret matcher en post hvor som helst i meddelelsen.
+
+|*Brug kun filtre til Wait og Pounced, CQ: Først osv. (alle msg vises stadig)*
+|Intet skjules i *Bånd Aktivitet*; filtrene bestemmer kun, hvilke
+stationer Wait and Pounce og *CQ:*-valgene svarer på. Se <<WAIT_FEATURES>>.
+
+|*Hurtige filtre: Skjul/ignorer/fremhæv "kørt i dag og i går" i stedet for "kørt i dag" (UTC)*
+|De tre "kørt i dag"-punkter i menuen *Filtre* omfatter også
+stationer kørt i går (UTC).
+|===

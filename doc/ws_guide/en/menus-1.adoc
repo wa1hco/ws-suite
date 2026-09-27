@@ -1,0 +1,387 @@
+[[MENU_FILE]]
+=== File
+
+image::menu-File.png[File menu]
+
+[cols="2,5",options="header"]
+|===
+|Menu item |What it does
+
+|*Open* kbd:[Ctrl+O]
+|Stops *Monitor* and opens a recorded `.wav` file, which is then decoded
+like live audio.
+
+|*Open next in directory*
+|Opens and decodes the next `.wav` file in the same folder.
+
+|*Decode remaining files in directory* kbd:[Shift+F6]
+|Opens and decodes all following `.wav` files in the folder, one after the other.
+
+|*Delete all {asterisk}.wav & {asterisk}.c2 files in SaveDir*
+|After a confirmation, deletes all saved audio files (`.wav` and `.c2`)
+in the save directory.
+
+|*Erase ALL.TXT*
+|After a confirmation, deletes `ALL.TXT`, the record of everything you
+received and transmitted.
+
+|*Erase wsjtx_log.adi*
+|After a confirmation, deletes your ADIF log file.
+
+|*Erase wsjtx.log*
+|After a confirmation, deletes `wsjtx.log`, the simple QSO list written by
+*Log QSO*. WS uses it for the "worked today" filters and so that
+*Wait and Pounce* does not call stations you have already logged.
+
+|*Erase Ignore List*
+|After a confirmation, empties the Ignore List (filled with the *Ignore* button).
+
+|*Erase WSPR hashtable*
+|After a confirmation, deletes the table WSPR uses to resolve hashed
+compound callsigns.
+
+|*Erase list of Q65 callers*
+|After a confirmation, deletes the list of callsigns that WS remembers
+from Q65 decodes.
+
+|*Reset Cabrillo log ...*
+|After a confirmation, erases all QSOs of the current contest from the
+contest log. They stay in the ADIF log but can no longer be exported
+to Cabrillo. The serial number goes back to 1 and the score in
+*Active Stations* is reset.
+
+|*Export Cabrillo log ...*
+|Saves the contest log as a Cabrillo file for submission.
+
+|*Open log directory*
+|Opens the WS data folder (logs, `ALL.TXT` and so on) in your file manager.
+
+|*Settings...*
+|Opens the *Settings* window (also kbd:[F2]). See the Settings chapter.
+
+|*Exit*
+|Closes WS.
+|===
+
+NOTE: On macOS, *Settings* (as *Preferences*) and *Exit* (as *Quit*)
+appear in the application menu instead of the *File* menu.
+
+[[MENU_CONFIGURATIONS]]
+=== Configurations
+
+image::menu-Config.png[Configurations menu]
+
+A _configuration_ is a complete, named set of settings. Many operators
+keep one per mode or per station setup (for example "FT8 HF" and
+"Q65 EME") and switch with two clicks.
+
+The menu lists all configurations; the one in use is checked. Each
+configuration opens a small submenu (left: another configuration,
+right: the one in use):
+
+image:menu-Config-Other.png[Submenu of another configuration] image:menu-Config-Current.png[Submenu of the configuration in use]
+
+[cols="2,5",options="header"]
+|===
+|Menu item |What it does
+
+|*Switch To*
+|WS restarts its main window with this configuration's settings.
+Not shown for the configuration in use.
+
+|*Clone*
+|Makes a copy named "_name_ - Copy". Rename it and adjust its settings
+to create a new configuration.
+
+|*Clone Into ...*
+|Overwrites all settings of this configuration with those of another
+one you pick. Asks for confirmation. Only shown when there is more than
+one configuration.
+
+|*Reset*
+|After a confirmation, sets this configuration back to default values.
+
+|*Rename ...*
+|Gives the configuration a new name.
+
+|*Delete*
+|After a confirmation, deletes the configuration. The configuration in
+use cannot be deleted, so this item is not shown for it.
+|===
+
+TIP: To start WS directly in a configuration, use the command-line option
+`--config NAME` (or `-c NAME`), for example `ws -c Echo`.
+
+[[MENU_VIEW]]
+=== View
+
+image::menu-View.png[View menu]
+
+[cols="2,5",options="header"]
+|===
+|Menu item |What it does
+
+|*Waterfall*
+|Opens the Wide Graph window with spectrum and waterfall.
+
+|*Astronomical data*
+|Opens (checked) or closes the Astronomical Data window: Moon and Sun
+data, EME Doppler shift, Doppler tracking and sked frequency.
+
+|*Message averaging* kbd:[F7]
+|Opens the Message Averaging window, which shows the periods used for
+averaged decodes (JT4, JT65, Q65).
+
+|*Echo Graph* kbd:[F8]
+|Opens the Echo Graph window for Echo mode.
+
+|*Fast Graph* kbd:[F9]
+|Opens the Fast Graph window for the fast modes (MSK144 and fast JT9).
+
+|*Contest log*
+|Shows the QSOs of the current contest and their count.
+
+|*Fox log*
+|Shows the QSOs made as Fox in FT8 DXpedition mode.
+
+|*Color highlighting scheme*
+|A small legend of the current decode highlighting colours (CQ, My Call,
+New DXCC, LotW user and so on). The colours are set on the *Colors*
+settings tab.
+
+|*Active Stations*
+|Lists recently decoded stations, for example to find the most distant
+ones in a distance-scored contest, with *Rate*, *Score* and *Band Changes*.
+Click a line to call that station. With WS-MAP running, it shows the
+stations WS-MAP decodes across its whole bandwidth; a single click
+transfers the QSO data and sked frequency to WS, a double-click calls
+the station.
+
+|*SWL Mode*
+|Hides the lower control panel so the decode panes get the whole window.
+Useful when several instances run at once. Size and position of this
+view are remembered separately.
+
+|*Message Creator*
+|Composes special messages, e.g. a QSY request to another band or mode,
+or a short canned message, sent to the station in *DX Call*. Opening
+it also turns on *Enable Message Popups*.
+
+|*QSY Monitor*
+|Shows the special messages that other stations send to each other and to you.
+
+|*Enable Message Popups*
+|A popup window appears when a special message is addressed to you, with
+buttons to reply.
+
+|*Band Buttons*
+|Shows a row of HF band buttons (160 m to 70 cm); the current band is
+green. Click a button to go to your preferred frequency for that band
+and mode (set with *Pref* on the *Frequencies* settings tab).
+Right-click on 80 m to 10 m (FT8, FT4, FT2) goes to the usual DXpedition
+frequency, on 6 m (FT8) to 50.323 MHz. See also
+menu:Help[Special mouse commands].
+
+|*VHF / UHF Buttons*
+|Replaces the HF buttons with a VHF/UHF/microwave set (8 m to 24 GHz).
+Only visible while *Band Buttons* is checked.
+
+|*Use Dark Style*
+|Switches all windows to a dark theme. It does more than a plain dark
+stylesheet: WS also adjusts some internal settings and uses a stylesheet
+optimized for it. Afterwards, change the highlight colours on the
+*Colors* settings tab to softer, pastel tones.
+
+|*Callsigns on waterfall*
+|Submenu, see below.
+|===
+
+==== Callsigns on waterfall
+
+image::menu-View-Callsign_overlay.png[Callsigns on waterfall submenu]
+
+WS can write decoded callsigns directly on the waterfall, at the
+frequency where each station was heard.
+
+[cols="2,5",options="header"]
+|===
+|Menu item |What it does
+
+|*Show decoded callsigns*
+|Turns the callsign labels on or off. Turning them off removes all labels.
+Opening a `.wav` file also clears them.
+
+|*Persist 1 period* ... *Persist 5 periods*
+|How long a label stays after the station was last decoded, in
+Tx/Rx periods (default 2). The same value can be set in the Wide Graph window.
+
+|*Font size*
+|image:menu-View-Callsign_overlay-Callsign_font.png[Font size submenu] +
+Label size: *Small (7 pt)*, *Normal (8 pt)*, *Medium (10 pt)* or *Large (12 pt)*.
+
+|*Transparency*
+|image:menu-View-Callsign_overlay-Callsign_transparency.png[Transparency submenu] +
+How much the waterfall shows through the labels: *None*, *Low*, *Medium* or *High*.
+
+|*Position*
+|image:menu-View-Callsign_overlay-Callsign_position.png[Position submenu] +
+*Top of waterfall*, or *Bottom of waterfall (above divider)* so the
+newest signals at the top stay uncovered.
+|===
+
+[[MENU_SAVE]]
+=== Save
+
+image::menu-Save.png[Save menu]
+
+[cols="2,5",options="header"]
+|===
+|Menu item |What it does
+
+|*None*
+|No audio files are saved.
+
+|*Save decoded*
+|Saves the audio (`.wav`) of every period with at least one decode in
+the save directory.
+
+|*Save all*
+|Saves the audio of every period.
+
+|*Remove saved files after 30 days*
+|At each program start, WS deletes all files in the save directory that
+are older than 30 days.
+
+|*Don't split ALL.TXT*
+|All decodes and transmissions go to one `ALL.TXT` (default).
+
+|*Split ALL.TXT yearly*
+|One file per year, e.g. `2026-ALL.TXT`.
+
+|*Split ALL.TXT monthly*
+|One file per month, e.g. `2026-09-ALL.TXT`.
+
+|*Disable writing of ALL.TXT*
+|Nothing is written to `ALL.TXT`.
+
+|*Default event logging*
+|Normal, minimal internal logging. Also switches *Diagnostic mode* off again.
+
+|*Diagnostic mode*
+|Collects detailed data to troubleshoot WS or its communication with
+your rig. It takes effect after a restart and switches itself off when
+WS is closed the next time. A `logs` folder appears on your desktop with
+`ws_syslog.log` and `WS_RigControl.log`; send these to the developers if
+asked. Close WS soon after the fault has appeared, as the files grow quickly.
+
+|*Disable event logging*
+|Turns internal event logging off.
+|===
+
+[[MENU_LANGUAGE]]
+=== Language
+
+image::menu-Language.png[Language menu]
+
+Chooses the language of the WS user interface. English is the default;
+the other entries are the translations that come with WS, each shown in
+its own language.
+
+When you pick a language, WS asks whether to restart its window now:
+
+[cols="2,5",options="header"]
+|===
+|Button |What it does
+
+|*Restart now*
+|Rebuilds the main window in the new language within a few seconds, the
+same way as switching to another configuration. WS itself keeps running.
+While WS is transmitting or tuning the window is not restarted; the new
+language then applies the next time WS starts.
+
+|*Later*
+|Keeps the current language until WS is started again.
+|===
+
+The choice applies to all configurations. Starting WS with
+`--language <code>` (for example `ws --language de`) overrides it for
+that run.
+
+NOTE: Translations are made by volunteers and can be incomplete; texts
+that are not translated yet appear in English.
+
+[[MENU_HELP]]
+=== Help
+
+image::menu-Help.png[Help menu]
+
+Most items open a web page or a PDF in your browser, so they need an
+internet connection.
+
+[cols="2,5",options="header"]
+|===
+|Menu item |What it does
+
+|*Release Notes*
+|The WS release notes (online).
+
+|*WS Home Page*
+|Opens the WS web site (wsjt-x-improved.sourceforge.io).
+
+|*WS Download Page*
+|Opens the download folder on SourceForge with all WS versions and
+installers. Check there for a newer version.
+
+|*WSJT-X User Guide*
+|The WSJT-X User Guide (online), the reference for modes and operating procedures.
+
+|*FT8 DXpedition Mode User Guide*
+|PDF on Fox and Hound operation.
+
+|*SuperFox User Guide*
+|PDF on SuperFox mode.
+
+|*Quick-Start Guide to FST4 and FST4W*
+|PDF.
+
+|*Quick-Start Guide to Q65*
+|PDF.
+
+|*Quick-Start Guide to WSJT-X 2.5.0 and MAP65 3.0*
+|PDF on wideband EME operation with two programs.
+
+|*Quick-Start Guide to WSJT-X 2.7 and QMAP*
+|PDF on using the wideband Q65 monitor (now WS-MAP) with the main program.
+
+|*Download Samples ...*
+|Downloads sample `.wav` files that demonstrate the modes; open them
+with menu:File[Open].
+
+|*Download EME Ephemeris Chart*
+|Asks for a year (2025 to 2040) and opens that year's EME chart (PDF).
+
+|*Keyboard shortcuts*
+|A window listing all keyboard shortcuts (also kbd:[F3]).
+
+|*Special mouse commands*
+|A window listing what clicks, right-clicks and double-clicks do on the
+waterfall, decodes, dial frequency and buttons (also kbd:[F5]).
+
+|*List of Type 1 prefixes and suffixes*
+|The add-on prefixes and suffixes that work in standard messages.
+
+|*How to deal with rig control errors*
+|PDF with help for CAT and rig-control problems.
+
+|*Recommended audio settings*
+|Step-by-step procedure for setting the transmit audio level so your
+signal stays clean (no ALC action, no harmonics).
+
+|*Copyright notice* kbd:[Shift+F1]
+|The licence and the copyright notice required when you reuse WS or WSJT-X code.
+
+|*About WS*
+|Version and credits.
+|===
+
+NOTE: On macOS, *About WS* appears in the application menu.

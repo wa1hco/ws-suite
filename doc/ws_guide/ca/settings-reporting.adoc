@@ -1,0 +1,162 @@
+[[SETTINGS_REPORTING]]
+=== Informes
+
+image::settings-reporting.png["Configuració, pestanya Informes",align="center"]
+
+==== Registres
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Ubicació del log* / *Selecciona*
+|L'arxiu ADIF on WS escriu els teus QSO. Per defecte és `wsjtx_log.adi` al
+directori de dades de WS. *Selecciona* tria un arxiu `.adi` existent o dona nom a un de nou.
+Després de *D'acord*, WS canvia a aquest arxiu i el torna a llegir per a l'estat de treballat abans.
+
+|*Registra el QSO*
+|Obre la finestra *Log QSO* parcialment emplenada quan envies 73 o un missatge
+de text lliure. Desactiva *Registra automàticament*.
+
+|*Indicatiu de l'Operador*
+|L'indicatiu de l'operador, si és diferent de l'indicatiu de l'estació. Va
+al camp *Operador* de l'entrada del log.
+
+|*Registra automàticament*
+|Registra un QSO complet sense mostrar la finestra *Log QSO*. Desactiva *Registra
+el QSO*.
+
+|*Només concursos*
+|Amb *Registra automàticament*: registra automàticament només durant una activitat
+de concurs (NA VHF, EU VHF, WW Digi, ARRL Digi, Field Day, RTTY Roundup).
+Els altres QSO obren la finestra *Log QSO*. Els QSO de Fox sempre es registren automàticament.
+
+|*Omple els locators que falten amb 'ZZ00'*
+|Registra `ZZ00` com a locator quan l'altra estació no n'ha enviat cap.
+
+|*Registra locators de 4 dígits*
+|Escurça els locators de 6 caràcters a 4 caràcters al log.
+
+|*Registra la freqüència de dial en lloc de la de TX*
+|Registra la freqüència de dial de l'equip. Si no està marcat, WS registra la freqüència de dial més
+el desplaçament d'àudio de TX.
+
+|*Converteix el mode a RTTY*
+|Registra els QSO de JT9 amb mode RTTY, per a programes de log que no coneixen JT9.
+
+|*informa dels dB's als comentaris*
+|Escriu el mode i els reports enviat i rebut a *Comentaris*
+(p. ex. `FT8  Sent: -10  Rcvd: -12`), per a programes de log que rebutgen aquests
+reports.
+
+|*Activitat especial d'operació als comentaris*
+|Escriu l'activitat especial d'operació activa a *Comentaris*, p. ex.
+"EU VHF Contest" o "F/H mode". Amb un nom de concurs individual com
+PACC, es fa servir "PACC Contest". No s'aplica quan *informa dels dB's als comentaris* està
+activat o el comentari es reté a la finestra *Log QSO*.
+|===
+
+TIP: Les càrregues a Cloudlog o Wavelog es configuren a la pestanya *Avançat*.
+
+==== PSK Reporter
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Activa PSK Reporter*
+|Envia les dades de la teva estació i les estacions que descodifiques a
+https://pskreporter.info[PSK Reporter]. El text de l'antena prové
+d'*Informació de l'estació* a la pestanya *Freqüències* per a la banda actual.
+Les descodificacions d'arxius enregistrats no s'hi envien.
+
+|*Utilitza la connexió TCP/IP*
+|Fa servir TCP en lloc d'UDP. Només cal si els teus reports UDP es perden pel camí.
+|===
+
+==== LiveCQ
+
+LiveCQ és un servei web que llista l'activitat de Q65 (i JT65 de VHF) en directe i
+mostra qui sent qui.
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Activa LiveCQ de Q65*
+|Interruptor general (activat per defecte). Puja les teves descodificacions de Q65, i les de JT65
+a 50 MHz i superiors, a les destinacions marcades a sota. En Q65 també
+obté les marques verdes de "qui m'ha sentit".
+
+|*W3SZ (w3sz.com)* i nom del programa
+|Envia només missatges de tipus CQ al LiveCQ de W3SZ, els mateixos reports que hi envien WS-MAP i
+EME65. El desplegable tria el nom del programa que s'informa:
+*WSJTX* (com abans del canvi de marca) o *WS*.
+
+|*N6NU (livecq.n6nu.org)*
+|Destinació completa (activada per defecte): CQ i missatges dirigits. És l'origen
+de les marques verdes i és necessària per a l'operació *Q65 Pileup* (pestanya *Avançat*).
+
+|*Personalitzat:* i URL
+|Envia només missatges de tipus CQ al teu propi servidor LiveCQ, p. ex.
+`\http://localhost:3000/api/livecq_update`. No fa res mentre l'URL és buit.
+Amb *N6NU* desactivat, les marques verdes s'obtenen d'aquest servidor.
+|===
+
+NOTE: Les descodificacions d'arxius enregistrats només van al servidor N6NU, marcades perquè el
+lloc les amagui per defecte.
+
+==== Servidor UDP
+
+WS envia el seu estat, les descodificacions i els QSO registrats per UDP a programes complementaris
+com JTAlert o GridTracker.
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Servidor UDP*
+|Adreça del programa receptor, normalment `127.0.0.1` (per defecte). Amb una
+adreça de grup multicast (p. ex. `239.255.0.1`) diversos programes poden escoltar
+alhora. Només adreces IPv4.
+
+|*Número de port del servidor UDP*
+|Port del programa receptor, per defecte 2237. 0 = sense missatges UDP.
+
+|*Interfícies de sortida* / *Multidifusió TTL*
+|Només es mostra per a una adreça multicast. La interfície de loopback és suficient per a
+programes al mateix ordinador. Mantén el TTL a 1 perquè el trànsit es quedi a la teva
+xarxa local.
+
+|*Accepta sol·licituds UDP*
+|Permet que el programa complementari controli WS, p. ex. iniciar un QSO amb una estació on
+has fet clic allà. Si no està marcat, les sol·licituds s'ignoren.
+
+|*Notifica-la sobre la sol·licitud acceptada d’UDP*
+|Porta la finestra de WS al davant quan s'accepta una sol·licitud. L'efecte
+depèn del sistema operatiu.
+
+|*La finestra de restauració de la sol·licitud UDP es acceptada*
+|Restaura una finestra de WS minimitzada quan s'accepta una sol·licitud.
+
+|*Mode de compatibilitat WSJT-X*
+|Identifica WS com a "WSJT-X" en lloc de "WS" (p. ex. "WSJT-X - rig"), per a
+programes que només reconeixen WSJT-X. S'aplica a l'instant.
+|===
+
+==== Servidor UDP secundari
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Habilita la transmissió ADIF de contacte registrad*
+|Envia cada QSO registrat com a registre ADIF per UDP, p. ex. a N1MM Logger+.
+
+|*Nom del servidor o adreça IP*
+|Adreça del programa receptor, normalment `127.0.0.1`.
+
+|*Número de port del servidor*
+|Port UDP del programa receptor; 2333 per a N1MM Logger+ (per defecte).
+0 = no s'envia res.
+|===

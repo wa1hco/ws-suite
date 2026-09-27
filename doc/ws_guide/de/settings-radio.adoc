@@ -1,0 +1,183 @@
+[[SETTINGS_RADIO]]
+=== Funkgerät
+
+image::settings-radio.png["Einstellungen, Registerkarte Funkgerät",align="center"]
+
+==== Funkgerät
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Funkgerät*
+|Ihr Funkgerätemodell oder ein Steuerprogramm, das das Funkgerät verwaltet (DX Lab Suite
+Commander, Flrig, Ham Radio Deluxe, Hamlib NET rigctl, OmniRig Rig 1/2,
+TCI Client). *Keine* bedeutet keine CAT-Steuerung.
+
+|*Abfrageintervall*
+|Wie oft WS Frequenz und Modus vom Funkgerät liest. 1–3 s passen für die meisten
+Geräte. Ausgegraut bei Funkgeräten, die Änderungen selbst melden.
+|===
+
+==== CAT-Steuerung
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Port*
+|Die serielle Schnittstelle Ihres CAT-Interfaces (z. B. COM3 oder /dev/ttyUSB0). Bei einem
+Steuerprogramm wird daraus *Netzwerkserver* oder *TCI-Server*
+(`host:port`); leer lassen für den Standard auf diesem Computer. Bei einigen
+SDR-Bausätzen wird daraus *USB-Gerät*.
+
+|*Baudrate* / *Datenbits* / *Stoppbits*
+|Müssen zum CAT-Menü Ihres Funkgeräts passen. *Standard* behält den Wert bei, den Hamlib
+für Ihr Modell kennt.
+
+|*Handshake*
+|Meist *Keine*. Einige Funkgeräte, insbesondere manche Kenwoods, benötigen
+*Hardware* (RTS/CTS). Eine falsche Einstellung lässt CAT nicht reagieren.
+
+|*Steuerleitungen erzwingen* *DTR:* / *RTS:*
+|Hält DTR oder RTS dauerhaft auf *Hoch* oder *Niedrig*, z. B. um ein
+Interface zu versorgen. Leer lassen, sofern Sie es nicht sicher brauchen. Nicht verfügbar für eine
+Leitung, die auf demselben Port für PTT verwendet wird.
+|===
+
+==== Hamlib aktualisieren
+
+Diese Optionen stammen aus WSJT-X Improved und sind in WSJT-X nicht enthalten. Sie funktionieren
+nur unter Windows; unter Linux und macOS heißt der Rahmen *Hamlib Version*
+und zeigt nur die verwendete Version.
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*64-Bit* / *32-Bit*
+|Welche Hamlib-DLL heruntergeladen wird. Wählen Sie die zu Ihrer WS-Installation passende.
+
+|*Hamlib aktualisieren*
+|Lädt die neueste Hamlib-DLL herunter, die oft Unterstützung für Funkgeräte ergänzt oder korrigiert.
+Die bisherige DLL wird als Sicherung aufbewahrt. Starten Sie WS neu, um die neue zu verwenden.
+
+|*Update rückgängig*
+|Kehrt zur gesicherten DLL zurück, ebenfalls nach einem Neustart.
+
+|*In Verwendung* / *Gesichert*
+|Die Hamlib-Version, mit der WS läuft, und die Version der Sicherung.
+|===
+
+==== PTT-Methode
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*VOX*
+|Die VOX des Funkgeräts tastet den Sender. Benötigt kein Interface.
+
+|*CAT*
+|PTT per CAT-Befehl, sofern das Funkgerät das unterstützt. Meist die richtige Wahl
+mit einem Steuerprogramm wie OmniRig oder Flrig.
+
+|*DTR* / *RTS*
+|Eine serielle Steuerleitung tastet das Funkgerät. Viele USB-Funkgeräte können diese Leitung
+auf PTT legen (Icom: USB SEND, Yaesu: PC KEYING). *RTS* ist am
+CAT-Port mit *Hardware*-Handshake nicht verfügbar.
+
+|*Port*
+|Serielle Schnittstelle für *DTR* / *RTS*; kann dieselbe wie der CAT-Port sein. Der Wert
+*CAT* ist für Interfaces wie OmniRig gedacht, die die Leitungen fernschalten.
+
+|*TX-Sperre aktivieren*
+|Für Stationen, die sich ein Band mit einem vorrangigen Funkgerät teilen (nur PTT über *DTR* / *RTS*):
+Ein anderes Programm kann WS am Senden hindern, während dieses Funkgerät sendet.
+|===
+
+==== Sende-Audioquelle
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Rückseite/Daten* / *Front/Mikro*
+|Wählt per CAT den Tx-Audioeingang des Funkgeräts, sofern das Gerät das unterstützt.
+Nur aktiv mit PTT-Methode *CAT*. *Rückseite/Daten* ist meist am besten.
+|===
+
+==== Modus
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Keine* / *USB* / *Data/Pkt*
+|Der Modus, den WS am Funkgerät einstellt. *Data/Pkt*, wenn Ihr Gerät ihn hat (wählt oft
+den rückseitigen Audioeingang und ein breiteres Filter), sonst *USB*.
+*Keine* lässt den Modus unverändert.
+|===
+
+==== Split-Betrieb
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Funkgerät*
+|Verwendet den eigenen Split des Funkgeräts (VFO A und B).
+
+|*Fake It*
+|Verwendet nur VFO A und stimmt ihn für jede Aussendung um. Funktioniert mit jedem Funkgerät.
+
+|*Keine*
+|Kein Split (nicht empfohlen).
+|===
+
+Mit Split verschiebt WS die Tx-Skalenfrequenz in 500-Hz-Schritten, sodass die Tx-Audiofrequenz
+zwischen 1500 und 2000 Hz bleibt. Audio-Oberwellen fallen dann außerhalb des
+Filters des Funkgeräts, und Ihr Signal bleibt sauber. Das gilt in FT4, FT8 und
+FST4 sowie in allen Modi, wenn *VHF- und Submodus-Funktionen aktivieren* aus ist.
+Auch die Doppler-Nachführung benötigt Split.
+
+==== CAT testen und PTT testen
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*CAT testen*
+|Verbindet sich mit diesen Einstellungen mit dem Funkgerät. Grün: OK. Rot: Fehler, mit
+einer Meldung.
+
+|*PTT testen*
+|Tastet den Sender ohne Audio; erneuter Klick gibt ihn wieder frei. Prüfen Sie, ob
+Funkgerät und Interface wie erwartet schalten. Bei *VOX* verwenden Sie stattdessen *Abstimmen* im
+Hauptfenster.
+|===
+
+==== Funkgerätedaten
+
+Diese Optionen stammen aus WSJT-X Improved und sind in WSJT-X nicht enthalten.
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*PWR, SWR und ALC anzeigen*
+|Zeigt beim Senden die Ausgangsleistung (in Watt, neben dem Regler *Leist.*)
+sowie SWR und ALC in der Statusleiste. Bei SWR über 1,5 wird das Feld
+gelb, über 2,0 rot. Erfordert ein Funkgerät, das diese Werte meldet; nicht
+verfügbar mit *Keine*, OmniRig, DX Lab Suite Commander, Ham Radio Deluxe
+oder den Kenwood TS-480/850/870.
+
+|*Tx anhalten bei SWR > 2,5*
+|Beendet das Senden sofort und zeigt eine Warnung. Prüfen Sie Ihre Antenne.
+
+|*ALC > 50% hervorheben* / *ALC > 90% hervorheben*
+|Färbt das Statusfeld gelb / rot, wenn die ALC die Grenze überschreitet, damit Sie
+eine Übersteuerung bemerken.
+|===
+
+Die letzten drei Optionen erfordern *PWR, SWR und ALC anzeigen*.

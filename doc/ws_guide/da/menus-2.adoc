@@ -1,0 +1,300 @@
+[[MENU_FILTERS]]
+=== Filtre
+
+image::menu-Filters.png[Menuen Filtre]
+
+Hurtigfiltre til Band Activity-ruden. De lister, de bruger (Ignore-listen,
+Whitelist, områder), indstilles under menu:Fil[Indstillinger > Filtre],
+se <<SETTINGS_FILTERS>>. Alle filtre kan kombineres. Afkrydsningsfeltet *BP*
+i hovedvinduet omgår dem med ét klik. Mens et Skjul-filter er
+slået til, bliver statusfeltet cyan og viser "Receiving, Filters On"
+(grønt "Receiving, Filters bypassed" med *BP*).
+
+[cols="2,5",options="header"]
+|===
+|Menupunkt |Funktion
+
+|*Skjul stationer kørt på båndet*
+|Skjuler meddelelser fra kaldesignaler, der allerede er i din log på det aktuelle bånd.
+
+|*Skjul stationer kørt i dag eller igår*
+|Skjuler kaldesignaler, du har logget i dag (eller i går). Punktet hedder "... kørt
+i dag", medmindre den tilhørende indstilling på fanen *Filtre* tilføjer i går.
+
+|*Skjul stationer på Ignore listen*
+|Skjuler kaldesignaler på Ignore-listen. Knappen *Ignorer* tilføjer DX Call
+til listen; slet den fra menuen *Fil*.
+
+|*Ignorer stationer kørt før på båndet*
+|Stationerne forbliver synlige, men WS svarer dem ikke automatisk
+(CQ: First / Max Dist / Max dB / Min dB, Wait and Pounce, Wait and Reply).
+
+|*Ignorer stationer, kørt i dag eller i går*
+|Det samme for kaldesignaler logget i dag (eller i går).
+
+|*Ignorer stationer fra ignorer listen*
+|Det samme for kaldesignaler på Ignore-listen.
+
+|*Skjul stationer fra område 1* ... *4*
+|Skjuler stationer, hvis landenavn indeholder den tekst, der er angivet for
+området. Når du har angivet et område, viser punktet dets navn
+(f.eks. "Skjul stationer fra Italy").
+
+|*Skjul stationer fra Europa*, *Nord Amerika*, *Sydamerika*, *Asien*,
+*Afrika*, *Oceanien*, *Antarktis*
+|Skjuler alle stationer fra det pågældende kontinent. Praktisk til kun at vise DX.
+
+|*Fremhævede kaldesignaler kørt før på båndet*
+|Grå baggrund for kaldesignaler, der allerede er kørt på dette bånd.
+
+|*Fremhævede kaldesignaler kørt i dag eller i går*
+|Gul på mørkegrå for kaldesignaler logget i dag (eller i går).
+
+|*Fremhæv kaldesignaler fra ignore listen*
+|Gul på mørkerød for kaldesignaler på Ignore-listen.
+
+|*Fremhæv stationer fra område 1* ... *4*
+|Lilla baggrund for kaldesignaler fra det pågældende område.
+
+|*Fremhæv poster på Whitelist*
+|Magenta baggrund for kaldesignaler, der indeholder en post fra Whitelist.
+Selve Whitelist-filteret behøver ikke at være slået til.
+|===
+
+[[MENU_DECODE]]
+=== Dekod
+
+image::menu-Decode.png[Menuen Dekod]
+
+WS viser kun de punkter, der gælder for den aktuelle mode. Nogle kræver
+*Aktiver VHF and submode funktioner* (menu:Fil[Indstillinger > Generel]).
+
+[cols="2,5",options="header"]
+|===
+|Menupunkt |Funktion
+
+|*Hurtig*
+|Hurtigste dekodning, laveste følsomhed.
+
+|*Normal*
+|Middel dybde.
+
+|*Dybt*
+|Bedste følsomhed, langsommere, med en lidt større risiko for falske dekodninger.
+Nedtonet i Echo, FreqCal og JT65 med VHF-funktioner.
+
+|*Brug multitrådet FT8-dekoder*
+|Kun FT8. Kører flere dekodertråde parallelt. På et travlt bånd giver det
+som regel flere dekodninger. Til ekstremt svage signaler er den
+enkelttrådede *Dybt*-dekoder ofte bedre. Konfigureres under *Parametre*.
+
+a|*Parametre*
+
+image::menu-Decode-Parameters.png["Dekod, undermenuen Parametre"]
+a|Finjustering af den multitrådede FT8-dekoder. Har ingen virkning, medmindre
+*Brug multitrådet FT8-dekoder* er slået til.
+
+[cols="2,5"]
+!===
+!*Antal tråde* +
+image:menu-Decode-Parameters-FT8_threads.png[Antal tråde]
+!*Auto* (standard) lader nogle kerner være frie: med 2-4 logiske kerner
+bruges én mindre, med 5-8 to mindre, med 9-15 tre mindre, og med 16
+eller flere bruges 12. *1*-*12* angiver antallet direkte, dog højst antallet af kerner.
+
+!*Dekodede cycles* +
+image:menu-Decode-Parameters-Decoding_cycles.png[Dekodede cycles]
+!*1*, *2* eller *3* (standard) cyklusser med hver 3 gennemløb, altså 3, 6 eller 9 gennemløb.
+Flere cyklusser finder flere svage signaler, men tager længere tid. Tidlige dekodninger (se
+*Dekoder start*) bruger altid 2 cyklusser.
+
+!*QSO RX frekv følsomhed* +
+image:menu-Decode-Parameters-QSO_RX_freq_sensitivity.png[QSO RX frekv følsomhed]
+!*Lav*, *Medium* (standard), *Høj*. Tærskel for en særlig dekoder,
+der leder efter de forventede meddelelser fra DX Call på din Rx-frekvens
+under en QSO. Højere giver flere dekodninger, men også flere falske.
+I Hound-mode bruges altid *Lav*.
+
+!*Dekoder følsomhed* +
+image:menu-Decode-Parameters-Decoder_sensitivity.png[Dekoder følsomhed]
+!*Minimum*: normale sync-tærskler. *Brug lave tærskler*: lavere sync-tærskler,
+så flere kandidater afprøves. *Brug subpass* (standard): lave
+tærskler plus ekstra subpasses til svage signaler. Større følsomhed betyder også større CPU-belastning.
+
+!*Dekoder start* +
+image:menu-Decode-Parameters-Decoder_start.png[Dekoder start]
+!Hvornår dekodningen starter i 15 s-perioden.
+*2 trins*: tidlig dekodning ved ca. 11,8 s, endelig dekodning ved 14,1 s.
+*3 trins*: ved ca. 11,8, 13,2 og 14,4 s.
+*Tidlig*: én dekodning ved 13,8 s. *Normal* (standard): 14,1 s.
+*Sent*: 14,4 s. De trinvise indstillinger viser stærke signaler hurtigere.
+
+!*Bred DX Call søgning*
+!Til (standard): AP-søgning efter DX Call's meddelelser over hele
+passbåndet. Fra: kun i et smalt vindue omkring Rx-frekvensen.
+
+!*Skjul FT8 Duplet msg*
+!Til (standard): hvis trådene dekoder den samme meddelelse to gange i én
+periode, vises den én gang med den stærkeste rapport.
+
+!*Spring a8-dekodninger over*
+!Slår "a8"-forsøget fra: en dekodning på Rx-frekvensen af den
+forventede meddelelse fra DX Call, dannet ud fra *DX kaldesignal* og *DX Grid*.
+!===
+
+|*Aktiver gennemsnit*
+|JT4, JT65 og Q65 med VHF-funktioner. Beregner gennemsnit over på hinanden følgende perioder for at
+dekode signaler, der er for svage til én periode. Ruderne bliver til *Enkel-Periode
+Dekodning* og *Gennemsnitlig dekodning*.
+
+|*Aktiver Dyb dekodning*
+|JT4 og JT65 med VHF-funktioner. Når normal dekodning mislykkes,
+sammenlignes signalet med sandsynlige meddelelser dannet ud fra dit kaldesignal, DX
+Call, DX Grid og `CALL3.TXT`.
+
+|*Aktiver AP*
+|Det første af de to punkter. Kun FT8: a priori (AP) dekodning, som
+bruger dit kaldesignal, DX Call og QSO-tilstanden til at finde svagere meddelelser.
+AP-dekodninger markeres `a1` ... `a8`.
+
+|*Aktiver AP*
+|Det andet punkt. Kun JT65 med VHF-funktioner: AP-dekodning for JT65.
+
+
+|*Auto Slet Avg efter Dekodning*
+|Efter en vellykket dekodning inden for *F Tol* af Rx-frekvensen nulstilles
+gennemsnittet, så den næste meddelelse starter forfra.
+
+|*Accepter klikhændelser fra WS-MAP/EME65*
+|Q65 og JT65 med VHF-funktioner (standard til). Et klik på en station i
+WS-MAP eller EME65 sætter DX Call, grid, frekvens og periode i WS.
+Med *Dobbelt-klik på et kaldesignal Aktivere Tx* slået til starter et dobbeltklik også QSO'en. Det henter
+også de dekodninger, som EME65 videresender.
+
+|*Reservér WS-MAP*
+|Vises, når klikhændelser accepteres. Hvis flere WS-instanser overvåger
+den samme WS-MAP/EME65-kilde, reagerer kun den instans, der har reservationen,
+på klik. En reservation frigives automatisk, hvis dens instans holder op med at
+forny den i 10 s. Knappen *Reservér WS-MAP* i hovedvinduet gør det samme.
+
+a|*WS-MAP/EME65-kilde*
+
+image::menu-Decode-QMAP_source.png[Undermenuen WS-MAP/EME65-kilde]
+a|Hvilken WS-MAP- eller EME65-instans WS lytter til.
+
+* *Auto* (standard) og *1*: standardinstansen (Instance ID 1 eller
+ikke angivet i WS-MAP's indstillinger). Brug dette med en enkelt WS-MAP.
+* *2*, *3*, *4*: kun instansen med det pågældende Instance ID.
+
+Et skift af kilde frigiver en eventuel reservation. Ændringen træder i kraft med det samme;
+det anbefales at genstarte WS bagefter.
+
+|*Disable klik på Vandfaldet*
+|JT65 og Q65 med VHF-funktioner. Beskytter dine Rx/Tx-offsets mod utilsigtede
+klik på vandfaldet. Hold kbd:[Alt] nede for alligevel at klikke.
+
+|*Skjul AP-information*
+|Kun FT8. Fjerner mærkerne `a1` ... `a9` og `?` fra viste dekodninger.
+
+|*Reducer falske dekodninger*
+|FT8, ikke i særlige driftsformer. Fjerner svage dekodninger, der virker
+usandsynlige, f.eks. mærkelige kombinationer af `/P`, `/R`, `R`, hashede
+kaldesignaler eller contest-udvekslinger ved lav SNR. Disse linjer skrives ikke til `ALL.TXT`.
+Med den enkelttrådede dekoder skjules dekodninger under -20 dB også,
+hvis kaldesignalerne ikke findes i `ALLCALL7.TXT` og ikke ligner gyldige kaldesignaler.
+
+|*Fuld Duplex mode*
+|Fortsætter med at modtage og dekode, mens du sender, f.eks. med audio fra en
+anden modtager eller en WebSDR. Virker for FT8, FT4, Q65, MSK144 og de øvrige modes.
+|===
+
+[[MENU_MODE]]
+=== Mode
+
+image::menu-Mode.png[Menuen Mode]
+
+Vælger driftsmode. Menuen er låst, mens du sender. Detaljer om de
+enkelte modes findes i WSJT-X User Guide.
+
+[cols="2,5",options="header"]
+|===
+|Menupunkt |Typisk brug
+
+|*FST4*
+|LF/MF og HF weak-signal-QSO'er med lange perioder (15 s til 30 min).
+
+|*FT2*
+|Meget hurtig 77-bit mode med 3,75 s perioder (halvdelen af FT4). Introduceret i WSJT-X Improved 3.1.
+
+|*FT4*
+|Contests og hurtige HF-QSO'er, 7,5 s perioder.
+
+|*FT8*
+|Hverdagsmode på HF/6 m, 15 s perioder. Også DXpedition (Fox/Hound) og SuperFox.
+
+|*JT4*
+|Mikrobølge-EME og terrestriske forbindelser med Doppler-spredning.
+
+|*JT9*
+|Svage signaler på HF/LF, 1-minuts perioder.
+
+|*JT65*
+|EME på VHF/UHF og klassisk HF JT65.
+
+|*Q65*
+|EME, ionosfærisk scatter og rain scatter fra VHF til mikrobølger. Submodes A-E,
+perioder 15-300 s. Bruges sammen med WS-MAP.
+
+|*MSK144*
+|Meteorscatter på 6 m og 2 m.
+
+|*FST4W*
+|WSPR-lignende beacon-mode til LF/MF, perioder 2-30 min.
+
+|*WSPR*
+|Beacon-udsendelser til udbredelsesstudier. Spots sendes til WSPRnet.
+
+|*Echo*
+|EME-ekkotest: måler dine egne ekkoer fra Månen.
+
+|*FreqCal*
+|Frekvenskalibrering af din radio. Se <<MENU_TOOLS>>.
+|===
+
+[[MENU_TOOLS]]
+=== Værktøjer
+
+image::menu-Tools.png[Menuen Værktøjer]
+
+[cols="2,5",options="header"]
+|===
+|Menupunkt |Funktion
+
+|*Slet reference spektrum*
+|Sletter det referencespektrum, der er ved at blive målt.
+
+|*Måler reference spectrum*
+|Starter *Monitor* og beregner gennemsnittet af det modtagne audiospektrum. Klik på
+*Stop* for at gemme det i `refspec.dat`. Marker
+*Ref Spec* i Wide Graf for at udjævne audio med dette filter.
+
+|*Måler fase response*
+|Slår MSK144-fasetræning til eller fra. WS træner på dekodninger fra
+DX Call og gemmer fase-equalization-koefficienterne i en fil i
+datamappen. Træningen stopper af sig selv, når der er nok data.
+
+|*Equalization værktøjer ...*
+|Åbner et vindue, der viser målt, foreslået og aktuel fase og
+gruppeløbetid samt referencespektret. Bruges til at indlæse (*Fase ...*),
+opdatere eller kassere fase-equalization-data.
+
+|*Kør en frekvens kalibrerings sekvens*
+|I FreqCal-mode indstilles radioen ved slutningen af hver periode til den næste FreqCal-frekvens i
+menu:Fil[Indstillinger > Frekvenser], så du efter tur kan
+måle flere stationer med kendt frekvens.
+
+|*Løs for kalibrerings parametre*
+|Tilpasser hældning (ppm) og skæringspunkt (Hz) til målingerne i `fmt.all`
+og viser resultatet. *Apply* gemmer dem som din kalibrering i
+menu:Fil[Indstillinger > Frekvenser]. `fmt.all` kan derefter omdøbes til `fmt.bak`.
+|===

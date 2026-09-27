@@ -1,0 +1,103 @@
+[[SETTINGS_FREQUENCIES]]
+=== Freqüències
+
+image::settings-frequencies.png["Configuració, pestanya Freqüències",align="center"]
+
+==== Freqüència de Calibració
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Pendent* / *Intercepte*
+|Corregeix un error conegut del dial de l'equip: +
+`rig frequency = Intercept + (1 + Slope / 1 000 000) × f` +
+amb *Intercepte* en Hz i *Pendent* en ppm. Les freqüències enviades a l'equip i
+llegides de l'equip es corregeixen, de manera que WS mostra la freqüència real. Deixa
+tots dos a 0 si l'equip és precís.
+|===
+
+TIP: Com mesurar aquests valors es descriu a _Frequency Calibration_
+a la Guia d'usuari de WSJT-X (mode FreqCal).
+
+==== Freqüències de treball
+
+Les freqüències que s'ofereixen al selector de banda de la finestra principal. WS mostra
+només les entrades de la teva *Regió IARU* (pestanya *General*) i del mode actual.
+Fes doble clic a una cel·la per editar-la.
+
+[cols="2,5",options="header"]
+|===
+|Columna |Què fa
+
+|*Regió IARU* / *Mode*
+|On i per a quin mode s'ofereix l'entrada. Les entrades amb *Tot* s'ofereixen
+a tot arreu / en tots els modes.
+
+|*Freqüència*
+|La freqüència de dial en MHz.
+
+|*Pref*
+|L'entrada preferida per a la seva banda i mode. WS la fa servir quan fas clic a un botó
+de banda (menu:Veure[]) o quan canvia de banda per si mateix (salt de banda). Només
+una entrada per banda i mode pot ser la preferida.
+
+|*Descripció*
+|La teva pròpia etiqueta per a l'entrada, que es mostra al selector de banda.
+
+|*Data/hora d'inici* / *Data/hora de finalització*
+|L'entrada només s'ofereix en aquest període, p. ex. per a una DXpedition. Buit = sempre.
+|===
+
+Fes clic dret a la taula per a aquestes accions:
+
+[cols="2,5",options="header"]
+|===
+|Element del menú |Què fa
+
+|*Esborrar*
+|Elimina les entrades seleccionades.
+
+|*Insereix ...*
+|Afegeix una entrada: *Regió IARU*, *Mode*, *Freqüència en MHz*, *Preferida per a
+banda/mode*, *Descripció* i un interval de dates opcional.
+
+|*Carrega ...*
+|Substitueix la llista per la d'un arxiu `.qrg` o `.qrg.json` (WS ho pregunta abans).
+
+|*Guardar com ...*
+|Desa la llista en un arxiu; un nom acabat en `.qrg.json` dona un arxiu JSON.
+Si hi ha entrades seleccionades, WS pregunta si cal desar només aquestes.
+
+|*Combinar ...*
+|Afegeix a la llista les entrades d'un arxiu `.qrg` o `.qrg.json`.
+
+|*Restablir*
+|Restaura la llista per defecte (WS ho pregunta abans).
+|===
+
+==== Informació de l'estació
+
+Dades de la teva estació per banda. Fes doble clic a una cel·la per editar-la.
+
+[cols="2,5",options="header"]
+|===
+|Columna |Què fa
+
+|*Banda*
+|La banda a la qual s'aplica la fila.
+
+|*Desplaçament*
+|S'afegeix a la freqüència mostrada per obtenir la freqüència de l'equip, per a
+transvertidors. Exemple: 144 MHz amb una FI de 28 MHz necessita -116 MHz. Per defecte 0.
+
+|*Descripció de l'antena*
+|S'envia a PSK Reporter mentre ets en aquesta banda.
+|===
+
+Fes clic dret a la taula per a *Esborrar* (elimina les files seleccionades) i
+*Insereix ...* (afegeix una fila: *Banda*, *Desplaçament en MHz*, *Antena*).
+
+TIP: Per crear files ràpidament, selecciona entrades a *Freqüències de treball* (kbd:[Ctrl]+kbd:[A]
+per a totes) i arrossega-les a *Informació de l'estació*. Després omple els desplaçaments i
+les antenes.

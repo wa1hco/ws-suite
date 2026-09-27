@@ -1,0 +1,73 @@
+[[SETTINGS_FILTERS]]
+=== Filtri
+
+image::settings-filters.png["Impostazioni, scheda Filtri",align="center"]
+
+I filtri decidono quali decodifiche compaiono nel riquadro *Attività di Banda*. Le
+liste di questa scheda lavorano insieme ai filtri rapidi del menu *Filtri*
+(vedi <<MENU_FILTERS>>), dove si attivano e disattivano anche i filtri per
+territorio.
+
+Mentre un filtro nasconde decodifiche, l'etichetta di stato in basso a sinistra
+della finestra principale passa dal verde "Ricevendo" al ciano "Receiving, Filters On".
+
+Per rivedere temporaneamente tutto, spunta *BP* (bypass) nella finestra
+principale: tutti i filtri vengono ignorati e l'etichetta mostra "Receiving, Filters
+bypassed". Togli la spunta per tornare ai tuoi filtri.
+
+NOTE: Le liste Rifiuta, Accetta e Passa sempre vengono disattivate automaticamente
+nelle modalità operative speciali, così non perdi nessuna stazione. Le liste Rifiuta e
+Accetta restano attive per gli Hound.
+
+==== Liste dei filtri
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Territori 1-4*
+|Fino a quattro nomi di paesi, o parti di nomi, per le voci *Nascondi le stazioni dal
+Territorio 1-4* ed *Evidenzia le stazioni del Territorio 1-4* del
+menu *Filtri*; le voci di menu mostrano poi il tuo testo. Scrivi il nome come
+lo visualizza WS, ad es. `Japan`, `U.S.A.` o `Canary Is.`.
+
+|*Rifiuta* +
+*Nascondi i messaggi contenenti i nominativi o le parole chiave seguenti*
+|Nasconde i messaggi che contengono una qualsiasi delle voci: nominativi interi, parti
+di nominativi, griglie o parole (ad es. nominativi pirata o messaggi di contest).
+
+|*Accetta* +
+*Mostra solo i messaggi contenenti i nominativi o le parole chiave seguenti*
+|Mostra solo i messaggi che contengono una delle voci; tutti gli altri vengono
+nascosti, tranne quelli della lista Passa sempre.
+
+|*Passa sempre* +
+*Trasmettere sempre messaggi con le seguenti parole chiave*
+|I messaggi con queste voci vengono sempre mostrati, anche se la lista Rifiuta,
+la lista Accetta o una voce Nascondi per un territorio, un continente o stazioni
+già lavorate li nasconderebbe.
+|===
+
+Ogni lista ha dodici campi, una voce per campo. Le voci vengono convertite
+in lettere maiuscole. Una lista funziona solo mentre la sua casella è spuntata.
+
+==== Opzioni
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Applica i filtri solo ai nominativi delle stazioni chiamanti*
+|Le liste vengono confrontate solo con la stazione chiamante (normalmente la
+seconda parola, la terza per i CQ direzionali come `CQ NA`). Una voce
+deve allora corrispondere all'inizio del nominativo, così funziona un prefisso come `JA`.
+Se non spuntato, una voce corrisponde in qualsiasi punto del messaggio.
+
+|*Utilizzare i filtri solo per Wait and Pounce, CQ: First, ecc. (tutti i messaggi vengono comunque visualizzati)*
+|In *Attività di Banda* non viene nascosto nulla; i filtri decidono solo a quali
+stazioni rispondono Wait and Pounce e le scelte *CQ:*. Vedi <<WAIT_FEATURES>>.
+
+|*Filtri rapidi: Nascondi/Ignora/Evidenzia "lavorato oggi e ieri" invece di "lavorato oggi" (UTC)*
+|Le tre voci "lavorate oggi" del menu *Filtri* includono anche le
+stazioni lavorate ieri (UTC).
+|===

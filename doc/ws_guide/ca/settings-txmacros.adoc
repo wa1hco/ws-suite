@@ -1,0 +1,34 @@
+[[SETTINGS_TXMACROS]]
+=== Macros de TX
+
+image::settings-tx_macros.png["Configuració, pestanya Macros de TX",align="center"]
+
+Les macros de TX són missatges breus de text lliure que envies sovint, com ara `TNX 73 GL`.
+Apareixen a la llista desplegable del missatge *TX 5* de la finestra principal.
+
+==== Llista de macros
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|Camp de text i *Afegir*
+|Escriu un missatge i fes clic a *Afegir* per afegir-lo a la llista. Només es poden
+escriure els caràcters permesos als missatges; el text es converteix a majúscules.
+
+|*Esborrar*
+|Elimina els missatges seleccionats. Clic dret → *Esborrar* fa el mateix, o
+elimina el missatge sota el cursor si no n'hi ha cap de seleccionat.
+
+|Llista
+|Les macros en l'ordre del desplegable de *TX 5*. Arrossega i deixa anar per reordenar-les.
+Fes doble clic a un missatge per editar-lo. Clic, kbd:[Shift]+clic i
+kbd:[Ctrl]+clic seleccionen diversos missatges.
+|===
+
+NOTE: Un missatge de text lliure està limitat a 13 caràcters, espais inclosos.
+
+TIP: També pots escriure un missatge a *TX 5* a la finestra principal i prémer
+kbd:[Enter]; s'afegeix a la llista. En FT8, FT4, FST4, MSK144 i Q65,
+en un missatge que comença amb `$DX` (o `$DXCALL`) aquesta paraula se substitueix per
+l'indicatiu base d'*Indicatiu DX* quan s'envia.

@@ -1,0 +1,187 @@
+[[SETTINGS_GENERAL]]
+=== Generale
+
+image::settings-general.png["Impostazioni, scheda Generale",align="center"]
+
+==== Dettagli Stazione
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Mio Nominativo*
+|Il tuo nominativo.
+
+|*Mia Griglia*
+|Il tuo locatore Maidenhead, preferibilmente di 6 caratteri (ad es. CM87ux).
+Da esso vengono calcolati distanze e azimut.
+
+|*Griglia Auto*
+|Permette a programmi esterni (ad es. un'utility GPS) di modificare *Mia Griglia*.
+
+|*Regione IARU*
+|Regione 1: Europa, Africa, Medio Oriente, Asia settentrionale. Regione 2: le
+Americhe. Regione 3: Asia meridionale e Pacifico. Seleziona le frequenze
+predefinite corrispondenti.
+
+|*Generazione di messaggi per titolari di nominativi composti di tipo 2*
+|Solo per nominativi con un prefisso o suffisso aggiuntivo che non è nella
+lista breve (menu:Aiuto[Elenco di prefissi e suffissi di tipo 1]). Sceglie quale
+messaggio generato (Tx1, Tx3 o Tx6) contiene il tuo nominativo completo.
+|===
+
+==== Display
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Inizia nuovo periodo decodifiche in alto*
+|Ogni periodo inizia in cima ad Attività di Banda e non scorre
+via, così puoi fare doppio clic mentre la decodifica è ancora in corso.
+
+|*Riga vuota tra i periodi di decodifica*
+|Riga di separazione tra i periodi in Attività di Banda.
+
+|*Mostra riga vuota con timestamp*
+|La riga di separazione mostra anche l'ora UTC del periodo.
+
+|*Visualizza la distanza in miglia*
+|Miglia invece di chilometri.
+
+|*Evidenzia nominativo DX* / *Evidenzia griglia DX*
+|Evidenzia nei messaggi il nominativo e la griglia del tuo attuale corrispondente.
+
+|*Tx messaggi alla finestra della frequenza Rx*
+|Anche i messaggi che trasmetti compaiono nel riquadro Frequenza Rx.
+
+|*Evidenzia RRR/RR73/73 nei messaggi diretti a noi*
+|Rende facile individuare la fine di un QSO.
+
+|*Mostra DXCC, griglia e stato lavorato prima*
+|Aggiunge alle decodifiche il paese e i contrassegni nuovo DXCC / nuova griglia / già lavorato.
+Necessario per l'evidenziazione nella scheda *Colori*.
+
+|*Mostra il prefisso principale invece del nome del country*
+|Più breve: "DL" invece di "Fed. Rep. of Germany".
+
+|*Mostra DXCC per tutti i messaggi*
+|Aggiunge il paese a ogni messaggio, non solo alle chiamate CQ.
+
+|*Tipo Carattere...* / *Carattere del testo decodificato...*
+|Carattere per l'intero programma / per i riquadri Attività di Banda e Frequenza Rx.
+|===
+
+==== Comportamento
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Monitor spento all'avvio*
+|WS si avvia senza decodificare finché non fai clic su *Monitor*.
+
+|*Il monitor ritorna all'ultima frequenza utilizzata*
+|Attivando *Monitor* si torna all'ultima frequenza monitorata.
+Se non spuntato, viene mantenuta la frequenza attuale del rig.
+
+|*Fare doppio clic sul nominativo Abilita il Tx*
+|Un doppio clic su una decodifica avvia subito la trasmissione.
+
+|*Disabilita Tx dopo l'invio 73*
+|*Abilita Tx* si spegne dopo un 73 o un messaggio a testo libero.
+
+|*Chiamando CQ forza Call 1º*
+|Quando chiami CQ, *Call 1st* viene spuntato così WS risponde automaticamente al primo chiamante.
+
+|*Attacchi F1-F6 alternati*
+|Porta le scorciatoie kbd:[F1]–kbd:[F6] per i messaggi Tx all'assegnazione
+da contest (vedi menu:Aiuto[Scorciatoie da tastiera]).
+
+|*Abilita le funzioni VHF e sottomodalità*
+|Mostra i controlli VHF/UHF/microonde (sottomodi, media, Sh, auto-QSY
+e così via). Disattivala in HF: disabilita la multi-decodifica JT65 a banda larga.
+
+|*Consenti cambi di frequenza Tx durante la trasmissione*
+|Togli la spunta se il rig non riesce a elaborare comandi CAT durante il Tx (spesso necessario con lo split).
+
+|*Decodifica dopo il ritardo EME*
+|Nei modi da 1 minuto avvia la decodifica più tardi, così vengono inclusi i segnali EME
+ritardati di circa 2,5 s.
+
+|*Decodifica singola*
+|Per JT4, JT65, Q65 e FST4: decodifica solo vicino alla frequenza Rx
+(entro *F Tol*) invece di cercare in tutta la banda passante. In JT4/JT65/Q65
+i due riquadri diventano *Decodifiche a periodo singolo* e *Media Decodifiche*.
+
+|*Regola il watchdog*
+|Ferma *Accorda* dopo il numero di secondi impostato.
+
+|*MSK144/Q65: Tx fino alla ricezione di 73*
+|Continua a trasmettere finché non arriva il 73 dell'altra stazione, al massimo 10
+tentativi. Utile per QSO difficili in VHF/UHF/SHF.
+
+|*Apertura/chiusura automatica della finestra dei dati astronomici*
+|Apre la finestra Dati Astronomici quando passi a Q65 o JT65 con
+*Decodifica dopo il ritardo EME* attivo, e la chiude quando non serve più.
+
+|*ingresso kHz senza k (riavvio richiesto)*
+|Nel campo della frequenza, "164" seguito da kbd:[Enter] significa +164 kHz all'interno
+del MHz corrente (438,065 -> 438,164 MHz). Comodo per saltare tra i segmenti EME
+dal tastierino numerico.
+
+|*Rendere rossa la barra di avanzamento durante la trasmissione*
+|Rende il Tx riconoscibile a colpo d'occhio.
+
+|*ID CW dopo 73* / *Intervallo ID*
+|Invia un ID in CW dopo ogni 73 o testo libero / ogni N minuti (0 = spento),
+sempre nella parte silenziosa del periodo.
+
+|*Tx watchdog*
+|Ferma le trasmissioni non presidiate dopo il numero di minuti impostato.
+|===
+
+==== Funzionalità aggiuntive
+
+Queste opzioni provengono da WSJT-X Improved e non sono presenti in WSJT-X.
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Mostra Stati USA*
+|Associa i locatori agli Stati USA e alle Province canadesi (utile senza
+JTAlert). Alcune griglie coprono più stati; in tal caso vengono elencati tutti.
+
+|*Abilita le funzionalità di attesa*
+|Attiva *Wait and Reply*, *Wait and Call* e *Wait and Pounce* (predefinito).
+Vedi <<WAIT_FEATURES>>.
+
+|*Pulire il nominativo DX dopo un QSO* / *Pulire la griglia DX dopo un QSO*
+|Svuota il campo Nominativo DX / Griglia DX quando il QSO viene registrato.
+
+|*Mostra la distanza nei messaggi con la griglia* / *Mostra l'azimut nei messaggi con griglia*
+|Aggiunge distanza e azimut ortodromico a ogni messaggio con un locatore valido.
+
+|*Cancella le decodificazioni dopo il cambio di banda* / *Cancella le decodifiche dopo il cambio di modo*
+|Svuota Attività di Banda quando cambi banda / modo.
+
+|*Comportamento alternativo del pulsante Cancella*
+|*Cancella* funziona come in JTDX: il clic sinistro svuota Attività di Banda,
+il clic destro svuota Frequenza Rx, il doppio clic svuota entrambi.
+
+|*Imposta la frequenza RX uguale alla frequenza TX dopo i QSO*
+|Dopo la registrazione, l'Rx si sposta sulla tua frequenza Tx.
+
+|*Band hopping ogni minuto*
+|Con il band hopping attivo, WS normalmente cambia banda ogni due minuti.
+Spunta questa opzione per cambiare banda ogni minuto.
+
+|*Allinea DXCC/distanza/azimut* e i due campi numerici
+|Allinea in colonne paese, distanza e azimut. Il primo campo imposta
+gli spazi tra messaggio e paese (anche senza *Align*), il
+secondo gli spazi tra paese e distanza/azimut.
+|===
+
+NOTE: Se usi un nominativo con un prefisso o suffisso aggiuntivo, o vuoi
+collegare una stazione di questo tipo, leggi _Nonstandard Callsigns_ nella Guida utente WSJT-X.

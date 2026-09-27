@@ -1,0 +1,36 @@
+== Three GUI variants
+
+WS always comes in *three GUI variants*. They share the same functions,
+menus and settings; only the arrangement of the main window differs.
+Each variant has its own installer.
+
+[cols="1,3",options="header"]
+|===
+|Variant |Best for
+
+|*WS* (standard)
+|The familiar WSJT-X layout. This is the default download.
+
+|*WS AL* (alternative layout)
+|A more compact window with a larger Band Activity pane, so you scroll less.
+
+|*WS Widescreen*
+|Wide monitors: the controls move to the side and the decode panes get the full height.
+|===
+
+.WS, standard layout
+image::WS.png[WS standard layout,align="center"]
+
+.WS AL, alternative layout
+image::WS-AL.png[WS AL layout,align="center"]
+
+.WS Widescreen
+image::WS-widescreen.png[WS widescreen layout,align="center"]
+
+TIP: You can install the variants side by side in separate folders and
+compare them. They all use the same settings file (`WS.ini`), so your
+configuration carries over. On its first start WS takes over the settings
+of an existing WSJT-X installation.
+
+To run several instances at the same time, start each one with its own
+`--rig-name=NAME`; every instance then keeps its own settings file.

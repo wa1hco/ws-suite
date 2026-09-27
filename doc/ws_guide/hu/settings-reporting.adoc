@@ -1,0 +1,173 @@
+[[SETTINGS_REPORTING]]
+=== Riport
+
+image::settings-reporting.png["Beállítások, Riport fül",align="center"]
+
+==== Naplózás
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Napló helye* / *Választás*
+|Az ADIF fájl, amelybe a WS a QSO-kat írja. Alapértelmezésben a WS
+adatkönyvtárában lévő `wsjtx_log.adi`. A *Választás* egy meglévő `.adi`
+fájlt jelöl ki, vagy új nevet ad meg. Az *OK* után a WS erre a fájlra vált,
+és a volt QSO állapothoz újraolvassa.
+
+|*A QSO naplózásakor megerősítést kér*
+|73 vagy szabad szöveges üzenet küldésekor megnyitja a részben kitöltött
+*Log QSO* ablakot. Kikapcsolja az *Automatikus naplózás* opciót.
+
+|*Op. hívójele*
+|Az operátor hívójele, ha eltér az állomás hívójelétől. A naplóbejegyzés
+*Operátor* mezőjébe kerül.
+
+|*Automatikus naplózás*
+|A *Log QSO* ablak megjelenítése nélkül naplózza a befejezett QSO-t.
+Kikapcsolja *A QSO naplózásakor megerősítést kér* opciót.
+
+|*Csak versenyhez*
+|Az *Automatikus naplózás* mellett csak verseny-tevékenység (NA VHF, EU
+VHF, WW Digi, ARRL Digi, Field Day, RTTY Roundup) közben naplóz
+automatikusan. Más QSO-knál a *Log QSO* ablak nyílik meg. A Fox QSO-k
+mindig automatikusan naplózódnak.
+
+|*Hiányzó QRA kitöltése 'ZZ00'-val*
+|`ZZ00` lokátort naplóz, ha a másik állomás nem küldött lokátort.
+
+|*4 karakteres QRA naplózása*
+|A naplóban a 6 karakteres lokátorokat 4 karakterre rövidíti.
+
+|*Skálafrekvencia naplózása a Tx frekvencia helyett*
+|A rádió tárcsafrekvenciáját naplózza. Bejelölés nélkül a WS a
+tárcsafrekvencia és az adási hangeltolás összegét naplózza.
+
+|*Üzemmód átalakítása RTTY-re*
+|A JT9 QSO-kat RTTY üzemmódként naplózza a JT9-et nem ismerő
+naplóprogramok számára.
+
+|*dB riport mentése a megjegyzéshez*
+|Az üzemmódot, valamint az adott és a vett riportot a *Megjegyzések*
+mezőbe írja (pl. `FT8  Sent: -10  Rcvd: -12`) azoknak a naplóprogramoknak,
+amelyek ezeket a riportokat nem fogadják el.
+
+|*Speciális tevékenység a megjegyzésbe*
+|Az aktív speciális tevékenységet a *Megjegyzések* mezőbe írja, pl.
+"EU VHF Contest" vagy "F/H mode". Egyedi versenynév (pl. PACC) esetén
+"PACC Contest" kerül bele. Nem érvényesül, ha a *dB riport mentése a
+megjegyzéshez* be van kapcsolva, vagy a megjegyzés a *Log QSO* ablakban
+megtartásra van állítva.
+|===
+
+TIP: A Cloudlog- vagy Wavelog-feltöltést a *Haladó* fülön állíthatja be.
+
+==== PSK Reporter
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*PSK Reporter-hez spot küldés engedélyezése*
+|Elküldi az állomás adatait és a dekódolt állomásokat a
+https://pskreporter.info[PSK Reporter] szolgáltatásnak. Az antenna szövege
+a *Frekvenciák* fül *Állomás információk* részéből származik, az aktuális
+sávra vonatkozóan. A rögzített fájlokból származó dekódolások nem kerülnek
+spotolásra.
+
+|*TCP/IP kapcsolat használat*
+|UDP helyett TCP-t használ. Csak akkor szükséges, ha az UDP riportok útközben
+elvesznek.
+|===
+
+==== LiveCQ
+
+A LiveCQ egy webszolgáltatás, amely valós időben listázza a Q65 (és a VHF
+JT65) aktivitást, és megmutatja, ki kit hall.
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Q65 LiveCQ engedélyezése*
+|Főkapcsoló (alapértelmezésben be). Feltölti a Q65 dekódolásokat, valamint
+az 50 MHz-es és magasabb sávokon a JT65 dekódolásokat az alább bejelölt
+célokra. Q65-ben a "ki hallott engem" zöld pipákat is lekéri.
+
+|*W3SZ (w3sz.com)* és a programnév
+|Csak CQ-típusú üzeneteket küld, kizárólag a W3SZ LiveCQ-ra; ugyanazokat a
+riportokat, amelyeket a WS-MAP és az EME65 is oda küld. A legördülő lista a
+jelentett programnevet választja ki: *WSJTX* (mint az átnevezés előtt) vagy
+*WS*.
+
+|*N6NU (livecq.n6nu.org)*
+|Teljes cél (alapértelmezésben be): CQ és címzett üzenetek. Ez a zöld pipák
+forrása, és a *Q65 Pileup* üzemhez (*Haladó* fül) szükséges.
+
+|*Egyéni:* és URL
+|Csak CQ-típusú üzeneteket küld a saját LiveCQ szerverére, pl.
+`\http://localhost:3000/api/livecq_update`. Üres URL esetén nem csinál
+semmit. Kikapcsolt *N6NU* esetén a zöld pipákat erről a szerverről kéri le.
+|===
+
+NOTE: A rögzített fájlokból származó dekódolások csak az N6NU szerverre
+kerülnek, megjelölve, így az oldal alapértelmezésben elrejti őket.
+
+==== UDP-Szerver
+
+A WS UDP-n küldi el az állapotát, a dekódolásokat és a naplózott QSO-kat a
+kiegészítő programoknak, például a JTAlertnek vagy a GridTrackernek.
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*UDP-Szerver*
+|A fogadó program címe, általában `127.0.0.1` (alapértelmezés). Multicast
+csoportcímmel (pl. `239.255.0.1`) egyszerre több program is figyelhet.
+Csak IPv4-címek.
+
+|*UDP-Szerver port száma*
+|A fogadó program portja, alapértelmezésben 2237. 0 = nincsenek UDP
+üzenetek.
+
+|*Kimenő interfészek* / *Multicast (többcímű) TTL*
+|Csak multicast cím esetén látható. Az ugyanazon a számítógépen futó
+programokhoz elég a loopback interfész. A TTL maradjon 1, hogy a forgalom a
+helyi hálózaton belül maradjon.
+
+|*Fogadja el az UDP kéréseket*
+|Lehetővé teszi, hogy a kiegészítő program vezérelje a WS-t, pl. QSO-t
+indítson egy ott kiválasztott állomással. Bejelölés nélkül a kérések
+figyelmen kívül maradnak.
+
+|*Értesítsen elfogadott UDP kérésről*
+|Elfogadott kérésnél előtérbe hozza a WS ablakát. A hatás az operációs
+rendszertől függ.
+
+|*Elfogadott UDP kérés visszaállítja az ablakot*
+|Elfogadott kérésnél visszaállítja a kis méretre állított WS ablakot.
+
+|*WSJT-X kompatibilitási mód*
+|A WS "WS" helyett "WSJT-X" néven azonosítja magát (pl. "WSJT-X - rig")
+azoknak a programoknak, amelyek csak a WSJT-X-et ismerik fel. Azonnal
+életbe lép.
+|===
+
+==== Másodlagos UDP-szerver
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Engedélyezi a naplózott QSO ADIF formátumú küldését*
+|Minden naplózott QSO-t ADIF rekordként elküld UDP-n, pl. az N1MM
+Logger+-nak.
+
+|*Szerver neve, vagy IP-címe*
+|A fogadó program címe, általában `127.0.0.1`.
+
+|*Szerver port száma*
+|A fogadó program UDP portja; N1MM Logger+ esetén 2333 (alapértelmezés).
+0 = nem küld semmit.
+|===

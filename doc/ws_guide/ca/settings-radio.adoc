@@ -1,0 +1,183 @@
+[[SETTINGS_RADIO]]
+=== Ràdio
+
+image::settings-radio.png["Configuració, pestanya Ràdio",align="center"]
+
+==== Equip
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Equip*
+|El model de la teva ràdio, o un programa de control que en té el control (DX Lab Suite
+Commander, Flrig, Ham Radio Deluxe, Hamlib NET rigctl, OmniRig Rig 1/2,
+TCI Client). *Cap* vol dir sense control CAT.
+
+|*Interval de sondeig*
+|Cada quant WS llegeix la freqüència i el mode de l'equip. 1–3 s va bé per a la majoria de
+ràdios. Desactivat per als equips que informen dels canvis per si mateixos.
+|===
+
+==== Control CAT
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Port*
+|El port sèrie de la teva interfície CAT (p. ex. COM3 o /dev/ttyUSB0). Per a un
+programa de control passa a ser *Servidor de xarxa* o *Servidor TCI*
+(`host:port`); deixa'l en blanc per al valor per defecte en aquest ordinador. Per a
+alguns kits SDR passa a ser *Dispositiu USB*.
+
+|*Velocitat de transmissió* / *Bits de dades* / *Bits de parada*
+|Han de coincidir amb el menú CAT de la ràdio. *Per defecte* manté el valor que Hamlib
+coneix per al teu model.
+
+|*Handshake*
+|Normalment *Cap*. Algunes ràdios, en particular alguns Kenwood, necessiten
+*Maquinari* (RTS/CTS). Un ajust incorrecte deixa el CAT sense resposta.
+
+|*Línies de control de força* *DTR:* / *RTS:*
+|Manté DTR o RTS permanentment en *Alt* o *Baix*, p. ex. per alimentar una
+interfície. Deixa-ho en blanc tret que sàpigues que ho necessites. No disponible per a una
+línia que s'utilitza per al PTT al mateix port.
+|===
+
+==== Actualitza Hamlib
+
+Aquestes opcions provenen de WSJT-X Improved i no són a WSJT-X. Només funcionen
+a Windows; a Linux i macOS la casella es diu *Hamlib Version*
+i només mostra la versió en ús.
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*64 bits* / *32 bits*
+|Quina DLL de Hamlib cal descarregar. Tria la que correspon a la teva instal·lació de WS.
+
+|*Actualitza Hamlib*
+|Descarrega la DLL de Hamlib més recent, que sovint afegeix o corregeix la compatibilitat amb equips.
+La DLL actual es conserva com a còpia de seguretat. Reinicia WS per fer servir la nova.
+
+|*Reverteix*
+|Torna a la DLL de la còpia de seguretat, també després de reiniciar.
+
+|*En ús* / *Còpia de seguretat*
+|La versió de Hamlib amb què funciona WS i la versió de la còpia de seguretat.
+|===
+
+==== Mètode PTT
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*VOX*
+|El VOX de la ràdio activa el transmissor. No cal cap interfície.
+
+|*CAT*
+|PTT per ordre CAT, si l'equip ho admet. Normalment és l'opció adequada
+amb un programa de control com OmniRig o Flrig.
+
+|*DTR* / *RTS*
+|Una línia de control sèrie activa l'equip. Moltes ràdios USB poden assignar aquesta línia al
+PTT (Icom: USB SEND, Yaesu: PC KEYING). *RTS* no està disponible al
+port CAT amb handshake *Maquinari*.
+
+|*Port*
+|Port sèrie per a *DTR* / *RTS*; pot ser el mateix que el port CAT. El valor
+*CAT* és per a interfícies com OmniRig que commuten les línies remotament.
+
+|*Activa la inhibició de TX*
+|Per a estacions que comparteixen banda amb una ràdio prioritària (només PTT *DTR* / *RTS*):
+un altre programa pot mantenir WS fora de l'aire mentre aquella ràdio transmet.
+|===
+
+==== Font d’àudio de transmissió
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Part posterior/dades* / *Frontal/Micròfon*
+|Selecciona per CAT l'entrada d'àudio de TX de l'equip, si la ràdio ho admet.
+Només actiu amb el mètode PTT *CAT*. *Part posterior/dades* sol ser la millor opció.
+|===
+
+==== Mode
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Cap* / *USB* / *Dades/Pkt*
+|El mode que WS fixa a la ràdio. *Dades/Pkt* si l'equip el té (sovint
+selecciona l'entrada d'àudio posterior i un filtre més ample); si no, *USB*.
+*Cap* no toca el mode.
+|===
+
+==== Operació Split
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Equip*
+|Fa servir el split propi de la ràdio (VFO A i B).
+
+|*Falseja-ho*
+|Fa servir només el VFO A i el torna a sintonitzar per a cada transmissió. Funciona amb qualsevol equip.
+
+|*Cap*
+|Sense split (no recomanat).
+|===
+
+Amb split, WS mou el dial de TX en passos de 500 Hz perquè l'àudio de TX
+es mantingui entre 1500 i 2000 Hz. Així els harmònics d'àudio queden fora del
+filtre de la ràdio i el senyal es manté net. Això s'aplica en FT4, FT8 i
+FST4, i en tots els modes quan *Activa les funcions de VHF i submode* està desactivat.
+El seguiment Doppler també necessita split.
+
+==== Prova de CAT i Prova PTT
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Prova de CAT*
+|Connecta amb la ràdio amb aquests ajustos. Verd: correcte. Vermell: error, amb
+un missatge.
+
+|*Prova PTT*
+|Activa el transmissor sense àudio; torna a fer clic per alliberar-lo. Comprova que
+l'equip i la interfície commuten com cal. Amb *VOX* fes servir *Sintonitzar* a la
+finestra principal.
+|===
+
+==== Dades de l'equip
+
+Aquestes opcions provenen de WSJT-X Improved i no són a WSJT-X.
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Mostra PWR, SWR i ALC*
+|Durant la transmissió, mostra la potència de sortida (en watts, al costat del control lliscant *Pwr*)
+i el SWR i l'ALC a la barra d'estat. Un SWR per sobre d'1,5 posa el camp
+groc, per sobre de 2,0 vermell. Cal un equip que informi d'aquests valors; no
+disponible amb *Cap*, OmniRig, DX Lab Suite Commander, Ham Radio Deluxe
+ni el Kenwood TS-480/850/870.
+
+|*Atura TX quan SWR > 2.5*
+|Atura la transmissió immediatament i mostra un avís. Revisa l'antena.
+
+|*Ressalta ALC > 50%* / *Ressalta ALC > 90%*
+|Posa el camp d'estat groc / vermell quan l'ALC supera el límit, perquè
+notis la sobreexcitació.
+|===
+
+Les tres últimes opcions necessiten *Mostra PWR, SWR i ALC*.

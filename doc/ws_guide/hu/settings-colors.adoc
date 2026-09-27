@@ -1,0 +1,131 @@
+[[SETTINGS_COLORS]]
+=== Színek
+
+image::settings-colors.png["Beállítások, Színek fül",align="center"]
+
+==== A dekódolt üzenetek színjelölése
+
+A WS kategóriák szerint színezi a dekódolásokat. A *CQ az üzenetben*, a
+*Saját hívójel az üzenetben*, az *Adás üzenet* és a *LoTW felhasználók*
+kivételével mindegyikhez szükséges az *Általános* fülön a *DXCC, QRA és
+volt QSO állapot megjelenítése* opció.
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|Kiemelési lista
+|Kategóriánként egy sor; a jelölőnégyzete kapcsolja be. A sorok fel-le
+húzásával állíthatja a prioritást: a feljebb lévő sor győz. Az előtér és a
+háttér külön kezelődik, így a "nem beállított" szín a következő, lejjebb
+lévő engedélyezett sorból származik.
+
+|Jobb kattintásos menü
+|Az *Elülső szín ...* / *Háttérszín ...* színt választ, az *Alap elülső
+szín* / *Alap háttérszín* törli azt. Az *Ezt az elemet visszaállítja az
+alapértelmezettre* visszaállítja az adott sor WSJT-X alapértelmezését.
+
+|*CQ az üzenetben*, *Saját hívójel az üzenetben*, *Adás üzenet*
+|CQ, CQDX és QRZ hívások; az Önnek címzett dekódolások; az Ön által küldött
+üzenetek.
+
+|*Új DXCC*, *Új Kontinens*, *Új CQ Zóna*, *Új ITU Zóna*, *Új USA állam*, *Új QRA*, *Új Hívójel*
+|Még nem szerepel a naplóban. Az *... a Sávban* változatok: az aktuális
+sávon még nem forgalmazott.
+
+|*LoTW felhasználók*
+|Az állomás a <<LOTW_VALIDATION,LoTW hiteles felhasználók>> alatt
+beállított időn belül töltötte fel a naplóját a LoTW-be.
+
+|*Kiemelés visszaállítása a WSJT-X alapértelmezésre*
+|Az eredeti WSJT-X színek és sorrend. Új telepítés ezekkel indul.
+
+|*Kiemelés visszaállítása a WS alapértelmezésre*
+|A WS színséma, pasztellszínekkel, amelyek a sötét stílushoz is illenek. A
+LoTW-felhasználók feketével, a többi állomás sötétvörössel jelenik meg; egy
+már forgalmazott állomás CQ-ja szürke hátteret kap.
+
+|*ADIF Log újra*
+|Újraolvassa a `wsjtx_log.adi` fájlt, és újraépíti a volt QSO állapotot. A
+gomb a QSO-k számát mutatja. Ezt a fájlt lecserélheti a naplóprogramjából
+exportált ADIF fájlra.
+
+|*Kiemelten jelölés üzemmódonként*
+|A volt QSO állapotot módonként tartja nyilván.
+
+|*Csak a QRA mezők keresettek*
+|Egy lokátor csak akkor számít újnak, ha a mezőjével (az első két karakter,
+pl. JO) még nem volt QSO.
+
+|*Extra WAE entitások feltüntetése*
+|A DARC WAE / CQ Marathon extra entitásait (pl. Sicily, Shetland Is.) saját
+nevükön mutatja. Bejelölés nélkül a DXCC országukként jelennek meg.
+
+|*A 73-at vagy RR73-at tartalmazó üzenetek kiemelése is*
+|A 73 és RR73 üzenetek a CQ-khoz hasonlóan kiemelést, valamint ország- és
+volt QSO jelölést kapnak. A *Csak CQ* szűrőn is átjutnak, amelynek felirata
+ekkor *CQ/73*. Alapértelmezésben be van kapcsolva.
+
+|*Az összes üzenet kiemelése*
+|Nem csak a CQ-hívások (és a fenti opcióval a 73 üzenetek), hanem minden
+dekódolt üzenet a CQ-hoz hasonló kiemelést, valamint ország- és volt QSO
+jelölést kap. Alapértelmezésben ki van kapcsolva.
+
+|*Narancssárga kiemelés:* / *Kék kiemelés:*
+|Fehér szöveg narancssárga / kék háttéren az alatta lévő mezőbe beírt
+hívójeleknek, lokátoroknak, prefixeknek és CQ-irányoknak. Ezek a bejegyzések
+a *Riasztások* fül *Keresett hívójelek, QRA-k, prefixek és irányított
+hívások* riasztását is kiváltják.
+|===
+
+A *Narancssárga kiemelés* és a *Kék kiemelés* bejegyzései (kis- vagy
+nagybetűvel):
+
+* Hívójelek: minden hívójel után vessző, az utolsó után is: `K1JT, DG2YCB,`
+* Lokátorok: `JO33, JN58,`
+* 2 vagy 3 karakteres prefixek pontosvesszők között: `;DL;KH6;`. Egy
+  egybetűs prefix, például `;K;`, csak olyan hívójelekre illeszkedik,
+  amelyek második karaktere számjegy (K1ABC, de KH6ABC nem).
+* Minden egy betűvel kezdődő hívójel: `;K*;`. Prefixeket felkiáltójelek
+  közé téve kizárhat: `;K*;!KH6!KL!KP!`
+* CQ-irányok előttük és utánuk vesszővel: a `,EU,` a "CQ EU ..." üzeneteket
+  jelöli.
+
+[[LOTW_VALIDATION]]
+==== LoTW hiteles felhasználók
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Felhasználók CSV-fájl URL-e* / *Lekérés most*
+|Az ARRL LoTW-felhasználói listájának és utolsó feltöltési dátumaiknak a
+forrása. A *Lekérés most* friss példányt tölt le. A WS magától csak akkor
+tölti le, ha a fájl hiányzik és a *LoTW felhasználók* kiemelés be van
+kapcsolva.
+
+|*Utolsó feltöltések ezen belül*
+|Az állomások csak akkor számítanak LoTW-felhasználónak, ha az utolsó
+feltöltésük ennél frissebb.
+|===
+
+==== Letöltések
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Legújabb CTY.dat letöltése*
+|Frissíti az ország-, zóna- és prefixadatokat a country-files.com oldalról,
+és újraolvassa a naplót. A *CTY fájl verzió* a használt verziót mutatja.
+
+|*USA hívójel–állam adatbázis letöltése*
+|Hívójel–állam adatok az *USA államok megjelenítése* opcióhoz (*Általános*
+fül), ha az üzenetben nincs használható lokátor. A *Hívójel–állam
+adatbázis* a méretét és dátumát mutatja.
+
+|*CALL3.TXT letöltése földi használatra* / *CALL3.TXT letöltése EME-hez*
+|Hívójel- és lokátor-adatbázis a *Keresés* gombhoz és a JT4/JT65 mély
+kereséshez; az EME-változat a JT65 mély kereséshez készült. Az előző fájl
+`CALL3_backup.TXT` néven megmarad. A *CALL3 fájl verzió* a verziót mutatja.
+|===

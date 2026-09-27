@@ -1,0 +1,73 @@
+[[SETTINGS_FILTERS]]
+=== Filters
+
+image::settings-filters.png["Settings, Filters tab",align="center"]
+
+Filters decide which decodes appear in the *Band Activity* pane. The
+lists on this tab work together with the quick filters on the *Filters*
+menu (see <<MENU_FILTERS>>), where you also switch the territory filters
+on and off.
+
+While a filter hides decodes, the status label at the bottom left of
+the main window turns from green "Receiving" to cyan "Receiving, Filters On".
+
+To see everything again for a while, check *BP* (bypass) on the main
+window: all filters are ignored and the label shows "Receiving, Filters
+bypassed". Uncheck it to return to your filters.
+
+NOTE: Blacklist, Whitelist and Always Pass are switched off automatically
+in Special Operating modes, so you do not miss a station. Blacklist and
+Whitelist stay active for Hounds.
+
+==== Filter lists
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Territories 1-4*
+|Up to four country names, or parts of names, for the *Hide stations from
+Territory 1-4* and *Highlight stations from Territory 1-4* items on the
+*Filters* menu; the menu items then show your text. Write the name as
+WS displays it, e.g. `Japan`, `U.S.A.` or `Canary Is.`.
+
+|*Blacklist* +
+*Hide messages containing the following callsigns or keywords*
+|Hides messages that contain any of the entries: whole callsigns, parts
+of callsigns, grids or words (e.g. pirate calls or contest messages).
+
+|*Whitelist* +
+*Show only messages containing the following callsigns or keywords*
+|Shows only messages that contain one of the entries; all others are
+hidden, except those on the Always Pass list.
+
+|*Always Pass* +
+*Always pass messages with the following keywords*
+|Messages with these entries are always shown, even if the Blacklist,
+the Whitelist or a Hide item for a territory, a continent or stations
+worked before would hide them.
+|===
+
+Each list has twelve fields, one entry per field. Entries are converted
+to capital letters. A list only works while its checkbox is checked.
+
+==== Options
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Apply filters only to the callsigns of the calling stations*
+|The lists are checked against the calling station only (normally the
+second word, the third for directional CQs such as `CQ NA`). An entry
+then has to match the beginning of the callsign, so a prefix like `JA` works.
+Unchecked, an entry matches anywhere in the message.
+
+|*Use filters for Wait and Pounce, CQ: First, etc. only (all messages are still displayed)*
+|Nothing is hidden in *Band Activity*; the filters only decide which
+stations Wait and Pounce and the *CQ:* choices respond to. See <<WAIT_FEATURES>>.
+
+|*Quick Filters: Hide/Ignore/Highlight "worked today and yesterday" instead of "worked today" (UTC)*
+|The three "worked today" items on the *Filters* menu also include
+stations worked yesterday (UTC).
+|===

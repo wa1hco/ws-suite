@@ -1,0 +1,77 @@
+[[SETTINGS_AUDIO]]
+=== Audio
+
+image::settings-audio.png["Paramètres, onglet Audio",align="center"]
+
+==== Carte son
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Entrée* / *Sortie*
+|La carte son reliée à votre transceiver (p. ex. le CODEC audio USB du transceiver),
+réglée sur 48000 Hz, 16 bits. La liste de droite sélectionne le canal :
+en général *Mono*, ou *Gauche*, *Droite* ou *Les deux* dans des configurations particulières.
+
+|*Actualiser*
+|Recharge la liste des périphériques, p. ex. après avoir branché un transceiver USB.
+
+|*Utiliser l'audio TCI (redémarrage requis)* / *Rx 0 dB*
+|Affiché uniquement avec un transceiver TCI (p. ex. un SDR). L'audio passe alors par la
+connexion TCI au lieu d'une carte son, et les périphériques affichent *TCI audio*.
+*Rx* abaisse le niveau audio reçu (0 à -50 dB). Redémarrez WS après
+l'avoir modifié.
+
+|*Tri alphabétique*
+|Trie les noms des périphériques par ordre alphabétique et ne liste que ceux qui peuvent
+enregistrer ou lire de l'audio PCM. Décoché, l'ordre du système est utilisé.
+
+|*Masquer les sous-périphériques ALSA CARD (Linux uniquement)*
+|Masque les entrées `CARD=`, généralement inutilisables. Ne fonctionne qu'avec
+*Tri alphabétique* coché.
+|===
+
+IMPORTANT: Si le périphérique de sortie est aussi le périphérique audio par défaut de votre
+ordinateur, désactivez tous les sons du système. Sinon, vous les émettez sur l'air.
+
+==== Répertoire de sauvegarde
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Emplacement* / *Sélectionner*
+|Dossier des fichiers `.wav` écrits via menu:Sauvegarde[]. Par défaut, le dossier `save`
+du répertoire du journal.
+|===
+
+==== Répertoire AzEl
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Emplacement* / *Sélectionner*
+|Dossier de `azel.dat`, qui contient la position et le Doppler du Soleil et de la Lune pour
+les programmes de poursuite d'antenne. Il est mis à jour chaque seconde tant que la
+fenêtre Données astronomiques est ouverte.
+
+|*Activer une ligne supplémentaire dans azel.dat*
+|Ajoute une ligne avec Dpol, MNR, Dgrd et les largeurs d'écho, pour les programmes de
+poursuite qui lisent ces valeurs.
+|===
+
+==== Mémoriser les réglages de puissance par bande
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Émission*
+|Mémorise le curseur *Puiss* pour chaque bande et le restaure quand vous changez de bande.
+
+|*Accord*
+|Conserve un réglage *Puiss* séparé par bande pour *Accord*. À la fin de l'accord, le
+curseur revient à votre puissance d'émission.
+|===

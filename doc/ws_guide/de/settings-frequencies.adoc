@@ -1,0 +1,103 @@
+[[SETTINGS_FREQUENCIES]]
+=== Frequenzen
+
+image::settings-frequencies.png["Einstellungen, Registerkarte Frequenzen",align="center"]
+
+==== Frequenzkalibrierung
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Steigung* / *Achsenabschnitt*
+|Korrigiert einen bekannten Skalenfehler Ihres Funkgeräts: +
+`rig frequency = Intercept + (1 + Slope / 1 000 000) × f` +
+mit *Achsenabschnitt* in Hz und *Steigung* in ppm. An das Funkgerät gesendete und
+von ihm gelesene Frequenzen werden korrigiert, sodass WS die tatsächliche Frequenz anzeigt. Lassen Sie
+beide Werte auf 0, wenn Ihr Funkgerät genau ist.
+|===
+
+TIP: Wie diese Werte gemessen werden, beschreibt der Abschnitt _Frequency Calibration_
+im WSJT-X User Guide (Modus FreqCal).
+
+==== Arbeitsfrequenzen
+
+Die Frequenzen, die in der Bandauswahl des Hauptfensters angeboten werden. WS zeigt
+nur die Einträge für Ihre *IARU-Region* (Registerkarte *Allgemein*) und den aktuellen Modus.
+Doppelklicken Sie auf eine Zelle, um sie zu bearbeiten.
+
+[cols="2,5",options="header"]
+|===
+|Spalte |Funktion
+
+|*IARU-Region* / *Modus*
+|Wo und für welchen Modus der Eintrag angeboten wird. Einträge mit *Alle* werden
+überall bzw. in jedem Modus angeboten.
+
+|*Frequenz*
+|Die Skalenfrequenz in MHz.
+
+|*Bev.*
+|Der bevorzugte Eintrag für sein Band und seinen Modus. WS verwendet ihn, wenn Sie auf eine
+Band-Schaltfläche klicken (menu:Ansicht[]) oder wenn WS selbst das Band wechselt (Band-Hopping). Pro
+Band und Modus kann nur ein Eintrag bevorzugt sein.
+
+|*Beschreibung*
+|Ihre eigene Bezeichnung für den Eintrag, angezeigt in der Bandauswahl.
+
+|*Start Datum/Zeit* / *Ende Datum/Zeit*
+|Der Eintrag wird nur in diesem Zeitraum angeboten, z. B. für eine DXpedition. Leer = immer.
+|===
+
+Ein Rechtsklick auf die Tabelle bietet diese Aktionen:
+
+[cols="2,5",options="header"]
+|===
+|Menüpunkt |Funktion
+
+|*Löschen*
+|Entfernt die markierten Einträge.
+
+|*Einfügen ...*
+|Fügt einen Eintrag hinzu: *IARU-Region*, *Modus*, *Frequenz (MHz)*, *Bevorzugt für
+Band/Modus*, *Beschreibung* und einen optionalen Zeitraum.
+
+|*Laden ...*
+|Ersetzt die Liste durch eine aus einer `.qrg`- oder `.qrg.json`-Datei (WS fragt vorher nach).
+
+|*Speichern unter ...*
+|Speichert die Liste in eine Datei; ein Name mit der Endung `.qrg.json` ergibt eine JSON-Datei.
+Sind Einträge markiert, fragt WS, ob nur diese gespeichert werden sollen.
+
+|*Zusammenführen ...*
+|Fügt die Einträge einer `.qrg`- oder `.qrg.json`-Datei zur Liste hinzu.
+
+|*Zurücksetzen*
+|Stellt die Standardliste wieder her (WS fragt vorher nach).
+|===
+
+==== Stationsinformationen
+
+Angaben zu Ihrer Station pro Band. Doppelklicken Sie auf eine Zelle, um sie zu bearbeiten.
+
+[cols="2,5",options="header"]
+|===
+|Spalte |Funktion
+
+|*Band*
+|Das Band, für das die Zeile gilt.
+
+|*Offset*
+|Wird zur angezeigten Frequenz addiert, um die Frequenz des Funkgeräts zu erhalten, für
+Transverter. Beispiel: 144 MHz mit 28 MHz ZF erfordert -116 MHz. Standard 0.
+
+|*Antennenbeschreibung*
+|Wird an PSK Reporter gesendet, solange Sie auf diesem Band sind.
+|===
+
+Ein Rechtsklick auf die Tabelle bietet *Löschen* (entfernt die markierten Zeilen) und
+*Einfügen ...* (fügt eine Zeile hinzu: *Band*, *Offset (MHz)*, *Antenne*).
+
+TIP: Um schnell Zeilen anzulegen, markieren Sie Einträge in *Arbeitsfrequenzen* (kbd:[Ctrl]+kbd:[A]
+für alle) und ziehen sie auf *Stationsinformationen*. Tragen Sie dann Offsets und
+Antennen ein.

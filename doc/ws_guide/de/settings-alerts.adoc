@@ -1,0 +1,83 @@
+[[SETTINGS_ALERTS]]
+=== Alarme
+
+image::settings-alerts.png["Einstellungen, Registerkarte Alarme",align="center"]
+
+WS kann ausgewählte Dekodierungen mit kurzen gesprochenen Alarmen ansagen ("New DXCC",
+"My Call" und so weiter). Die Alarme gehören zu jeder WS-Installation und werden
+immer über das Standard-Audiogerät Ihres Computers wiedergegeben, meist seinen
+Lautsprecher.
+
+WARNING: Audioalarme benötigen ein zweites Soundgerät. Ihr Funkgerät darf *nicht*
+über das Standard-Audiogerät angeschlossen sein, sonst werden die Alarme ausgesendet.
+Ein Funkgerät mit eingebauter USB-Soundkarte (IC-7300, FT-991 und ähnliche) erfüllt
+diese Voraussetzung. Testen Sie vor dem Einschalten (siehe *Testen* unten).
+
+==== Audioalarme
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Stimmen*
+|Wählt die Stimme für die Alarme. Eine Standardinstallation hat eine Stimme, *Standard*.
+
+|*Testen*
+|Spielt eine Testansage über das Standard-Audiogerät ab, damit Sie prüfen können,
+wo die Alarme zu hören sind.
+
+|*Neues DXCC* / *Neues DXCC auf dem Band*
+|Ein DXCC-Gebiet, das Sie noch nicht gearbeitet haben / auf dem aktuellen Band noch nicht gearbeitet haben.
+
+|*Neuer Kontinent* / *Neuer Kontinent auf dem Band*
+|Ein Kontinent, noch nicht gearbeitet / auf diesem Band noch nicht gearbeitet.
+
+|*Neue CQ-Zone* / *Neue CQ-Zone auf dem Band*
+|Eine CQ-Zone, noch nicht gearbeitet / auf diesem Band noch nicht gearbeitet.
+
+|*Neue ITU-Zone* / *Neue ITU-Zone auf dem Band*
+|Eine ITU-Zone, noch nicht gearbeitet / auf diesem Band noch nicht gearbeitet.
+
+|*Neuer US-Bundesstaat* / *Neuer US-Bundesstaat auf dem Band*
+|Einer der 50 US-Bundesstaaten, noch nicht gearbeitet / auf diesem Band noch nicht gearbeitet.
+Der Bundesstaat wird aus dem Rufzeichen ermittelt oder aus dem Locator, wenn dieser nur auf einen Staat verweist.
+
+|*Neuer Locator* / *Neuer Locator auf dem Band*
+|Ein Locator, noch nicht gearbeitet / auf diesem Band noch nicht gearbeitet. Es zählen nur Nachrichten mit Locator.
+
+|*Mein Rufzeichen*
+|Eine an Sie gerichtete Nachricht.
+
+|*DX-Rufzeichen oder DX-Locator in Nachricht*
+|Das Rufzeichen im Feld *DX-Rufzeichen* oder der Locator im Feld *DX-Locator* erscheint in einer Dekodierung.
+
+|*CQ in Nachricht*
+|Jeder CQ-Ruf.
+
+|*Gesuchte Rufzeichen, Locatoren, Präfixe und Richtungsrufe*
+|Eine Dekodierung passt zu Ihren Einträgen unter *Orange hervorheben* oder *Blau hervorheben* auf
+der Registerkarte *Farben* (nur solange diese Hervorhebung eingeschaltet ist) oder zu einem Eintrag
+der Positivliste, solange menu:Filter[Einträge der Positivliste hervorheben] aktiviert ist.
+
+|*Nachricht empfangen*
+|Eine QSY-Nachricht für Ihr Rufzeichen oder für das DX-Rufzeichen trifft ein. Nur QSY-Nachrichten
+lösen diesen Alarm aus, er bleibt also selten.
+
+|*Audioalarme aktivieren*
+|Hauptschalter: Ist er aus, gibt es keine Alarmtöne. Die Schaltfläche wird grün,
+wenn er an ist. Unter Windows spielt WS dann beim Start außerdem einen kurzen Testton.
+|===
+
+Die Kategorien oberhalb der Linie erfordern *DXCC, Locator und Gearbeitet-Status
+anzeigen* auf der Registerkarte *Allgemein*.
+
+Die Alarme arbeiten unabhängig von der Hervorhebung auf der Registerkarte *Farben*. Welche
+Dekodierung einen Alarm ausgelöst hat, sehen Sie jedoch nur, wenn dort die passende Hervorhebung
+eingeschaltet ist; aktivieren Sie daher auf beiden Registerkarten dieselben Kategorien.
+
+NOTE: Stationen auf der Ignorierliste (hinzugefügt mit der Schaltfläche *Ignorieren* unter
+*DX-Locator*) lösen außer *Mein Rufzeichen* keine Alarme aus, es sei denn, das Kontrollkästchen *BP* (Bypass)
+ist aktiviert. Geleert wird die Liste mit menu:Datei[Ignorierliste löschen].
+
+TIP: Bei ausgeschaltetem Band-Hopping klicken Sie mit der rechten Maustaste auf die Schaltfläche *Band-Hopping* im
+Hauptfenster, um das Standard-Audiogerät länger zu testen.

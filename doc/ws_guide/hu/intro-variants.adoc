@@ -1,0 +1,39 @@
+== Három grafikus változat
+
+A WS mindig *három grafikus változatban* érhető el. Ugyanazok a funkcióik,
+menüik és beállításaik; csak a főablak elrendezése tér el. Mindegyik
+változatnak saját telepítője van.
+
+[cols="1,3",options="header"]
+|===
+|Változat |Leginkább ehhez való
+
+|*WS* (szabványos)
+|A megszokott WSJT-X elrendezés. Ez az alapértelmezett letöltés.
+
+|*WS AL* (alternatív elrendezés)
+|Kompaktabb ablak nagyobb Sáv-aktivitás panellel, így kevesebbet kell
+görgetni.
+
+|*WS Widescreen*
+|Széles monitorok: a kezelőszervek oldalra kerülnek, a dekódolási panelek
+pedig a teljes magasságot kapják.
+|===
+
+.WS, szabványos elrendezés
+image::WS.png[WS szabványos elrendezés,align="center"]
+
+.WS AL, alternatív elrendezés
+image::WS-AL.png[WS AL elrendezés,align="center"]
+
+.WS Widescreen
+image::WS-widescreen.png[WS widescreen elrendezés,align="center"]
+
+TIP: A változatokat külön mappákba egymás mellé is telepítheti és
+összehasonlíthatja. Mindegyik ugyanazt a beállításfájlt (`WS.ini`)
+használja, így a konfiguráció megmarad. Első indításkor a WS átveszi egy
+meglévő WSJT-X telepítés beállításait.
+
+Ha egyszerre több példányt szeretne futtatni, mindegyiket saját
+`--rig-name=NAME` opcióval indítsa; ekkor minden példány saját
+beállításfájlt használ.

@@ -1,0 +1,309 @@
+[[MAIN_WINDOW]]
+== Finestra principal
+
+La finestra principal de WS té l'aspecte i el funcionament de la finestra
+principal de WSJT-X, amb botons addicionals i més accions del ratolí. La Guia
+d'usuari de WSJT-X descriu els controls estàndard. Aquest capítol tracta només
+del que és nou o diferent a WS: tot el que es fa servir fora dels menús i del
+diàleg *Configuració*.
+menu:Ajuda[Ordres especials del ratolí] en dona un resum breu.
+
+image::WS.png[Finestra principal de WS,align="center"]
+
+[[WAIT_FEATURES]]
+=== Funcions Wait
+
+Les funcions Wait acaben un QSO per tu quan l'altra estació no respon de
+seguida o s'esvaeix per QSB. Totes necessiten *Seqüència Automàtica* marcada
+i *Activa les funcions Wait* a la pestanya *General* (activat per defecte,
+vegeu <<SETTINGS_GENERAL>>).
+
+WARNING: Amb una funció Wait armada, un missatge rebut pot posar l'equip en
+transmissió sense que toquis res. Tingues l'amplificador, l'acoblador i
+l'antena a punt, o desarma la funció.
+
+[cols="2,5",options="header"]
+|===
+|Funció |Com funciona
+
+|*Wait and Reply*
+|S'arma automàticament mentre hi ha un indicatiu a *Indicatiu DX* i *Activar TX*
+està desactivat. Quan aquesta estació et crida (un missatge amb el teu
+indicatiu i el seu, sense 73), WS activa *Activar TX* i continua el QSO. També
+torna a enviar RR73 si l'altra estació no ha copiat el primer. Funciona
+en FT2, FT4, FT8, FST4, JT4, JT9, JT65, MSK144 i Q65. TX es torna a desactivar
+al cap de 8 períodes (12 en MSK144).
+
+|*Wait and Call*
+|Fes clic al botó *Indicatiu DX* (es posa vermell). Quan l'estació d'*Indicatiu DX*
+torna a aparèixer amb CQ, RRR, RR73 o 73, WS la crida fins a tres vegades.
+Funciona en FT2, FT4, FT8, FST4, MSK144 i Q65, en operació normal o com a
+Hound d'FT8. Es desarma amb *Aturar TX*, *Aturar*, desactivant *Activar TX*,
+tornant a fer clic a *Indicatiu DX*, o tan bon punt l'estació et respon (el QSO
+continua llavors amb normalitat).
+
+|*Wait and Pounce*
+|Tria un mode *CQ:* diferent de *CQ: None* (vegeu <<CQ_SELECTOR>>) i després
+fes clic dret a *Activar TX* (es posa taronja). WS respon al següent CQ: el
+primer, o l'estació més llunyana, més forta o més feble del període.
+Torna a fer clic dret a *Activar TX*, o fes clic a *Aturar TX* o *Aturar*, per
+desarmar-la. No disponible com a Fox.
+|===
+
+Wait and Pounce respecta els filtres. Per exemple, WS pot esperar només crides
+CQ amb un prefix, locator, indicatiu o paraula clau determinats. Amb *Filters for
+Wait & Pounce only* totes les descodificacions continuen visibles, però Wait and
+Pounce només respon a les estacions que passen els filtres (vegeu <<SETTINGS_FILTERS>>).
+
+*Activar TX* i *Indicatiu DX* es posen grocs sempre que un missatge rebut pugui
+activar TX: amb un indicatiu a *Indicatiu DX*, *Seqüència Automàtica* activada i les
+funcions Wait habilitades, i sempre en mode Hound. Fes clic dret a *Indicatiu DX* per
+esborrar *Indicatiu DX*, *Locator DX* i els missatges estàndard; això desarma alhora
+Wait and Reply i Wait and Call.
+
+[[CQ_SELECTOR]]
+=== Selector CQ: i llista d'ignorats
+
+La casella *CQ:* al costat de *Seqüència Automàtica* és visible quan *Seqüència Automàtica* està marcada.
+
+[cols="2,5",options="header"]
+|===
+|Selecció |Resultat
+
+|*CQ: None*
+|Comportament estàndard de WSJT-X.
+
+|*CQ: First*
+|Quan crides CQ, WS respon a la primera estació que et crida. Amb Wait
+and Pounce, respon al primer CQ.
+
+|*CQ: Max Dist*
+|Tria l'estació més llunyana (cal un locator per calcular la distància).
+
+|*CQ: Max dB* / *CQ: Min dB*
+|Tria l'estació més forta / més feble.
+|===
+
+El botó *Ignora* (o kbd:[Ctrl+I]) posa l'indicatiu d'*Indicatiu DX* a
+la llista d'ignorats. Amb menu:Filtres[Ignora les estacions de la llista d'ignorats]
+marcat, els modes *CQ:* (Wait and Pounce) se salten aquestes estacions;
+menu:Filtres[Amaga les estacions de la llista d'ignorats] les treu de l'activitat
+a la banda. Buida la llista amb menu:Arxiu[Esborra la llista d'ignorats]. Vegeu
+<<MENU_FILTERS>> per a les altres opcions *Ignora* i *Amaga*.
+
+[[MOUSE_SHORTCUTS]]
+=== Dreceres del ratolí i dels botons
+
+==== Gràfic Ampli
+
+[cols="2,5",options="header"]
+|===
+|Acció |Resultat
+
+|Clic esquerre
+|Fixa la freqüència de RX.
+
+|Clic dret / kbd:[Shift]+clic esquerre
+|Fixa la freqüència de TX.
+
+|Doble clic dret / kbd:[Ctrl]+clic esquerre
+|Posa RX i TX a la mateixa freqüència (RX = TX).
+
+|Casella *Barres*
+|Mostra les barres de freqüència de RX (verda) i TX (vermella) a la cascada.
+
+|Casella *Freq*
+|Una ajuda emergent mostra la freqüència d'àudio sota el punter del ratolí.
+
+|*Marca de temps*
+|Mostra l'hora UTC a la cascada a l'*Esquerra* o a la *Dreta*, o *Desactivat*.
+|===
+
+==== Indicatius a la cascada
+
+Amb menu:Veure[Indicatius a la cascada > Mostra els indicatius descodificats] (o *Mostra
+indicatius* al Gràfic Ampli), els indicatius descodificats apareixen com a etiquetes a la
+cascada a la seva freqüència: vermell per a l'indicatiu d'*Indicatiu DX*, verd per a
+CQ, negre per a la resta. La casella *× TR* fixa quants períodes es manté una
+etiqueta; *Esborra* elimina totes les etiquetes. Fes clic esquerre a una etiqueta per posar
+l'indicatiu i el locator a *Indicatiu DX* / *Locator DX*, fixar RX en aquest senyal,
+ajustar *Alternar període TX Parell/Senar* per a la resposta i generar els missatges
+estàndard. La font, la transparència i la posició són al menú *Veure* (vegeu <<MENU_VIEW>>).
+En Q65, menu:Descodificar[Desactiva els clics a la cascada] desactiva els clics a les etiquetes.
+
+==== Botons
+
+[cols="2,5",options="header"]
+|===
+|Acció |Resultat
+
+|Clic dret a *Sintonitzar*
+|Engega l'acoblador d'antena de l'equip via CAT. El botó mostra *Tuning* durant 6 s;
+torna a fer clic dret per aturar-lo. Cal un model d'equip de Hamlib que admeti la sintonització.
+
+|Clic dret a *Activar TX*
+|Arma o desarma Wait and Pounce (<<WAIT_FEATURES>>).
+
+|Clic a *Indicatiu DX* / clic dret a *Indicatiu DX*
+|Arma Wait and Call / esborra *Indicatiu DX*, *Locator DX* i els missatges.
+
+|Clic dret a *Cercar* / *Afegir* / *Ignora*
+|Cerca l'indicatiu d'*Indicatiu DX* a qrz.com / hamqth.com / qrzcq.com al navegador.
+
+|*Esborrar*
+|Amb *Comportament alternatiu del botó Esborrar* (<<SETTINGS_GENERAL>>): un clic
+esborra l'activitat a la banda, un clic dret esborra la freqüència de RX i un doble clic
+esborra totes dues.
+
+|Clic dret a *Descodificar*
+|Allibera un descodificador penjat.
+
+|Clic dret a *només CQ*
+|Mostra només els missatges que contenen l'indicatiu d'*Indicatiu DX*. La casella es posa
+vermella i mostra *Indicatiu DX*; torna a fer clic dret per tornar enrere.
+
+|Clic dret a *TX 5*
+|Conserva el teu text lliure de TX5 (groc) perquè no s'esborri.
+
+|Clic dret a *Alternar període TX Parell/Senar*
+|Bloqueja la casella. Fes clic dret al botó *MSK* per desbloquejar-la.
+// CHECK: Uwe will test whether the FT8 button also unfreezes (Help text and tooltip say so; the code only does it for MSK).
+
+|Clic dret a *H*
+|Activa o desactiva el mode SuperFox.
+
+|Clic dret a *FT8*
+|Activa o desactiva l'última activitat especial d'operació utilitzada.
+
+|Clic dret a *Q65* / *JT65*
+|Canvia al mode Q65 Pileup / a JT9.
+
+|Roda del ratolí sobre la freqüència de dial, o clic esquerre / clic dret
+|Canvia la freqüència de dial en -1 kHz / +1 kHz.
+|===
+
+[[BAND_BUTTONS]]
+=== Botons de banda
+
+menu:Veure[Botons de banda] afegeix una fila de botons de banda, a les tres variants
+de la interfície. Fes clic a un botó per anar a la freqüència del mode actual de la
+teva llista de freqüències. En FT8, FT4 i FT2, un clic dret de 80 m a 10 m porta
+a la freqüència DXpedition d'FT8 d'aquesta banda (6 m: només FT8).
+menu:Veure[Botons VHF / UHF] canvia la fila a les bandes de 8 m a 13 cm.
+
+A 2 m, un clic dret porta a 4 m (regions 1 i 3) o a 1,25 m (regió 2);
+a 70 cm, un clic dret porta a 23 cm.
+
+[[MAIN_FILTERS]]
+=== Filtres a la finestra principal
+
+L'etiqueta d'estat de la part inferior esquerra indica quan els filtres amaguen
+descodificacions: passa del verd *Rebent* al cian *Receiving, Filters On*. Marca *BP*
+(bypass) per desactivar tots els filtres una estona sense perdre'n els
+ajustos; l'etiqueta mostra llavors *Receiving, Filters bypassed*. Les llistes de
+filtres es configuren a la pestanya *Filtres* (<<SETTINGS_FILTERS>>); els filtres
+ràpids són al menú *Filtres* (<<MENU_FILTERS>>).
+
+[[BAND_ACTIVITY_INFO]]
+=== Distància, azimut i estats dels EUA
+
+Si un missatge conté un locator vàlid, l'activitat a la banda pot mostrar la
+distància i l'azimut per ortodròmia, alineats en columnes amb el país.
+Amb *Mostra els estats dels EUA*, també es mostra l'estat dels EUA o la província canadenca.
+Activa aquestes opcions i ajusta l'espaiat de les columnes a la pestanya *General*
+(<<SETTINGS_GENERAL>>).
+
+[[CONTEST_NAME]]
+=== Nom del concurs i comentaris
+
+Amb *CQ amb nom de concurs individual* i un *Nom del concurs* de fins a 4 lletres (p. ex. PACC)
+a la pestanya *Avançat*, WS crida "CQ PACC" en lloc de "CQ TEST" o
+"CQ RU" quan hi ha una activitat especial d'operació activa (modes FT, MSK144,
+Q65; no com a Fox o Hound).
+
+Amb *Activitat especial d'operació als comentaris* a la pestanya *Informes*
+(<<SETTINGS_REPORTING>>), el comentari de *Log QSO* s'omple amb
+l'activitat, p. ex. "EU VHF Contest", "ARRL Field Day" o, amb un nom de concurs
+individual, "PACC Contest". Els comentaris retinguts i *informa dels dB's als
+comentaris* tenen prioritat.
+
+[[LIVECQ_CHECKS]]
+=== LiveCQ: qui m'ha sentit
+
+Amb *Activa LiveCQ de Q65* a la pestanya *Informes* (<<SETTINGS_REPORTING>>)
+i el mode Q65, WS pregunta al servidor LiveCQ un cop per període quines estacions
+han descodificat el teu indicatiu. Aquestes estacions reben una marca de verificació i un
+marc verd brillant a la seva etiqueta de la cascada, i una marca de verificació a la finestra
+Estacions actives en mode Q65 Pileup. Així el DX pot triar les estacions que
+realment el copien. La part inferior de la finestra Estacions actives mostra
+*LiveCQ connected* o un *LiveCQ NO CONNECTION* en vermell.
+
+[[TX_INHIBIT]]
+=== Inhibició de TX
+
+Amb *Activa la inhibició de TX* a la pestanya *Ràdio* (<<SETTINGS_RADIO>>), un altre
+programa pot mantenir WS fora de l'aire mentre una ràdio prioritària a la mateixa banda
+transmet. L'etiqueta d'estat mostra llavors *Inhibeix*.
+
+[[WSMAP_CLICKS]]
+=== Clic per treballar des de WS-MAP i EME65
+
+Amb menu:Descodificar[Accepta els clics de WS-MAP/EME65] marcat, un clic sobre un
+indicatiu a WS-MAP o EME65 fixa a WS l'*Indicatiu DX*, el *Locator DX*, la freqüència, el
+període de TX i el submode. Un doble clic allà també pot activar
+*Activar TX*. Això funciona en JT65 i Q65 amb *Activa les funcions de VHF i
+submode*. WS també processa les descodificacions que reenvia EME65.
+El teu *Indicatiu DX* i *Locator DX* es tornen a enviar, perquè WS-MAP o EME65 els puguin
+seguir.
+
+Si diverses instàncies de WS vigilen la mateixa font, fes clic a *Reclama WS-MAP* a
+la que ha d'actuar amb els clics. Tria la font amb
+menu:Descodificar[Origen WS-MAP/EME65] (vegeu <<MENU_DECODE>>).
+
+[[QSY_WINDOWS]]
+=== Creador de missatges i Monitor QSY
+
+Aquestes finestres t'ajuden a acordar un QSY amb el teu corresponsal, per exemple
+d'una freqüència d'EME a una altra banda.
+
+[cols="2,5",options="header"]
+|===
+|Finestra |Què fa
+
+|menu:Veure[Creador de missatges]
+|Crea una petició de QSY breu (banda, mode i kHz) per a l'estació d'*Indicatiu
+DX*, la posa al missatge de text lliure i activa *Activar TX*.
+
+|menu:Veure[Activa les finestres emergents de missatges]
+|Quan un missatge rebut et demana fer QSY, una finestra emergent mostra la petició i
+et permet respondre OKQSY o NOQSY.
+
+|menu:Veure[Monitor QSY]
+|Llista totes les peticions de QSY sentides, amb UTC, indicatiu, freqüència i mode.
+|===
+
+[[DIAGNOSTIC_MODE]]
+=== Mode de diagnòstic
+
+El mode de diagnòstic recull dades per trobar problemes de WS o del seu control
+de l'equip (errors de Hamlib, ports COM que no responen, etc.).
+
+. Selecciona menu:Guardar[Mode de diagnòstic].
+. Tanca i reinicia WS, i després reprodueix l'error.
+. Tanca WS tan bon punt hagi aparegut l'error: els arxius de registre creixen de pressa.
+
+WS crea una carpeta `logs` a l'escriptori (amb una subcarpeta per a cada
+instància `--rig-name`) que conté `ws_syslog.log` i `WS_RigControl.log`.
+Obre'ls amb un editor de text o envia'ls als desenvolupadors. El mode de diagnòstic
+es desactiva sol la propera vegada que es tanca WS; per cancel·lar-lo abans,
+selecciona menu:Guardar[Registre d'esdeveniments predeterminat].
+
+[[DARK_STYLE]]
+=== Estil fosc
+
+menu:Veure[Utilitza l'estil fosc] canvia WS a un tema fosc a l'instant, sense
+reiniciar. També adapta les línies de la cascada i els colors dels botons. Amb
+l'estil fosc, tria colors de fons més suaus (pastel) a la pestanya *Colors*.
+Vegeu <<MENU_VIEW>>.
+
+image::WS-AL_dark_style.png[WS AL amb estil fosc,align="center"]

@@ -1,0 +1,36 @@
+== Drei GUI-Varianten
+
+WS gibt es immer in *drei GUI-Varianten*. Sie haben dieselben Funktionen,
+Menüs und Einstellungen; nur die Anordnung des Hauptfensters unterscheidet sich.
+Jede Variante hat ein eigenes Installationsprogramm.
+
+[cols="1,3",options="header"]
+|===
+|Variante |Am besten geeignet für
+
+|*WS* (Standard)
+|Das vertraute WSJT-X-Layout. Dies ist der Standard-Download.
+
+|*WS AL* (alternatives Layout)
+|Ein kompakteres Fenster mit einem größeren Bereich Bandaktivität, sodass Sie weniger scrollen.
+
+|*WS Widescreen*
+|Breite Monitore: Die Bedienelemente wandern zur Seite, und die Dekodierbereiche erhalten die volle Höhe.
+|===
+
+.WS, Standard-Layout
+image::WS.png[WS Standard-Layout,align="center"]
+
+.WS AL, alternatives Layout
+image::WS-AL.png[WS AL-Layout,align="center"]
+
+.WS Widescreen
+image::WS-widescreen.png[WS Widescreen-Layout,align="center"]
+
+TIP: Sie können die Varianten nebeneinander in getrennten Ordnern installieren
+und vergleichen. Alle verwenden dieselbe Einstellungsdatei (`WS.ini`), sodass Ihre
+Konfiguration erhalten bleibt. Beim ersten Start übernimmt WS die Einstellungen
+einer vorhandenen WSJT-X-Installation.
+
+Um mehrere Instanzen gleichzeitig zu betreiben, starten Sie jede mit einem eigenen
+`--rig-name=NAME`; jede Instanz hat dann ihre eigene Einstellungsdatei.

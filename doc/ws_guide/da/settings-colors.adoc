@@ -1,0 +1,122 @@
+[[SETTINGS_COLORS]]
+=== Farver
+
+image::settings-colors.png["Indstillinger, fanen Farver",align="center"]
+
+==== Dekode Farvelade
+
+WS farvelægger dekodninger efter kategori. Alt undtagen *CQ i meddelse*,
+*Mit kaldesignal i meddelse*, *Afsendt meddelse* og *LoTW Bruger* kræver
+*Vis DXCC, gird og Worked B4 status* på fanen *Generel*.
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|Fremhævningsliste
+|Én linje pr. kategori; dens afkrydsningsfelt slår den til. Træk linjer op eller ned
+for at sætte prioriteten: en højere linje vinder. Forgrund og baggrund er
+adskilte, så en "ikke sat" farve tages fra den næste aktive linje nedenfor.
+
+|Højrekliksmenu
+|*Forgrunds farve ...* / *Baggrunds farve ...* vælger en farve,
+*Fjern forgrundsfarve* / *Fjern baggrundsfarve* fjerner den.
+*Reset til default* gendanner WSJT-X-standarden for den linje.
+
+|*CQ i meddelse*, *Mit kaldesignal i meddelse*, *Afsendt meddelse*
+|CQ-, CQDX- og QRZ-kald; dekodninger adresseret til dig; meddelelser sendt af dig.
+
+|*Nyt DXCC*, *Nyt Kontinent*, *Ny CQ Zone*, *Ny ITU Zone*, *Ny US-stat*, *Ny Grid*, *Nyt Call*
+|Endnu ikke i din log. Varianterne *... på bånd*: endnu ikke kørt på det
+aktuelle bånd.
+
+|*LoTW Bruger*
+|Stationen har uploadet sin log til LoTW inden for den alder, der er sat under
+<<LOTW_VALIDATION,Logbook of the World Bruger Validering>>.
+
+|*Nulstil fremhævning til WSJT-X standard*
+|De oprindelige WSJT-X-farver og -rækkefølge. En ny installation starter med dem.
+
+|*Nulstil fremhævning til WS-standard*
+|WS-skemaet med pastelfarver, der også passer til den mørke stil. LoTW-brugere
+vises i sort, andre stationer i mørkerød; et CQ fra en station, du
+allerede har kørt, får grå baggrund.
+
+|*Rescan Adif Log*
+|Læser `wsjtx_log.adi` igen og genopbygger worked-before-status. Knappen
+viser antallet af QSO'er. Du kan erstatte denne fil med en ADIF-eksport
+fra dit logprogram.
+
+|*Highlight by Mode*
+|Worked-before-status gemmes pr. mode.
+
+|*Vis kun ikke kørte GRID felter (Contest)*
+|En grid tæller kun som ny, hvis dens felt (de to første tegn, f.eks. JO)
+ikke er kørt.
+
+|*Inkluder ekstra WAE lande*
+|Viser de ekstra DARC WAE / CQ Marathon-lande (f.eks. Sicilien, Shetland Is.)
+med deres eget navn. Ikke markeret vises de som deres DXCC-land.
+
+|*Fremhæv også msg med 73 eller RR73*
+|73- og RR73-meddelelser fremhæves som CQ'er og får lande- og
+worked-before-markeringer. De kommer også igennem filteret *Kun CQ*, som så
+får etiketten *CQ/73*. Slået til som standard.
+
+|*Fremhæv alle meddelelser*
+|Hver dekodet meddelelse fremhæves som et CQ og får lande- og
+worked-before-markeringer, ikke kun CQ-kald (og 73-meddelelser med indstillingen
+ovenfor). Slået fra som standard.
+
+|*Highlight orange:* / *Highlight Blå:*
+|Hvid tekst på orange / blå baggrund for de kaldesignaler, grids,
+præfikser og CQ-retninger, der er skrevet i feltet nedenfor. Disse indtastninger
+udløser også alarmen *Wanted* på fanen *Alerts*.
+|===
+
+Indtastninger til *Highlight orange* og *Highlight Blå* (store eller små bogstaver):
+
+* Kaldesignaler: et komma efter hvert kaldesignal, også det sidste: `K1JT, DG2YCB,`
+* Grids: `JO33, JN58,`
+* Præfikser på 2 eller 3 tegn mellem semikoloner: `;DL;KH6;`. Et præfiks
+  på ét bogstav som `;K;` matcher kun kaldesignaler med et ciffer på andenpladsen
+  (K1ABC, ikke KH6ABC).
+* Alle kaldesignaler, der starter med ét bogstav: `;K*;`. Udeluk præfikser ved at sætte
+  dem mellem udråbstegn: `;K*;!KH6!KL!KP!`
+* CQ-retninger med et komma før og efter: `,EU,` markerer "CQ EU ...".
+
+[[LOTW_VALIDATION]]
+==== Logbook of the World Bruger Validering
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Sti til Bruger CSV fil* / *Hent Nu*
+|Kilden til ARRL's liste over LoTW-brugere og deres seneste uploaddatoer.
+*Hent Nu* downloader en frisk kopi. WS henter den kun selv, når
+filen mangler, og *LoTW Bruger*-fremhævning er slået til.
+
+|*Alder på seneste upload mindre end*
+|Stationer tæller kun som LoTW-brugere, hvis deres seneste upload er nyere.
+|===
+
+==== Downloads
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Download seneste CTY.dat*
+|Opdaterer lande-, zone- og præfiksdata fra country-files.com og
+genscanner loggen. *CTY Fil Version* viser den version, der bruges.
+
+|*Download database over US-stater for kaldesignaler*
+|Data fra kaldesignal til stat for *Vis US-stater* (fanen *Generel*), bruges når en
+meddelelse ikke har nogen brugbar grid. *Kaldesignal-stater DB* viser størrelse og dato.
+
+|*Download CALL3.TXT for terrestrial brug* / *Download CALL3.TXT for EME*
+|Kaldesignal- og grid-database til knappen *Slå op* og til JT4/JT65 Deep
+Search; EME-versionen er beregnet til JT65 Deep Search. Den tidligere fil
+beholdes som `CALL3_backup.TXT`. *CALL3 Fil Version* viser versionen.
+|===

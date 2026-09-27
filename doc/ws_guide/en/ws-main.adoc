@@ -1,0 +1,71 @@
+= WS User Guide
+:doctype: book
+:toc: left
+:toclevels: 2
+:icons: font
+:imagesdir: images
+:experimental:
+:notitle:
+
+image::ws-header.png[WS - Weak Signal Digital Modes Suite,682,126]
+
+[discrete]
+== WS User Guide
+
+[preface]
+== About this guide
+
+WS is a suite of programs for weak-signal digital communication in
+amateur radio: *WS* (the main program), *WS-MAP* (wideband Q65/FT8
+monitor) and *EME65* (wideband JT65/Q65 for EME). WS grew out of
+_WSJT-X_ and was formerly known as _WSJT-X Improved_. All modes and basic operating
+procedures are the same as in WSJT-X; for those, the
+https://wsjt.sourceforge.io/wsjtx-doc/wsjtx-main-3.0.0-rc1.html[WSJT-X User Guide]
+remains the reference.
+
+This guide is deliberately short. It explains every menu and every
+setting of WS, and what WS adds to WSJT-X.
+
+include::intro-variants.adoc[]
+
+include::main-window.adoc[]
+
+[[MENUS]]
+== Menus
+
+The menus are the same in all three GUI variants.
+
+image::menubar.png[WS menu bar]
+
+include::menus-1.adoc[]
+
+include::menus-2.adoc[]
+
+[[SETTINGS]]
+== Settings
+
+Open the *Settings* window with menu:File[Settings] or kbd:[F2].
+Settings are saved per configuration (see <<MENU_CONFIGURATIONS>>).
+Hover over any control to see its tooltip.
+
+include::settings-general.adoc[]
+
+include::settings-radio.adoc[]
+
+include::settings-audio.adoc[]
+
+include::settings-txmacros.adoc[]
+
+include::settings-reporting.adoc[]
+
+include::settings-frequencies.adoc[]
+
+include::settings-colors.adoc[]
+
+include::settings-advanced.adoc[]
+
+include::settings-alerts.adoc[]
+
+include::settings-filters.adoc[]
+
+include::support.adoc[]

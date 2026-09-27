@@ -1,0 +1,73 @@
+= Guide utilisateur WS
+:doctype: book
+:lang: fr
+:toc: left
+:toc-title: Sommaire
+:toclevels: 2
+:icons: font
+:imagesdir: ../en/images
+:experimental:
+:notitle:
+
+image::ws-header.png[WS - Suite de modes numériques pour signaux faibles,682,126]
+
+[discrete]
+== Guide utilisateur WS
+
+[preface]
+== À propos de ce guide
+
+WS est une suite de programmes pour les communications numériques à signaux
+faibles en radioamateur : *WS* (le programme principal), *WS-MAP* (moniteur
+large bande Q65/FT8) et *EME65* (JT65/Q65 large bande pour l'EME). WS est issu
+de _WSJT-X_ et s'appelait auparavant _WSJT-X Improved_. Tous les modes et les
+procédures de trafic de base sont les mêmes que dans WSJT-X ; pour ces sujets, le
+https://wsjt.sourceforge.io/wsjtx-doc/wsjtx-main-3.0.0-rc1.html[Guide utilisateur WSJT-X]
+reste la référence.
+
+Ce guide est volontairement court. Il explique chaque menu et chaque
+paramètre de WS, ainsi que ce que WS ajoute à WSJT-X.
+
+include::intro-variants.adoc[]
+
+include::main-window.adoc[]
+
+[[MENUS]]
+== Menus
+
+Les menus sont identiques dans les trois variantes d'interface.
+
+image::menubar.png[Barre de menus de WS]
+
+include::menus-1.adoc[]
+
+include::menus-2.adoc[]
+
+[[SETTINGS]]
+== Paramètres
+
+Ouvrez la fenêtre *Paramètres* avec menu:Fichier[Paramètres] ou kbd:[F2].
+Les paramètres sont enregistrés par configuration (voir <<MENU_CONFIGURATIONS>>).
+Survolez un contrôle avec la souris pour afficher son info-bulle.
+
+include::settings-general.adoc[]
+
+include::settings-radio.adoc[]
+
+include::settings-audio.adoc[]
+
+include::settings-txmacros.adoc[]
+
+include::settings-reporting.adoc[]
+
+include::settings-frequencies.adoc[]
+
+include::settings-colors.adoc[]
+
+include::settings-advanced.adoc[]
+
+include::settings-alerts.adoc[]
+
+include::settings-filters.adoc[]
+
+include::support.adoc[]

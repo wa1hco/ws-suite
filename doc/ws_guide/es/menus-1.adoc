@@ -1,0 +1,387 @@
+[[MENU_FILE]]
+=== Archivo
+
+image::menu-File.png[Menú Archivo]
+
+[cols="2,5",options="header"]
+|===
+|Elemento del menú |Qué hace
+
+|*Abrir* kbd:[Ctrl+O]
+|Detiene *Monitor* y abre un archivo `.wav` grabado, que se decodifica
+como el audio en directo.
+
+|*Abrir siguiente en el directorio*
+|Abre y decodifica el siguiente archivo `.wav` de la misma carpeta.
+
+|*Decodifica los archivos restantes en el directorio* kbd:[Shift+F6]
+|Abre y decodifica, uno tras otro, todos los archivos `.wav` siguientes de la carpeta.
+
+|*Borrar todos los archivos {asterisk}.wav y {asterisk}.c2*
+|Tras una confirmación, borra todos los archivos de audio guardados (`.wav` y `.c2`)
+del directorio de guardado.
+
+|*Borrar ALL.TXT*
+|Tras una confirmación, borra `ALL.TXT`, el registro de todo lo que ha
+recibido y transmitido.
+
+|*Borrar archivo wsjtx_log.adi*
+|Tras una confirmación, borra su archivo de log ADIF.
+
+|*Borrar wsjtx.log*
+|Tras una confirmación, borra `wsjtx.log`, la lista simple de QSO que escribe
+*Guardar QSO*. WS la usa para los filtros "trabajado hoy" y para que
+*Wait and Pounce* no llame a estaciones que ya ha registrado.
+
+|*Borrar lista de ignorados*
+|Tras una confirmación, vacía la lista de ignorados (que se llena con el botón *Ignorar*).
+
+|*Borrar la tabla de WSPR*
+|Tras una confirmación, borra la tabla que usa WSPR para resolver los
+indicativos compuestos con hash.
+
+|*Borrar lista de estaciones que llaman en Q65*
+|Tras una confirmación, borra la lista de indicativos que WS recuerda
+de las decodificaciones Q65.
+
+|*Borrar log Cabrillo ...*
+|Tras una confirmación, borra del log de concurso todos los QSO del concurso
+actual. Permanecen en el log ADIF, pero ya no se pueden exportar
+a Cabrillo. El número de serie vuelve a 1 y la puntuación de
+*Estaciones activas* se pone a cero.
+
+|*Exportar log Cabrillo ...*
+|Guarda el log de concurso como archivo Cabrillo para enviarlo.
+
+|*Abrir directorio de log*
+|Abre la carpeta de datos de WS (logs, `ALL.TXT`, etc.) en su gestor de archivos.
+
+|*Ajustes...*
+|Abre la ventana *Ajustes* (también kbd:[F2]). Vea el capítulo Ajustes.
+
+|*Salir*
+|Cierra WS.
+|===
+
+NOTE: En macOS, *Ajustes* (como *Preferences*) y *Salir* (como *Quit*)
+aparecen en el menú de la aplicación en lugar del menú *Archivo*.
+
+[[MENU_CONFIGURATIONS]]
+=== Configuraciones
+
+image::menu-Config.png[Menú Configuraciones]
+
+Una _configuración_ es un conjunto completo de ajustes con nombre. Muchos
+operadores tienen una por modo o por instalación de estación (por ejemplo "FT8 HF" y
+"Q65 EME") y cambian entre ellas con dos clics.
+
+El menú lista todas las configuraciones; la que está en uso aparece marcada.
+Cada configuración abre un pequeño submenú (izquierda: otra configuración,
+derecha: la que está en uso):
+
+image:menu-Config-Other.png[Submenú de otra configuración] image:menu-Config-Current.png[Submenú de la configuración en uso]
+
+[cols="2,5",options="header"]
+|===
+|Elemento del menú |Qué hace
+
+|*Cambiar a*
+|WS reinicia su ventana principal con los ajustes de esta configuración.
+No aparece para la configuración en uso.
+
+|*Clonar*
+|Crea una copia llamada "_nombre_ - Copy". Cámbiele el nombre y ajuste sus
+valores para crear una configuración nueva.
+
+|*Clonar a ...*
+|Sobrescribe todos los ajustes de esta configuración con los de otra
+que usted elija. Pide confirmación. Solo aparece cuando hay más de
+una configuración.
+
+|*Reiniciar*
+|Tras una confirmación, devuelve esta configuración a los valores predeterminados.
+
+|*Renombrar ...*
+|Da un nombre nuevo a la configuración.
+
+|*Borrar*
+|Tras una confirmación, borra la configuración. La configuración en
+uso no se puede borrar, por lo que este elemento no aparece para ella.
+|===
+
+TIP: Para iniciar WS directamente en una configuración, use la opción de línea
+de comandos `--config NAME` (o `-c NAME`), por ejemplo `ws -c Echo`.
+
+[[MENU_VIEW]]
+=== Ver
+
+image::menu-View.png[Menú Ver]
+
+[cols="2,5",options="header"]
+|===
+|Elemento del menú |Qué hace
+
+|*Cascada (Waterfall)*
+|Abre la ventana Cascada con el espectro y la cascada.
+
+|*Datos astronómicos*
+|Abre (marcado) o cierra la ventana Datos astronómicos: datos de la Luna y
+el Sol, desplazamiento Doppler EME, seguimiento Doppler y frecuencia de sked.
+
+|*Promedio de mensajes* kbd:[F7]
+|Abre la ventana de promedio de mensajes, que muestra los períodos usados para
+las decodificaciones promediadas (JT4, JT65, Q65).
+
+|*Gráfico de eco* kbd:[F8]
+|Abre la ventana Gráfico de eco para el modo Echo.
+
+|*Fast Graph* kbd:[F9]
+|Abre la ventana Fast Graph para los modos rápidos (MSK144 y JT9 rápido).
+
+|*Log de Concurso*
+|Muestra los QSO del concurso actual y su número.
+
+|*Log "Fox"*
+|Muestra los QSO hechos como Fox en el modo FT8 DXpedition.
+
+|*Esquema de resaltado de colores*
+|Una pequeña leyenda de los colores de resaltado actuales de las decodificaciones
+(CQ, Mi indicativo, Nuevo DXCC, usuario LoTW, etc.). Los colores se configuran
+en la pestaña de ajustes *Colores*.
+
+|*Estaciones activas*
+|Lista las estaciones decodificadas recientemente, por ejemplo para encontrar
+las más lejanas en un concurso puntuado por distancia, con *Velocidad*,
+*Puntuación* y *Cambios de banda*. Haga clic en una línea para llamar a esa
+estación. Con WS-MAP en marcha, muestra las estaciones que WS-MAP decodifica en
+todo su ancho de banda; un clic transfiere los datos del QSO y la frecuencia de
+sked a WS, un doble clic llama a la estación.
+
+|*Modo Escucha*
+|Oculta el panel de control inferior para que los paneles de decodificación
+ocupen toda la ventana. Útil cuando se ejecutan varias instancias a la vez. El
+tamaño y la posición de esta vista se recuerdan por separado.
+
+|*Creador de Mensajes*
+|Compone mensajes especiales, p. ej. una petición de QSY a otra banda o modo,
+o un breve mensaje predefinido, enviados a la estación de *Indicativo DX*.
+Al abrirlo se activa también *Habilitar ventanas emergentes de mensajes*.
+
+|*Monitor QSY*
+|Muestra los mensajes especiales que otras estaciones se envían entre sí y a usted.
+
+|*Habilitar ventanas emergentes de mensajes*
+|Aparece una ventana emergente cuando un mensaje especial va dirigido a usted, con
+botones para responder.
+
+|*Botones de banda*
+|Muestra una fila de botones de banda de HF (160 m a 70 cm); la banda actual
+está en verde. Haga clic en un botón para ir a su frecuencia preferida para esa
+banda y modo (fijada con *Pref* en la pestaña de ajustes *Frecuencias*).
+Un clic derecho de 80 m a 10 m (FT8, FT4, FT2) lleva a la frecuencia habitual
+de DXpedition, y en 6 m (FT8) a 50,323 MHz. Vea también
+menu:Ayuda[Comandos especiales de ratón].
+
+|*Botones VHF/UHF*
+|Sustituye los botones de HF por un juego de VHF/UHF/microondas (8 m a 24 GHz).
+Solo visible mientras *Botones de banda* está marcado.
+
+|*Utilizar Modo Oscuro*
+|Cambia todas las ventanas a un tema oscuro. Hace más que una simple hoja de
+estilo oscura: WS también ajusta algunos parámetros internos y usa una hoja de
+estilo optimizada para ello. Después, cambie los colores de resaltado en la
+pestaña de ajustes *Colores* a tonos pastel más suaves.
+
+|*Indicativos en la cascada*
+|Submenú, vea más abajo.
+|===
+
+==== Indicativos en la cascada
+
+image::menu-View-Callsign_overlay.png[Submenú Indicativos en la cascada]
+
+WS puede escribir los indicativos decodificados directamente en la cascada, en
+la frecuencia en la que se oyó cada estación.
+
+[cols="2,5",options="header"]
+|===
+|Elemento del menú |Qué hace
+
+|*Mostrar indicativos decodificados*
+|Activa o desactiva las etiquetas de indicativos. Al desactivarlas se eliminan
+todas. Abrir un archivo `.wav` también las borra.
+
+|*Mantener 1 período* ... *Mantener 5 períodos*
+|Cuánto tiempo permanece una etiqueta desde la última decodificación de la
+estación, en períodos de TX/RX (predeterminado 2). El mismo valor se puede fijar en la ventana Cascada.
+
+|*Tamaño de letra*
+|image:menu-View-Callsign_overlay-Callsign_font.png[Submenú Tamaño de letra] +
+Tamaño de las etiquetas: *Pequeño (7 pt)*, *Normal (8 pt)*, *Mediano (10 pt)* o *Grande (12 pt)*.
+
+|*Transparencia*
+|image:menu-View-Callsign_overlay-Callsign_transparency.png[Submenú Transparencia] +
+Cuánto se ve la cascada a través de las etiquetas: *Nada*, *Bajo*, *Medio* o *Alto*.
+
+|*Posición*
+|image:menu-View-Callsign_overlay-Callsign_position.png[Submenú Posición] +
+*Parte superior de la cascada*, o *Parte inferior de la cascada (sobre el divisor)*
+para que las señales más recientes, arriba, queden descubiertas.
+|===
+
+[[MENU_SAVE]]
+=== Guardar
+
+image::menu-Save.png[Menú Guardar]
+
+[cols="2,5",options="header"]
+|===
+|Elemento del menú |Qué hace
+
+|*Nada*
+|No se guarda ningún archivo de audio.
+
+|*Guardar lo decodificado*
+|Guarda en el directorio de guardado el audio (`.wav`) de cada período con al
+menos una decodificación.
+
+|*Guardar todo*
+|Guarda el audio de todos los períodos.
+
+|*Eliminar archivos guardados después de 30 días*
+|En cada inicio del programa, WS borra todos los archivos del directorio de
+guardado con más de 30 días de antigüedad.
+
+|*No dividir ALL.TXT*
+|Todas las decodificaciones y transmisiones van a un único `ALL.TXT` (predeterminado).
+
+|*Dividir ALL.TXT anualmente*
+|Un archivo por año, p. ej. `2026-ALL.TXT`.
+
+|*Dividir ALL.TXT mensualmente*
+|Un archivo por mes, p. ej. `2026-09-ALL.TXT`.
+
+|*Deshabilitar la escritura en ALL.TXT*
+|No se escribe nada en `ALL.TXT`.
+
+|*Registro de eventos predeterminado*
+|Registro interno normal y mínimo. También vuelve a desactivar *Modo Diagnóstico*.
+
+|*Modo Diagnóstico*
+|Recoge datos detallados para diagnosticar WS o su comunicación con
+el equipo. Surte efecto tras reiniciar y se desactiva solo la próxima vez que
+se cierra WS. En su escritorio aparece una carpeta `logs` con
+`ws_syslog.log` y `WS_RigControl.log`; envíelos a los desarrolladores si se lo
+piden. Cierre WS poco después de que aparezca el fallo, ya que los archivos crecen deprisa.
+
+|*Deshabilitar el registro de eventos*
+|Desactiva el registro interno de eventos.
+|===
+
+[[MENU_LANGUAGE]]
+=== Idioma
+
+image::menu-Language.png[Menú Idioma]
+
+Elige el idioma de la interfaz de WS. El inglés es el predeterminado;
+las demás entradas son las traducciones que incluye WS, cada una mostrada en
+su propio idioma.
+
+Cuando elige un idioma, WS pregunta si debe reiniciar su ventana ahora:
+
+[cols="2,5",options="header"]
+|===
+|Botón |Qué hace
+
+|*Reiniciar ahora*
+|Reconstruye la ventana principal en el nuevo idioma en pocos segundos, igual
+que al cambiar a otra configuración. WS sigue en marcha.
+Mientras WS transmite o sintoniza, la ventana no se reinicia; el nuevo
+idioma se aplica entonces la próxima vez que se inicie WS.
+
+|*Más tarde*
+|Mantiene el idioma actual hasta que WS se vuelva a iniciar.
+|===
+
+La elección se aplica a todas las configuraciones. Iniciar WS con
+`--language <code>` (por ejemplo `ws --language de`) la anula para
+esa ejecución.
+
+NOTE: Las traducciones las hacen voluntarios y pueden estar incompletas; los
+textos aún no traducidos aparecen en inglés.
+
+[[MENU_HELP]]
+=== Ayuda
+
+image::menu-Help.png[Menú Ayuda]
+
+La mayoría de los elementos abren una página web o un PDF en su navegador, por
+lo que necesitan conexión a Internet.
+
+[cols="2,5",options="header"]
+|===
+|Elemento del menú |Qué hace
+
+|*Cambios en la nueva versión*
+|Las notas de la versión de WS (en línea).
+
+|*Página web de WS*
+|Abre el sitio web de WS (wsjt-x-improved.sourceforge.io).
+
+|*Página de descarga de WS*
+|Abre la carpeta de descargas en SourceForge con todas las versiones e
+instaladores de WS. Consulte allí si hay una versión más reciente.
+
+|*Guía del usuario de WSJT-X*
+|La guía de usuario de WSJT-X (en línea), la referencia para los modos y los procedimientos de operación.
+
+|*Guía de usuario del modo FT8 DXpedition (inglés)*
+|PDF sobre la operación Fox y Hound.
+
+|*Guía del usuario de SuperFox*
+|PDF sobre el modo SuperFox.
+
+|*Guía de inicio rápido a FST4 y FST4W (inglés)*
+|PDF.
+
+|*Guía de inicio rápido de Q65 (inglés)*
+|PDF.
+
+|*Guía de inicio rápido para WSJT-X 2.5.0 y MAP65 3.0 (inglés)*
+|PDF sobre la operación EME de banda ancha con dos programas.
+
+|*Guía de inicio rápido para WSJT-X 2.7 y QMAP*
+|PDF sobre el uso del monitor Q65 de banda ancha (ahora WS-MAP) con el programa principal.
+
+|*Descargar muestras de audio ...*
+|Descarga archivos `.wav` de ejemplo que muestran los modos; ábralos
+con menu:Archivo[Abrir].
+
+|*Descargar gráfico de efemérides EME*
+|Pide un año (2025 a 2040) y abre el gráfico EME de ese año (PDF).
+
+|*Atajos de teclado*
+|Una ventana con todos los atajos de teclado (también kbd:[F3]).
+
+|*Comandos especiales de ratón*
+|Una ventana que lista lo que hacen los clics, clics derechos y dobles clics en la
+cascada, las decodificaciones, la frecuencia del dial y los botones (también kbd:[F5]).
+
+|*Lista de prefijos y sufijos tipo 1*
+|Los prefijos y sufijos añadidos que funcionan en los mensajes estándar.
+
+|*Como gestionar los errores de control del equipo*
+|PDF con ayuda para problemas de CAT y de control del equipo.
+
+|*Configuraciones de audio recomendadas*
+|Procedimiento paso a paso para ajustar el nivel de audio de transmisión de modo
+que su señal se mantenga limpia (sin acción del ALC, sin armónicos).
+
+|*Derechos de Autor* kbd:[Shift+F1]
+|La licencia y el aviso de copyright exigidos cuando reutiliza código de WS o WSJT-X.
+
+|*Acerca de WS*
+|Versión y créditos.
+|===
+
+NOTE: En macOS, *Acerca de WS* aparece en el menú de la aplicación.

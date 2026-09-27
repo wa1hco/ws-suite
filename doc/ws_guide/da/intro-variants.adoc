@@ -1,0 +1,36 @@
+== Tre GUI-varianter
+
+WS leveres altid i *tre GUI-varianter*. De har samme funktioner,
+menuer og indstillinger; kun opbygningen af hovedvinduet er forskellig.
+Hver variant har sit eget installationsprogram.
+
+[cols="1,3",options="header"]
+|===
+|Variant |Bedst til
+
+|*WS* (standard)
+|Det velkendte WSJT-X-layout. Dette er standarddownloaden.
+
+|*WS AL* (alternativt layout)
+|Et mere kompakt vindue med et større Bånd Aktivitet-felt, så du skal scrolle mindre.
+
+|*WS Widescreen*
+|Brede skærme: betjeningselementerne flyttes til siden, og dekodningsfelterne får hele højden.
+|===
+
+.WS, standardlayout
+image::WS.png[WS standardlayout,align="center"]
+
+.WS AL, alternativt layout
+image::WS-AL.png[WS AL-layout,align="center"]
+
+.WS Widescreen
+image::WS-widescreen.png[WS widescreen-layout,align="center"]
+
+TIP: Du kan installere varianterne side om side i hver sin mappe og
+sammenligne dem. De bruger alle den samme indstillingsfil (`WS.ini`), så din
+konfiguration følger med. Ved første start overtager WS indstillingerne
+fra en eksisterende WSJT-X-installation.
+
+For at køre flere instanser samtidig skal hver instans startes med sit eget
+`--rig-name=NAME`; hver instans har så sin egen indstillingsfil.

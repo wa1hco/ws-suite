@@ -1,0 +1,387 @@
+[[MENU_FILE]]
+=== Fil
+
+image::menu-File.png[Menuen Fil]
+
+[cols="2,5",options="header"]
+|===
+|Menupunkt |Funktion
+
+|*Åbne* kbd:[Ctrl+O]
+|Stopper *Monitor* og åbner en optaget `.wav`-fil, som derefter dekodes
+som live-audio.
+
+|*Åben den næste i mappe*
+|Åbner og dekoder den næste `.wav`-fil i samme mappe.
+
+|*Dekod resterende filer i mappen* kbd:[Shift+F6]
+|Åbner og dekoder alle efterfølgende `.wav`-filer i mappen, den ene efter den anden.
+
+|*Slet alle {asterisk}.wav & {asterisk}.c2 filer i mappen Gemt*
+|Sletter efter en bekræftelse alle gemte audiofiler (`.wav` og `.c2`)
+i gemmemappen.
+
+|*Slet ALL.TXT*
+|Sletter efter en bekræftelse `ALL.TXT`, optegnelsen over alt, hvad du
+har modtaget og sendt.
+
+|*Slet wsjtx_log.adi*
+|Sletter efter en bekræftelse din ADIF-logfil.
+
+|*Slet wsjtx.log*
+|Sletter efter en bekræftelse `wsjtx.log`, den enkle QSO-liste, som skrives af
+*Log QSO*. WS bruger den til "worked today"-filtrene og til, at
+*Wait and Pounce* ikke kalder stationer, du allerede har logget.
+
+|*Slet Ignore liste*
+|Tømmer efter en bekræftelse Ignore-listen (som fyldes med knappen *Ignorer*).
+
+|*Slet WSPR Hash tabel*
+|Sletter efter en bekræftelse den tabel, WSPR bruger til at opløse hashede
+sammensatte kaldesignaler.
+
+|*Slet liste med Q65 kaldere*
+|Sletter efter en bekræftelse listen over kaldesignaler, som WS husker
+fra Q65-dekodninger.
+
+|*Reset Cabrillo log ...*
+|Sletter efter en bekræftelse alle QSO'er i den aktuelle contest fra
+contest-loggen. De forbliver i ADIF-loggen, men kan ikke længere eksporteres
+til Cabrillo. Løbenummeret starter forfra ved 1, og scoren i
+*Aktive Stationer* nulstilles.
+
+|*Eksporter Cabrillo log ...*
+|Gemmer contest-loggen som en Cabrillo-fil til indsendelse.
+
+|*Åben Logfil mappe*
+|Åbner WS-datamappen (logfiler, `ALL.TXT` osv.) i din filhåndtering.
+
+|*Indstillinger...*
+|Åbner vinduet *Indstillinger* (også kbd:[F2]). Se kapitlet om indstillinger.
+
+|*Afslut*
+|Lukker WS.
+|===
+
+NOTE: På macOS vises *Indstillinger* (som *Preferences*) og *Afslut* (som *Quit*)
+i programmenuen i stedet for i menuen *Fil*.
+
+[[MENU_CONFIGURATIONS]]
+=== Konfiguration
+
+image::menu-Config.png[Menuen Konfiguration]
+
+En _konfiguration_ er et komplet, navngivet sæt indstillinger. Mange operatører
+har én pr. mode eller pr. stationsopsætning (for eksempel "FT8 HF" og
+"Q65 EME") og skifter med to klik.
+
+Menuen viser alle konfigurationer; den, der er i brug, er markeret. Hver
+konfiguration åbner en lille undermenu (til venstre: en anden konfiguration,
+til højre: den, der er i brug):
+
+image:menu-Config-Other.png[Undermenu for en anden konfiguration] image:menu-Config-Current.png[Undermenu for konfigurationen i brug]
+
+[cols="2,5",options="header"]
+|===
+|Menupunkt |Funktion
+
+|*Skift til*
+|WS genstarter sit hovedvindue med denne konfigurations indstillinger.
+Vises ikke for konfigurationen i brug.
+
+|*Klone*
+|Laver en kopi med navnet "_navn_ - Copy". Omdøb den og tilpas dens indstillinger
+for at oprette en ny konfiguration.
+
+|*Klone Til...*
+|Overskriver alle indstillinger i denne konfiguration med dem fra en anden,
+som du vælger. Beder om bekræftelse. Vises kun, når der er mere end
+én konfiguration.
+
+|*Reset*
+|Sætter efter en bekræftelse denne konfiguration tilbage til standardværdierne.
+
+|*Omdøb ...*
+|Giver konfigurationen et nyt navn.
+
+|*Slet*
+|Sletter efter en bekræftelse konfigurationen. Konfigurationen i brug
+kan ikke slettes, så dette punkt vises ikke for den.
+|===
+
+TIP: For at starte WS direkte i en bestemt konfiguration bruges kommandolinjeparameteren
+`--config NAME` (eller `-c NAME`), for eksempel `ws -c Echo`.
+
+[[MENU_VIEW]]
+=== Vis/Se
+
+image::menu-View.png[Menuen Vis/Se]
+
+[cols="2,5",options="header"]
+|===
+|Menupunkt |Funktion
+
+|*Vandfald*
+|Åbner vinduet Wide Graf med spektrum og vandfald.
+
+|*Astronomi data*
+|Åbner (markeret) eller lukker vinduet Astronomiske Data: Måne- og soldata,
+EME-Dopplerforskydning, Doppler-tracking og sked-frekvens.
+
+|*Meddelse gennemsnit* kbd:[F7]
+|Åbner vinduet Gennemsnitlig Meddelse, som viser de perioder, der bruges til
+gennemsnitsdekodninger (JT4, JT65, Q65).
+
+|*Ekko Graf* kbd:[F8]
+|Åbner vinduet Ekko Graf til Echo-mode.
+
+|*Fast Graf* kbd:[F9]
+|Åbner vinduet Fast Graf til de hurtige modes (MSK144 og hurtig JT9).
+
+|*Contest log*
+|Viser QSO'erne i den aktuelle contest og deres antal.
+
+|*Fox Log*
+|Viser de QSO'er, der er kørt som Fox i FT8 DXpedition-mode.
+
+|*Farve skema*
+|En lille oversigt over de aktuelle farver til fremhævning af dekodninger (CQ, My Call,
+New DXCC, LotW-bruger osv.). Farverne indstilles på fanen *Farver*
+i indstillingerne.
+
+|*Aktive Stationer*
+|Viser nyligt dekodede stationer, for eksempel for at finde de fjerneste
+i en contest med afstandsbaseret score, med *Rate*, *Score* og *Bånd skift*.
+Klik på en linje for at kalde den station. Når WS-MAP kører, vises de
+stationer, WS-MAP dekoder over hele sin bandbredde; et enkelt klik
+overfører QSO-data og sked-frekvens til WS, et dobbeltklik kalder
+stationen.
+
+|*SWL Mode*
+|Skjuler det nederste kontrolpanel, så dekodningsruderne får hele vinduet.
+Nyttigt, når flere instanser kører samtidig. Størrelse og placering af denne
+visning huskes separat.
+
+|*Message Creator*
+|Sammensætter specielle meddelelser, f.eks. en QSY-anmodning til et andet bånd eller mode
+eller en kort standardmeddelelse, som sendes til stationen i *DX kaldesignal*. Når
+den åbnes, slås *Enable _Msg Popup* også til.
+
+|*QSY Monitor*
+|Viser de specielle meddelelser, som andre stationer sender til hinanden og til dig.
+
+|*Enable _Msg Popup*
+|Et popup-vindue vises, når en speciel meddelelse er adresseret til dig, med
+knapper til at svare.
+
+|*Bånd Knapper*
+|Viser en række HF-båndknapper (160 m til 70 cm); det aktuelle bånd er
+grønt. Klik på en knap for at gå til din foretrukne frekvens for det bånd
+og den mode (indstilles med *Pref* på fanen *Frekvenser* i indstillingerne).
+Højreklik på 80 m til 10 m (FT8, FT4, FT2) går til den sædvanlige DXpedition-frekvens,
+på 6 m (FT8) til 50,323 MHz. Se også
+menu:Hjælp[Specielle muse kommandoer].
+
+|*VHF /UHF knapper*
+|Erstatter HF-knapperne med et VHF/UHF/mikrobølge-sæt (8 m til 24 GHz).
+Kun synlig, mens *Bånd Knapper* er markeret.
+
+|*Brug Dark Style*
+|Skifter alle vinduer til et mørkt tema. Det gør mere end et almindeligt mørkt
+stylesheet: WS justerer også nogle interne indstillinger og bruger et stylesheet,
+der er optimeret til det. Skift bagefter fremhævningsfarverne på
+fanen *Farver* i indstillingerne til blødere pastelfarver.
+
+|*Kaldesignaler på vandfald*
+|Undermenu, se nedenfor.
+|===
+
+==== Kaldesignaler på vandfald
+
+image::menu-View-Callsign_overlay.png[Undermenuen Kaldesignaler på vandfald]
+
+WS kan skrive dekodede kaldesignaler direkte på vandfaldet, ved den
+frekvens, hvor hver station blev hørt.
+
+[cols="2,5",options="header"]
+|===
+|Menupunkt |Funktion
+
+|*Vis dekodede kaldesignaler*
+|Slår kaldesignal-etiketterne til eller fra. Når de slås fra, fjernes alle etiketter.
+Åbning af en `.wav`-fil rydder dem også.
+
+|*Behold 1 periode* ... *Behold 5 perioder*
+|Hvor længe en etiket bliver stående, efter at stationen sidst blev dekodet, i
+Tx/Rx-perioder (standard 2). Samme værdi kan indstilles i vinduet Wide Graf.
+
+|*Skriftstørrelse*
+|image:menu-View-Callsign_overlay-Callsign_font.png[Undermenuen Skriftstørrelse] +
+Etiketstørrelse: *Lille (7 pt)*, *Normal (8 pt)*, *Mellem (10 pt)* eller *Stor (12 pt)*.
+
+|*Gennemsigtighed*
+|image:menu-View-Callsign_overlay-Callsign_transparency.png[Undermenuen Gennemsigtighed] +
+Hvor meget vandfaldet skinner igennem etiketterne: *Ingen*, *Lav*, *Medium* eller *Høj*.
+
+|*Position*
+|image:menu-View-Callsign_overlay-Callsign_position.png[Undermenuen Position] +
+*Øverst på vandfald*, eller *Nederst på vandfald (over skillelinje)*, så de
+nyeste signaler øverst forbliver utildækkede.
+|===
+
+[[MENU_SAVE]]
+=== Gem
+
+image::menu-Save.png[Menuen Gem]
+
+[cols="2,5",options="header"]
+|===
+|Menupunkt |Funktion
+
+|*Ingen*
+|Der gemmes ingen audiofiler.
+
+|*Gem dekodet*
+|Gemmer audio (`.wav`) for hver periode med mindst én dekodning i
+gemmemappen.
+
+|*Gem alt*
+|Gemmer audio for hver periode.
+
+|*Fjern gemte filer efter 30 dage*
+|Ved hver programstart sletter WS alle filer i gemmemappen, som er
+ældre end 30 dage.
+
+|*Del ikke ALL.TXT*
+|Alle dekodninger og udsendelser skrives til én `ALL.TXT` (standard).
+
+|*Del ALL.TXT årligt*
+|Én fil pr. år, f.eks. `2026-ALL.TXT`.
+
+|*Del ALL.TXT månedsvis*
+|Én fil pr. måned, f.eks. `2026-09-ALL.TXT`.
+
+|*Disbable skrivning til ALL.TXT*
+|Der skrives intet til `ALL.TXT`.
+
+|*Default event logging*
+|Normal, minimal intern logning. Slår også *Diagnostik mode* fra igen.
+
+|*Diagnostik mode*
+|Indsamler detaljerede data til fejlfinding i WS eller i kommunikationen med
+din radio. Det træder i kraft efter en genstart og slår sig selv fra, når
+WS lukkes næste gang. En mappe `logs` vises på dit skrivebord med
+`ws_syslog.log` og `WS_RigControl.log`; send dem til udviklerne, hvis
+de beder om det. Luk WS kort efter, at fejlen er opstået, da filerne vokser hurtigt.
+
+|*Disable event logging*
+|Slår intern event-logning fra.
+|===
+
+[[MENU_LANGUAGE]]
+=== Sprog
+
+image::menu-Language.png[Menuen Sprog]
+
+Vælger sproget i WS' brugerflade. Engelsk er standard;
+de øvrige punkter er de oversættelser, der følger med WS, hver vist på
+sit eget sprog.
+
+Når du vælger et sprog, spørger WS, om vinduet skal genstartes nu:
+
+[cols="2,5",options="header"]
+|===
+|Knap |Funktion
+
+|*Genstart nu*
+|Genopbygger hovedvinduet på det nye sprog inden for få sekunder, på
+samme måde som ved skift til en anden konfiguration. Selve WS kører videre.
+Mens WS sender eller tuner, genstartes vinduet ikke; det nye
+sprog gælder så fra næste gang WS startes.
+
+|*Senere*
+|Beholder det aktuelle sprog, indtil WS startes igen.
+|===
+
+Valget gælder for alle konfigurationer. Start af WS med
+`--language <code>` (for eksempel `ws --language de`) tilsidesætter det for
+den kørsel.
+
+NOTE: Oversættelserne laves af frivillige og kan være ufuldstændige; tekster,
+der endnu ikke er oversat, vises på engelsk.
+
+[[MENU_HELP]]
+=== Hjælp
+
+image::menu-Help.png[Menuen Hjælp]
+
+De fleste punkter åbner en webside eller en PDF i din browser, så de kræver
+en internetforbindelse.
+
+[cols="2,5",options="header"]
+|===
+|Menupunkt |Funktion
+
+|*Release Notes*
+|WS' release notes (online).
+
+|*WS hjemmeside*
+|Åbner WS' websted (wsjt-x-improved.sourceforge.io).
+
+|*WS downloadside*
+|Åbner download-mappen på SourceForge med alle WS-versioner og
+installationsprogrammer. Se der efter en nyere version.
+
+|*WSJT-X brugervejledning*
+|WSJT-X User Guide (online), opslagsværket for modes og driftsprocedurer.
+
+|*FT8 DXpedition Mode bruger guide*
+|PDF om Fox- og Hound-drift.
+
+|*SuperFox User Guide*
+|PDF om SuperFox-mode.
+
+|*Quick Start Guide for FST4 og FST4W*
+|PDF.
+
+|*Quick Start Guide for Q65*
+|PDF.
+
+|*Quick-Start Guide til WSJT-X 2.5.0 og MAP65 3.0*
+|PDF om bredbåndet EME-drift med to programmer.
+
+|*Quick-Start Guide til WSJT-X 2.7 og QMAP*
+|PDF om brug af den bredbåndede Q65-monitor (nu WS-MAP) sammen med hovedprogrammet.
+
+|*Download eksempler ...*
+|Downloader eksempel-`.wav`-filer, der demonstrerer de forskellige modes; åbn dem
+med menu:Fil[Åbne].
+
+|*Download EME-efemeridediagram*
+|Beder om et år (2025 til 2040) og åbner det års EME-diagram (PDF).
+
+|*Tastetur genveje*
+|Et vindue med en liste over alle tastaturgenveje (også kbd:[F3]).
+
+|*Specielle muse kommandoer*
+|Et vindue med en liste over, hvad klik, højreklik og dobbeltklik gør på
+vandfaldet, dekodningerne, VFO-frekvensen og knapperne (også kbd:[F5]).
+
+|*Liste over Type 1 prefix og suffix*
+|De tilføjede præfikser og suffikser, der virker i standardmeddelelser.
+
+|*Sådan håndterer du fejl i radiostyringen*
+|PDF med hjælp til CAT- og radiostyringsproblemer.
+
+|*Anbefalede Audio indstillinger*
+|Trin-for-trin-procedure til indstilling af sende-audioniveauet, så dit
+signal forbliver rent (ingen ALC-aktivitet, ingen harmoniske).
+
+|*Copyright notits* kbd:[Shift+F1]
+|Licensen og den copyright-meddelelse, der kræves, når du genbruger WS- eller WSJT-X-kode.
+
+|*Om WS*
+|Version og krediteringer.
+|===
+
+NOTE: På macOS vises *Om WS* i programmenuen.

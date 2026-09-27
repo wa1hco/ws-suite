@@ -1,0 +1,77 @@
+[[SETTINGS_AUDIO]]
+=== Audio
+
+image::settings-audio.png["Ajustes, pestaña Audio",align="center"]
+
+==== Tarjeta de Sonido
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Entrada* / *Salida*
+|La tarjeta de sonido conectada a su radio (p. ej. el CODEC de audio USB del equipo),
+configurada a 48000 Hz, 16 bits. El cuadro de la derecha selecciona el canal:
+normalmente *Mono*, o *Izquierdo*, *Derecho* o *Ambos* en instalaciones especiales.
+
+|*Actualizar*
+|Vuelve a cargar la lista de dispositivos, p. ej. tras conectar una radio USB.
+
+|*Utilizar audio TCI (se requiere reiniciar)* / *Rx 0 dB*
+|Solo aparece con un equipo TCI (p. ej. un SDR). El audio llega entonces por la
+conexión TCI en lugar de por una tarjeta de sonido, y los dispositivos muestran *TCI audio*.
+*RX* reduce el nivel del audio recibido (de 0 a -50 dB). Reinicie WS tras
+cambiarlo.
+
+|*Ordenar alfabéticamente*
+|Ordena alfabéticamente los nombres de los dispositivos y lista solo los que pueden
+grabar o reproducir audio PCM. Desmarcado, se usa el orden del sistema.
+
+|*Ocultar subdispositivos de la tarjeta ALSA (solo Linux)*
+|Oculta las entradas `CARD=`, que normalmente no se pueden usar. Solo funciona con
+*Ordenar alfabéticamente* marcado.
+|===
+
+IMPORTANT: Si el dispositivo de salida es también el dispositivo de sonido
+predeterminado de su ordenador, desactive todos los sonidos del sistema. De lo contrario, los transmitirá al aire.
+
+==== Directorio "save"
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Ubicación* / *Seleccionar*
+|Carpeta para los archivos `.wav` que escribe menu:Guardar[]. Por defecto, la carpeta
+`save` del directorio de logs.
+|===
+
+==== Directorio AzEl
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Ubicación* / *Seleccionar*
+|Carpeta para `azel.dat`, que contiene la posición del Sol y la Luna y el Doppler para
+los programas de seguimiento de antena. Se actualiza cada segundo mientras la
+ventana Datos astronómicos está abierta.
+
+|*Habilitar línea adicional en azel.dat*
+|Añade una línea con Dpol, MNR, Dgrd y los anchos de eco, para los programas de
+seguimiento que leen estos valores.
+|===
+
+==== Recuerda ajustes de potencia por banda
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Transmitir*
+|Recuerda el deslizador *Pwr* para cada banda y lo restablece cuando cambia de banda.
+
+|*Tono TX*
+|Mantiene un ajuste *Pwr* separado por banda para *TX Tono*. Cuando termina la sintonía, el
+deslizador vuelve a su potencia de transmisión.
+|===

@@ -1,0 +1,11 @@
+[[SUPPORT]]
+== サポート
+
+サポートを受けるには、
+https://sourceforge.net/projects/wsjt-x-improved/lists/wsjt-x-improved-community/[wsjt-x-improved-community]
+メーリングリストまたは https://groups.io/g/wsjtgroup[WSJT Group] が最適です。
+同じような関心や機材を持つ誰かが、同じ問題をすでに解決している可能性が高いでしょう。
+投稿するには、先にリストに参加する必要があります。
+
+バグ報告や機能の要望は、できれば
+wsjt-x-improved-communityリストにお送りください。

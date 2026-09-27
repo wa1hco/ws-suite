@@ -1,0 +1,162 @@
+[[SETTINGS_ADVANCED]]
+=== Avancé
+
+image::settings-advanced.png["Paramètres, onglet Avancé",align="center"]
+
+==== Paramètres de décodage JT65 VHF/UHF/micro-ondes
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Motifs d'effacement aléatoires*
+|L'intensité des efforts du décodeur JT65 à décision souple (jusqu'à 10^n/2^ motifs).
+Des valeurs plus élevées sont un peu plus sensibles mais plus lentes ; 6 ou 7 conviennent à la plupart des stations.
+
+|*Niveau de décodage agressif*
+|Seuil de la recherche approfondie JT65 (0–10). Des niveaux plus élevés donnent plus de décodages,
+mais aussi plus de faux.
+
+|*Décodage en deux passes*
+|JT65 : une seconde passe de décodage après soustraction des signaux trouvés lors de la
+première passe.
+|===
+
+==== Réglages de l'interface pour écrans haute résolution
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Mise à l'échelle HighDPI (redémarrage requis)*
+|Suit la mise à l'échelle de l'affichage du système d'exploitation, pour que les contrôles soient plus grands
+et bien proportionnés sur les écrans 4K. Activé par défaut.
+
+|*Hauteur augmentée des onglets (redémarrage requis)*
+|Permet aux onglets des messages Tx de la fenêtre principale de s'agrandir en hauteur.
+|===
+
+==== Divers
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Dégrader le S/N du fichier .wav* / *Bande passante du récepteur*
+|Pour les tests de sensibilité hors ligne : ajoute du bruit aux fichiers .wav que vous ouvrez, abaissant
+le S/N du nombre de dB indiqué. Réglez *Bande passante du récepteur* sur la bande passante de bruit
+de votre récepteur pour que la valeur soit exacte.
+
+|*Délai Tx*
+|Temps minimal entre le PTT et le début de l'audio Tx (0 à 0,5 s). FT4 et
+FT2 utilisent toujours 20 ms.
+
+|*Espacement des tons* : *x 2* / *x 4*
+|Deux / quatre fois l'espacement normal des tons, pour les émetteurs LF/MF qui
+divisent la fréquence par 2 ou 4. Une seule des deux options peut être cochée.
+
+|*Spectres de la cascade* : *Lobes secondaires faibles* / *Sensibilité maximale*
+|*Lobes secondaires faibles* (par défaut) utilise une FFT fenêtrée, de sorte que les signaux forts s'étalent
+moins sur la cascade. *Sensibilité maximale* n'utilise pas de fenêtre et affiche un peu mieux les traces
+très faibles.
+|===
+
+IMPORTANT: *Délai Tx* ne remplace pas un séquenceur matériel. Pour protéger
+les relais T/R et les préamplificateurs, utilisez-en un et vérifiez que le séquencement est correct.
+
+==== Activité spéciale
+
+Cochez la case et choisissez une activité ; WS génère alors les formats de
+message correspondants.
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*NA VHF*
+|Concours VHF/UHF/micro-ondes nord-américains et autres où l'échange est un locator
+à 4 caractères.
+
+|*NCCC Sprint*
+|Avec *NA VHF* uniquement : le protocole à messages courts du NCCC Sprint pour FT4 (et FT2).
+
+|*Concours VHF EU*
+|Concours VHF+ européens : report, numéro de série et locator à 6 caractères.
+
+|*WW Digi Contest* / *ARRL Digi Contest*
+|Concours World-Wide Digi / ARRL International Digital Contest.
+
+|*Q65 Pileup*
+|Échange un locator à 4 caractères au lieu d'un report, ce qui donne à l'opérateur DX
+une sensibilité de niveau q3. Particulièrement utile pour les DXpéditions EME sur 6 m.
+
+|*ARRL Field Day* / *Éch. FD*
+|Votre échange : nombre d'émetteurs, classe et section ARRL/RAC, ou "DX"
+(p. ex. `6A SNJ`).
+
+|*Messages FT Roundup* / *Éch. FT RU*
+|FT Roundup et concours similaires. Échange : État US, province canadienne ou
+"DX" (aussi pour l'Alaska et Hawaï).
+
+|*Fox* / *Hound*
+|Mode DXpédition FT8 : *Fox* pour la DXpédition, *Hound* pour l'appeler. Lisez le
+guide utilisateur du mode DXpédition FT8 avant de l'utiliser.
+
+|*Mode SuperFox*
+|Avec *Fox* ou *Hound* : émettre ou recevoir la forme d'onde SuperFox.
+
+|*OTP* / *Clé* / *Intervalle*
+|Avec *Fox* ou *Hound* : vérification du Fox par mot de passe à usage unique (nécessite
+internet). Le Fox saisit sa *Clé* de 16 caractères et signe tous les *Intervalle*
+messages (1 = chaque message).
+
+|*Afficher les messages OTP* / *URL OTP*
+|Pour les Hounds : WS vérifie les codes du Fox à l'*URL OTP* (par défaut
+`https://www.9dx.cc`). *Afficher les messages OTP* affiche les messages de
+vérification dans l'Activité de la bande.
+
+|*CQ avec nom de concours spécifique* / *Nom du concours*
+|Appelle p. ex. `CQ PACC` au lieu de CQ TEST, RU ou WW. Non disponible avec
+*Fox*, *Hound* ou *Q65 Pileup*.
+|===
+
+==== Envoyer les QSO vers Cloudlog ou Wavelog
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Envoyer les QSO vers Cloudlog ou Wavelog*
+|Cochez le titre du groupe pour envoyer chaque QSO consigné à votre serveur Cloudlog ou
+Wavelog.
+
+|*URL de l'API*
+|Adresse de base de votre installation, sans barre oblique finale
+(p. ex. `https://log.example.com`).
+
+|*Clé API* / *ID de station*
+|Une clé API avec droits d'écriture et l'ID du profil de station de Cloudlog/Wavelog.
+
+|*Tester la clé API*
+|Envoie un QSO de test en mode simulation. Le bouton devient vert si la clé
+permet l'écriture, orange si elle est en lecture seule, rouge si elle n'est pas valide.
+|===
+
+==== Envoyer les QSO vers eQSL.cc
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Envoyer les QSO vers eQSL.cc*
+|Cochez le titre du groupe pour envoyer chaque QSO consigné à eQSL.cc.
+
+|*Nom d'utilisateur* / *Mot de passe*
+|Vos identifiants eQSL.cc.
+
+|*QTH*
+|Le surnom de votre QTH, si vous avez plus d'un QTH sur eQSL.cc.
+|===
+
+NOTE: Le mot de passe eQSL.cc et la clé API sont enregistrés en clair dans le
+fichier de paramètres.

@@ -1,0 +1,36 @@
+== Tre varianti grafiche
+
+WS è sempre disponibile in *tre varianti grafiche*. Condividono le stesse funzioni,
+menu e impostazioni; cambia solo la disposizione della finestra principale.
+Ogni variante ha il proprio programma di installazione.
+
+[cols="1,3",options="header"]
+|===
+|Variante |Ideale per
+
+|*WS* (standard)
+|La disposizione familiare di WSJT-X. È il download predefinito.
+
+|*WS AL* (disposizione alternativa)
+|Una finestra più compatta con un riquadro Attività di Banda più grande, così si scorre meno.
+
+|*WS Widescreen*
+|Monitor larghi: i controlli si spostano di lato e i riquadri delle decodifiche occupano tutta l'altezza.
+|===
+
+.WS, disposizione standard
+image::WS.png[WS disposizione standard,align="center"]
+
+.WS AL, disposizione alternativa
+image::WS-AL.png[WS AL disposizione alternativa,align="center"]
+
+.WS Widescreen
+image::WS-widescreen.png[WS disposizione widescreen,align="center"]
+
+TIP: Puoi installare le varianti una accanto all'altra in cartelle separate e
+confrontarle. Usano tutte lo stesso file di impostazioni (`WS.ini`), quindi la tua
+configurazione viene mantenuta. Al primo avvio WS riprende le impostazioni
+di un'installazione esistente di WSJT-X.
+
+Per eseguire più istanze contemporaneamente, avvia ciascuna con il proprio
+`--rig-name=NOME`; ogni istanza mantiene così il proprio file di impostazioni.

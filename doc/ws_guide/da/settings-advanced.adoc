@@ -1,0 +1,162 @@
+[[SETTINGS_ADVANCED]]
+=== Avanceret
+
+image::settings-advanced.png["Indstillinger, fanen Avanceret",align="center"]
+
+==== JT65/VHF/UHF/Microwave parametre
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Tilfældige sletningsmønstre*
+|Hvor hårdt JT65 soft-decision-dekoderen prøver (op til 10^n/2^ mønstre).
+Højere værdier er lidt mere følsomme, men langsommere; 6 eller 7 passer til de fleste stationer.
+
+|*Aggressiv dekoder niveau*
+|Tærskel for JT65 Deep Search (0–10). Højere niveauer giver flere dekodninger,
+men også flere falske.
+
+|*To-pass dekodning*
+|JT65: en ekstra dekodningsrunde, efter at de signaler, der blev fundet i den
+første runde, er trukket fra.
+|===
+
+==== GUI tweaks for high-resolution monitors
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*HighDPI scaling (restart required)*
+|Følger styresystemets skærmskalering, så kontrollerne bliver større
+og har de rette proportioner på 4K-skærme. Slået til som standard.
+
+|*Øget højde på fanebladswidgeten (genstart kræves)*
+|Lader Tx-meddelelsesfanerne i hovedvinduet blive højere.
+|===
+
+==== Diverse
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Degrade S/N .wav.fil* / *Modtager båndbredde*
+|Til offline følsomhedstest: tilføjer støj til .wav-filer, du åbner, så
+S/N sænkes med det angivne antal dB. Sæt *Modtager båndbredde* til din modtagers
+støjbåndbredde, så værdien bliver korrekt.
+
+|*Tx delay*
+|Mindste tid mellem PTT og start på Tx-audio (0 til 0,5 s). FT4 og
+FT2 bruger altid 20 ms.
+
+|*Tone afstand*: *x2* / *x4*
+|To / fire gange den normale toneafstand, til LF/MF-sendere der
+dividerer frekvensen med 2 eller 4. Kun én af dem kan være markeret.
+
+|*Vandfald Spektrum*: *Lave sidelobes* / *Mest følsom*
+|*Lave sidelobes* (standard) bruger en FFT med vinduesfunktion, så stærke
+signaler breder sig mindre ud over vandfaldet. *Mest følsom* bruger intet
+vindue og viser meget svage spor lidt bedre.
+|===
+
+IMPORTANT: *Tx delay* er ingen erstatning for en hardware-sequencer. Brug en
+sådan for at beskytte T/R-relæer og forforstærkere, og test at sekvensen er korrekt.
+
+==== Special operating aktivitet
+
+Markér feltet og vælg én aktivitet; WS genererer så de tilsvarende
+meddelelsesformater.
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*NA VHF*
+|Nordamerikanske VHF/UHF/mikrobølge-contests og andre, hvor en 4-tegns
+grid er udvekslingen.
+
+|*NCCC Sprint*
+|Kun med *NA VHF*: NCCC Sprints kortmeddelelsesprotokol for FT4 (og FT2).
+
+|*EU VHF Contest*
+|Europæiske VHF+ contests: rapport, løbenummer og 6-tegns lokator.
+
+|*WW Digi Contest* / *ARRL Digi Contest*
+|World-Wide Digi contest / ARRL International Digital Contest.
+
+|*Q65 Pileup*
+|Udveksler en 4-tegns lokator i stedet for en rapport, hvilket giver
+DX-operatøren følsomhed på q3-niveau. Især nyttigt til 6 m EME-DXpeditioner.
+
+|*ARRL Field Day* / *FD Exch*
+|Din udveksling: antal sendere, klasse og ARRL/RAC-sektion, eller "DX"
+(f.eks. `6A SNJ`).
+
+|*FT Roundup messages* / *FT RU Exch*
+|FT Roundup og lignende contests. Udveksling: US-stat, canadisk provins eller
+"DX" (også for Alaska og Hawaii).
+
+|*Fox* / *Hound*
+|FT8 DXpedition Mode: *Fox* for DXpeditionen, *Hound* for at kalde den. Læs
+FT8 DXpedition Mode User Guide, før du bruger den.
+
+|*SuperFox mode*
+|Med *Fox* eller *Hound*: send eller modtag SuperFox-bølgeformen.
+
+|*OTP* / *Key* / *Interval*
+|Med *Fox* eller *Hound*: engangskodeverifikation af Fox (kræver
+internet). Fox indtaster sin 16-tegns *Key* og signerer hver *Interval*
+meddelelser (1 = hver meddelelse).
+
+|*Vis OTP Msg* / *OTP URL*
+|For Hounds: WS kontrollerer Fox'ens koder på *OTP URL* (standard
+`https://www.9dx.cc`). *Vis OTP Msg* viser verifikationsmeddelelserne
+i Bånd Aktivitet.
+
+|*CQ med inviduel contest navn* / *Contest navn*
+|Kalder f.eks. `CQ PACC` i stedet for CQ TEST, RU eller WW. Ikke tilgængelig med
+*Fox*, *Hound* eller *Q65 Pileup*.
+|===
+
+==== Upload QSO'er til Cloudlog eller Wavelog
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Upload QSO'er til Cloudlog eller Wavelog*
+|Markér gruppetitlen for at sende hver logget QSO til din Cloudlog- eller
+Wavelog-server.
+
+|*API URL*
+|Grundadressen på din installation, uden afsluttende skråstreg
+(f.eks. `https://log.example.com`).
+
+|*API Key* / *Station ID*
+|En API-nøgle med skriveadgang og stationsprofil-ID'et fra Cloudlog/Wavelog.
+
+|*Test API Key*
+|Sender en test-QSO i dry-run-tilstand. Knappen bliver grøn, hvis nøglen
+har skriveadgang, orange hvis den kun har læseadgang, og rød hvis den er ugyldig.
+|===
+
+==== Upload QSO'er til eQSL.cc
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Upload QSO'er til eQSL.cc*
+|Markér gruppetitlen for at uploade hver logget QSO til eQSL.cc.
+
+|*Brugernavn* / *Adgangskode*
+|Dit eQSL.cc-login.
+
+|*QTH*
+|Dit QTH-kaldenavn, hvis du har mere end ét QTH på eQSL.cc.
+|===
+
+NOTE: eQSL.cc-adgangskoden og API-nøglen gemmes ukrypteret i
+indstillingsfilen.

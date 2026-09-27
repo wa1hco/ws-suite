@@ -1,0 +1,103 @@
+[[SETTINGS_FREQUENCIES]]
+=== Frekvenser
+
+image::settings-frequencies.png["Indstillinger, fanen Frekvenser",align="center"]
+
+==== Frekvens Kalibrering
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Stigning* / *Intercept*
+|Korrigerer en kendt skalafejl på din radio: +
+`radiofrekvens = Intercept + (1 + Stigning / 1 000 000) × f` +
+med *Intercept* i Hz og *Stigning* i ppm. Frekvenser, der sendes til radioen og
+læses tilbage fra den, korrigeres, så WS viser den sande frekvens. Lad
+begge stå på 0, hvis din radio er nøjagtig.
+|===
+
+TIP: Hvordan disse værdier måles, er beskrevet under _Frequency Calibration_
+i WSJT-X User Guide (FreqCal-mode).
+
+==== Arbejds Frekvenser
+
+Frekvenserne, der tilbydes i båndvælgeren i hovedvinduet. WS viser
+kun posterne for din *IARU Region* (fanen *Generel*) og den aktuelle mode.
+Dobbeltklik på en celle for at redigere den.
+
+[cols="2,5",options="header"]
+|===
+|Kolonne |Funktion
+
+|*IARU Region* / *Mode*
+|Hvor og for hvilken mode posten tilbydes. Poster med *Alle* tilbydes
+overalt / i alle modes.
+
+|*Frekvens*
+|Skalafrekvensen i MHz.
+
+|*Pref*
+|Den foretrukne post for sit bånd og sin mode. WS bruger den, når du klikker på en båndknap
+(menu:Vis/Se[]), eller når programmet selv skifter bånd (båndhopping). Kun
+én post pr. bånd og mode kan være foretrukket.
+
+|*Beskrivelse*
+|Din egen betegnelse for posten, vist i båndvælgeren.
+
+|*Start Dato/Tid* / *Slutdato/tid*
+|Posten tilbydes kun i denne periode, f.eks. til en DXpedition. Tom = altid.
+|===
+
+Højreklik på tabellen for disse handlinger:
+
+[cols="2,5",options="header"]
+|===
+|Menupunkt |Funktion
+
+|*Slet*
+|Fjerner de valgte poster.
+
+|*indsæt ...*
+|Tilføjer en post: *IARU Region*, *Mode*, *Frekvens (Mhz)*, *Foretrukket for
+bånd/mode*, *Beskrivelse* og et valgfrit datointerval.
+
+|*Hent ...*
+|Erstatter listen med en fra en `.qrg`- eller `.qrg.json`-fil (WS spørger først).
+
+|*Gem som ...*
+|Gemmer listen i en fil; et navn, der ender på `.qrg.json`, giver en JSON-fil.
+Hvis der er valgt poster, spørger WS, om kun disse skal gemmes.
+
+|*Indflette ...*
+|Tilføjer posterne fra en `.qrg`- eller `.qrg.json`-fil til listen.
+
+|*Reset*
+|Gendanner standardlisten (WS spørger først).
+|===
+
+==== Stations Information
+
+Oplysninger om din station pr. bånd. Dobbeltklik på en celle for at redigere den.
+
+[cols="2,5",options="header"]
+|===
+|Kolonne |Funktion
+
+|*Bånd*
+|Det bånd, rækken gælder for.
+
+|*Offset*
+|Lægges til den viste frekvens for at få radiofrekvensen, til
+transvertere. Eksempel: 144 MHz med en MF på 28 MHz kræver -116 MHz. Standard 0.
+
+|*Antenne Beskrivelse*
+|Sendes til PSK Reporter, mens du er på dette bånd.
+|===
+
+Højreklik på tabellen for *Slet* (fjerner de valgte rækker) og
+*indsæt ...* (tilføjer en række: *Bånd*, *Offset (Mhz)*, *Antenne*).
+
+TIP: For hurtigt at oprette rækker kan du vælge poster i *Arbejds Frekvenser* (kbd:[Ctrl]+kbd:[A]
+for alle) og trække dem over på *Stations Information*. Udfyld derefter offsets og
+antenner.

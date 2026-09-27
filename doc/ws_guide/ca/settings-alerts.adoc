@@ -1,0 +1,83 @@
+[[SETTINGS_ALERTS]]
+=== Alertes
+
+image::settings-alerts.png["Configuració, pestanya Alertes",align="center"]
+
+WS pot anunciar determinades descodificacions amb alertes parlades breus ("New DXCC",
+"My Call", etc.). Les alertes formen part de cada instal·lació de WS i
+sempre es reprodueixen al dispositiu d'àudio per defecte de l'ordinador, normalment el
+seu altaveu.
+
+WARNING: Les alertes d'àudio necessiten un segon dispositiu de so. L'equip *no* ha d'estar
+connectat a través del dispositiu d'àudio per defecte, o les alertes es transmetran.
+Un equip amb targeta de so USB integrada (IC-7300, FT-991 i similars) compleix
+aquest requisit. Prova-ho abans d'activar-les (vegeu *Prova* més avall).
+
+==== Alertes d'àudio
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Veus*
+|Selecciona la veu de les alertes. Una instal·lació estàndard té una veu, *predeterminada*.
+
+|*Prova*
+|Reprodueix un anunci de prova al dispositiu d'àudio per defecte, perquè puguis comprovar
+per on surten les alertes.
+
+|*Nou DXCC* / *Nou DXCC en banda*
+|Una entitat DXCC que encara no has treballat / no has treballat a la banda actual.
+
+|*Nou Continent* / *Nou Continent en banda*
+|Un continent encara no treballat / no treballat en aquesta banda.
+
+|*Nova Zona CQ* / *Nova Zona CQ en banda*
+|Una zona CQ encara no treballada / no treballada en aquesta banda.
+
+|*Nova Zona ITU* / *Nova Zona ITU en banda*
+|Una zona ITU encara no treballada / no treballada en aquesta banda.
+
+|*Nou estat dels EUA* / *Nou estat dels EUA en banda*
+|Un dels 50 estats dels EUA encara no treballat / no treballat en aquesta banda.
+L'estat s'obté de l'indicatiu, o del locator si aquest apunta a un sol estat.
+
+|*Nou Locator* / *Nou Locator en banda*
+|Un locator encara no treballat / no treballat en aquesta banda. Només compten els missatges amb locator.
+
+|*El meu indicatiu*
+|Un missatge adreçat a tu.
+
+|*Indicatiu DX o Locator DX al missatge*
+|L'indicatiu de la casella *Indicatiu DX*, o el locator de la casella *Locator DX*, apareix en una descodificació.
+
+|*CQ al missatge*
+|Qualsevol crida CQ.
+
+|*Indicatius, locators, prefixos i crides direccionals desitjats*
+|Una descodificació coincideix amb les teves entrades de *Ressalta en taronja* o *Ressalta en blau* de
+la pestanya *Colors* (només mentre aquest ressaltat està activat), o amb una entrada de la llista
+blanca mentre menu:Filtres[Ressalta les entrades de la llista blanca] està marcat.
+
+|*Missatge rebut*
+|Arriba un missatge QSY per al teu indicatiu o per a l'indicatiu DX. Només els missatges QSY
+activen aquesta alerta, de manera que és poc freqüent.
+
+|*Activa les alertes d'àudio*
+|Interruptor general: no sona cap alerta mentre està desactivat. El botó es posa verd
+quan està activat. A Windows, WS també reprodueix llavors un so de prova breu en iniciar-se.
+|===
+
+Les categories per sobre de la línia necessiten *Mostra DXCC, Locator i si s'ha treballat
+abans* marcat a la pestanya *General*.
+
+Les alertes funcionen independentment del ressaltat de la pestanya *Colors*. Però
+només veus quina descodificació ha activat una alerta si el ressaltat corresponent
+hi està activat, així que activa les mateixes categories a totes dues pestanyes.
+
+NOTE: Les estacions de la llista d'ignorats (afegides amb el botó *Ignora* sota
+*Locator DX*) no activen cap alerta excepte *El meu indicatiu*, tret que la casella *BP* (bypass)
+estigui marcada. Buida la llista amb menu:Arxiu[Esborra la llista d'ignorats].
+
+TIP: Amb el salt de banda desactivat, fes clic dret al botó *Salt de banda* de la
+finestra principal per fer una prova més llarga del dispositiu d'àudio per defecte.

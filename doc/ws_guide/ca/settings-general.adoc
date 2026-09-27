@@ -1,0 +1,187 @@
+[[SETTINGS_GENERAL]]
+=== General
+
+image::settings-general.png["Configuració, pestanya General",align="center"]
+
+==== Detalls de l'estació
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*El meu indicatiu*
+|El teu indicatiu.
+
+|*El meu Locator*
+|El teu locator Maidenhead, preferiblement de 6 caràcters (p. ex. CM87ux).
+Les distàncies i els azimuts es calculen a partir d'aquest.
+
+|*Locator Automàtic*
+|Permet que programes externs (p. ex. un auxiliar de GPS) canviïn *El meu Locator*.
+
+|*Regió IARU*
+|Regió 1: Europa, Àfrica, Orient Mitjà, nord d'Àsia. Regió 2: les
+Amèriques. Regió 3: sud d'Àsia i el Pacífic. Selecciona les freqüències
+per defecte corresponents.
+
+|*Generació de missatges per a indicatius de tipus 2*
+|Només per a indicatius amb un prefix o sufix addicional que no és a la
+llista curta (menu:Ajuda[Llista de prefixos i sufixos de tipus 1]). Tria quin
+missatge generat (Tx1, Tx3 o Tx6) porta el teu indicatiu complet.
+|===
+
+==== Pantalla
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Inicia un nou període de descodificacions a la part superior*
+|Cada període comença a la part superior d'Activitat a la banda i no es desplaça
+fora de la vista, de manera que pots fer doble clic mentre la descodificació encara està en marxa.
+
+|*Línia en blanc entre els períodes de descodificació*
+|Línia separadora entre períodes a Activitat a la banda.
+
+|*Mostra una línia en blanc amb marca de temps*
+|La línia separadora també mostra l'hora UTC del període.
+
+|*Distància de visualització en milles*
+|Milles en lloc de quilòmetres.
+
+|*Ressalta l'Indicatiu DX* / *Ressalta el Locator DX*
+|Marca als missatges l'indicatiu i el locator del teu corresponsal actual.
+
+|*Missatges de TX a la finestra de la freqüència de RX*
+|Els teus propis missatges transmesos també apareixen al panell Freqüència de RX.
+
+|*Ressalta RRR/RR73/73 als missatges adreçats a nosaltres*
+|Fa que el final d'un QSO es vegi fàcilment.
+
+|*Mostra DXCC, Locator i si s'ha treballat abans*
+|Afegeix a les descodificacions el país i les marques de nou DXCC / nou locator / treballat abans.
+Necessari per al ressaltat de la pestanya *Colors*.
+
+|*Mostra el prefix principal en lloc del nom del país*
+|Més curt: "DL" en lloc de "Fed. Rep. of Germany".
+
+|*Mostra DXCC per a tots els missatges*
+|Afegeix el país a cada missatge, no només a les crides CQ.
+
+|*Font...* / *Tipus de font a l'àrea de descodificat ...*
+|Font de tot el programa / dels panells Activitat a la banda i Freqüència de RX.
+|===
+
+==== Comportament
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Monitor apagat a l'inici*
+|WS s'inicia sense descodificar fins que fas clic a *Monitor*.
+
+|*El monitor torna a la darrera freqüència utilitzada*
+|En activar *Monitor* es torna a l'última freqüència monitorada.
+Si no està marcat, es manté la freqüència actual de l'equip.
+
+|*Fes doble clic sobre els conjunts d'indicatius de TX habilitat*
+|Fer doble clic sobre una descodificació comença a transmetre de seguida.
+
+|*Desactiva TX després d’enviar 73*
+|*Activar TX* es desactiva després d'un 73 o d'un missatge de text lliure.
+
+|*Trucar a CQ obliga a trucar primer*
+|Quan crides CQ, es marca *Contesta al primer CQ* perquè WS respongui automàticament a la primera estació que et crida.
+
+|*Enllaços alternatius F1-F6*
+|Canvia les dreceres kbd:[F1]–kbd:[F6] dels missatges de TX a l'assignació
+de concurs (vegeu menu:Ajuda[Dreceres de teclat]).
+
+|*Activa les funcions de VHF i submode*
+|Mostra els controls de VHF/UHF/microones (submodes, mitjana, Sh, auto-QSY,
+etc.). Desactiva-ho en HF: desactiva la multidescodificació JT65 de banda ampla.
+
+|*Permet canviar la freqüència de TX durant la transmissió*
+|Desmarca-ho si l'equip no pot processar ordres CAT durant la TX (sovint cal amb split).
+
+|*Descodificar després del retard d'EME*
+|Comença a descodificar més tard en els modes d'1 minut, de manera que s'inclouen els senyals EME
+retardats uns 2,5 s.
+
+|*Descodificació única*
+|Per a JT4, JT65, Q65 i FST4: descodifica només prop de la freqüència de RX
+(dins de *F Tol*) en lloc de buscar a tota la banda passant. En JT4/JT65/Q65
+els dos panells passen a ser *Descodificacions d'un sol període* i *Mitjans descodificats*.
+
+|*Seguretat de sintonització*
+|Atura *Sintonitzar* després del nombre de segons fixat.
+
+|*MSK144/Q65: TX fins rebre 73*
+|Continua transmetent fins que arriba el 73 de l'altra estació, com a màxim 10
+intents. Útil per a QSO difícils en VHF/UHF/SHF.
+
+|*Obre/tanca automàticament la finestra de dades astronòmiques*
+|Obre la finestra de dades astronòmiques quan canvies a Q65 o JT65 amb
+*Descodificar després del retard d'EME* activat, i la tanca quan ja no cal.
+
+|*kHz sense k (cal reiniciar)*
+|A la casella de freqüència, "164" seguit de kbd:[Enter] vol dir +164 kHz dins
+del MHz actual (438,065 -> 438,164 MHz). Pràctic per saltar entre segments
+EME des del teclat numèric.
+
+|*Barra de progrés en vermell en transmetre*
+|Fa que la TX es vegi d'un cop d'ull.
+
+|*CW ID després del 73* / *Interval d'ID*
+|Envia una identificació en CW després de cada 73 o text lliure / cada N minuts (0 = desactivat),
+sempre a la part silenciosa del període.
+
+|*Seguretat de TX*
+|Atura les transmissions desateses després del nombre de minuts fixat.
+|===
+
+==== Funcions addicionals
+
+Aquestes opcions provenen de WSJT-X Improved i no són a WSJT-X.
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Mostra els estats dels EUA*
+|Associa els locators amb els estats dels EUA i les províncies canadenques (útil sense
+JTAlert). Alguns locators abasten diversos estats; llavors es llisten tots.
+
+|*Activa les funcions Wait*
+|Activa *Wait and Reply*, *Wait and Call* i *Wait and Pounce* (per defecte).
+Vegeu <<WAIT_FEATURES>>.
+
+|*Esborra l'Indicatiu DX després del QSO* / *Esborra el Locator DX després del QSO*
+|Buida la casella Indicatiu DX / Locator DX quan es registra el QSO.
+
+|*Mostra la distància als missatges amb locator* / *Mostra l'azimut als missatges amb locator*
+|Afegeix la distància i l'azimut per ortodròmia a cada missatge amb un locator vàlid.
+
+|*Esborra les descodificacions després de canviar de banda* / *Esborra les descodificacions després de canviar de mode*
+|Esborra Activitat a la banda quan canvies de banda / de mode.
+
+|*Comportament alternatiu del botó Esborrar*
+|*Esborrar* funciona com a JTDX: un clic esquerre esborra Activitat a la banda,
+un clic dret esborra Freqüència de RX, un doble clic esborra tots dos.
+
+|*Posa la freqüència de RX a la de TX després del QSO*
+|Després de registrar, RX es mou a la teva freqüència de TX.
+
+|*Salt de banda cada minut*
+|Amb el salt de banda activat, WS normalment canvia de banda cada dos minuts.
+Marca-ho per canviar de banda cada minut.
+
+|*Alinea DXCC/distància/azimut* i les dues caselles numèriques
+|Alinea en columnes el país, la distància i l'azimut. La primera casella fixa
+els espais entre el missatge i el país (també sense *Align*), la
+segona els espais entre el país i la distància/azimut.
+|===
+
+NOTE: Si fas servir un indicatiu amb un prefix o sufix addicional, o vols
+treballar una estació així, llegeix _Nonstandard Callsigns_ a la Guia d'usuari de WSJT-X.

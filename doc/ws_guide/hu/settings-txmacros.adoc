@@ -1,0 +1,37 @@
+[[SETTINGS_TXMACROS]]
+=== Tx Makrók
+
+image::settings-tx_macros.png["Beállítások, Tx Makrók fül",align="center"]
+
+A Tx makrók rövid, gyakran küldött szabad szöveges üzenetek, például
+`TNX 73 GL`. A főablakban a *Tx5* üzenet legördülő listájában jelennek meg.
+
+==== Makrólista
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|Szövegmező és *Hozzáad*
+|Írjon be egy üzenetet, és a *Hozzáad* gombbal fűzze a listához. Csak az
+üzenetekben megengedett karakterek írhatók be; a szöveg nagybetűssé
+alakul.
+
+|*Töröl*
+|Törli a kijelölt üzeneteket. A jobb kattintás → *Törlés* ugyanezt teszi,
+vagy ha nincs kijelölés, a kurzor alatti üzenetet törli.
+
+|Lista
+|A makrók a *Tx5* legördülő lista sorrendjében. Az átrendezéshez húzza
+őket a helyükre. Egy üzenet szerkesztéséhez kattintson rá duplán.
+Kattintással, kbd:[Shift]+kattintással és kbd:[Ctrl]+kattintással több
+üzenetet is kijelölhet.
+|===
+
+NOTE: Egy szabad szöveges üzenet legfeljebb 13 karakter lehet, a
+szóközöket is beleértve.
+
+TIP: A főablakban a *Tx5* mezőbe is beírhat egy üzenetet, majd
+kbd:[Enter]-t nyomva az felkerül a listára. FT8, FT4, FST4, MSK144 és Q65
+módban a `$DX` (vagy `$DXCALL`) kezdetű üzenetben ez a szó küldéskor a
+*DX Hívójel* mezőben lévő alap hívójelre cserélődik.

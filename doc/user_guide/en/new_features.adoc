@@ -1,0 +1,278 @@
+[[NEW_FEATURES]]
+//=== New in Version {VERSION_MAJOR}.{VERSION_MINOR}
+  
+=== New in Version 3.2
+
+The new 3.2 series of WSJT-X Improved introduces interesting innovations for EME.
+Furthermore, there are many small but useful improvements and fixes for everyone.
+
+Changes compared to version 3.1.0 260522:
+
+*1. Optimized color scheme for the callsign overlays on the waterfall for the programs
+   WSJT-X, QMAP and MAP65*
+
+ - Overlays for *CQ calls* (or 73/RR73 when this option is enabled) are now *displayed with green background color*.
+
+ - The callsign from the *DX Call* box has white text on *red background* (both like in the Band Activity window).
+
+ - *It is now possible to click on a callsign overlay*. Double-clicking starts a QSO with that station (in WSJT-X only when "Hold Tx Freq" is checked).
+
+
+*2. Extended liveCQ protocol*
+
+ - This feature was developed *specifically for Lance, W7GJ's upcoming 6m EME
+     DXpedition (H44GJ)*, which typically uses Q65 Pileup mode.
+
+ - It allows spotting of every received Q65 message to a special server set up by
+     N6NU, where the data is then analyzed so that the DXpedition station can see which
+     stations are currently able to receive its signal. This information is displayed
+     in the Active Stations window in near real time, which is a big help for 6m EME.
+
+ - We've also added the option to spot to the new *https://livecq.n6nu.org* URL in QMAP and
+     MAP65, and users can now spot to more than one URL.
+
+
+*3. QMAP v1.0*
+
+ - *New Click-to-Work feature*: You can now click on a callsign overlay or individual
+     message lines, or even on a callsign in the band map, and the parameters callsign,
+     frequency, odd/even, and Q65 submode are then passed to WSJT-X. Double-click to
+     start a QSO. WSJT-X must be in Q65 mode, and the VHF features must be enabled.
+
+ - *QMAP can now be run in multiple instances simultaneously*. Simply start the program
+     with the parameter "--rig-name=NAME" (just like with WSJT-X). WSJT-X and QMAP
+     instances can be paired with each other individually.
+
+ - An optional *Band Map window* is now available also for QMAP. You can open it from
+     the View menu.
+
+ - *QMAP now remembers which optional windows* (Astro Data, Band Map) *were open* and
+     restores (only) those when the program is next launched.
+
+ - *Note: User-specific settings and data for QMAP are now stored in the AppData/Local/QMAP directory*. This has many advantages and works with multiple instances,
+     as well as on Linux and macOS. Upon first launch, existing data from the old
+     WSJT/wsjtx/bin directory is automatically imported. A new entry in the "File"
+     menu allows you to open the new QMAP data directory with a single click.
+
+
+*4. MAP65 v4.0*
+
+ - *MAP65 v4.0 introduces a new bidirectional connection with WSJT-X* that, as an
+     alternative to the previous method, allows the QSO to be conducted via WSJT-X,
+     with MAP65 serving solely as a wideband receiver (with xPol Rx capability). This
+     has several advantages (CAT control, AutoSeq, logbook, and more). Every message
+     sent to the DX callsign selected either in WSJT-X of by clicking on a callsign
+     overlay or message line in MAP65 is automatically relayed from MAP65 to WSJT-X.
+     See the available options in the menus "View" and "WSJT-X".
+
+ - *Simultaneous reception in MAP65 and WSJT-X possible*: If WSJT-X is also connected
+     to the appropriate narrowband audio signal at the same time as MAP65, both receivers
+     can attempt to decode the signal. This opens up additional possibilities for EME
+     operations, as the narrowband decoders in WSJT-X are very sensitive.
+
+ - *Full Click-to-Work functionality has been implemented in MAP65 as well*: Like with
+     QMAP, you can now click on a callsign overlay or individual message lines, or on
+     a callsign in the band map. The parameters callsign, grid, odd/even, and Tx mode
+     are then set, or transferred to WSJT-X. You can start a QSO directly by double-
+     clicking on a message or callsign, if that option is enabled. WSJT-X must be in
+     JT65 or Q65 mode, and the VHF features must be enabled.
+
+ - *MAP65 v4.0 now also supports 192 kHz bandwidth* of the IQ stream. Of course, it
+     remains *backward-compatible to 96 and 95.238 kHz*.
+
+ - The *decoding depth for Q65* can now be set.
+
+ - A new technology allows *re-decoding of signals from past TR periods*. This feature
+     is still experimental.
+
+ - *MAP65 now remembers which optional windows* (Astro Data, Band Map, Messages) were
+     open and restores (only) those when the program is next launched.
+
+ - *Note: User-specific settings and data for MAP65 are now stored in the AppData/Local/MAP65 directory*. This has many advantages and works also on Linux and macOS. Upon
+     first launch, existing data from the old WSJT/wsjtx/bin directory is automatically
+    imported. A new entry in the "File" menu allows you to open the new MAP65 data
+     directory with a single click.
+
+
+*5. Various improvements in WSJT-X*
+
+ - *The path and name of the log file "wsjtx_log.adi" can now be selected*. This allows
+     putting this file on a network drive, or to use separate logbook files for each user.
+     See the new controls in the Logging group box at Settings | Reporting.
+
+ - *Enhanced functionality for "Highlight orange" and "Highlight blue"*: Wildcards
+     and exclusions are now allowed for prefixes. Remember: Callsigns and grids must
+     be separated by a comma, and there must be a comma after each callsign. Prefixes
+     require a semicolon before and after them. Wildcards are only allowed after single-
+     digit prefixes. To exclude 2-or 3-digit prefixes, place an exclamation mark before
+     and after them.
+
+ - *Fixed an issue regarding Cloudlog* when uploading QSOs from hotels or similar location.
+
+ - *In addition to PWR and SWR, ALC is now also displayed* with supported rig models if
+     "Display PWR, SWR and ALC" is selected in the "Rig Data" group box at Settings | Radio.
+     You can optionally highlight high ALC values with yellow or red background color.
+
+ - New option: *Right-click on the CQ or CQ/73 checkbox* to show only messages to or from
+     the callsign you have in your DX Call box.
+
+ - *Accidental clicks on the band buttons during transmission are now prevented*, unless
+     the "Allow Tx frequency changes while transmitting" option is enabled.
+
+ - The *<state> tag* is no longer written when in any contest mode, as this had been
+     causing *logging issues*.
+
+ - *Warnings* like "Should you switch to ARRL Field Day mode?" *are now only shown once
+     per session*.
+
+ - Country information and highlighting colors are now also displayed for messages
+     containing "*RRR*".
+
+ - Fixed an issue with *TCI audio* when in *WSPR mode*.
+
+ - Repaired the "*MSK144/Q65: Tx until 73 is received*" feature.
+
+ - *Stability improvements for MSK144*.
+
+ - A *new optional TX-Inhibit feature* helps to avoid PTT conflicts when using WSJT-X
+     and SSB/CW on the same band. Useful for club or contest stations.
+
+
+*6. Better compatibility of the Debian packages for Linux.*
+
+  
+=== New in Version 3.1
+
+The major innovations of WSJT-X Improved 3.1 include a new FT2 mode, support of QSOs
+between two stations with non-standard or compound callsigns, display of U.S. states for
+callsigns from the U.S., and an option to display decoded callsigns on the waterfall.
+
+TIP: We recommend that you always make backup copies of your *WSJT-X.ini* and *wsjtx_log.adi* files before installing program releases that involve major changes! 
+
+New features compared to WSJT-X Improved 3.0.0 251212:
+
+*1. Introduction of a new FT2 mode*
+
+ - FT2 is a super-fast 77-bit mode with TR periods of 3.75 seconds (= 1/2 of FT4).
+
+ - The history of FT2 goes back to experiments by Joe, Steve, and Bill (sk) which later became FT4. IU8LMC recently introduced an FT2 mode with modified parameters. The FT2 mode introduced here is compatible with it, but is fully open-source. No code from IU8LMC was used.
+
+ - Note that FT2 is still experimental. I haven't decided yet whether we'll keep it. Let's see if FT2 proves itself alongside FT4, or if it's just a short-lived hype. 
+
+
+*2. Support of QSOs between two stations with non-standard or compound callsigns for the
+   77-bit modes (FT8, FT4, FT2, MSK144, Q65, FST4)* 
+
+The following QSO types are now possible:
+
+ - two non-standard callsigns (e.g. DG123YCB with W250USA) 
+
+ - two compound callsigns (e.g. DG2YCB/QRP with W1XYZ/YOTA, or HB9/DG2YCB with KP5/W1XY)
+
+ - non-standard callsign and compound callsign (e.g. DG123YCB with W1XYZ/QRP)
+
+ - non-standard callsign and /P callsign (e.g. DG123YCB with W1XYZ/P)
+
+ - two standard callsigns with /P, /M, /R or whatever (e.g. DG2YCB/MM with W1XYZ/P)
+
+Important:
+
+   - Both stations must use WSJT-X Improved 3.1 (or compatible software) for such QSOs.
+     I noticed that some beta builds of JTDX and MSHV seem to be compatible with these
+     message formats, however, the standard WSJT-X would get stuck in an endless autoseq
+     loop.
+
+   - All previous message types are still fully supported, making WSJT-X Improved 3.1 
+     fully backward compatible.
+
+   - These new QSO types cannot be used in special operating activities (contest modes), as the available
+     77 bits are not sufficient for this purpose.
+
+
+*3. Better support of Worked All States or similar awards*
+
+   - In addition to grid mapping, a new method has been added to map U.S. callsigns to U.S. states. It uses a database containing FCC data.
+
+   - This allowed adding two new highlighting and alert categories: "New US States" and "New US States on Band".
+
+   - At startup, the program reads any <STATE:2> tags in the wsjtx_log.adi file, and such tags are now written when logging a QSO with a station from U.S.A. Missing tags are automatically retrieved from the database.
+
+   - Users can easily update the callsign_states database using the new function at Settings | Colors.
+
+
+*4. Slightly improved decoding performance*
+
+   - Added a7 decoding technology, sub-sample DT refinement, and a 4th pass after a7 for
+     both FT4 and FT2.
+
+   - Optimized baseline calculation, effective for FT4, FT2 and FT8 (STD). The filter edges
+     are now automatically optimized according to the actual passband of your transceiver.
+     This results in better decoding performance and fewer false decodes when the Wide
+     Graph limits are poorly set.
+
+
+*5. Added an option to display decoded callsigns on the waterfall for the programs WSJT-X, QMAP and MAP65*
+
+   - The callsign overlay feature can be enabled or disabled in the View menu, or via
+     the new controls in the Wide Graph window (bottom right).
+
+   - You can adjust font size, level of transparency and position for the overlays via the
+     controls in the View menu.
+
+
+*6. Several improvements to QMAP*
+
+   - QMAP now also supports bandwidths of 128, 192, and 256 kHz. With 256KHz spectrum we
+     can cover almost the whole subband for EME operation! However, it still works very
+     well with 96-kHz streams. 
+
+   - The new 256-kHz wide QMAP works seamlessly with the N6NU SDR Bridges, providing a modern solution
+     for connecting various SDRs to WSJT-X and QMAP without the need for Linrad or
+     SDR-Console. For those who don't know yet: N6NU's Bridges generate both a
+     narrowband audio stream for connection to WSJT-X (via virtual audio cable VAC),
+     and a wideband I/Q network stream for QMAP or MAP65. In addition, they retrieve the
+     frequency set in WSJT-X via UDP so that the SDR as well as QMAP are synchronized.
+
+
+*7. New technology for the MAP65 program* 
+
+ - The map65.exe file is now less than 1/4 the size it was before. 
+   This new technology will (hopefully) also bring stability improvements.
+
+ - It comes along with modernized FORTRAN code.
+
+
+*8. Various minor improvements and fixes*
+
+ - The *Settings window* can now be minimized much further, which improves usability *on small screens*. If the window is too small to display all the controls, scroll bars will appear so you can still access all of them. 
+
+ - *Multilingual alert voices* are now included in the installation packages, so no additional language pack is required anymore. 
+
+ - Added a new option to *skip a8 decodes* for the multithreaded FT8 decoder (MTD).
+
+ - The *band hopping interval* can now be switched between 1 minute and 2 minutes. See the new checkbox on the Settings | General tab.
+
+ - The "*Less button coloring*" option has been removed because it was rarely used.
+
+ - Fixed a flaw that caused *FT4 decodes* not to be displayed *when the program was started with CQonly enabled*.
+
+ - Bugfix: Country names are no longer accidentally displayed when in *FST4W mode*.
+
+ - Fixed an inconsistency regarding the *highlighting of prefixes*.
+
+ - Transmissions above 5362 kHz on 60m are allowed *for UK stations* again. Only Tx frequencies between 5358 and 5362 kHz are prevented now.
+
+ - Better visibility of the Settings | *Tx Macros* tab when *dark style* is enabled.
+
+ - Added an option to *log the dial frequency* instead of the actual Tx frequency.
+
+ - The itone data is now added to the *UDP status message packet*. This feature is useful *for DDS transceivers* as they no longer need to rely on the AFP-FSK technique for direct digital synthesis of the correct messages.
+
+ - Fixed an issue regarding *Cloudlog* when uploading QSOs from hotels or similar location.
+
+
+*9. Support of the new Hamlib 5 series*
+
+ - The Update Hamlib function now supports both Hamlib 4 and Hamlib 5. The required version of the libhamlib DLL file is detected automatically.
+
+NOTE: Always use the latest builds available before reporting any bugs!

@@ -1,0 +1,10 @@
+[[SUPPORT]]
+== 支援
+
+取得協助的最佳管道是
+https://sourceforge.net/projects/wsjt-x-improved/lists/wsjt-x-improved-community/[wsjt-x-improved-community]
+郵件論壇或 https://groups.io/g/wsjtgroup[WSJT Group]。很可能已有興趣
+與設備相近的人解決過相同的問題。您必須先加入論壇才能發文。
+
+錯誤回報與功能需求請優先寄到
+wsjt-x-improved-community 論壇。

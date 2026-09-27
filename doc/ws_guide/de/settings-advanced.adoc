@@ -1,0 +1,162 @@
+[[SETTINGS_ADVANCED]]
+=== Erweitert
+
+image::settings-advanced.png["Einstellungen, Registerkarte Erweitert",align="center"]
+
+==== JT65-Dekodierparameter für VHF/UHF/Mikrowelle
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Zufällige Auslöschungsmuster*
+|Wie intensiv sich der JT65-Soft-Decision-Decoder bemüht (bis zu 10^n/2^ Muster).
+Höhere Werte sind etwas empfindlicher, aber langsamer; 6 oder 7 passt für die meisten Stationen.
+
+|*Aggressive Dekodierstufe*
+|Schwelle für die JT65-Tiefensuche (0–10). Höhere Stufen ergeben mehr Dekodierungen,
+aber auch mehr Fehldekodierungen.
+
+|*Zweistufige Dekodierung*
+|JT65: ein zweiter Dekodierdurchlauf, nachdem die im ersten Durchlauf gefundenen Signale
+subtrahiert wurden.
+|===
+
+==== GUI-Anpassungen für hochauflösende Monitore
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*HighDPI-Skalierung (Neustart erforderlich)*
+|Folgt der Anzeigeskalierung des Betriebssystems, sodass Bedienelemente auf 4K-Monitoren größer
+und richtig proportioniert sind. Standardmäßig an.
+
+|*Größere Höhe der Registerkarten (Neustart erforderlich)*
+|Lässt die Registerkarten der Tx-Nachrichten im Hauptfenster höher werden.
+|===
+
+==== Verschiedenes
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*S/N der .wav-Datei verschlechtern* / *Empfängerbandbreite*
+|Für Offline-Empfindlichkeitstests: fügt geöffneten .wav-Dateien Rauschen hinzu und senkt
+das S/N um den angegebenen dB-Wert. Stellen Sie *Empfängerbandbreite* auf die Rauschbandbreite
+Ihres Empfängers ein, damit der Wert stimmt.
+
+|*Tx-Verzögerung*
+|Mindestzeit zwischen PTT und Beginn des Tx-Audios (0 bis 0,5 s). FT4 und
+FT2 verwenden immer 20 ms.
+
+|*Tonabstand*: *x 2* / *x 4*
+|Doppelter / vierfacher normaler Tonabstand, für LF/MF-Sender, die
+die Frequenz durch 2 oder 4 teilen. Nur eine der beiden Optionen kann aktiviert sein.
+
+|*Wasserfallspektren*: *Geringe Nebenkeulen* / *Höchste Empfindlichkeit*
+|*Geringe Nebenkeulen* (Standard) verwendet eine gefensterte FFT, sodass sich starke Signale
+weniger über den Wasserfall ausbreiten. *Höchste Empfindlichkeit* verwendet kein Fenster und zeigt sehr
+schwache Spuren etwas besser.
+|===
+
+IMPORTANT: *Tx-Verzögerung* ersetzt keinen Hardware-Sequenzer. Um
+Sende-/Empfangsrelais und Vorverstärker zu schützen, verwenden Sie einen und prüfen Sie, ob die Schaltfolge stimmt.
+
+==== Besondere Betriebsaktivität
+
+Aktivieren Sie das Kontrollkästchen und wählen Sie eine Aktivität; WS erzeugt dann die passenden
+Nachrichtenformate.
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*NA VHF*
+|Nordamerikanische VHF/UHF/Mikrowellen-Contests und andere, bei denen ein 4-stelliger
+Locator ausgetauscht wird.
+
+|*NCCC Sprint*
+|Nur mit *NA VHF*: das Kurznachrichtenprotokoll des NCCC Sprint für FT4 (und FT2).
+
+|*EU-VHF-Contest*
+|Europäische VHF+-Contests: Rapport, laufende Nummer und 6-stelliger Locator.
+
+|*WW Digi Contest* / *ARRL Digi Contest*
+|World-Wide Digi Contest / ARRL International Digital Contest.
+
+|*Q65 Pileup*
+|Tauscht einen 4-stelligen Locator statt eines Rapports aus und gibt dem DX-Operator
+Empfindlichkeit auf q3-Niveau. Besonders nützlich für 6-m-EME-DXpeditionen.
+
+|*ARRL Field Day* / *FD-Austausch*
+|Ihr Austausch: Anzahl der Sender, Klasse und ARRL/RAC-Sektion oder "DX"
+(z. B. `6A SNJ`).
+
+|*FT-Roundup-Nachrichten* / *FT-RU-Austausch*
+|FT Roundup und ähnliche Contests. Austausch: US-Bundesstaat, kanadische Provinz oder
+"DX" (auch für Alaska und Hawaii).
+
+|*Fox* / *Hound*
+|FT8-DXpedition-Modus: *Fox* für die DXpedition, *Hound*, um sie anzurufen. Lesen Sie vor der Verwendung das
+FT8 DXpedition Mode User Guide.
+
+|*SuperFox-Modus*
+|Mit *Fox* oder *Hound*: SuperFox-Signalform senden bzw. empfangen.
+
+|*OTP* / *Schlüssel* / *Intervall*
+|Mit *Fox* oder *Hound*: Einmalpasswort-Prüfung des Fox (benötigt
+Internet). Der Fox gibt seinen 16-stelligen *Schlüssel* ein und signiert jede *Intervall*-te
+Nachricht (1 = jede Nachricht).
+
+|*OTP-Nachrichten anzeigen* / *OTP-URL*
+|Für Hounds: WS prüft die Codes des Fox unter der *OTP-URL* (Standard
+`https://www.9dx.cc`). *OTP-Nachrichten anzeigen* zeigt die Prüfmeldungen
+in der Bandaktivität an.
+
+|*CQ mit individuellem Contestnamen* / *Contestname*
+|Ruft z. B. `CQ PACC` statt CQ TEST, RU oder WW. Nicht verfügbar mit
+*Fox*, *Hound* oder *Q65 Pileup*.
+|===
+
+==== QSOs zu Cloudlog oder Wavelog hochladen
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*QSOs zu Cloudlog oder Wavelog hochladen*
+|Aktivieren Sie den Gruppentitel, um jedes geloggte QSO an Ihren Cloudlog- oder
+Wavelog-Server zu senden.
+
+|*API-URL*
+|Basisadresse Ihrer Installation, ohne abschließenden Schrägstrich
+(z. B. `https://log.example.com`).
+
+|*API-Schlüssel* / *Stations-ID*
+|Ein API-Schlüssel mit Schreibrecht und die Stationsprofil-ID aus Cloudlog/Wavelog.
+
+|*API-Schlüssel testen*
+|Sendet ein Test-QSO im Probemodus (dry run). Die Schaltfläche wird grün, wenn der Schlüssel
+schreibberechtigt ist, orange, wenn er nur lesen darf, und rot, wenn er ungültig ist.
+|===
+
+==== QSOs zu eQSL.cc hochladen
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*QSOs zu eQSL.cc hochladen*
+|Aktivieren Sie den Gruppentitel, um jedes geloggte QSO zu eQSL.cc hochzuladen.
+
+|*Benutzername* / *Passwort*
+|Ihre eQSL.cc-Zugangsdaten.
+
+|*QTH*
+|Ihr QTH-Nickname, falls Sie bei eQSL.cc mehr als ein QTH haben.
+|===
+
+NOTE: Das eQSL.cc-Passwort und der API-Schlüssel werden unverschlüsselt in der
+Einstellungsdatei gespeichert.

@@ -1,0 +1,187 @@
+[[SETTINGS_GENERAL]]
+=== Generel
+
+image::settings-general.png["Indstillinger, fanen Generel",align="center"]
+
+==== Stations detaljer
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Mit Call*
+|Dit kaldesignal.
+
+|*Min Grid*
+|Din Maidenhead-locator, helst med 6 tegn (f.eks. CM87ux).
+Afstande og azimuter beregnes ud fra den.
+
+|*AutoGrid*
+|Lader eksterne programmer (f.eks. et GPS-hjælpeprogram) ændre *Min Grid*.
+
+|*IARU Region*
+|Region 1: Europa, Afrika, Mellemøsten, det nordlige Asien. Region 2:
+Amerika. Region 3: det sydlige Asien og Stillehavet. Vælger de tilsvarende
+standardfrekvenser.
+
+|*Generering af meddelelser for type 2 sammensatte kaldesignaler*
+|Kun for kaldesignaler med et tilføjet præfiks eller suffiks, som ikke står på
+den korte liste (menu:Hjælp[Liste over Type 1 prefix og suffix]). Vælger hvilken
+genereret meddelelse (Tx1, Tx3 eller Tx6) der indeholder dit fulde kaldesignal.
+|===
+
+==== Dsiplay
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Start ny dekode periode fra toppen*
+|Hver periode starter øverst i Bånd Aktivitet og ruller ikke væk,
+så du kan dobbeltklikke, mens dekodningen stadig kører.
+
+|*Stiplet linje mellem dekodnings perioder*
+|Skillelinje mellem perioderne i Bånd Aktivitet.
+
+|*Vis blank linje med time stamp*
+|Skillelinjen viser også periodens UTC-tid.
+
+|*Vis distance i miles*
+|Miles i stedet for kilometer.
+
+|*Fremhæv DX kaldesignal* / *Fremhæv DX Grid*
+|Markerer kaldesignalet og griden for din aktuelle QSO-partner i meddelelserne.
+
+|*Tx meddelser til Rx frekvens vindue*
+|Dine egne udsendte meddelelser vises også i Rx frekvens-ruden.
+
+|*Fremhæv RRR/RR73/73 i meddelelser til os*
+|Gør det let at se, når en QSO er slut.
+
+|*Vis DXCC, grid, og worked-b4 status*
+|Tilføjer landet og markeringerne for ny DXCC / ny grid / kørt før til
+dekodningerne. Nødvendig for fremhævningen på fanen *Farver*.
+
+|*Vis hovedpræfiks i stedet for landenavn*
+|Kortere: "DL" i stedet for "Fed. Rep. of Germany".
+
+|*Vis DXCC for alle messages*
+|Tilføjer landet til alle meddelelser, ikke kun til CQ-kald.
+
+|*Font...* / *Dekodet Tekst Font...*
+|Skrifttype for hele programmet / for ruderne Bånd Aktivitet og Rx frekvens.
+|===
+
+==== Opførsel
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Monitor OFF ved start*
+|WS starter uden at dekode, indtil du klikker på *Monitor*.
+
+|*Monitor til seneste brugte frekvens*
+|Når *Monitor* slås til, vendes der tilbage til den senest overvågede frekvens.
+Ikke markeret beholdes radioens aktuelle frekvens.
+
+|*Dobbelt-klik på et kaldesignal Aktivere Tx*
+|Et dobbeltklik på en dekodning starter udsendelsen med det samme.
+
+|*Deaktiver Tx efter der er sendt 73*
+|*Aktiver Tx* slås fra efter en 73- eller fritekstmeddelelse.
+
+|*CQ kald fremtvinger Besvar 1st*
+|Når du kalder CQ, markeres *Kald 1st*, så WS automatisk svarer den første station, der kalder.
+
+|*Alternative F1-F6 bindinger*
+|Skifter genvejene kbd:[F1]–kbd:[F6] for Tx-meddelelserne til
+contest-tildelingen (se menu:Hjælp[Tastetur genveje]).
+
+|*Aktiver VHF and submode funktioner*
+|Viser betjeningselementerne for VHF/UHF/mikrobølge (submodes, midling, Sh, auto-QSY
+osv.). Slå det fra på HF: det deaktiverer bredbåndet JT65-multidekodning.
+
+|*Tillad ændring af Tx frekvens mens der sendes*
+|Fjern markeringen, hvis din radio ikke kan behandle CAT-kommandoer under Tx (ofte nødvendigt med split).
+
+|*Dekod efter EME forsinkelse*
+|Starter dekodningen senere i 1-minuts modes, så EME-signaler, der er forsinket
+omkring 2,5 s, kommer med.
+
+|*Enkelt dekodning*
+|For JT4, JT65, Q65 og FST4: dekoder kun nær Rx-frekvensen
+(inden for *F Tol*) i stedet for at søge i hele passbåndet. I JT4/JT65/Q65
+bliver de to ruder til *Enkel-Periode Dekodning* og *Gennemsnitlig dekodning*.
+
+|*Tune watchdog*
+|Stopper *Tune* efter det indstillede antal sekunder.
+
+|*MSK144/Q65: Tx indtil 73 er modtaget*
+|Bliver ved med at sende, indtil den anden stations 73 kommer, højst 10
+forsøg. Nyttigt ved vanskelige VHF/UHF/SHF-QSO'er.
+
+|*Auto-åbne/lukke Astronomisk data vindue*
+|Åbner vinduet Astronomiske Data, når du skifter til Q65 eller JT65 med
+*Dekod efter EME forsinkelse* slået til, og lukker det, når det ikke længere er nødvendigt.
+
+|*kHz-indtastning uden k (genstart nødvendig)*
+|I frekvensfeltet betyder "164" efterfulgt af kbd:[Enter] +164 kHz inden for
+den aktuelle MHz (438.065 -> 438.164 MHz). Praktisk til at springe mellem
+EME-segmenter fra det numeriske tastatur.
+
+|*Gør statuslinjen rød under TX*
+|Gør det let at se Tx med et hurtigt blik.
+
+|*CW ID efter 73* / *ID Interval*
+|Sender et CW-ID efter hver 73 eller fritekst / hver N minutter (0 = fra),
+altid i den stille del af perioden.
+
+|*Tx watchdog*
+|Stopper uovervågede udsendelser efter det indstillede antal minutter.
+|===
+
+==== Yderligere funktioner
+
+Disse indstillinger stammer fra WSJT-X Improved og findes ikke i WSJT-X.
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Vis US-stater*
+|Knytter grid-locatorer til amerikanske stater og canadiske provinser (nyttigt uden
+JTAlert). Nogle grids dækker flere stater; så vises alle.
+
+|*Enable wait funktion*
+|Slår *Wait and Reply*, *Wait and Call* og *Wait and Pounce* til (standard).
+Se <<WAIT_FEATURES>>.
+
+|*Slet DX-Call efter QSO* / *Slet DX Grid efter QSO*
+|Tømmer feltet DX Call / DX Grid, når QSO'en er logget.
+
+|*Vis distance i msg med Grid* / *Vis azimut i msg med Grid*
+|Tilføjer afstand og storcirkel-azimut til alle meddelelser med en gyldig locator.
+
+|*Slet dekodet efter båndskift* / *Slet dekodninger efter mode-skift*
+|Rydder Bånd Aktivitet, når du skifter bånd / mode.
+
+|*Fuktion af alternativ sletteknap*
+|*Slet* fungerer som i JTDX: venstreklik rydder Bånd Aktivitet,
+højreklik rydder Rx frekvens, dobbeltklik rydder begge.
+
+|*Indstil Rx-frekvens til Tx-frekvens efter QSO*
+|Efter logning flyttes Rx til din Tx-frekvens.
+
+|*Båndskift hvert minut*
+|Med båndskift (band hopping) slået til skifter WS normalt bånd hvert andet minut.
+Marker denne for at skifte bånd hvert minut.
+
+|*DXCC/afstand/azimut* og de to talfelter
+|Stiller land, afstand og azimut op i kolonner. Det første felt angiver
+antallet af mellemrum mellem meddelelse og land (også uden *DXCC/afstand/azimut*), det
+andet antallet af mellemrum mellem land og afstand/azimut.
+|===
+
+NOTE: Hvis du bruger et kaldesignal med tilføjet præfiks eller suffiks, eller vil
+køre en sådan station, så læs _Nonstandard Callsigns_ i WSJT-X User Guide.

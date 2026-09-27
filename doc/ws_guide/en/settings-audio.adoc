@@ -1,0 +1,77 @@
+[[SETTINGS_AUDIO]]
+=== Audio
+
+image::settings-audio.png["Settings, Audio tab",align="center"]
+
+==== Soundcard
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Input* / *Output*
+|The sound card connected to your radio (e.g. the rig's USB audio CODEC),
+set to 48000 Hz, 16 bit. The box on the right selects the channel:
+usually *Mono*, or *Left*, *Right* or *Both* in special setups.
+
+|*Refresh*
+|Reloads the device list, e.g. after plugging in a USB radio.
+
+|*Use TCI Audio (restart required)* / *Rx 0 dB*
+|Only shown with a TCI rig (e.g. an SDR). The audio then comes over the
+TCI connection instead of a sound card, and the devices show *TCI audio*.
+*Rx* lowers the received audio level (0 to -50 dB). Restart WS after
+changing it.
+
+|*Sort alphabetically*
+|Sorts the device names alphabetically and lists only devices that can
+record or play PCM audio. Unchecked, the system order is used.
+
+|*Hide ALSA CARD subdevices (Linux only)*
+|Hides the `CARD=` entries, which are usually unusable. Works only with
+*Sort alphabetically* checked.
+|===
+
+IMPORTANT: If the output device is also your computer's default sound
+device, turn off all system sounds. Otherwise you transmit them on air.
+
+==== Save Directory
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Location* / *Select*
+|Folder for the `.wav` files written by menu:Save[]. By default the `save`
+folder in the log directory.
+|===
+
+==== AzEl Directory
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Location* / *Select*
+|Folder for `azel.dat`, which holds Sun and Moon position and Doppler for
+antenna tracking programs. It is updated every second while the
+Astronomical Data window is open.
+
+|*Enable extra line in azel.dat*
+|Adds a line with Dpol, MNR, Dgrd and the echo widths, for tracking
+programs that read these values.
+|===
+
+==== Remember power settings by band
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Transmit*
+|Remembers the *Pwr* slider for each band and restores it when you change band.
+
+|*Tune*
+|Keeps a separate *Pwr* setting per band for *Tune*. When Tune ends, the
+slider returns to your transmit power.
+|===

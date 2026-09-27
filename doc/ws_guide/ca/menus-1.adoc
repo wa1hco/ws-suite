@@ -1,0 +1,387 @@
+[[MENU_FILE]]
+=== Arxiu
+
+image::menu-File.png[Menú Arxiu]
+
+[cols="2,5",options="header"]
+|===
+|Element del menú |Què fa
+
+|*Obrir* kbd:[Ctrl+O]
+|Atura *Monitor* i obre un arxiu `.wav` enregistrat, que es descodifica
+com si fos àudio en directe.
+
+|*Obre el següent directori*
+|Obre i descodifica el següent arxiu `.wav` de la mateixa carpeta.
+
+|*Descodificar els arxius restants al directori* kbd:[Shift+F6]
+|Obre i descodifica tots els arxius `.wav` següents de la carpeta, un darrere l'altre.
+
+|*Esborrar tots els arxius {asterisk}.wav i {asterisk}.c2*
+|Després d'una confirmació, esborra tots els arxius d'àudio desats (`.wav` i `.c2`)
+del directori de desament.
+
+|*Esborrar l'arxiu ALL.TXT*
+|Després d'una confirmació, esborra `ALL.TXT`, el registre de tot el que has
+rebut i transmès.
+
+|*Esborrar l'arxiu wsjtx_log.adi*
+|Després d'una confirmació, esborra el teu arxiu de log ADIF.
+
+|*Esborra wsjtx.log*
+|Després d'una confirmació, esborra `wsjtx.log`, la llista simple de QSO que escriu
+*Log QSO*. WS la fa servir per als filtres "treballat avui" i perquè
+*Wait and Pounce* no cridi estacions que ja has registrat.
+
+|*Esborra la llista d'ignorats*
+|Després d'una confirmació, buida la llista d'ignorats (que s'omple amb el botó *Ignora*).
+
+|*Esborra la taula WSPR*
+|Després d'una confirmació, esborra la taula que fa servir WSPR per resoldre els
+indicatius compostos codificats amb hash.
+
+|*Esborra la llista d'estacions que criden en Q65*
+|Després d'una confirmació, esborra la llista d'indicatius que WS recorda
+de les descodificacions de Q65.
+
+|*Restableix el log de Cabrillo ...*
+|Després d'una confirmació, esborra tots els QSO del concurs actual del
+log de concurs. Es mantenen al log ADIF, però ja no es poden exportar
+a Cabrillo. El número de sèrie torna a 1 i es reinicia la puntuació a
+*Estacions actives*.
+
+|*Exporta el log de Cabrillo ...*
+|Desa el log del concurs com a arxiu Cabrillo per enviar-lo.
+
+|*Obre el directori del log*
+|Obre la carpeta de dades de WS (logs, `ALL.TXT`, etc.) al gestor d'arxius.
+
+|*Configuració...*
+|Obre la finestra *Configuració* (també kbd:[F2]). Vegeu el capítol Configuració.
+
+|*Sortir*
+|Tanca WS.
+|===
+
+NOTE: A macOS, *Configuració* (com a *Preferences*) i *Sortir* (com a *Quit*)
+apareixen al menú de l'aplicació en lloc del menú *Arxiu*.
+
+[[MENU_CONFIGURATIONS]]
+=== Configuracions
+
+image::menu-Config.png[Menú Configuracions]
+
+Una _configuració_ és un conjunt complet d'ajustos amb nom. Molts operadors
+en tenen una per mode o per muntatge d'estació (per exemple "FT8 HF" i
+"Q65 EME") i canvien d'una a l'altra amb dos clics.
+
+El menú llista totes les configuracions; la que està en ús apareix marcada. Cada
+configuració obre un petit submenú (esquerra: una altra configuració,
+dreta: la que està en ús):
+
+image:menu-Config-Other.png[Submenú d'una altra configuració] image:menu-Config-Current.png[Submenú de la configuració en ús]
+
+[cols="2,5",options="header"]
+|===
+|Element del menú |Què fa
+
+|*Canviar a*
+|WS reinicia la finestra principal amb els ajustos d'aquesta configuració.
+No es mostra per a la configuració en ús.
+
+|*Clon*
+|Fa una còpia anomenada "_name_ - Copy". Canvia-li el nom i ajusta'n la configuració
+per crear una configuració nova.
+
+|*Clon a ...*
+|Sobreescriu tots els ajustos d'aquesta configuració amb els d'una altra
+que triïs. Demana confirmació. Només es mostra quan hi ha més d'una
+configuració.
+
+|*Restablir*
+|Després d'una confirmació, torna aquesta configuració als valors per defecte.
+
+|*Canviar el nom ...*
+|Dona un nom nou a la configuració.
+
+|*Esborrar*
+|Després d'una confirmació, esborra la configuració. La configuració en
+ús no es pot esborrar, per això aquest element no es mostra per a ella.
+|===
+
+TIP: Per iniciar WS directament en una configuració, fes servir l'opció de línia d'ordres
+`--config NAME` (o `-c NAME`), per exemple `ws -c Echo`.
+
+[[MENU_VIEW]]
+=== Veure
+
+image::menu-View.png[Menú Veure]
+
+[cols="2,5",options="header"]
+|===
+|Element del menú |Què fa
+
+|*Cascada*
+|Obre la finestra Gràfic Ampli amb l'espectre i la cascada.
+
+|*Dades astronòmiques*
+|Obre (marcat) o tanca la finestra de dades astronòmiques: dades de la Lluna i del
+Sol, desplaçament Doppler d'EME, seguiment Doppler i freqüència de sked.
+
+|*Mitjana de missatges* kbd:[F7]
+|Obre la finestra de mitjana de missatges, que mostra els períodes utilitzats per a
+les descodificacions per mitjana (JT4, JT65, Q65).
+
+|*Gràfic d'Eco* kbd:[F8]
+|Obre la finestra del gràfic d'eco per al mode Eco.
+
+|*Gràfic ràpid* kbd:[F9]
+|Obre la finestra del gràfic ràpid per als modes ràpids (MSK144 i JT9 ràpid).
+
+|*Log de Concurs*
+|Mostra els QSO del concurs actual i quants n'hi ha.
+
+|*Log Fox*
+|Mostra els QSO fets com a Fox en mode DXpedition d'FT8.
+
+|*Esquema de ressaltar el color*
+|Una petita llegenda dels colors de ressaltat actuals de les descodificacions (CQ, El meu indicatiu,
+Nou DXCC, usuari LoTW, etc.). Els colors es configuren a la pestanya *Colors*
+de la configuració.
+
+|*Estacions actives*
+|Llista les estacions descodificades recentment, per exemple per trobar les més
+llunyanes en un concurs puntuat per distància, amb *Valoració*, *Puntuació* i *Canvis de banda*.
+Fes clic a una línia per cridar aquesta estació. Amb WS-MAP en marxa, mostra les
+estacions que WS-MAP descodifica en tota la seva amplada de banda; un sol clic
+transfereix les dades del QSO i la freqüència de sked a WS, i un doble clic crida
+l'estació.
+
+|*Mode SWL*
+|Amaga el panell de control inferior perquè els panells de descodificació ocupin tota la finestra.
+Útil quan hi ha diverses instàncies en marxa alhora. La mida i la posició d'aquesta
+vista es recorden per separat.
+
+|*Creador de missatges*
+|Compon missatges especials, p. ex. una petició de QSY a una altra banda o mode,
+o un missatge breu predefinit, enviats a l'estació d'*Indicatiu DX*. Obrir-lo
+també activa *Activa les finestres emergents de missatges*.
+
+|*Monitor QSY*
+|Mostra els missatges especials que altres estacions s'envien entre elles i a tu.
+
+|*Activa les finestres emergents de missatges*
+|Apareix una finestra emergent quan un missatge especial va adreçat a tu, amb
+botons per respondre.
+
+|*Botons de banda*
+|Mostra una fila de botons de banda d'HF (de 160 m a 70 cm); la banda actual és
+verda. Fes clic a un botó per anar a la teva freqüència preferida per a aquesta banda
+i mode (fixada amb *Pref* a la pestanya *Freqüències* de la configuració).
+Un clic dret de 80 m a 10 m (FT8, FT4, FT2) porta a la freqüència habitual de
+DXpedition, i a 6 m (FT8) a 50,323 MHz. Vegeu també
+menu:Ajuda[Ordres especials del ratolí].
+
+|*Botons VHF / UHF*
+|Substitueix els botons d'HF per un joc de VHF/UHF/microones (de 8 m a 24 GHz).
+Només visible mentre *Botons de banda* està marcat.
+
+|*Utilitza l'estil fosc*
+|Canvia totes les finestres a un tema fosc. Fa més que un simple full d'estil
+fosc: WS també ajusta alguns paràmetres interns i fa servir un full d'estil
+optimitzat. Després, canvia els colors de ressaltat a la pestanya *Colors* de la
+configuració per tons més suaus, pastel.
+
+|*Indicatius a la cascada*
+|Submenú, vegeu més avall.
+|===
+
+==== Indicatius a la cascada
+
+image::menu-View-Callsign_overlay.png[Submenú Indicatius a la cascada]
+
+WS pot escriure els indicatius descodificats directament a la cascada, a la
+freqüència on s'ha sentit cada estació.
+
+[cols="2,5",options="header"]
+|===
+|Element del menú |Què fa
+
+|*Mostra els indicatius descodificats*
+|Activa o desactiva les etiquetes d'indicatius. En desactivar-les s'eliminen totes.
+Obrir un arxiu `.wav` també les esborra.
+
+|*Mantén 1 període* ... *Mantén 5 períodes*
+|Quant de temps es manté una etiqueta després de l'última descodificació de l'estació, en
+períodes de TX/RX (per defecte 2). El mateix valor es pot fixar a la finestra Gràfic Ampli.
+
+|*Mida de la font*
+|image:menu-View-Callsign_overlay-Callsign_font.png[Submenú Mida de la font] +
+Mida de l'etiqueta: *Petita (7 pt)*, *Normal (8 pt)*, *Mitjana (10 pt)* o *Gran (12 pt)*.
+
+|*Transparència*
+|image:menu-View-Callsign_overlay-Callsign_transparency.png[Submenú Transparència] +
+Quant es veu la cascada a través de les etiquetes: *Cap*, *Baix*, *Mitjana* o *Alt*.
+
+|*Posició*
+|image:menu-View-Callsign_overlay-Callsign_position.png[Submenú Posició] +
+*Part superior de la cascada*, o *Part inferior de la cascada (sobre el divisor)* perquè
+els senyals més nous de dalt quedin descoberts.
+|===
+
+[[MENU_SAVE]]
+=== Guardar
+
+image::menu-Save.png[Menú Guardar]
+
+[cols="2,5",options="header"]
+|===
+|Element del menú |Què fa
+
+|*Cap*
+|No es desa cap arxiu d'àudio.
+
+|*Guarda el descodificat*
+|Desa l'àudio (`.wav`) de cada període amb almenys una descodificació al
+directori de desament.
+
+|*Guardar-ho tot*
+|Desa l'àudio de cada període.
+
+|*Elimina els arxius desats després de 30 dies*
+|A cada inici del programa, WS esborra tots els arxius del directori de desament que
+tenen més de 30 dies.
+
+|*No divideixis ALL.TXT*
+|Totes les descodificacions i transmissions van a un sol `ALL.TXT` (per defecte).
+
+|*Divideix ALL.TXT per anys*
+|Un arxiu per any, p. ex. `2026-ALL.TXT`.
+
+|*Divideix ALL.TXT per mesos*
+|Un arxiu per mes, p. ex. `2026-09-ALL.TXT`.
+
+|*Desactiva l'escriptura d'ALL.TXT*
+|No s'escriu res a `ALL.TXT`.
+
+|*Registre d'esdeveniments predeterminat*
+|Registre intern normal i mínim. També torna a desactivar el *Mode de diagnòstic*.
+
+|*Mode de diagnòstic*
+|Recull dades detallades per diagnosticar problemes de WS o de la seva comunicació amb
+l'equip. S'aplica després de reiniciar i es desactiva sol quan
+es tanca WS la propera vegada. Apareix una carpeta `logs` a l'escriptori amb
+`ws_syslog.log` i `WS_RigControl.log`; envia-les als desenvolupadors si
+t'ho demanen. Tanca WS poc després que aparegui l'error, perquè els arxius creixen de pressa.
+
+|*Desactiva el registre d'esdeveniments*
+|Desactiva el registre intern d'esdeveniments.
+|===
+
+[[MENU_LANGUAGE]]
+=== Idioma
+
+image::menu-Language.png[Menú Idioma]
+
+Tria l'idioma de la interfície d'usuari de WS. L'anglès és l'idioma per defecte;
+les altres entrades són les traduccions que inclou WS, cadascuna mostrada en
+el seu propi idioma.
+
+Quan tries un idioma, WS pregunta si vols reiniciar la finestra ara:
+
+[cols="2,5",options="header"]
+|===
+|Botó |Què fa
+
+|*Reinicia ara*
+|Reconstrueix la finestra principal en el nou idioma en pocs segons, de la
+mateixa manera que en canviar a una altra configuració. WS continua en marxa.
+Mentre WS transmet o sintonitza, la finestra no es reinicia; el nou
+idioma s'aplica llavors la propera vegada que s'inicia WS.
+
+|*Més tard*
+|Manté l'idioma actual fins que WS es torni a iniciar.
+|===
+
+L'elecció s'aplica a totes les configuracions. Iniciar WS amb
+`--language <code>` (per exemple `ws --language de`) la substitueix per a
+aquesta execució.
+
+NOTE: Les traduccions les fan voluntaris i poden estar incompletes; els textos
+que encara no estan traduïts apareixen en anglès.
+
+[[MENU_HELP]]
+=== Ajuda
+
+image::menu-Help.png[Menú Ajuda]
+
+La majoria d'elements obren una pàgina web o un PDF al navegador, de manera que necessiten
+connexió a internet.
+
+[cols="2,5",options="header"]
+|===
+|Element del menú |Què fa
+
+|*Notes de llançament*
+|Les notes de llançament de WS (en línia).
+
+|*Pàgina web de WS*
+|Obre el lloc web de WS (wsjt-x-improved.sourceforge.io).
+
+|*Pàgina de descàrrega de WS*
+|Obre la carpeta de descàrregues de SourceForge amb totes les versions i
+instal·ladors de WS. Comprova-hi si hi ha una versió més nova.
+
+|*Guia d'usuari de WSJT-X*
+|La Guia d'usuari de WSJT-X (en línia), la referència per als modes i els procediments d'operació.
+
+|*Guia de l'usuari del mode DXpedition a FT8*
+|PDF sobre l'operació Fox i Hound.
+
+|*Guia d'usuari de SuperFox*
+|PDF sobre el mode SuperFox.
+
+|*Guia d'inici ràpid de FST4 i FST4W*
+|PDF.
+
+|*Guia d'inici ràpid de Q65*
+|PDF.
+
+|*Guia d'inici ràpid de WSJT-X 2.5.0 i MAP65 3.0*
+|PDF sobre l'operació EME de banda ampla amb dos programes.
+
+|*Guia d'inici ràpid de WSJT-X 2.7 i QMAP*
+|PDF sobre l'ús del monitor Q65 de banda ampla (ara WS-MAP) amb el programa principal.
+
+|*Descarrega mostres ...*
+|Descarrega arxius `.wav` de mostra que demostren els modes; obre'ls
+amb menu:Arxiu[Obrir].
+
+|*Descarrega el calendari d'efemèrides EME*
+|Demana un any (de 2025 a 2040) i obre el calendari EME d'aquell any (PDF).
+
+|*Dreceres de teclat*
+|Una finestra amb totes les dreceres de teclat (també kbd:[F3]).
+
+|*Ordres especials del ratolí*
+|Una finestra que explica què fan els clics, els clics drets i els dobles clics a la
+cascada, les descodificacions, la freqüència de dial i els botons (també kbd:[F5]).
+
+|*Llista de prefixos i sufixos de tipus 1*
+|Els prefixos i sufixos addicionals que funcionen en els missatges estàndard.
+
+|*Com gestionar els errors de control de l'equip*
+|PDF amb ajuda per a problemes de CAT i de control de l'equip.
+
+|*Configuració d'àudio recomanada*
+|Procediment pas a pas per ajustar el nivell d'àudio de transmissió perquè el
+senyal es mantingui net (sense actuació de l'ALC, sense harmònics).
+
+|*Avís de drets d’autor* kbd:[Shift+F1]
+|La llicència i l'avís de drets d'autor necessaris quan reutilitzes codi de WS o de WSJT-X.
+
+|*Quant a WS*
+|Versió i crèdits.
+|===
+
+NOTE: A macOS, *Quant a WS* apareix al menú de l'aplicació.

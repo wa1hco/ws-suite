@@ -1,0 +1,73 @@
+[[SETTINGS_FILTERS]]
+=== Filter
+
+image::settings-filters.png["Einstellungen, Registerkarte Filter",align="center"]
+
+Filter bestimmen, welche Dekodierungen im Bereich *Bandaktivität* erscheinen. Die
+Listen auf dieser Registerkarte arbeiten mit den Schnellfiltern im Menü *Filter*
+zusammen (siehe <<MENU_FILTERS>>), in dem Sie auch die Gebietsfilter
+ein- und ausschalten.
+
+Solange ein Filter Dekodierungen ausblendet, wechselt die Statusanzeige unten links
+im Hauptfenster von grünem "Empfang" zu cyanfarbenem "Receiving, Filters On".
+
+Um vorübergehend wieder alles zu sehen, aktivieren Sie *BP* (Bypass) im
+Hauptfenster: Alle Filter werden ignoriert, und die Anzeige lautet "Receiving, Filters
+bypassed". Deaktivieren Sie es, um zu Ihren Filtern zurückzukehren.
+
+NOTE: Sperrliste, Positivliste und Immer durchlassen werden in besonderen
+Betriebsarten automatisch abgeschaltet, damit Sie keine Station verpassen. Sperrliste und
+Positivliste bleiben für Hounds aktiv.
+
+==== Filterlisten
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Gebiete 1-4*
+|Bis zu vier Ländernamen oder Teile davon für die Punkte *Stationen aus
+Gebiet 1-4 ausblenden* und *Stationen aus Gebiet 1-4 hervorheben* im Menü
+*Filter*; die Menüpunkte zeigen dann Ihren Text. Schreiben Sie den Namen so, wie
+WS ihn anzeigt, z. B. `Japan`, `U.S.A.` oder `Canary Is.`.
+
+|*Sperrliste* +
+*Nachrichten mit folgenden Rufzeichen oder Stichwörtern ausblenden*
+|Blendet Nachrichten aus, die einen der Einträge enthalten: ganze Rufzeichen, Teile
+von Rufzeichen, Locatoren oder Wörter (z. B. Piratenrufzeichen oder Contest-Nachrichten).
+
+|*Positivliste* +
+*Nur Nachrichten mit folgenden Rufzeichen oder Stichwörtern anzeigen*
+|Zeigt nur Nachrichten, die einen der Einträge enthalten; alle anderen werden
+ausgeblendet, außer denen auf der Liste Immer durchlassen.
+
+|*Immer durchlassen* +
+*Nachrichten mit folgenden Stichwörtern immer durchlassen*
+|Nachrichten mit diesen Einträgen werden immer angezeigt, auch wenn die Sperrliste,
+die Positivliste oder ein Ausblenden-Punkt für ein Gebiet, einen Kontinent oder bereits
+gearbeitete Stationen sie ausblenden würde.
+|===
+
+Jede Liste hat zwölf Felder, ein Eintrag pro Feld. Einträge werden
+in Großbuchstaben umgewandelt. Eine Liste wirkt nur, solange ihr Kontrollkästchen aktiviert ist.
+
+==== Optionen
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Filter nur auf die Rufzeichen der rufenden Stationen anwenden*
+|Die Listen werden nur mit der rufenden Station verglichen (normalerweise das
+zweite Wort, bei gerichteten CQs wie `CQ NA` das dritte). Ein Eintrag
+muss dann mit dem Anfang des Rufzeichens übereinstimmen, sodass ein Präfix wie `JA` funktioniert.
+Ohne Häkchen passt ein Eintrag an beliebiger Stelle der Nachricht.
+
+|*Filter nur für Wait and Pounce, CQ: First usw. verwenden (alle Nachrichten werden weiterhin angezeigt)*
+|In der *Bandaktivität* wird nichts ausgeblendet; die Filter entscheiden nur, auf welche
+Stationen Wait and Pounce und die *CQ:*-Auswahl reagieren. Siehe <<WAIT_FEATURES>>.
+
+|*Schnellfilter: "heute und gestern gearbeitet" statt "heute gearbeitet" ausblenden/ignorieren/hervorheben (UTC)*
+|Die drei Punkte "heute gearbeitet" im Menü *Filter* schließen auch
+gestern gearbeitete Stationen ein (UTC).
+|===

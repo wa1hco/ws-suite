@@ -1,0 +1,73 @@
+[[SETTINGS_FILTERS]]
+=== Filtres
+
+image::settings-filters.png["Paramètres, onglet Filtres",align="center"]
+
+Les filtres déterminent quels décodages apparaissent dans le volet *Activité de la bande*. Les
+listes de cet onglet fonctionnent avec les filtres rapides du menu *Filtres*
+(voir <<MENU_FILTERS>>), où vous activez et désactivez aussi les filtres de
+territoire.
+
+Tant qu'un filtre masque des décodages, l'étiquette d'état en bas à gauche de
+la fenêtre principale passe de "Réception" en vert à "Receiving, Filters On" en cyan.
+
+Pour tout revoir temporairement, cochez *BP* (bypass) dans la fenêtre
+principale : tous les filtres sont ignorés et l'étiquette affiche "Receiving, Filters
+bypassed". Décochez-la pour revenir à vos filtres.
+
+NOTE: La Liste noire, la Liste blanche et Toujours afficher sont désactivées automatiquement
+dans les modes de trafic spéciaux, pour que vous ne manquiez aucune station. La Liste noire et la
+Liste blanche restent actives pour les Hounds.
+
+==== Listes de filtres
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Territoires 1-4*
+|Jusqu'à quatre noms de pays, ou parties de noms, pour les éléments *Masquer les stations du
+territoire 1-4* et *Mettre en évidence les stations du territoire 1-4* du menu
+*Filtres* ; les éléments de menu affichent alors votre texte. Écrivez le nom tel que
+WS l'affiche, p. ex. `Japan`, `U.S.A.` ou `Canary Is.`.
+
+|*Liste noire* +
+*Masquer les messages contenant les indicatifs ou mots-clés suivants*
+|Masque les messages qui contiennent l'une des entrées : indicatifs entiers, parties
+d'indicatifs, locators ou mots (p. ex. indicatifs pirates ou messages de concours).
+
+|*Liste blanche* +
+*Afficher uniquement les messages contenant les indicatifs ou mots-clés suivants*
+|N'affiche que les messages qui contiennent l'une des entrées ; tous les autres sont
+masqués, sauf ceux de la liste Toujours afficher.
+
+|*Toujours afficher* +
+*Toujours afficher les messages contenant les mots-clés suivants*
+|Les messages contenant ces entrées sont toujours affichés, même si la Liste noire,
+la Liste blanche ou un élément Masquer pour un territoire, un continent ou des stations
+déjà contactées les masquerait.
+|===
+
+Chaque liste comporte douze champs, une entrée par champ. Les entrées sont converties
+en majuscules. Une liste ne fonctionne que si sa case est cochée.
+
+==== Options
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Appliquer les filtres uniquement aux indicatifs des stations appelantes*
+|Les listes ne sont comparées qu'à la station appelante (normalement le
+deuxième mot, le troisième pour les CQ directionnels comme `CQ NA`). Une entrée
+doit alors correspondre au début de l'indicatif, ce qui permet d'utiliser un préfixe comme `JA`.
+Décoché, une entrée peut correspondre n'importe où dans le message.
+
+|*Utiliser les filtres uniquement pour Wait and Pounce, CQ: First, etc. (tous les messages restent affichés)*
+|Rien n'est masqué dans *Activité de la bande* ; les filtres déterminent seulement à quelles
+stations Wait and Pounce et les choix *CQ:* répondent. Voir <<WAIT_FEATURES>>.
+
+|*Filtres rapides: Masquer/Ignorer/Mettre en évidence "contacté aujourd'hui et hier" au lieu de "contacté aujourd'hui" (UTC)*
+|Les trois éléments "contacté aujourd'hui" du menu *Filtres* incluent aussi les
+stations contactées hier (UTC).
+|===

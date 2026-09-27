@@ -1,0 +1,11 @@
+[[SUPPORT]]
+== Поддержка
+
+Лучшее место, чтобы получить помощь, - список рассылки
+https://sourceforge.net/projects/wsjt-x-improved/lists/wsjt-x-improved-community/[wsjt-x-improved-community]
+или https://groups.io/g/wsjtgroup[WSJT Group]. Скорее всего, кто-то с похожими
+интересами и оборудованием уже решил ту же проблему.
+Чтобы писать в список, нужно сначала на него подписаться.
+
+Сообщения об ошибках и пожелания по возможности отправляйте в список
+wsjt-x-improved-community.

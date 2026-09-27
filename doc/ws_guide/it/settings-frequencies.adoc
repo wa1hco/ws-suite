@@ -1,0 +1,103 @@
+[[SETTINGS_FREQUENCIES]]
+=== Frequenze
+
+image::settings-frequencies.png["Impostazioni, scheda Frequenze",align="center"]
+
+==== Calibrazione di Frequenza
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Inclinazione* / *Intercetta*
+|Corregge un errore noto della frequenza di sintonia del rig: +
+`frequenza rig = Intercetta + (1 + Inclinazione / 1 000 000) × f` +
+con *Intercetta* in Hz e *Inclinazione* in ppm. Le frequenze inviate al rig e
+rilette da esso vengono corrette, così WS mostra la frequenza reale. Lascia
+entrambi a 0 se il rig è preciso.
+|===
+
+TIP: Come misurare questi valori è descritto in _Frequency Calibration_
+nella Guida utente WSJT-X (modo FreqCal).
+
+==== Frequenze di Lavoro
+
+Le frequenze proposte nel selettore di banda della finestra principale. WS mostra
+solo le voci per la tua *Regione IARU* (scheda *Generale*) e il modo corrente.
+Fai doppio clic su una cella per modificarla.
+
+[cols="2,5",options="header"]
+|===
+|Colonna |Cosa fa
+
+|*Regione IARU* / *Modo*
+|Dove e per quale modo la voce viene proposta. Le voci con *Tutto* vengono
+proposte ovunque / in ogni modo.
+
+|*Frequenza*
+|La frequenza di sintonia in MHz.
+
+|*Pref*
+|La voce preferita per la sua banda e il suo modo. WS la usa quando fai clic su un pulsante
+di banda (menu:Vista[]) o quando cambia banda da solo (band hopping). Per ogni banda e
+modo può essere preferita una sola voce.
+
+|*Descrizione*
+|La tua etichetta per la voce, mostrata nel selettore di banda.
+
+|*Data/Ora inizio* / *Data/Ora fine*
+|La voce viene proposta solo in questo intervallo, ad es. per una DXpedition. Vuoto = sempre.
+|===
+
+Fai clic destro sulla tabella per queste azioni:
+
+[cols="2,5",options="header"]
+|===
+|Voce di menu |Cosa fa
+
+|*Elimina*
+|Rimuove le voci selezionate.
+
+|*Inserisci ...*
+|Aggiunge una voce: *Regione IARU*, *Modo*, *Frequenza (MHz)*, *Preferita per
+Banda/Modo*, *Descrizione* e un intervallo di date facoltativo.
+
+|*Carica ...*
+|Sostituisce l'elenco con quello di un file `.qrg` o `.qrg.json` (WS chiede prima conferma).
+
+|*Salva come ...*
+|Salva l'elenco in un file; un nome che termina con `.qrg.json` produce un file JSON.
+Se ci sono voci selezionate, WS chiede se salvare solo quelle.
+
+|*Unisci ...*
+|Aggiunge all'elenco le voci di un file `.qrg` o `.qrg.json`.
+
+|*Ripristina*
+|Ripristina l'elenco predefinito (WS chiede prima conferma).
+|===
+
+==== Informazioni Stazione
+
+Dati della stazione per banda. Fai doppio clic su una cella per modificarla.
+
+[cols="2,5",options="header"]
+|===
+|Colonna |Cosa fa
+
+|*Banda*
+|La banda a cui si riferisce la riga.
+
+|*Offset*
+|Viene sommato alla frequenza visualizzata per ottenere la frequenza del rig, per i
+transverter. Esempio: 144 MHz con una IF a 28 MHz richiede -116 MHz. Predefinito 0.
+
+|*Descrizione Antenna*
+|Inviata a PSK Reporter mentre sei su questa banda.
+|===
+
+Fai clic destro sulla tabella per *Elimina* (rimuove le righe selezionate) e
+*Inserisci ...* (aggiunge una riga: *Banda*, *Offset (MHz)*, *Antenna*).
+
+TIP: Per creare rapidamente le righe, seleziona le voci in *Frequenze di Lavoro* (kbd:[Ctrl]+kbd:[A]
+per tutte) e trascinale su *Informazioni Stazione*. Poi completa offset e
+antenne.

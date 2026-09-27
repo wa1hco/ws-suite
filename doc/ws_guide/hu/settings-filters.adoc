@@ -1,0 +1,80 @@
+[[SETTINGS_FILTERS]]
+=== Szűrők
+
+image::settings-filters.png["Beállítások, Szűrők fül",align="center"]
+
+A szűrők döntik el, mely dekódolások jelennek meg a *Sáv-aktivítás*
+panelen. Az ezen a fülön lévő listák együttműködnek a *Szűrők* menü
+gyorsszűrőivel (lásd <<MENU_FILTERS>>), ahol a területszűrőket is be- és
+kikapcsolhatja.
+
+Amíg egy szűrő dekódolásokat rejt el, a főablak bal alsó állapotcímkéje a
+zöld "Receiving" feliratról cián "Receiving, Filters On" feliratra vált.
+
+Ha egy időre ismét mindent látni szeretne, jelölje be a főablakban a *BP*
+(bypass) opciót: ekkor minden szűrő hatástalan, és a címke a "Receiving,
+Filters bypassed" feliratot mutatja. A jelölés kivételével visszatérnek a
+szűrők.
+
+NOTE: A feketelista, a fehérlista és a Mindig átenged lista speciális
+üzemmódokban automatikusan kikapcsol, hogy ne maradjon le egy állomásról
+sem. Hound állomásoknál a feketelista és a fehérlista aktív marad.
+
+==== Szűrőlisták
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Az 1-4. területek a Szűrők menü Elrejtés jelölőnégyzeteihez*
+|Legfeljebb négy országnév vagy névrészlet a *Szűrők* menü *Az 1. terület
+állomásainak elrejtése* ... *4* és *Az 1. terület állomásainak kiemelése*
+... *4* menüpontjaihoz; a menüpontok ezután az Ön szövegét mutatják. A
+nevet úgy írja be, ahogy a WS megjeleníti, pl. `Japan`, `U.S.A.` vagy
+`Canary Is.`.
+
+|*Feketelista* +
+*A következő hívójeleket vagy kulcsszavakat tartalmazó üzenetek elrejtése*
+|Elrejti azokat az üzeneteket, amelyek bármelyik bejegyzést tartalmazzák:
+teljes hívójeleket, hívójel-részleteket, lokátorokat vagy szavakat (pl.
+kalózhívójeleket vagy versenyüzeneteket).
+
+|*Fehérlista* +
+*Csak a következő hívójeleket vagy kulcsszavakat tartalmazó üzenetek megjelenítése*
+|Csak azokat az üzeneteket mutatja, amelyek valamelyik bejegyzést
+tartalmazzák; minden más rejtve marad, kivéve a Mindig átenged listán
+szereplőket.
+
+|*Mindig átenged* +
+*A következő kulcsszavakat tartalmazó üzenetek mindig átengedése*
+|Az ezeket a bejegyzéseket tartalmazó üzenetek mindig megjelennek, akkor
+is, ha a feketelista, a fehérlista, vagy egy területre, kontinensre vagy
+korábban forgalmazott állomásokra vonatkozó elrejtő menüpont elrejtené
+őket.
+|===
+
+Minden lista tizenkét mezőből áll, mezőnként egy bejegyzéssel. A
+bejegyzések nagybetűssé alakulnak. Egy lista csak akkor működik, ha a
+jelölőnégyzete be van jelölve.
+
+==== Opciók
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Szűrők alkalmazása csak a hívó állomások hívójeleire*
+|A listákat csak a hívó állomással veti össze (ez általában a második szó,
+irányított CQ-knál, pl. `CQ NA`, a harmadik). Egy bejegyzésnek ekkor a
+hívójel elejére kell illeszkednie, így egy prefix, pl. `JA` is működik.
+Bejelölés nélkül egy bejegyzés az üzenetben bárhol illeszkedhet.
+
+|*Szűrők használata csak a Várás és lecsapás, CQ: First stb. funkciókhoz (minden üzenet továbbra is megjelenik)*
+|A *Sáv-aktivítás* panelen semmi sem rejtődik el; a szűrők csak azt
+döntik el, mely állomásoknak válaszol a Wait and Pounce és a *CQ:*
+választó. Lásd <<WAIT_FEATURES>>.
+
+|*Gyorsszűrők: Elrejtés/Mellőzés/Kiemelés "ma és tegnap forgalmazott" a "ma forgalmazott" helyett (UTC)*
+|A *Szűrők* menü három "ma forgalmazott" menüpontja a tegnap (UTC)
+forgalmazott állomásokat is figyelembe veszi.
+|===

@@ -1,0 +1,387 @@
+[[MENU_FILE]]
+=== Datei
+
+image::menu-File.png[Menü Datei]
+
+[cols="2,5",options="header"]
+|===
+|Menüpunkt |Funktion
+
+|*Öffnen* kbd:[Ctrl+O]
+|Stoppt *Monitor* und öffnet eine aufgezeichnete `.wav`-Datei, die dann wie
+Live-Audio dekodiert wird.
+
+|*Nächste Datei im Verzeichnis öffnen*
+|Öffnet und dekodiert die nächste `.wav`-Datei im selben Ordner.
+
+|*Restliche Dateien im Verzeichnis dekodieren* kbd:[Shift+F6]
+|Öffnet und dekodiert nacheinander alle folgenden `.wav`-Dateien im Ordner.
+
+|*Alle {asterisk}.wav- & {asterisk}.c2-Dateien in SaveDir löschen*
+|Löscht nach einer Rückfrage alle gespeicherten Audiodateien (`.wav` und `.c2`)
+im Speicherverzeichnis.
+
+|*ALL.TXT löschen*
+|Löscht nach einer Rückfrage `ALL.TXT`, die Aufzeichnung aller Nachrichten, die Sie
+empfangen und gesendet haben.
+
+|*wsjtx_log.adi löschen*
+|Löscht nach einer Rückfrage Ihre ADIF-Logdatei.
+
+|*wsjtx.log löschen*
+|Löscht nach einer Rückfrage `wsjtx.log`, die einfache QSO-Liste, die von
+*QSO loggen* geschrieben wird. WS verwendet sie für die Filter "heute gearbeitet" und damit
+*Wait and Pounce* keine Stationen anruft, die Sie bereits geloggt haben.
+
+|*Ignorierliste löschen*
+|Leert nach einer Rückfrage die Ignorierliste (gefüllt mit der Schaltfläche *Ignorieren*).
+
+|*WSPR-Hashtabelle löschen*
+|Löscht nach einer Rückfrage die Tabelle, mit der WSPR gehashte
+zusammengesetzte Rufzeichen auflöst.
+
+|*Liste der Q65-Anrufer löschen*
+|Löscht nach einer Rückfrage die Liste der Rufzeichen, die WS sich aus
+Q65-Dekodierungen merkt.
+
+|*Cabrillo-Log zurücksetzen ...*
+|Entfernt nach einer Rückfrage alle QSOs des aktuellen Contests aus dem
+Contest-Log. Sie bleiben im ADIF-Log, können aber nicht mehr nach Cabrillo
+exportiert werden. Die laufende Nummer beginnt wieder bei 1, und die Punktzahl in
+*Aktive Stationen* wird zurückgesetzt.
+
+|*Cabrillo-Log exportieren ...*
+|Speichert das Contest-Log als Cabrillo-Datei zum Einreichen.
+
+|*Log-Verzeichnis öffnen*
+|Öffnet den WS-Datenordner (Logs, `ALL.TXT` und so weiter) in Ihrem Dateimanager.
+
+|*Einstellungen...*
+|Öffnet das Fenster *Einstellungen* (auch kbd:[F2]). Siehe Kapitel Einstellungen.
+
+|*Beenden*
+|Schließt WS.
+|===
+
+NOTE: Unter macOS erscheinen *Einstellungen* (als *Preferences*) und *Beenden* (als *Quit*)
+im Programmmenü statt im Menü *Datei*.
+
+[[MENU_CONFIGURATIONS]]
+=== Konfigurationen
+
+image::menu-Config.png[Menü Konfigurationen]
+
+Eine _Konfiguration_ ist ein vollständiger, benannter Satz von Einstellungen. Viele Funkamateure
+haben eine pro Modus oder pro Stationsaufbau (zum Beispiel "FT8 HF" und
+"Q65 EME") und wechseln mit zwei Klicks.
+
+Das Menü listet alle Konfigurationen; die verwendete ist mit einem Häkchen markiert. Jede
+Konfiguration öffnet ein kleines Untermenü (links: eine andere Konfiguration,
+rechts: die verwendete):
+
+image:menu-Config-Other.png[Untermenü einer anderen Konfiguration] image:menu-Config-Current.png[Untermenü der verwendeten Konfiguration]
+
+[cols="2,5",options="header"]
+|===
+|Menüpunkt |Funktion
+
+|*Wechseln zu*
+|WS startet sein Hauptfenster mit den Einstellungen dieser Konfiguration neu.
+Wird für die verwendete Konfiguration nicht angezeigt.
+
+|*Klonen*
+|Erstellt eine Kopie namens "_name_ - Copy". Benennen Sie sie um und passen Sie ihre Einstellungen an,
+um eine neue Konfiguration anzulegen.
+
+|*Klonen in ...*
+|Überschreibt alle Einstellungen dieser Konfiguration mit denen einer anderen,
+die Sie auswählen. Fragt nach einer Bestätigung. Wird nur angezeigt, wenn es mehr als
+eine Konfiguration gibt.
+
+|*Zurücksetzen*
+|Setzt diese Konfiguration nach einer Rückfrage auf Standardwerte zurück.
+
+|*Umbenennen ...*
+|Gibt der Konfiguration einen neuen Namen.
+
+|*Löschen*
+|Löscht die Konfiguration nach einer Rückfrage. Die verwendete Konfiguration
+kann nicht gelöscht werden, daher wird dieser Punkt für sie nicht angezeigt.
+|===
+
+TIP: Um WS direkt in einer Konfiguration zu starten, verwenden Sie die Kommandozeilenoption
+`--config NAME` (oder `-c NAME`), zum Beispiel `ws -c Echo`.
+
+[[MENU_VIEW]]
+=== Ansicht
+
+image::menu-View.png[Menü Ansicht]
+
+[cols="2,5",options="header"]
+|===
+|Menüpunkt |Funktion
+
+|*Wasserfall*
+|Öffnet das Fenster Breitbandanzeige mit Spektrum und Wasserfall.
+
+|*Astronomische Daten*
+|Öffnet (Häkchen) oder schließt das Fenster Astronomische Daten: Mond- und Sonnendaten,
+EME-Dopplerverschiebung, Doppler-Nachführung und Sked-Frequenz.
+
+|*Nachrichtenmittelung* kbd:[F7]
+|Öffnet das Fenster Nachrichtenmittelung, das die für gemittelte Dekodierungen
+verwendeten Perioden zeigt (JT4, JT65, Q65).
+
+|*Echo-Grafik* kbd:[F8]
+|Öffnet das Fenster Echo-Grafik für den Echo-Modus.
+
+|*Schnelle Grafik* kbd:[F9]
+|Öffnet das Fenster Schnelle Grafik für die schnellen Modi (MSK144 und schnelles JT9).
+
+|*Contest-Log*
+|Zeigt die QSOs des aktuellen Contests und ihre Anzahl.
+
+|*Fox-Log*
+|Zeigt die als Fox im FT8-DXpedition-Modus gefahrenen QSOs.
+
+|*Farbhervorhebungsschema*
+|Eine kleine Legende der aktuellen Hervorhebungsfarben für Dekodierungen (CQ, eigenes Rufzeichen,
+neues DXCC, LotW-Benutzer und so weiter). Die Farben werden auf der Registerkarte *Farben*
+der Einstellungen festgelegt.
+
+|*Aktive Stationen*
+|Listet kürzlich dekodierte Stationen, zum Beispiel um in einem Contest mit Entfernungswertung die
+entferntesten zu finden, mit *Rate*, *Punkte* und *Bandwechsel*.
+Ein Klick auf eine Zeile ruft diese Station an. Läuft WS-MAP, zeigt die Liste die
+Stationen, die WS-MAP über seine gesamte Bandbreite dekodiert; ein Einfachklick
+überträgt die QSO-Daten und die Sked-Frequenz an WS, ein Doppelklick ruft
+die Station an.
+
+|*SWL-Modus*
+|Blendet die unteren Bedienelemente aus, sodass die Dekodierbereiche das ganze Fenster erhalten.
+Nützlich, wenn mehrere Instanzen gleichzeitig laufen. Größe und Position dieser
+Ansicht werden separat gespeichert.
+
+|*Nachrichten-Editor*
+|Erstellt spezielle Nachrichten, z. B. eine QSY-Anfrage auf ein anderes Band oder einen anderen Modus
+oder eine kurze vorgefertigte Nachricht, gesendet an die Station in *DX-Rufzeichen*. Beim Öffnen
+wird auch *Nachrichten-Popups aktivieren* eingeschaltet.
+
+|*QSY-Monitor*
+|Zeigt die speziellen Nachrichten, die andere Stationen einander und Ihnen senden.
+
+|*Nachrichten-Popups aktivieren*
+|Ein Popup-Fenster erscheint, wenn eine spezielle Nachricht an Sie gerichtet ist, mit
+Schaltflächen zum Antworten.
+
+|*Band-Schaltflächen*
+|Zeigt eine Reihe von KW-Band-Schaltflächen (160 m bis 70 cm); das aktuelle Band ist
+grün. Ein Klick auf eine Schaltfläche wechselt auf Ihre bevorzugte Frequenz für dieses Band
+und diesen Modus (festgelegt mit *Bev.* auf der Registerkarte *Frequenzen* der Einstellungen).
+Ein Rechtsklick auf 80 m bis 10 m (FT8, FT4, FT2) führt auf die übliche DXpedition-Frequenz,
+auf 6 m (FT8) auf 50,323 MHz. Siehe auch
+menu:Hilfe[Spezielle Mausbefehle].
+
+|*VHF-/UHF-Schaltflächen*
+|Ersetzt die KW-Schaltflächen durch einen Satz für VHF/UHF/Mikrowelle (8 m bis 24 GHz).
+Nur sichtbar, solange *Band-Schaltflächen* aktiviert ist.
+
+|*Dunkles Design verwenden*
+|Schaltet alle Fenster auf ein dunkles Design um. Das ist mehr als ein einfaches dunkles
+Stylesheet: WS passt auch einige interne Einstellungen an und verwendet ein dafür
+optimiertes Stylesheet. Ändern Sie danach die Hervorhebungsfarben auf der Registerkarte
+*Farben* der Einstellungen auf sanftere Pastelltöne.
+
+|*Rufzeichen im Wasserfall*
+|Untermenü, siehe unten.
+|===
+
+==== Rufzeichen im Wasserfall
+
+image::menu-View-Callsign_overlay.png[Untermenü Rufzeichen im Wasserfall]
+
+WS kann dekodierte Rufzeichen direkt in den Wasserfall schreiben, auf der
+Frequenz, auf der die jeweilige Station gehört wurde.
+
+[cols="2,5",options="header"]
+|===
+|Menüpunkt |Funktion
+
+|*Dekodierte Rufzeichen anzeigen*
+|Schaltet die Rufzeichen-Beschriftungen ein oder aus. Beim Ausschalten werden alle Beschriftungen entfernt.
+Auch das Öffnen einer `.wav`-Datei löscht sie.
+
+|*1 Periode lang anzeigen* ... *5 Perioden lang anzeigen*
+|Wie lange eine Beschriftung nach der letzten Dekodierung der Station stehen bleibt, in
+Tx/Rx-Perioden (Standard 2). Derselbe Wert lässt sich im Fenster Breitbandanzeige einstellen.
+
+|*Schriftgröße*
+|image:menu-View-Callsign_overlay-Callsign_font.png[Untermenü Schriftgröße] +
+Größe der Beschriftung: *Klein (7 pt)*, *Normal (8 pt)*, *Mittel (10 pt)* oder *Groß (12 pt)*.
+
+|*Transparenz*
+|image:menu-View-Callsign_overlay-Callsign_transparency.png[Untermenü Transparenz] +
+Wie stark der Wasserfall durch die Beschriftungen scheint: *Keine*, *Niedrig*, *Mittel* oder *Hoch*.
+
+|*Position*
+|image:menu-View-Callsign_overlay-Callsign_position.png[Untermenü Position] +
+*Oben im Wasserfall* oder *Unten im Wasserfall (über dem Trenner)*, damit die
+neuesten Signale oben frei bleiben.
+|===
+
+[[MENU_SAVE]]
+=== Speichern
+
+image::menu-Save.png[Menü Speichern]
+
+[cols="2,5",options="header"]
+|===
+|Menüpunkt |Funktion
+
+|*Keine*
+|Es werden keine Audiodateien gespeichert.
+
+|*Dekodierte speichern*
+|Speichert das Audio (`.wav`) jeder Periode mit mindestens einer Dekodierung im
+Speicherverzeichnis.
+
+|*Alle speichern*
+|Speichert das Audio jeder Periode.
+
+|*Gespeicherte Dateien nach 30 Tagen entfernen*
+|Bei jedem Programmstart löscht WS alle Dateien im Speicherverzeichnis, die
+älter als 30 Tage sind.
+
+|*ALL.TXT nicht aufteilen*
+|Alle Dekodierungen und Aussendungen landen in einer einzigen `ALL.TXT` (Standard).
+
+|*ALL.TXT jährlich aufteilen*
+|Eine Datei pro Jahr, z. B. `2026-ALL.TXT`.
+
+|*ALL.TXT monatlich aufteilen*
+|Eine Datei pro Monat, z. B. `2026-09-ALL.TXT`.
+
+|*Schreiben von ALL.TXT deaktivieren*
+|In `ALL.TXT` wird nichts geschrieben.
+
+|*Standard-Ereignisprotokollierung*
+|Normale, minimale interne Protokollierung. Schaltet auch den *Diagnosemodus* wieder ab.
+
+|*Diagnosemodus*
+|Sammelt detaillierte Daten zur Fehlersuche in WS oder in seiner Kommunikation mit
+Ihrem Funkgerät. Er wird nach einem Neustart wirksam und schaltet sich selbst ab, wenn
+WS das nächste Mal geschlossen wird. Auf Ihrem Desktop erscheint ein Ordner `logs` mit
+`ws_syslog.log` und `WS_RigControl.log`; senden Sie diese auf Anfrage an die
+Entwickler. Schließen Sie WS bald nach Auftreten des Fehlers, da die Dateien schnell wachsen.
+
+|*Ereignisprotokollierung deaktivieren*
+|Schaltet die interne Ereignisprotokollierung ab.
+|===
+
+[[MENU_LANGUAGE]]
+=== Sprache
+
+image::menu-Language.png[Menü Sprache]
+
+Wählt die Sprache der WS-Benutzeroberfläche. Standard ist Englisch;
+die übrigen Einträge sind die mit WS ausgelieferten Übersetzungen, jeweils in
+ihrer eigenen Sprache angezeigt.
+
+Wenn Sie eine Sprache auswählen, fragt WS, ob sein Fenster jetzt neu gestartet werden soll:
+
+[cols="2,5",options="header"]
+|===
+|Schaltfläche |Funktion
+
+|*Jetzt neu starten*
+|Baut das Hauptfenster innerhalb weniger Sekunden in der neuen Sprache neu auf, genauso
+wie beim Wechsel zu einer anderen Konfiguration. WS selbst läuft weiter.
+Während WS sendet oder abstimmt, wird das Fenster nicht neu gestartet; die neue
+Sprache gilt dann ab dem nächsten Start von WS.
+
+|*Später*
+|Behält die aktuelle Sprache bei, bis WS erneut gestartet wird.
+|===
+
+Die Auswahl gilt für alle Konfigurationen. Ein Start von WS mit
+`--language <code>` (zum Beispiel `ws --language de`) setzt sie für
+diesen Programmlauf außer Kraft.
+
+NOTE: Übersetzungen werden von Freiwilligen erstellt und können unvollständig sein; noch
+nicht übersetzte Texte erscheinen auf Englisch.
+
+[[MENU_HELP]]
+=== Hilfe
+
+image::menu-Help.png[Menü Hilfe]
+
+Die meisten Punkte öffnen eine Webseite oder ein PDF in Ihrem Browser und benötigen daher eine
+Internetverbindung.
+
+[cols="2,5",options="header"]
+|===
+|Menüpunkt |Funktion
+
+|*Versionshinweise*
+|Die Versionshinweise zu WS (online).
+
+|*WS-Homepage*
+|Öffnet die WS-Website (wsjt-x-improved.sourceforge.io).
+
+|*WS-Downloadseite*
+|Öffnet den Download-Ordner auf SourceForge mit allen WS-Versionen und
+Installationsprogrammen. Dort können Sie nach einer neueren Version sehen.
+
+|*WSJT-X-Benutzerhandbuch*
+|Der WSJT-X User Guide (online), die Referenz für Betriebsarten und Betriebsabläufe.
+
+|*Benutzerhandbuch FT8-DXpedition-Modus*
+|PDF zum Fox-and-Hound-Betrieb.
+
+|*SuperFox-Benutzerhandbuch*
+|PDF zum SuperFox-Modus.
+
+|*Schnellstartanleitung zu FST4 und FST4W*
+|PDF.
+
+|*Schnellstartanleitung zu Q65*
+|PDF.
+
+|*Schnellstartanleitung zu WSJT-X 2.5.0 und MAP65 3.0*
+|PDF zum Breitband-EME-Betrieb mit zwei Programmen.
+
+|*Schnellstartanleitung zu WSJT-X 2.7 und QMAP*
+|PDF zur Verwendung des Breitband-Q65-Monitors (heute WS-MAP) mit dem Hauptprogramm.
+
+|*Beispiele herunterladen ...*
+|Lädt Beispiel-`.wav`-Dateien herunter, die die Betriebsarten demonstrieren; öffnen Sie sie
+mit menu:Datei[Öffnen].
+
+|*EME-Ephemeridentabelle herunterladen*
+|Fragt nach einem Jahr (2025 bis 2040) und öffnet die EME-Tabelle dieses Jahres (PDF).
+
+|*Tastenkürzel*
+|Ein Fenster mit allen Tastenkürzeln (auch kbd:[F3]).
+
+|*Spezielle Mausbefehle*
+|Ein Fenster, das auflistet, was Klicks, Rechtsklicks und Doppelklicks im
+Wasserfall, in den Dekodierungen, auf der Skalenfrequenz und auf Schaltflächen bewirken (auch kbd:[F5]).
+
+|*Liste der Typ-1-Präfixe und -Suffixe*
+|Die Zusatzpräfixe und -suffixe, die in Standardnachrichten funktionieren.
+
+|*Umgang mit Fehlern der Funkgerätesteuerung*
+|PDF mit Hilfe bei CAT- und Funkgerätesteuerungsproblemen.
+
+|*Empfohlene Audioeinstellungen*
+|Schritt-für-Schritt-Anleitung zum Einstellen des Sende-Audiopegels, damit Ihr
+Signal sauber bleibt (keine ALC-Wirkung, keine Oberwellen).
+
+|*Copyright-Hinweis* kbd:[Shift+F1]
+|Die Lizenz und der Copyright-Hinweis, der bei Wiederverwendung von WS- oder WSJT-X-Code erforderlich ist.
+
+|*Über WS*
+|Version und Danksagungen.
+|===
+
+NOTE: Unter macOS erscheint *Über WS* im Programmmenü.

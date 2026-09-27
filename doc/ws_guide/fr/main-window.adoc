@@ -1,0 +1,309 @@
+[[MAIN_WINDOW]]
+== Fenêtre principale
+
+La fenêtre principale de WS ressemble à celle de WSJT-X et fonctionne de la même façon, avec
+des boutons supplémentaires et davantage d'actions à la souris. Le guide utilisateur WSJT-X décrit les
+contrôles standard. Ce chapitre ne couvre que ce qui est nouveau ou différent dans
+WS : tout ce que vous utilisez en dehors des menus et de la boîte de dialogue *Paramètres*.
+menu:Aide[Commandes spéciales de la souris] en donne un bref résumé.
+
+image::WS.png[Fenêtre principale de WS,align="center"]
+
+[[WAIT_FEATURES]]
+=== Fonctions Wait
+
+Les fonctions Wait terminent un QSO pour vous quand l'autre station ne
+répond pas tout de suite ou disparaît dans le QSB. Elles nécessitent toutes *Séq. auto* coché et
+*Activer les fonctions Wait* dans l'onglet *Général* (activé par défaut, voir
+<<SETTINGS_GENERAL>>).
+
+WARNING: Quand une fonction Wait est armée, un message reçu peut faire passer votre
+transceiver en émission sans que vous touchiez à rien. Gardez votre amplificateur, votre boîte
+d'accord et votre antenne prêts, ou désarmez la fonction.
+
+[cols="2,5",options="header"]
+|===
+|Fonction |Fonctionnement
+
+|*Wait and Reply*
+|Armée automatiquement tant qu'un indicatif figure dans *Indicatif DX* et que *Activer Tx* est
+désactivé. Quand cette station vous appelle (un message avec votre indicatif et le sien,
+sans 73), WS active *Activer Tx* et poursuit le QSO. Il renvoie aussi
+RR73 si l'autre station n'a pas copié le premier. Fonctionne
+en FT2, FT4, FT8, FST4, JT4, JT9, JT65, MSK144 et Q65. Tx se désactive
+de nouveau après 8 périodes (12 en MSK144).
+
+|*Wait and Call*
+|Cliquez sur le bouton *Indicatif DX* (il devient rouge). Quand la station de *Indicatif DX*
+réapparaît avec CQ, RRR, RR73 ou 73, WS l'appelle jusqu'à trois fois.
+Fonctionne en FT2, FT4, FT8, FST4, MSK144 et Q65, en trafic normal ou en
+Hound FT8. Désarmée par *Arrêter Tx*, *Stop*, la désactivation de *Activer Tx*,
+un nouveau clic sur *Indicatif DX*, ou dès que la station vous répond (le QSO
+se poursuit alors normalement).
+
+|*Wait and Pounce*
+|Choisissez un mode *CQ:* autre que *CQ: None* (voir <<CQ_SELECTOR>>), puis
+faites un clic droit sur *Activer Tx* (il devient orange). WS répond au CQ suivant : le
+premier, ou la station la plus éloignée, la plus forte ou la plus faible de la
+période. Faites de nouveau un clic droit sur *Activer Tx*, ou cliquez sur *Arrêter Tx* ou *Stop*, pour
+désarmer. Non disponible en Fox.
+|===
+
+Wait and Pounce respecte les filtres. Par exemple, WS peut n'attendre que les appels CQ
+avec un certain préfixe, locator, indicatif ou mot-clé. Avec *Utiliser les filtres uniquement pour
+Wait and Pounce, CQ: First, etc.*, tous les décodages restent visibles, mais Wait and Pounce ne répond
+qu'aux stations qui passent les filtres (voir <<SETTINGS_FILTERS>>).
+
+*Activer Tx* et *Indicatif DX* deviennent jaunes chaque fois qu'un message reçu peut
+activer Tx : avec un indicatif dans *Indicatif DX*, *Séq. auto* activé et les fonctions Wait
+activées, et toujours en mode Hound. Un clic droit sur *Indicatif DX* efface
+*Indicatif DX*, *Locator DX* et les messages standard ; cela désarme aussitôt Wait
+and Reply et Wait and Call.
+
+[[CQ_SELECTOR]]
+=== Sélecteur CQ: et Liste d'ignorés
+
+La liste *CQ:* à côté de *Séq. auto* est visible lorsque *Séq. auto* est coché.
+
+[cols="2,5",options="header"]
+|===
+|Sélection |Résultat
+
+|*CQ: None*
+|Comportement standard de WSJT-X.
+
+|*CQ: First*
+|Quand vous appelez CQ, WS répond à la première station qui vous appelle. Avec Wait
+and Pounce, il répond au premier CQ.
+
+|*CQ: Max Dist*
+|Choisit la station la plus éloignée (un locator est nécessaire pour calculer la distance).
+
+|*CQ: Max dB* / *CQ: Min dB*
+|Choisit la station la plus forte / la plus faible.
+|===
+
+Le bouton *Ignorer* (ou kbd:[Ctrl+I]) ajoute l'indicatif de *Indicatif DX* à
+la Liste d'ignorés. Avec menu:Filtres[Ignorer les stations de la Liste d'ignorés]
+coché, les modes *CQ:* (Wait and Pounce) sautent ces stations ;
+menu:Filtres[Masquer les stations de la Liste d'ignorés] les retire de l'Activité
+de la bande. Videz la liste avec menu:Fichier[Effacer la Liste d'ignorés]. Voir
+<<MENU_FILTERS>> pour les autres options *Ignorer* et *Masquer*.
+
+[[MOUSE_SHORTCUTS]]
+=== Raccourcis souris et boutons
+
+==== Graphique large
+
+[cols="2,5",options="header"]
+|===
+|Action |Résultat
+
+|Clic gauche
+|Règle la fréquence Rx.
+
+|Clic droit / kbd:[Shift]+clic gauche
+|Règle la fréquence Tx.
+
+|Double-clic droit / kbd:[Ctrl]+clic gauche
+|Règle Rx et Tx sur la même fréquence (Rx = Tx).
+
+|Case *Barres*
+|Affiche sur la cascade les barres de fréquence Rx (verte) et Tx (rouge).
+
+|Case *Fréq*
+|Une info-bulle indique la fréquence audio sous le pointeur de la souris.
+
+|*Horodatage*
+|Affiche l'heure UTC sur la cascade à *Gauche* ou à *Droite*, ou *Désactivé*.
+|===
+
+==== Indicatifs sur la cascade
+
+Avec menu:Affichage[Indicatifs sur la cascade > Afficher les indicatifs décodés] (ou *Afficher
+indicatifs* dans le Graphique large), les indicatifs décodés apparaissent comme étiquettes sur la
+cascade, à leur fréquence : en rouge pour l'indicatif de *Indicatif DX*, en vert pour
+un CQ, en noir pour les autres. La case *× TR* fixe le nombre de périodes pendant lesquelles une
+étiquette reste affichée ; *Effacer* supprime toutes les étiquettes. Un clic gauche sur une étiquette place l'indicatif et
+le locator dans *Indicatif DX* / *Locator DX*, règle Rx sur ce signal, règle *Tx pair/1er*
+pour la réponse et génère les messages standard. La police, la transparence et la
+position se règlent dans le menu *Affichage* (voir <<MENU_VIEW>>). En Q65,
+menu:Décodage[Désactiver les clics sur la cascade] désactive les clics sur les étiquettes.
+
+==== Boutons
+
+[cols="2,5",options="header"]
+|===
+|Action |Résultat
+
+|Clic droit sur *Accord*
+|Lance la boîte d'accord du transceiver via CAT. Le bouton affiche *Tuning* pendant 6 s ;
+refaites un clic droit pour arrêter. Nécessite un modèle Hamlib qui prend en charge l'accord.
+
+|Clic droit sur *Activer Tx*
+|Arme ou désarme Wait and Pounce (<<WAIT_FEATURES>>).
+
+|Clic sur *Indicatif DX* / clic droit sur *Indicatif DX*
+|Arme Wait and Call / efface *Indicatif DX*, *Locator DX* et les messages.
+
+|Clic droit sur *Rechercher* / *Ajouter* / *Ignorer*
+|Recherche l'indicatif de *Indicatif DX* sur qrz.com / hamqth.com / qrzcq.com dans votre navigateur.
+
+|*Effacer*
+|Avec *Autre comportement du bouton Effacer* (<<SETTINGS_GENERAL>>) : un clic
+efface l'Activité de la bande, un clic droit efface la Fréquence Rx, un double-clic efface
+les deux.
+
+|Clic droit sur *Décoder*
+|Débloque un décodeur figé.
+
+|Clic droit sur *CQ seulement*
+|N'affiche que les messages contenant l'indicatif de *Indicatif DX*. La case devient rouge
+et affiche *Indicatif DX* ; refaites un clic droit pour revenir.
+
+|Clic droit sur *Tx5*
+|Conserve votre texte libre Tx5 (en jaune) pour qu'il ne soit pas effacé.
+
+|Clic droit sur *Tx pair/1er*
+|Fige la case à cocher. Un clic droit sur le bouton *MSK* la libère.
+// CHECK: Uwe will test whether the FT8 button also unfreezes (Help text and tooltip say so; the code only does it for MSK).
+
+|Clic droit sur *H*
+|Active ou désactive le mode SuperFox.
+
+|Clic droit sur *FT8*
+|Active ou désactive la dernière Activité spéciale utilisée.
+
+|Clic droit sur *Q65* / *JT65*
+|Passe en mode Q65 Pileup / en JT9.
+
+|Molette de la souris sur la fréquence du cadran, ou clic gauche / clic droit
+|Modifie la fréquence du cadran de -1 kHz / +1 kHz.
+|===
+
+[[BAND_BUTTONS]]
+=== Boutons de bande
+
+menu:Affichage[Boutons de bande] ajoute une rangée de boutons de bande, dans les trois
+variantes d'interface. Cliquez sur un bouton pour aller à la fréquence du mode en cours dans
+votre liste de fréquences. En FT8, FT4 et FT2, un clic droit sur 80 m à 10 m mène
+à la fréquence DXpédition FT8 de cette bande (6 m : FT8 uniquement).
+menu:Affichage[Boutons VHF / UHF] fait passer la rangée aux bandes de 8 m à
+13 cm.
+
+Sur 2 m, un clic droit mène au 4 m (Régions 1 et 3) ou au 1,25 m (Région 2) ;
+sur 70 cm, un clic droit mène au 23 cm.
+
+[[MAIN_FILTERS]]
+=== Filtres dans la fenêtre principale
+
+L'étiquette d'état en bas à gauche indique quand des filtres masquent des décodages : elle
+passe de *Réception* en vert à *Receiving, Filters On* en cyan. Cochez *BP*
+(bypass) pour désactiver temporairement tous les filtres sans perdre leurs
+réglages ; l'étiquette affiche alors *Receiving, Filters bypassed*. Les listes de
+filtres se configurent dans l'onglet *Filtres* (<<SETTINGS_FILTERS>>) ; les filtres
+rapides se trouvent dans le menu *Filtres* (<<MENU_FILTERS>>).
+
+[[BAND_ACTIVITY_INFO]]
+=== Distance, azimut et États US
+
+Si un message contient un locator valide, l'Activité de la bande peut afficher la
+distance et l'azimut orthodromique, alignés en colonnes avec le pays.
+Avec *Afficher les États US*, l'État US ou la province canadienne est également affiché.
+Activez ces options et réglez l'espacement des colonnes dans l'onglet *Général*
+(<<SETTINGS_GENERAL>>).
+
+[[CONTEST_NAME]]
+=== Nom de concours et commentaires
+
+Avec *CQ avec nom de concours spécifique* et un *Nom du concours* de 4 lettres au maximum (p. ex. PACC)
+dans l'onglet *Avancé*, WS appelle "CQ PACC" au lieu de "CQ TEST" ou
+"CQ RU" lorsqu'une Activité spéciale est active (modes FT, MSK144,
+Q65 ; pas en Fox ni en Hound).
+
+Avec *Activité spéciale dans les commentaires* dans l'onglet *Rapports*
+(<<SETTINGS_REPORTING>>), le commentaire de *Consigner QSO* est rempli avec
+l'activité, p. ex. "EU VHF Contest", "ARRL Field Day" ou, avec un nom de concours
+spécifique, "PACC Contest". Les commentaires conservés et *Reports dB dans les
+commentaires* sont prioritaires.
+
+[[LIVECQ_CHECKS]]
+=== LiveCQ : qui m'a entendu
+
+Avec *Activer Q65 LiveCQ* dans l'onglet *Rapports* (<<SETTINGS_REPORTING>>)
+et le mode Q65, WS demande au serveur LiveCQ, une fois par période, quelles stations
+ont décodé votre indicatif. Ces stations reçoivent une coche et un cadre vert
+vif sur leur étiquette de la cascade, ainsi qu'une coche dans la fenêtre Stations
+actives en mode Q65 Pileup. Le DX peut ainsi choisir les appelants qui
+le copient réellement. Le bas de la fenêtre Stations actives affiche
+*LiveCQ connected* ou, en rouge, *LiveCQ NO CONNECTION*.
+
+[[TX_INHIBIT]]
+=== Blocage TX
+
+Avec *Activer le Blocage TX* dans l'onglet *Radio* (<<SETTINGS_RADIO>>), un autre
+programme peut empêcher WS d'émettre pendant qu'un transceiver prioritaire émet sur la même bande.
+L'étiquette d'état affiche alors *Blocage*.
+
+[[WSMAP_CLICKS]]
+=== Click-to-work depuis WS-MAP et EME65
+
+Avec menu:Décodage[Accepter les clics de WS-MAP/EME65] coché, un clic sur un
+indicatif dans WS-MAP ou EME65 règle dans WS *Indicatif DX*, *Locator DX*, la fréquence, la
+période Tx et le sous-mode. Un double-clic peut aussi y activer
+*Activer Tx*. Cela fonctionne en JT65 et Q65 avec *Activer les fonctions VHF et
+sous-mode*. WS traite aussi les décodages transmis par EME65.
+Vos *Indicatif DX* et *Locator DX* sont renvoyés, afin que WS-MAP ou EME65 puissent
+les suivre.
+
+Si plusieurs instances de WS surveillent la même source, cliquez sur *Revendiquer WS-MAP* dans
+celle qui doit réagir aux clics. Choisissez la source avec
+menu:Décodage[Source WS-MAP/EME65] (voir <<MENU_DECODE>>).
+
+[[QSY_WINDOWS]]
+=== Créateur de messages et Moniteur QSY
+
+Ces fenêtres vous aident à organiser un QSY avec votre correspondant, par exemple
+d'une fréquence EME vers une autre bande.
+
+[cols="2,5",options="header"]
+|===
+|Fenêtre |Fonction
+
+|menu:Affichage[Créateur de messages]
+|Compose une courte demande de QSY (bande, mode et kHz) pour la station de *Indicatif
+DX*, la place dans le message en texte libre et active *Activer Tx*.
+
+|menu:Affichage[Activer les messages contextuels]
+|Quand un message reçu vous demande un QSY, une fenêtre contextuelle affiche la demande et
+vous permet de répondre OKQSY ou NOQSY.
+
+|menu:Affichage[Moniteur QSY]
+|Liste toutes les demandes de QSY entendues, avec UTC, indicatif, fréquence et mode.
+|===
+
+[[DIAGNOSTIC_MODE]]
+=== Mode diagnostic
+
+Le mode diagnostic collecte des données pour trouver les problèmes de WS ou de son contrôle
+du transceiver (erreurs Hamlib, ports COM qui ne répondent pas, etc.).
+
+. Sélectionnez menu:Sauvegarde[Mode diagnostic].
+. Fermez et redémarrez WS, puis reproduisez le défaut.
+. Fermez WS dès que le défaut est apparu : les fichiers journaux grossissent rapidement.
+
+WS crée un dossier `logs` sur votre bureau (avec un sous-dossier par instance
+`--rig-name`) contenant `ws_syslog.log` et `WS_RigControl.log`.
+Ouvrez-les avec un éditeur de texte, ou envoyez-les aux développeurs. Le mode diagnostic
+se désactive tout seul à la prochaine fermeture de WS ; pour l'annuler plus tôt,
+sélectionnez menu:Sauvegarde[Journalisation d'événements par défaut].
+
+[[DARK_STYLE]]
+=== Thème sombre
+
+menu:Affichage[Utiliser le thème sombre] fait passer WS immédiatement à un thème sombre, sans
+redémarrage. Il adapte aussi les lignes de la cascade et les couleurs des boutons. Avec
+le thème sombre, choisissez des couleurs de fond plus douces (pastel) dans l'onglet *Couleurs*.
+Voir <<MENU_VIEW>>.
+
+image::WS-AL_dark_style.png[WS AL avec le thème sombre,align="center"]

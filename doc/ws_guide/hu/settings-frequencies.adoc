@@ -1,0 +1,109 @@
+[[SETTINGS_FREQUENCIES]]
+=== Frekvenciák
+
+image::settings-frequencies.png["Beállítások, Frekvenciák fül",align="center"]
+
+==== Frekvencia kalibrálás
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Meredekség* / *Eltérés*
+|A rádió ismert skálahibáját korrigálja: +
+`rádiófrekvencia = Eltérés + (1 + Meredekség / 1 000 000) × f` +
+ahol az *Eltérés* Hz-ban, a *Meredekség* ppm-ben értendő. A rádiónak
+küldött és onnan visszaolvasott frekvenciák korrigálódnak, így a WS a valós
+frekvenciát mutatja. Ha a rádió pontos, hagyja mindkettőt 0-n.
+|===
+
+TIP: Az értékek mérésének módját a WSJT-X felhasználói kézikönyv
+_Frequency Calibration_ fejezete írja le (FreqCal mód).
+
+==== Munkafrekvenciák
+
+A főablak sávválasztójában felkínált frekvenciák. A WS csak az Ön *IARU
+Region* beállításának (*Általános* fül) és az aktuális módnak megfelelő
+bejegyzéseket mutatja. Egy cella szerkesztéséhez kattintson rá duplán.
+
+[cols="2,5",options="header"]
+|===
+|Oszlop |Mire szolgál
+
+|*IARU Region* / *Üzemmód*
+|Hol és melyik módhoz kínálja fel a bejegyzést. A *Mind* értékű
+bejegyzések mindenhol / minden módban megjelennek.
+
+|*Frekvencia*
+|A tárcsafrekvencia MHz-ban.
+
+|*Pref.*
+|A sávhoz és módhoz preferált bejegyzés. A WS ezt használja, ha egy
+sávgombra kattint (menu:Nézet[]), vagy ha magától vált sávot (sávugrás).
+Sávonként és módonként csak egy bejegyzés lehet preferált.
+
+|*Leírás*
+|A bejegyzés saját megnevezése, a sávválasztóban jelenik meg.
+
+|*Kezdő dátum/idő* / *Befejező dátum/idő*
+|A bejegyzés csak ebben az időszakban jelenik meg, pl. egy DXpedícióhoz.
+Üres = mindig.
+|===
+
+A táblázaton jobb gombbal kattintva ezek a műveletek érhetők el:
+
+[cols="2,5",options="header"]
+|===
+|Menüpont |Mire szolgál
+
+|*Törlés*
+|Eltávolítja a kijelölt bejegyzéseket.
+
+|*Beillesztés…*
+|Új bejegyzést ad hozzá: *IARU Region*, *Üzemmód*, *Frekvencia (MHz)*,
+*Preferált a sáv/módhoz*, *Leírás* és opcionálisan egy dátumtartomány.
+
+|*Betöltés ...*
+|A listát egy `.qrg` vagy `.qrg.json` fájl tartalmára cseréli (előtte a WS
+rákérdez).
+
+|*Mentés másként ...*
+|Fájlba menti a listát; `.qrg.json` végű név esetén JSON fájl készül. Ha
+vannak kijelölt bejegyzések, a WS megkérdezi, hogy csak azokat mentse-e.
+
+|*Összevonás ...*
+|Egy `.qrg` vagy `.qrg.json` fájl bejegyzéseit hozzáadja a listához.
+
+|*Reset*
+|Visszaállítja az alapértelmezett listát (előtte a WS rákérdez).
+|===
+
+==== Állomás információk
+
+Az állomás sávonkénti adatai. Egy cella szerkesztéséhez kattintson rá
+duplán.
+
+[cols="2,5",options="header"]
+|===
+|Oszlop |Mire szolgál
+
+|*Sáv*
+|A sáv, amelyre a sor vonatkozik.
+
+|*Offset*
+|Transzverterekhez: a kijelzett frekvenciához adva adja a rádió
+frekvenciáját. Példa: 144 MHz 28 MHz-es KF-fel -116 MHz-t igényel.
+Alapértelmezés: 0.
+
+|*Antenna Leírás*
+|Ezen a sávon üzemelve ez kerül elküldésre a PSK Reporternek.
+|===
+
+A táblázaton jobb gombbal kattintva elérhető a *Törlés* (eltávolítja a
+kijelölt sorokat) és a *Beillesztés…* (új sort ad hozzá: *Sáv*, *Offset
+(MHz)*, *Antenna*).
+
+TIP: Sorok gyors létrehozásához jelöljön ki bejegyzéseket a
+*Munkafrekvenciák* táblázatban (kbd:[Ctrl]+kbd:[A] az összeshez), és húzza
+őket az *Állomás információk* táblázatra. Ezután töltse ki az eltolásokat
+és az antennákat.

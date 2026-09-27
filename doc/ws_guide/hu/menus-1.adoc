@@ -1,0 +1,398 @@
+[[MENU_FILE]]
+=== Fájl
+
+image::menu-File.png[Fájl menü]
+
+[cols="2,5",options="header"]
+|===
+|Menüpont |Mire szolgál
+
+|*Megnyit* kbd:[Ctrl+O]
+|Leállítja a *Vétel* funkciót, és megnyit egy rögzített `.wav` fájlt, amelyet
+aztán az élő hanghoz hasonlóan dekódol.
+
+|*Következő megnyitása a könyvtárban*
+|Megnyitja és dekódolja ugyanabban a mappában a következő `.wav` fájlt.
+
+|*A könyvtárban maradt fájlok dekódolása* kbd:[Shift+F6]
+|Egymás után megnyitja és dekódolja a mappa összes további `.wav` fájlját.
+
+|*Az összes {asterisk}.wav és {asterisk}.c2 fájl törlése a mentési könyvtárból (save-ból)*
+|Megerősítés után törli az összes mentett hangfájlt (`.wav` és `.c2`) a
+mentési könyvtárból.
+
+|*Az ALL.TXT fájl törlése*
+|Megerősítés után törli az `ALL.TXT` fájlt, amely mindent rögzít, amit
+vett és adott.
+
+|*A wsjtx_log.adi, Napló fájl törlése !*
+|Megerősítés után törli az ADIF naplófájlt.
+
+|*A wsjtx.log törlése*
+|Megerősítés után törli a `wsjtx.log` fájlt, a *Log QSO* által írt
+egyszerű QSO-listát. A WS ezt használja a "ma forgalmazott" szűrőkhöz,
+valamint azért, hogy a *Wait and Pounce* ne hívjon már naplózott
+állomásokat.
+
+|*Mellőzési lista törlése*
+|Megerősítés után kiüríti a (*Mellőz* gombbal feltöltött) mellőzési listát.
+
+|*A WSPR hash-táblázat törlése*
+|Megerősítés után törli azt a táblázatot, amellyel a WSPR a hash-elt
+összetett hívójeleket feloldja.
+
+|*A Q65 hívók listájának törlése*
+|Megerősítés után törli a hívójelek listáját, amelyet a WS a Q65
+dekódolásokból megjegyez.
+
+|*Cabrillo log visszaállítása ...*
+|Megerősítés után törli a verseny naplóból az aktuális verseny összes
+QSO-ját. Ezek az ADIF naplóban megmaradnak, de Cabrillo formátumba már nem
+exportálhatók. A sorszám visszaáll 1-re, és az *Aktív állomások*
+pontszáma nullázódik.
+
+|*Cabrillo log exportálása ...*
+|Beküldéshez Cabrillo fájlként menti a verseny naplót.
+
+|*A napló könyvtár megnyitása*
+|Megnyitja a fájlkezelőben a WS adatmappáját (naplók, `ALL.TXT` stb.).
+
+|*Beállítások...*
+|Megnyitja a *Beállítások* ablakot (kbd:[F2] is). Lásd a Beállítások fejezetet.
+
+|*Kilépés*
+|Bezárja a WS-t.
+|===
+
+NOTE: macOS alatt a *Beállítások* (*Preferences* néven) és a *Kilépés*
+(*Quit* néven) a *Fájl* menü helyett az alkalmazásmenüben található.
+
+[[MENU_CONFIGURATIONS]]
+=== Konfigurációk
+
+image::menu-Config.png[Konfigurációk menü]
+
+A _konfiguráció_ a beállítások teljes, névvel ellátott készlete. Sok
+operátor módonként vagy állomás-összeállításonként tart egyet (például
+"FT8 HF" és "Q65 EME"), és két kattintással vált közöttük.
+
+A menü felsorolja az összes konfigurációt; a használatban lévő be van
+jelölve. Minden konfiguráció egy kis almenüt nyit (balra: egy másik
+konfiguráció, jobbra: a használatban lévő):
+
+image:menu-Config-Other.png[Egy másik konfiguráció almenüje] image:menu-Config-Current.png[A használatban lévő konfiguráció almenüje]
+
+[cols="2,5",options="header"]
+|===
+|Menüpont |Mire szolgál
+
+|*Átkapcsolás*
+|A WS újraindítja a főablakát ennek a konfigurációnak a beállításaival.
+A használatban lévő konfigurációnál nem jelenik meg.
+
+|*Klónoz*
+|Másolatot készít "_név_ - Copy" néven. Nevezze át és módosítsa a
+beállításait, így új konfigurációt hozhat létre.
+
+|*Klónoz ide ...*
+|Felülírja ennek a konfigurációnak az összes beállítását egy Ön által
+választott másikéval. Megerősítést kér. Csak akkor jelenik meg, ha egynél
+több konfiguráció van.
+
+|*Reset*
+|Megerősítés után visszaállítja ezt a konfigurációt az alapértékekre.
+
+|*Átnevez ...*
+|Új nevet ad a konfigurációnak.
+
+|*Törlés*
+|Megerősítés után törli a konfigurációt. A használatban lévő konfiguráció
+nem törölhető, ezért ott ez a menüpont nem jelenik meg.
+|===
+
+TIP: Ha a WS-t közvetlenül egy adott konfigurációval szeretné indítani,
+használja a `--config NAME` (vagy `-c NAME`) parancssori opciót, például
+`ws -c Echo`.
+
+[[MENU_VIEW]]
+=== Nézet
+
+image::menu-View.png[Nézet menü]
+
+[cols="2,5",options="header"]
+|===
+|Menüpont |Mire szolgál
+
+|*Vízesés*
+|Megnyitja a Széles-grafikon ablakot a spektrummal és a vízeséssel.
+
+|*Csillagászati adatok*
+|Megnyitja (bejelölve) vagy bezárja a Csillagászati adatok ablakot: Hold-
+és Nap-adatok, EME Doppler-eltolódás, Doppler-követés és sked frekvencia.
+
+|*Üzenet átlagolás* kbd:[F7]
+|Megnyitja az Üzenet átlagolás ablakot, amely az átlagolt dekódolásokhoz
+felhasznált periódusokat mutatja (JT4, JT65, Q65).
+
+|*Echo-grafikon* kbd:[F8]
+|Megnyitja az Echo-grafikon ablakot az Echo módhoz.
+
+|*Gyors-grafikon* kbd:[F9]
+|Megnyitja a Gyors-grafikon ablakot a gyors módokhoz (MSK144 és gyors JT9).
+
+|*Verseny napló*
+|Megmutatja az aktuális verseny QSO-it és azok számát.
+
+|*Fox napló*
+|Megmutatja az FT8 DXpedíció módban Fox-ként létrehozott QSO-kat.
+
+|*Színkiemelési séma*
+|Kis jelmagyarázat a dekódolások aktuális kiemelési színeiről (CQ, saját
+hívójel, új DXCC, LotW-felhasználó stb.). A színeket a *Színek*
+beállítási fülön állíthatja be.
+
+|*Aktív állomások*
+|Felsorolja a nemrég dekódolt állomásokat, például a legtávolabbiak
+megtalálásához távolság alapján pontozott versenyben, *Arány*, *Pontszám*
+és *Sávváltások* adatokkal. Egy sorra kattintva hívhatja az állomást. Ha
+a WS-MAP fut, azokat az állomásokat mutatja, amelyeket a WS-MAP a teljes
+sávszélességében dekódol; egy kattintás átviszi a QSO-adatokat és a sked
+frekvenciát a WS-be, dupla kattintás hívja az állomást.
+
+|*SWL mód*
+|Elrejti az alsó kezelőpanelt, így a dekódolási panelek kitöltik az egész
+ablakot. Hasznos, ha több példány fut egyszerre. Ennek a nézetnek a
+méretét és pozícióját a program külön megjegyzi.
+
+|*Üzenetkészítő*
+|Speciális üzeneteket állít össze, pl. QSY-kérést másik sávra vagy módra,
+vagy rövid előre megírt üzenetet, a *DX Hívójel* mezőben lévő állomásnak.
+Megnyitása a *Felugró üzenetek engedélyezése* opciót is bekapcsolja.
+
+|*QSY figyelő*
+|Megmutatja azokat a speciális üzeneteket, amelyeket más állomások
+egymásnak és Önnek küldenek.
+
+|*Felugró üzenetek engedélyezése*
+|Felugró ablak jelenik meg válaszgombokkal, ha egy speciális üzenet Önnek
+szól.
+
+|*Sáv gombok*
+|Megjelenít egy sor HF sávgombot (160 m-től 70 cm-ig); az aktuális sáv
+zöld. Egy gombra kattintva az adott sávhoz és módhoz választott kedvenc
+frekvenciára lép (a *Frekvenciák* beállítási fülön a *Pref.* oszloppal
+állítható). 80 m és 10 m között (FT8, FT4, FT2) a jobb kattintás a szokásos
+DXpedíciós frekvenciára, 6 m-en (FT8) 50,323 MHz-re lép. Lásd még:
+menu:Súgó[Speciális egérparancsok].
+
+|*VHF / UHF gombok*
+|A HF gombokat VHF/UHF/mikrohullámú készletre cseréli (8 m-től 24 GHz-ig).
+Csak akkor látható, ha a *Sáv gombok* be van jelölve.
+
+|*Sötét stílus használata*
+|Minden ablakot sötét témára vált. Többet tesz egy egyszerű sötét
+stíluslapnál: a WS néhány belső beállítást is módosít, és erre optimalizált
+stíluslapot használ. Utána a *Színek* beállítási fülön állítsa a kiemelési
+színeket lágyabb, pasztell árnyalatokra.
+
+|*Hívójelek a vízesésen*
+|Almenü, lásd alább.
+|===
+
+==== Hívójelek a vízesésen
+
+image::menu-View-Callsign_overlay.png[Hívójelek a vízesésen almenü]
+
+A WS a dekódolt hívójeleket közvetlenül a vízesésre írhatja, azon a
+frekvencián, ahol az adott állomás hallható volt.
+
+[cols="2,5",options="header"]
+|===
+|Menüpont |Mire szolgál
+
+|*Dekódolt hívójelek megjelenítése*
+|Be- vagy kikapcsolja a hívójel-címkéket. Kikapcsoláskor minden címke
+eltűnik. Egy `.wav` fájl megnyitása is törli őket.
+
+|*Megtartás 1 periódusig* ... *Megtartás 5 periódusig*
+|Meddig marad meg egy címke az állomás utolsó dekódolása után, Tx/Rx
+periódusokban (alapértelmezés: 2). Ugyanez az érték a Széles-grafikon
+ablakban is beállítható.
+
+|*Betűméret*
+|image:menu-View-Callsign_overlay-Callsign_font.png[Betűméret almenü] +
+A címke mérete: *Kicsi (7 pt)*, *Normál (8 pt)*, *Közepes (10 pt)* vagy *Nagy (12 pt)*.
+
+|*Átlátszóság*
+|image:menu-View-Callsign_overlay-Callsign_transparency.png[Átlátszóság almenü] +
+Mennyire látszik át a vízesés a címkéken: *Nincs*, *Alacsony*, *Közepes* vagy *Magas*.
+
+|*Pozíció*
+|image:menu-View-Callsign_overlay-Callsign_position.png[Pozíció almenü] +
+*A vízesés tetején*, vagy *A vízesés alján (az elválasztó felett)*, hogy
+a legfrissebb jelek felül takaratlanok maradjanak.
+|===
+
+[[MENU_SAVE]]
+=== Mentés
+
+image::menu-Save.png[Mentés menü]
+
+[cols="2,5",options="header"]
+|===
+|Menüpont |Mire szolgál
+
+|*Nincs*
+|Nem ment hangfájlokat.
+
+|*Dekódolás mentése (Rx szöveg)*
+|A mentési könyvtárba menti minden olyan periódus hangját (`.wav`),
+amelyben legalább egy dekódolás volt.
+
+|*Összes mentése*
+|Minden periódus hangját menti.
+
+|*Mentett fájlok törlése 30 nap után*
+|A WS minden programindításkor törli a mentési könyvtárból a 30 napnál
+régebbi fájlokat.
+
+|*ALL.TXT felosztás nélkül*
+|Minden dekódolás és adás egyetlen `ALL.TXT` fájlba kerül (alapértelmezés).
+
+|*ALL.TXT felosztása évente*
+|Évente egy fájl, pl. `2026-ALL.TXT`.
+
+|*ALL.TXT felosztása havonta*
+|Havonta egy fájl, pl. `2026-09-ALL.TXT`.
+
+|*ALL.TXT írásának letiltása*
+|Semmi nem íródik az `ALL.TXT` fájlba.
+
+|*Alapértelmezett eseménynaplózás*
+|Normál, minimális belső naplózás. A *Diagnosztikai mód* opciót is
+kikapcsolja.
+
+|*Diagnosztikai mód*
+|Részletes adatokat gyűjt a WS vagy a rádióval való kommunikáció
+hibáinak felderítéséhez. Újraindítás után lép életbe, és a WS következő
+bezárásakor magától kikapcsol. Az asztalon megjelenik egy `logs` mappa a
+`ws_syslog.log` és a `WS_RigControl.log` fájllal; kérésre küldje el ezeket
+a fejlesztőknek. A hiba jelentkezése után hamarosan zárja be a WS-t, mert
+a fájlok gyorsan nőnek.
+
+|*Eseménynaplózás letiltása*
+|Kikapcsolja a belső eseménynaplózást.
+|===
+
+[[MENU_LANGUAGE]]
+=== Nyelv
+
+image::menu-Language.png[Nyelv menü]
+
+A WS felhasználói felületének nyelvét választja ki. Az alapértelmezés az
+angol; a többi bejegyzés a WS-sel szállított fordítás, mindegyik a saját
+nyelvén megjelenítve.
+
+Nyelv választásakor a WS megkérdezi, hogy most újraindítsa-e az ablakát:
+
+[cols="2,5",options="header"]
+|===
+|Gomb |Mire szolgál
+
+|*Újraindítás most*
+|Néhány másodperc alatt újraépíti a főablakot az új nyelven, ugyanúgy,
+mint egy másik konfigurációra váltáskor. Maga a WS tovább fut. Adás vagy
+hangolás közben az ablak nem indul újra; az új nyelv ekkor a WS következő
+indításakor lép életbe.
+
+|*Később*
+|A WS következő indításáig megtartja az aktuális nyelvet.
+|===
+
+A választás minden konfigurációra érvényes. Ha a WS-t a
+`--language <code>` opcióval indítja (például `ws --language de`), az
+arra a futásra felülbírálja.
+
+NOTE: A fordításokat önkéntesek készítik, és hiányosak lehetnek; a még le
+nem fordított szövegek angolul jelennek meg.
+
+[[MENU_HELP]]
+=== Súgó
+
+image::menu-Help.png[Súgó menü]
+
+A legtöbb menüpont egy weboldalt vagy PDF-et nyit meg a böngészőben, ezért
+internetkapcsolat kell hozzájuk.
+
+[cols="2,5",options="header"]
+|===
+|Menüpont |Mire szolgál
+
+|*Verzió megjegyzések*
+|A WS kiadási megjegyzései (online).
+
+|*WS honlap*
+|Megnyitja a WS weboldalát (wsjt-x-improved.sourceforge.io).
+
+|*WS letöltési oldal*
+|Megnyitja a SourceForge letöltési mappáját az összes WS verzióval és
+telepítővel. Itt nézze meg, van-e újabb verzió.
+
+|*WSJT-X felhasználói kézikönyv*
+|A WSJT-X felhasználói kézikönyve (online), a módok és az üzemi eljárások
+referenciája.
+
+|*FT8 DXpedíció mód felhasználói kézikönyv*
+|PDF a Fox és Hound üzemről.
+
+|*SuperFox felhasználói kézikönyv*
+|PDF a SuperFox módról.
+
+|*FST4 és FST4W Gyors útmutató*
+|PDF.
+
+|*Q65 Gyors útmutató*
+|PDF.
+
+|*WSJT-X 2.5.0, és MAP65 3.0 Gyors útmutató*
+|PDF a két programmal végzett szélessávú EME üzemről.
+
+|*WSJT-X 2.7 és QMAP gyors útmutató*
+|PDF a szélessávú Q65 monitor (ma WS-MAP) és a főprogram együttes
+használatáról.
+
+|*Minták letöltése ...*
+|Letölti a módokat bemutató `.wav` mintafájlokat; ezeket a
+menu:Fájl[Megnyit] menüponttal nyithatja meg.
+
+|*EME efemerisz táblázat letöltése*
+|Bekér egy évszámot (2025 és 2040 között), és megnyitja az adott év EME
+táblázatát (PDF).
+
+|*Gyorsbillentyűk*
+|Ablak az összes gyorsbillentyűvel (kbd:[F3] is).
+
+|*Speciális egérparancsok*
+|Ablak arról, mit tesz a kattintás, a jobb kattintás és a dupla kattintás a
+vízesésen, a dekódolásokon, a tárcsafrekvencián és a gombokon (kbd:[F5]
+is).
+
+|*Az 1.típusú prefixek és suffixek listája*
+|A szabványos üzenetekben használható kiegészítő prefixek és suffixek.
+
+|*Mi a teendő rig vezérlési hibák esetén*
+|PDF a CAT- és rádióvezérlési problémák megoldásához.
+
+|*Ajánlott hangbeállítások*
+|Lépésenkénti útmutató az adási hangszint beállításához, hogy a jel tiszta
+maradjon (ALC-működés és felharmonikusok nélkül).
+
+|*Szerzői jogi nyilatkozat* kbd:[Shift+F1]
+|A licenc és a szerzői jogi nyilatkozat, amely a WS vagy a WSJT-X kódjának
+újrafelhasználásakor kötelező.
+
+|*WS névjegy*
+|Verzió és közreműködők.
+|===
+
+NOTE: macOS alatt a *WS névjegy* az alkalmazásmenüben található.

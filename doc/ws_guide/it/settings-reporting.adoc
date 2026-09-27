@@ -1,0 +1,162 @@
+[[SETTINGS_REPORTING]]
+=== Segnalazione
+
+image::settings-reporting.png["Impostazioni, scheda Segnalazione",align="center"]
+
+==== Registrazione
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Posizione del logbook* / *Seleziona*
+|Il file ADIF in cui WS scrive i tuoi QSO. Il predefinito è `wsjtx_log.adi` nella
+directory dei dati di WS. *Seleziona* sceglie un file `.adi` esistente o ne nomina uno nuovo.
+Dopo *OK*, WS passa a quel file e lo rilegge per lo stato di già lavorato.
+
+|*Avvisami di registrare il QSO*
+|Apre la finestra *Log QSO* parzialmente compilata quando invii 73 o un messaggio
+a testo libero. Disattiva *Registra automaticamente*.
+
+|*Nominativo Op*
+|Il nominativo dell'operatore, se diverso da quello della stazione. Viene inserito
+nel campo *Operatore* della voce di log.
+
+|*Registra automaticamente*
+|Registra un QSO completato senza mostrare la finestra *Log QSO*. Disattiva *Avvisami
+di registrare il QSO*.
+
+|*Solo in Contest*
+|Con *Registra automaticamente*: registra automaticamente solo durante un'attività
+di contest (NA VHF, EU VHF, WW Digi, ARRL Digi, Field Day, RTTY Roundup).
+Gli altri QSO aprono la finestra *Log QSO*. I QSO da Fox vengono sempre registrati automaticamente.
+
+|*Riempi le griglie mancanti con 'ZZ00'*
+|Registra `ZZ00` come griglia quando l'altra stazione non ne ha inviata una.
+
+|*Registra griglie a 4 cifre*
+|Accorcia nel log i locatori da 6 caratteri a 4 caratteri.
+
+|*Registra la frequenza di sintonia invece della frequenza Tx*
+|Registra la frequenza di sintonia del rig. Se non spuntato, WS registra la frequenza di sintonia più
+l'offset audio Tx.
+
+|*Convertire la modalità in RTTY*
+|Registra i QSO JT9 con modo RTTY, per i programmi di log che non conoscono JT9.
+
+|*Riporta dB nei commenti*
+|Scrive in *Commenti* il modo e i rapporti inviati e ricevuti
+(ad es. `FT8  Sent: -10  Rcvd: -12`), per i programmi di log che rifiutano questi
+rapporti.
+
+|*Attività operativa speciale ai commenti*
+|Scrive in *Commenti* l'attività operativa speciale attiva, ad es.
+"EU VHF Contest" o "F/H mode". Con un nome di contest specifico come
+PACC, si usa "PACC Contest". Non viene applicato quando *Riporta dB nei commenti* è
+attivo o il commento è conservato nella finestra *Log QSO*.
+|===
+
+TIP: Il caricamento su Cloudlog o Wavelog si configura nella scheda *Avanzate*.
+
+==== PSK Reporter
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Abilita rilevamento PSK Reporter*
+|Invia i dati della tua stazione e le stazioni che decodifichi a
+https://pskreporter.info[PSK Reporter]. Il testo dell'antenna proviene da
+*Informazioni Stazione* nella scheda *Frequenze* per la banda corrente.
+Le decodifiche da file registrati non vengono segnalate.
+
+|*Usa la connessione TCP/IP*
+|Usa TCP invece di UDP. Serve solo se i tuoi rapporti UDP si perdono per strada.
+|===
+
+==== LiveCQ
+
+LiveCQ è un servizio web che elenca in tempo reale l'attività Q65 (e JT65 VHF) e
+mostra chi sente chi.
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Abilita LiveCQ Q65*
+|Interruttore generale (attivo per impostazione predefinita). Carica le tue decodifiche Q65, e le tue decodifiche JT65
+da 50 MHz in su, verso le destinazioni spuntate sotto. In Q65 recupera anche
+le spunte verdi "chi mi ha sentito".
+
+|*W3SZ (w3sz.com)* e nome del programma
+|Invia al LiveCQ di W3SZ solo i messaggi di tipo CQ, gli stessi rapporti che WS-MAP ed
+EME65 inviano lì. L'elenco a discesa sceglie il nome del programma riportato:
+*WSJTX* (come prima del cambio di nome) o *WS*.
+
+|*N6NU (livecq.n6nu.org)*
+|Destinazione completa (attiva per impostazione predefinita): CQ e messaggi diretti. È la fonte
+delle spunte verdi ed è necessaria per l'operatività *Q65 Pileup* (scheda *Avanzate*).
+
+|*Personalizzato:* e URL
+|Invia solo i messaggi di tipo CQ al tuo server LiveCQ, ad es.
+`\http://localhost:3000/api/livecq_update`. Non fa nulla finché l'URL è vuoto.
+Con *N6NU* spento, le spunte verdi vengono recuperate da questo server.
+|===
+
+NOTE: Le decodifiche da file registrati vengono inviate solo al server N6NU, contrassegnate in modo che il
+sito le nasconda per impostazione predefinita.
+
+==== UDP Server
+
+WS invia il suo stato, le decodifiche e i QSO registrati via UDP a programmi di supporto
+come JTAlert o GridTracker.
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*UDP Server*
+|Indirizzo del programma ricevente, normalmente `127.0.0.1` (predefinito). Con un
+indirizzo di gruppo multicast (ad es. `239.255.0.1`) più programmi possono ascoltare
+contemporaneamente. Solo indirizzi IPv4.
+
+|*Porta del Server UDP*
+|Porta del programma ricevente, predefinita 2237. 0 = nessun messaggio UDP.
+
+|*Interfacce di uscita* / *Multicast.TTL*
+|Compaiono solo per un indirizzo multicast. L'interfaccia di loopback è sufficiente per
+programmi sullo stesso computer. Mantieni il TTL a 1 così il traffico resta nella tua
+rete locale.
+
+|*Accetta richieste UDP*
+|Permette al programma di supporto di controllare WS, ad es. avviare un QSO con una stazione
+su cui hai fatto clic lì. Se non spuntato, le richieste vengono ignorate.
+
+|*Notifica su richiesta UDP accettata*
+|Porta la finestra di WS in primo piano quando una richiesta viene accettata. L'effetto
+dipende dal sistema operativo.
+
+|*Richieste UDP accettate ripristinano la finestra*
+|Ripristina una finestra di WS ridotta a icona quando una richiesta viene accettata.
+
+|*Modalità compatibilità WSJT-X*
+|Identifica WS come "WSJT-X" invece di "WS" (ad es. "WSJT-X - rig"), per
+i programmi che riconoscono solo WSJT-X. Ha effetto immediato.
+|===
+
+==== Server UDP secondario
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Abilita trasmissione ADIF del contatto registrato*
+|Invia ogni QSO registrato come record ADIF via UDP, ad es. a N1MM Logger+.
+
+|*Nome server o indirizzo IP*
+|Indirizzo del programma ricevente, di solito `127.0.0.1`.
+
+|*Numero porta Server*
+|Porta UDP del programma ricevente; 2333 per N1MM Logger+ (predefinita).
+0 = non viene inviato nulla.
+|===

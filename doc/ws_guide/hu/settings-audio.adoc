@@ -1,0 +1,81 @@
+[[SETTINGS_AUDIO]]
+=== Audio
+
+image::settings-audio.png["Beállítások, Audio fül",align="center"]
+
+==== Hangkártya
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Bemenet* / *Kimenet*
+|A rádióhoz csatlakoztatott hangkártya (pl. a rádió USB audio CODEC-je),
+48000 Hz-re és 16 bitre állítva. A jobb oldali mező választja ki a
+csatornát: általában *Mono*, különleges összeállításokban *Bal*, *Jobb*
+vagy *Sztereo*.
+
+|*Frissítés*
+|Újratölti az eszközlistát, pl. egy USB-s rádió csatlakoztatása után.
+
+|*TCI audio használata (újraindítás szükséges)* / *Rx 0 dB*
+|Csak TCI rádiónál (pl. SDR) látható. A hang ekkor hangkártya helyett a
+TCI kapcsolaton érkezik, és az eszközöknél *TCI audio* látható. Az *Rx*
+csökkenti a vett hang szintjét (0 és -50 dB között). Módosítása után
+indítsa újra a WS-t.
+
+|*Ábécé szerinti rendezés*
+|Ábécérendbe rendezi az eszközneveket, és csak azokat az eszközöket
+listázza, amelyek PCM hangot tudnak rögzíteni vagy lejátszani. Bejelölés
+nélkül a rendszer sorrendje érvényes.
+
+|*ALSA CARD aleszközök elrejtése (csak Linux)*
+|Elrejti a `CARD=` bejegyzéseket, amelyek általában használhatatlanok.
+Csak bejelölt *Ábécé szerinti rendezés* mellett működik.
+|===
+
+IMPORTANT: Ha a kimeneti eszköz egyben a számítógép alapértelmezett
+hangeszköze is, kapcsolja ki az összes rendszerhangot. Különben azokat is
+kisugározza.
+
+==== Mentési könyvtár
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Helye* / *Választás*
+|A menu:Mentés[] által írt `.wav` fájlok mappája. Alapértelmezésben a
+naplókönyvtár `save` mappája.
+|===
+
+==== AzEl könyvtár
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Helye* / *Választás*
+|Az `azel.dat` mappája; ez a fájl tartalmazza a Nap és a Hold helyzetét és
+Doppler-adatait az antennaforgató programok számára. Másodpercenként
+frissül, amíg a Csillagászati adatok ablak nyitva van.
+
+|*Extra sor engedélyezése az azel.dat-ban*
+|Egy sort ad hozzá a Dpol, MNR, Dgrd értékekkel és a visszhang
+szélességeivel az ezeket az értékeket olvasó forgatóprogramok számára.
+|===
+
+==== Teljesítmény sávonkénti megőrzése
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Adás*
+|Sávonként megjegyzi a *Pwr* csúszka állását, és sávváltáskor
+visszaállítja.
+
+|*Hangolás*
+|Sávonként külön *Pwr* beállítást tart a *Hangolás* számára. A hangolás
+végén a csúszka visszaáll az adási teljesítményre.
+|===

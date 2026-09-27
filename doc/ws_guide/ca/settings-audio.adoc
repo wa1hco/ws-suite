@@ -1,0 +1,77 @@
+[[SETTINGS_AUDIO]]
+=== Àudio
+
+image::settings-audio.png["Configuració, pestanya Àudio",align="center"]
+
+==== Targeta de so
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Entrada* / *Sortida*
+|La targeta de so connectada a la ràdio (p. ex. el CODEC d'àudio USB de l'equip),
+configurada a 48000 Hz, 16 bits. La casella de la dreta selecciona el canal:
+normalment *Mono*, o *Esquerra*, *Dreta* o *Tots dos* en muntatges especials.
+
+|*Actualització*
+|Torna a carregar la llista de dispositius, p. ex. després de connectar una ràdio USB.
+
+|*Utilitza l'àudio TCI (cal reiniciar)* / *Rx 0 dB*
+|Només es mostra amb un equip TCI (p. ex. un SDR). L'àudio arriba llavors per la
+connexió TCI en lloc d'una targeta de so, i els dispositius mostren *TCI audio*.
+*RX* redueix el nivell de l'àudio rebut (de 0 a -50 dB). Reinicia WS després de
+canviar-ho.
+
+|*Ordena alfabèticament*
+|Ordena alfabèticament els noms dels dispositius i llista només els que poden
+enregistrar o reproduir àudio PCM. Si no està marcat, es fa servir l'ordre del sistema.
+
+|*Amaga els subdispositius ALSA CARD (només Linux)*
+|Amaga les entrades `CARD=`, que normalment no es poden fer servir. Només funciona amb
+*Ordena alfabèticament* marcat.
+|===
+
+IMPORTANT: Si el dispositiu de sortida és també el dispositiu de so per defecte de
+l'ordinador, desactiva tots els sons del sistema. Si no, els transmetràs a l'aire.
+
+==== Directori de Guardar
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Ubicació* / *Selecciona*
+|Carpeta per als arxius `.wav` que escriu menu:Guardar[]. Per defecte, la carpeta `save`
+del directori del log.
+|===
+
+==== Directori AzEl
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Ubicació* / *Selecciona*
+|Carpeta per a `azel.dat`, que conté la posició i el Doppler del Sol i la Lluna per als
+programes de seguiment d'antena. S'actualitza cada segon mentre la
+finestra de dades astronòmiques està oberta.
+
+|*Activa una línia addicional a azel.dat*
+|Afegeix una línia amb Dpol, MNR, Dgrd i les amplades d'eco, per als programes
+de seguiment que llegeixen aquests valors.
+|===
+
+==== Recorda els ajustos de potència per banda
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Transmetre*
+|Recorda el control lliscant *Pwr* per a cada banda i el restaura quan canvies de banda.
+
+|*Sintonitzar*
+|Manté un ajust *Pwr* separat per banda per a *Sintonitzar*. Quan acaba la sintonització, el
+control lliscant torna a la teva potència de transmissió.
+|===

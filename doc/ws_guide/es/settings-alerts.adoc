@@ -1,0 +1,83 @@
+[[SETTINGS_ALERTS]]
+=== Alertas
+
+image::settings-alerts.png["Ajustes, pestaña Alertas",align="center"]
+
+WS puede anunciar decodificaciones seleccionadas con breves alertas habladas ("New DXCC",
+"My Call", etc.). Las alertas forman parte de toda instalación de WS y se
+reproducen siempre en el dispositivo de audio predeterminado de su ordenador, normalmente su
+altavoz.
+
+WARNING: Las alertas de audio necesitan un segundo dispositivo de sonido. Su equipo *no* debe
+estar conectado a través del dispositivo de audio predeterminado, o las alertas se transmitirán.
+Un equipo con tarjeta de sonido USB integrada (IC-7300, FT-991 y similares) cumple
+este requisito. Pruebe antes de activarlas (vea *Probar* más abajo).
+
+==== Alertas de audio
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Voces*
+|Selecciona la voz de las alertas. Una instalación estándar tiene una voz, *predeterminada*.
+
+|*Probar*
+|Reproduce un anuncio de prueba en el dispositivo de audio predeterminado, para que pueda comprobar
+por dónde salen las alertas.
+
+|*Nuevo DXCC* / *Nuevo DXCC en banda*
+|Una entidad DXCC que aún no ha trabajado / que no ha trabajado en la banda actual.
+
+|*Nuevo continente* / *Nuevo continente en banda*
+|Un continente aún no trabajado / no trabajado en esta banda.
+
+|*Nueva zona CQ* / *Nueva zona CQ en banda*
+|Una zona CQ aún no trabajada / no trabajada en esta banda.
+
+|*Nueva zona ITU* / *Nueva zona ITU en banda*
+|Una zona ITU aún no trabajada / no trabajada en esta banda.
+
+|*Nuevo estado de EE. UU.* / *Nuevo estado de EE. UU. en banda*
+|Uno de los 50 estados de EE. UU. aún no trabajado / no trabajado en esta banda.
+El estado se obtiene del indicativo, o del locator si este apunta a un solo estado.
+
+|*Nuevo locator* / *Nuevo locator en banda*
+|Un locator aún no trabajado / no trabajado en esta banda. Solo cuentan los mensajes con locator.
+
+|*Mi indicativo*
+|Un mensaje dirigido a usted.
+
+|*Indicativo DX o Locato DX en el mensaje*
+|El indicativo del cuadro *Indicativo DX*, o el locator del cuadro *Locator DX*, aparece en una decodificación.
+
+|*CQ en el mensaje*
+|Cualquier llamada CQ.
+
+|*Indicativos, locators, prefijos y llamadas direccionales buscados*
+|Una decodificación coincide con sus entradas de *Resaltar naranja* o *Resaltar azul* en
+la pestaña *Colores* (solo mientras ese resaltado esté activado), o con una entrada de la lista
+de permitidos mientras menu:Filtros[Resaltar entradas de la lista de permitidos] esté marcado.
+
+|*Mensaje recibido*
+|Llega un mensaje de QSY para su indicativo o para el Indicativo DX. Solo los mensajes de QSY
+disparan esta alerta, así que es poco frecuente.
+
+|*Habilitar alertas de audio*
+|Interruptor general: no suena ninguna alerta mientras está desactivado. El botón se pone verde
+cuando está activado. En Windows, WS reproduce además un breve sonido de prueba al arrancar.
+|===
+
+Las categorías situadas por encima de la línea requieren *Mostrar DXCC, locator y estado
+trabajado anteriormente* marcado en la pestaña *General*.
+
+Las alertas funcionan con independencia del resaltado de la pestaña *Colores*. Pero
+solo verá qué decodificación disparó una alerta si el resaltado correspondiente
+está activado allí, así que active las mismas categorías en ambas pestañas.
+
+NOTE: Las estaciones de la lista de ignorados (añadidas con el botón *Ignorar* bajo
+*Locator DX*) no disparan alertas, salvo *Mi indicativo*, a menos que la casilla *Omitir* (bypass)
+esté marcada. Vacíe la lista con menu:Archivo[Borrar lista de ignorados].
+
+TIP: Con el salto de banda desactivado, haga clic derecho en el botón *Saltar entre bandas* de la
+ventana principal para una prueba más larga del dispositivo de audio predeterminado.

@@ -1,0 +1,77 @@
+[[SETTINGS_AUDIO]]
+=== Audio
+
+image::settings-audio.png["Impostazioni, scheda Audio",align="center"]
+
+==== Scheda audio
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Ingresso* / *Uscita*
+|La scheda audio collegata alla radio (ad es. il CODEC audio USB del rig),
+impostata a 48000 Hz, 16 bit. Il riquadro a destra seleziona il canale:
+di solito *Mono*, oppure *Sinistro*, *Destro* o *Entrambi* in configurazioni particolari.
+
+|*Ricaricare*
+|Ricarica l'elenco dei dispositivi, ad es. dopo aver collegato una radio USB.
+
+|*Utilizzare TCI Audio (riavvio richiesto)* / *Rx 0 dB*
+|Compare solo con un rig TCI (ad es. un SDR). L'audio arriva allora tramite la
+connessione TCI invece che da una scheda audio, e i dispositivi mostrano *TCI audio*.
+*Rx* abbassa il livello dell'audio ricevuto (da 0 a -50 dB). Riavvia WS dopo
+averlo modificato.
+
+|*Ordina alfabeticamente*
+|Ordina alfabeticamente i nomi dei dispositivi ed elenca solo quelli in grado di
+registrare o riprodurre audio PCM. Se non spuntato, viene usato l'ordine del sistema.
+
+|*Nascondi i sottodispositivi ALSA CARD (solo Linux)*
+|Nasconde le voci `CARD=`, di solito inutilizzabili. Funziona solo con
+*Ordina alfabeticamente* spuntato.
+|===
+
+IMPORTANT: Se il dispositivo di uscita è anche il dispositivo audio predefinito del
+computer, disattiva tutti i suoni di sistema. Altrimenti li trasmetti in aria.
+
+==== Salva directory
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Posizione* / *Seleziona*
+|Cartella per i file `.wav` scritti da menu:Salva[]. Per impostazione predefinita la cartella `save`
+nella directory dei log.
+|===
+
+==== AzEl Directory
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Posizione* / *Seleziona*
+|Cartella per `azel.dat`, che contiene posizione di Sole e Luna e Doppler per i
+programmi di puntamento d'antenna. Viene aggiornato ogni secondo mentre la
+finestra Dati Astronomici è aperta.
+
+|*Abilita riga extra in azel.dat*
+|Aggiunge una riga con Dpol, MNR, Dgrd e le larghezze d'eco, per i programmi
+di puntamento che leggono questi valori.
+|===
+
+==== Ricorda le impostazioni di potenza per banda
+
+[cols="2,5",options="header"]
+|===
+|Impostazione |Cosa fa
+
+|*Trasmetti*
+|Memorizza il cursore *Pwr* per ogni banda e lo ripristina quando cambi banda.
+
+|*Accorda*
+|Mantiene un'impostazione *Pwr* separata per banda per *Accorda*. Al termine
+dell'accordatura il cursore torna alla tua potenza di trasmissione.
+|===

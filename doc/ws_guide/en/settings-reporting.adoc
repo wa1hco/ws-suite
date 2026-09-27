@@ -1,0 +1,162 @@
+[[SETTINGS_REPORTING]]
+=== Reporting
+
+image::settings-reporting.png["Settings, Reporting tab",align="center"]
+
+==== Logging
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Logbook location* / *Select*
+|The ADIF file WS writes your QSOs to. The default is `wsjtx_log.adi` in the
+WS data directory. *Select* picks an existing `.adi` file or names a new one.
+After *OK*, WS switches to that file and re-reads it for worked-before status.
+
+|*Prompt me to log QSO*
+|Opens the partly filled-in *Log QSO* window when you send 73 or a free-text
+message. Turns *Log automatically* off.
+
+|*Op Call*
+|The operator's callsign, if different from the station callsign. It goes
+into the *Operator* field of the log entry.
+
+|*Log automatically*
+|Logs a completed QSO without showing the *Log QSO* window. Turns *Prompt me
+to log QSO* off.
+
+|*Contesting only*
+|With *Log automatically*: logs automatically only during a contest
+activity (NA VHF, EU VHF, WW Digi, ARRL Digi, Field Day, RTTY Roundup).
+Other QSOs open the *Log QSO* window. Fox QSOs are always logged automatically.
+
+|*Fill missing grids with 'ZZ00'*
+|Logs `ZZ00` as the grid when the other station did not send one.
+
+|*Log 4-digit grids*
+|Shortens 6-character locators to 4 characters in the log.
+
+|*Log dial frequency instead of Tx frequency*
+|Logs the rig's dial frequency. Unchecked, WS logs dial frequency plus
+your Tx audio offset.
+
+|*Convert mode to RTTY*
+|Logs JT9 QSOs as mode RTTY, for logging programs that do not know JT9.
+
+|*dB reports to comments*
+|Writes the mode and the sent and received reports into *Comments*
+(e.g. `FT8  Sent: -10  Rcvd: -12`), for logging programs that reject these
+reports.
+
+|*Special operating activity to comments*
+|Writes the active special operating activity into *Comments*, e.g.
+"EU VHF Contest" or "F/H mode". With an individual contest name such as
+PACC, "PACC Contest" is used. Not applied when *dB reports to comments* is
+on or the comment is retained in the *Log QSO* window.
+|===
+
+TIP: Uploads to Cloudlog or Wavelog are set up on the *Advanced* tab.
+
+==== PSK Reporter
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Enable PSK Reporter Spotting*
+|Sends your station details and the stations you decode to
+https://pskreporter.info[PSK Reporter]. The antenna text comes from
+*Station Information* on the *Frequencies* tab for the current band.
+Decodes from recorded files are not spotted.
+
+|*Use TCP/IP connection*
+|Uses TCP instead of UDP. Only needed if your UDP reports get lost on the way.
+|===
+
+==== LiveCQ
+
+LiveCQ is a web service that lists live Q65 (and VHF JT65) activity and
+shows who is hearing whom.
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Enable Q65 LiveCQ*
+|Master switch (on by default). Uploads your Q65 decodes, and your JT65
+decodes on 50 MHz and up, to the destinations checked below. In Q65 it also
+fetches the "who heard me" green checks.
+
+|*W3SZ (w3sz.com)* and program name
+|Sends CQ-type messages only to the W3SZ LiveCQ, the same reports WS-MAP and
+EME65 send there. The drop-down chooses the program name reported:
+*WSJTX* (as before the re-branding) or *WS*.
+
+|*N6NU (livecq.n6nu.org)*
+|Full destination (on by default): CQ and directed messages. It is the source
+of the green checks and is required for *Q65 Pileup* operation (*Advanced* tab).
+
+|*Custom:* and URL
+|Sends CQ-type messages only to your own LiveCQ server, e.g.
+`\http://localhost:3000/api/livecq_update`. Does nothing while the URL is empty.
+With *N6NU* off, the green checks are fetched from this server.
+|===
+
+NOTE: Decodes from recorded files go to the N6NU server only, marked so the
+site hides them by default.
+
+==== UDP Server
+
+WS sends its status, decodes and logged QSOs over UDP to companion programs
+such as JTAlert or GridTracker.
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*UDP Server*
+|Address of the receiving program, normally `127.0.0.1` (default). With a
+multicast group address (e.g. `239.255.0.1`) several programs can listen at
+the same time. IPv4 addresses only.
+
+|*UDP Server port number*
+|Port of the receiving program, default 2237. 0 = no UDP messages.
+
+|*Outgoing interfaces* / *Multicast TTL*
+|Only shown for a multicast address. The loop-back interface is enough for
+programs on the same computer. Keep the TTL at 1 so the traffic stays in your
+local network.
+
+|*Accept UDP requests*
+|Lets the companion program control WS, e.g. start a QSO with a station you
+clicked there. Unchecked, requests are ignored.
+
+|*Notify on accepted UDP request*
+|Brings the WS window to the front when a request is accepted. The effect
+depends on the operating system.
+
+|*Accepted UDP request restores window*
+|Restores a minimized WS window when a request is accepted.
+
+|*WSJT-X compatibility mode*
+|Identifies WS as "WSJT-X" instead of "WS" (e.g. "WSJT-X - rig"), for
+programs that only recognise WSJT-X. Takes effect at once.
+|===
+
+==== Secondary UDP Server
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Enable logged contact ADIF broadcast*
+|Sends every logged QSO as an ADIF record over UDP, e.g. to N1MM Logger+.
+
+|*Server name or IP address*
+|Address of the receiving program, usually `127.0.0.1`.
+
+|*Server port number*
+|UDP port of the receiving program; 2333 for N1MM Logger+ (default).
+0 = nothing is sent.
+|===

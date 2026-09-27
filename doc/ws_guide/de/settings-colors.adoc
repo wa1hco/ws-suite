@@ -1,0 +1,122 @@
+[[SETTINGS_COLORS]]
+=== Farben
+
+image::settings-colors.png["Einstellungen, Registerkarte Farben",align="center"]
+
+==== Hervorhebung von Dekodierungen
+
+WS färbt Dekodierungen nach Kategorie ein. Alles außer *CQ in Nachricht*,
+*Eigenes Rufzeichen in Nachricht*, *Gesendete Nachricht* und *LoTW-Benutzer* erfordert
+*DXCC, Locator und Gearbeitet-Status anzeigen* auf der Registerkarte *Allgemein*.
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|Hervorhebungsliste
+|Eine Zeile pro Kategorie; ihr Kontrollkästchen schaltet sie ein. Ziehen Sie Zeilen nach oben oder unten,
+um die Priorität festzulegen: Die höhere Zeile gewinnt. Vorder- und Hintergrund sind
+getrennt, sodass eine "nicht gesetzte" Farbe von der nächsten aktivierten Zeile darunter übernommen wird.
+
+|Rechtsklick-Menü
+|*Vordergrundfarbe ...* / *Hintergrundfarbe ...* wählen eine Farbe,
+*Vordergrundfarbe entfernen* / *Hintergrundfarbe entfernen* löschen sie.
+*Diesen Eintrag auf Standardwerte zurücksetzen* stellt den WSJT-X-Standard dieser Zeile wieder her.
+
+|*CQ in Nachricht*, *Eigenes Rufzeichen in Nachricht*, *Gesendete Nachricht*
+|CQ-, CQDX- und QRZ-Rufe; an Sie gerichtete Dekodierungen; von Ihnen gesendete Nachrichten.
+
+|*Neues DXCC*, *Neuer Kontinent*, *Neue CQ-Zone*, *Neue ITU-Zone*, *Neuer US-Bundesstaat*, *Neuer Locator*, *Neues Rufzeichen*
+|Noch nicht in Ihrem Log. Die Varianten *... auf dem Band*: auf dem
+aktuellen Band noch nicht gearbeitet.
+
+|*LoTW-Benutzer*
+|Die Station hat ihr Log innerhalb des unter
+<<LOTW_VALIDATION,Benutzerprüfung für Logbook of the World>> eingestellten Alters zu LoTW hochgeladen.
+
+|*Hervorhebung auf WSJT-X-Standard zurücksetzen*
+|Die ursprünglichen WSJT-X-Farben und -Reihenfolge. Eine Neuinstallation beginnt damit.
+
+|*Hervorhebung auf WS-Standard zurücksetzen*
+|Das WS-Schema mit Pastellfarben, die auch zum dunklen Design passen. LoTW-Benutzer
+werden schwarz, andere Stationen dunkelrot dargestellt; ein CQ von einer Station,
+die Sie bereits gearbeitet haben, erhält einen grauen Hintergrund.
+
+|*ADIF-Log neu einlesen*
+|Liest `wsjtx_log.adi` erneut ein und baut den Gearbeitet-Status neu auf. Die
+Schaltfläche zeigt die Anzahl der QSOs. Sie können diese Datei durch einen ADIF-Export
+aus Ihrem Logprogramm ersetzen.
+
+|*Nach Modus hervorheben*
+|Der Gearbeitet-Status wird pro Modus geführt.
+
+|*Nur gesuchte Locator-Felder*
+|Ein Locator gilt nur dann als neu, wenn sein Feld (die ersten beiden Zeichen, z. B. JO)
+noch nicht gearbeitet wurde.
+
+|*Zusätzliche WAE-Gebiete einbeziehen*
+|Zeigt die zusätzlichen Gebiete für DARC WAE / CQ Marathon (z. B. Sicily, Shetland Is.)
+unter ihrem eigenen Namen. Ohne Häkchen erscheinen sie als ihr DXCC-Land.
+
+|*Auch Nachrichten mit 73 oder RR73 hervorheben*
+|73- und RR73-Nachrichten werden wie CQs hervorgehoben und erhalten Land und
+Gearbeitet-Markierungen. Sie passieren auch den Filter *Nur CQ*, der dann
+mit *CQ/73* beschriftet ist. Standardmäßig an.
+
+|*Alle Nachrichten hervorheben*
+|Jede dekodierte Nachricht wird wie ein CQ hervorgehoben und erhält Land und
+Gearbeitet-Markierungen, nicht nur CQ-Rufe (und 73-Nachrichten mit der Option
+darüber). Standardmäßig aus.
+
+|*Orange hervorheben:* / *Blau hervorheben:*
+|Weißer Text auf orangem / blauem Hintergrund für die Rufzeichen, Locatoren,
+Präfixe und CQ-Richtungen, die in das Feld darunter eingetragen sind. Diese Einträge lösen auch
+den Alarm *Gesuchte Rufzeichen, Locatoren, Präfixe und Richtungsrufe* auf der Registerkarte *Alarme* aus.
+|===
+
+Einträge für *Orange hervorheben* und *Blau hervorheben* (Groß- oder Kleinschreibung):
+
+* Rufzeichen: ein Komma nach jedem Rufzeichen, auch nach dem letzten: `K1JT, DG2YCB,`
+* Locatoren: `JO33, JN58,`
+* Präfixe mit 2 oder 3 Zeichen zwischen Semikolons: `;DL;KH6;`. Ein Präfix aus
+  einem Buchstaben wie `;K;` passt nur zu Rufzeichen mit einer Ziffer an zweiter Stelle
+  (K1ABC, nicht KH6ABC).
+* Alle Rufzeichen, die mit einem Buchstaben beginnen: `;K*;`. Präfixe schließen Sie aus, indem Sie
+  sie zwischen Ausrufezeichen setzen: `;K*;!KH6!KL!KP!`
+* CQ-Richtungen mit einem Komma davor und danach: `,EU,` markiert "CQ EU ...".
+
+[[LOTW_VALIDATION]]
+==== Benutzerprüfung für Logbook of the World
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*URL der Benutzer-CSV-Datei* / *Jetzt abrufen*
+|Quelle der ARRL-Liste der LoTW-Benutzer mit ihren letzten Upload-Daten.
+*Jetzt abrufen* lädt eine frische Kopie herunter. WS lädt sie nur dann selbst, wenn die
+Datei fehlt und die Hervorhebung *LoTW-Benutzer* eingeschaltet ist.
+
+|*Alter des letzten Uploads kleiner als*
+|Stationen gelten nur dann als LoTW-Benutzer, wenn ihr letzter Upload jünger ist.
+|===
+
+==== Downloads
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Neueste CTY.dat herunterladen*
+|Aktualisiert die Länder-, Zonen- und Präfixdaten von country-files.com und
+liest das Log neu ein. *CTY-Dateiversion* zeigt die verwendete Version.
+
+|*Datenbank der US-Bundesstaaten nach Rufzeichen herunterladen*
+|Zuordnung von Rufzeichen zu Bundesstaaten für *US-Bundesstaaten anzeigen* (Registerkarte *Allgemein*), verwendet, wenn eine
+Nachricht keinen brauchbaren Locator enthält. *Rufzeichen-Bundesstaaten-DB* zeigt Größe und Datum.
+
+|*CALL3.TXT für terrestrischen Betrieb herunterladen* / *CALL3.TXT für EME herunterladen*
+|Rufzeichen- und Locator-Datenbank für die Schaltfläche *Suchen* und für die JT4/JT65-Tiefensuche;
+die EME-Version ist für die JT65-Tiefensuche gedacht. Die vorherige Datei
+wird als `CALL3_backup.TXT` aufbewahrt. *CALL3-Dateiversion* zeigt die Version.
+|===

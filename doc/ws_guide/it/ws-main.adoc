@@ -1,0 +1,73 @@
+= Guida utente WS
+:doctype: book
+:lang: it
+:toc: left
+:toclevels: 2
+:toc-title: Indice
+:icons: font
+:imagesdir: ../en/images
+:experimental:
+:notitle:
+
+image::ws-header.png[WS - Suite di modi digitali per segnali deboli,682,126]
+
+[discrete]
+== Guida utente WS
+
+[preface]
+== Informazioni su questa guida
+
+WS è una suite di programmi per le comunicazioni digitali con segnali deboli
+nel radiantismo: *WS* (il programma principale), *WS-MAP* (monitor a banda
+larga Q65/FT8) ed *EME65* (JT65/Q65 a banda larga per EME). WS deriva da
+_WSJT-X_ ed era noto in precedenza come _WSJT-X Improved_. Tutti i modi e le
+procedure operative di base sono le stesse di WSJT-X; per questi aspetti la
+https://wsjt.sourceforge.io/wsjtx-doc/wsjtx-main-3.0.0-rc1.html[Guida utente WSJT-X]
+resta il riferimento.
+
+Questa guida è volutamente breve. Spiega ogni menu e ogni
+impostazione di WS e ciò che WS aggiunge a WSJT-X.
+
+include::intro-variants.adoc[]
+
+include::main-window.adoc[]
+
+[[MENUS]]
+== Menù
+
+I menu sono gli stessi in tutte e tre le varianti grafiche.
+
+image::menubar.png[Barra dei menu di WS]
+
+include::menus-1.adoc[]
+
+include::menus-2.adoc[]
+
+[[SETTINGS]]
+== Impostazioni
+
+Apri la finestra *Impostazioni* con menu:File[Impostazioni] o kbd:[F2].
+Le impostazioni vengono salvate per configurazione (vedi <<MENU_CONFIGURATIONS>>).
+Passa il mouse su un controllo per vederne il suggerimento.
+
+include::settings-general.adoc[]
+
+include::settings-radio.adoc[]
+
+include::settings-audio.adoc[]
+
+include::settings-txmacros.adoc[]
+
+include::settings-reporting.adoc[]
+
+include::settings-frequencies.adoc[]
+
+include::settings-colors.adoc[]
+
+include::settings-advanced.adoc[]
+
+include::settings-alerts.adoc[]
+
+include::settings-filters.adoc[]
+
+include::support.adoc[]

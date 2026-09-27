@@ -1,0 +1,36 @@
+== Tres variants de la interfície
+
+WS sempre es presenta en *tres variants de la interfície*. Comparteixen les
+mateixes funcions, menús i ajustos; només canvia la disposició de la finestra
+principal. Cada variant té el seu propi instal·lador.
+
+[cols="1,3",options="header"]
+|===
+|Variant |Ideal per a
+
+|*WS* (estàndard)
+|La disposició habitual de WSJT-X. És la descàrrega per defecte.
+
+|*WS AL* (disposició alternativa)
+|Una finestra més compacta amb un panell d'activitat a la banda més gran, de manera que cal desplaçar-se menys.
+
+|*WS Widescreen*
+|Monitors amples: els controls passen al lateral i els panells de descodificació ocupen tota l'alçada.
+|===
+
+.WS, disposició estàndard
+image::WS.png[Disposició estàndard de WS,align="center"]
+
+.WS AL, disposició alternativa
+image::WS-AL.png[Disposició de WS AL,align="center"]
+
+.WS Widescreen
+image::WS-widescreen.png[Disposició de WS Widescreen,align="center"]
+
+TIP: Pots instal·lar les variants l'una al costat de l'altra en carpetes separades
+i comparar-les. Totes fan servir el mateix arxiu de configuració (`WS.ini`), de
+manera que la teva configuració es manté. En la primera execució, WS agafa els
+ajustos d'una instal·lació existent de WSJT-X.
+
+Per executar diverses instàncies alhora, inicia cadascuna amb el seu propi
+`--rig-name=NAME`; aleshores cada instància conserva el seu propi arxiu de configuració.

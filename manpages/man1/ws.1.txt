@@ -1,0 +1,115 @@
+:doctype: manpage
+:man source: AsciiDoc
+:man version: {VERSION}
+:man manual: WS Manual
+= ws(1)
+
+== NAME
+
+ws, jt9 - Weak signal communications program.
+
+== SYNOPSIS
+
+*ws* ['OPTIONS']
+
+== DESCRIPTION
+
+*ws* is a weak signal communications program supporting several operating
+modes. It is based on WSJT-X.
+
+WS home page:: https://wsjt-x-improved.sourceforge.io/
+
+WS User Guide:: https://wsjt-x-improved.sourceforge.io/ws-main_en.html
+
+== OPTIONS
+*-r, --rig-name*[=RIGNAME]::
+
+Enable multiple instances of the ws(1) application to run
+concurrently.  Each RIGNAME must be unique. One instance may use no
+RIGNAME. If this option is not supplied then only one instance of
+ws(1) may be run at any time.
+
+*-v, --version*:: Display the application version.
+
+*-h,--help*:: Display usage information.
+
+*--test-mode*::
+
+When this option is provided all writable files will be placed in a
+special test location (~/.qttest).  This option is only for
+application testing and is not designed for normal operations.  **Use
+with caution**.
+
+== FILES
+
+Most of the following files are in a directory path containing the
+directory name *WS[ - RIGNAME]* which indicates the value of the
+command line option *--rig-name=RIGNAME* to indicate multiple instances of
+*ws* running concurrently. All writable files listed below are
+therefore unique to each concurrent instance of *ws*. If the
+*--rig-name* command line option is not supplied or the *RIGNAME* argument
+is not supplied then the directory paths below will have the directory
+*WS*.
+
+~/.config/WS[ - RIGNAME].ini::
+
+This file stores the application
+configuration settings.
+
+~/.local/share/WS[ - RIGNAME]/ALL.txt::
+
+*ALL.txt* contains a record of transmitted and received messages and
+other activity such as frequency or band changes.
+
+~/.local/share/WS[ - RIGNAME]/save/::
+
+Is the default location for saved .WAV files recorded by the
+application.  The .WAV file save location may be changed in the
+applications settings dialog.
+
+~/.local/share/WS[ - RIGNAME]/save/samples/::
+
+Sample .WAV files supplied with the application are found in this
+directory, they may be played back in the application and are referred
+to in the user guide tutorial sections.
+
+~/.local/share/WS[ - RIGNAME]/timer.out::
+
+This is a diagnostic file that records decode performance profiling
+information.
+
+~/.local/share/WS[ - RIGNAME]/cty.dat::
+
+This file is not required as a version of it is embedded in the
+application, but if you wish an updated version can be placed here.
+If present that version will be used in preference to the embedded
+version.
+
+~/.local/share/WS[ - RIGNAME]/wsjtx.log::
+
+This is a plain text CSV record of logged QSOs.
+
+~/.local/share/WS[ - RIGNAME]/wsjtx_log.adi::
+
+This is a record of QSOs logged in the ADIF format which is suitable
+for import into many Ham Radio logging programs.
+
+== AUTHOR
+
+Joe Taylor, K1JT.
+
+== COPYING
+
+*wsjtx* is Copyright (C) 2001 - 2026 by Joseph H. Taylor, Jr., K1JT,
+with contributions from additional authors.  WSJT-X is Open Source
+software, licensed under the GNU General Public License (GPLv3).
+
+*wsjtx* includes the ``**Hamlib - Ham Radio Control Libraries**''
+software which is licensed under the GNU Lesser General Public License
+(LGPL).  Home page https://sourceforge.net/apps/mediawiki/hamlib,
+sources from https://sourceforge.net/p/hamlib/code/ci/master/tree/.
+
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.

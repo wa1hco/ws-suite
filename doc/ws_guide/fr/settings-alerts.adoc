@@ -1,0 +1,83 @@
+[[SETTINGS_ALERTS]]
+=== Alertes
+
+image::settings-alerts.png["Paramètres, onglet Alertes",align="center"]
+
+WS peut annoncer certains décodages par de courtes alertes vocales ("New DXCC",
+"My Call", etc.). Les alertes font partie de chaque installation de WS et sont
+toujours jouées sur le périphérique audio par défaut de votre ordinateur, en général son
+haut-parleur.
+
+WARNING: Les alertes audio nécessitent un second périphérique audio. Votre transceiver ne doit *pas* être
+relié via le périphérique audio par défaut, sinon les alertes sont émises.
+Un transceiver avec carte son USB intégrée (IC-7300, FT-991 et similaires) remplit
+cette condition. Faites un essai avant de les activer (voir *Tester* ci-dessous).
+
+==== Alertes audio
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Voix*
+|Sélectionne la voix des alertes. Une installation standard comporte une seule voix, *par défaut*.
+
+|*Tester*
+|Joue une annonce de test sur le périphérique audio par défaut, pour vérifier
+où sortent les alertes.
+
+|*Nouveau DXCC* / *Nouveau DXCC sur la bande*
+|Une entité DXCC pas encore contactée / pas encore contactée sur la bande en cours.
+
+|*Nouveau continent* / *Nouveau continent sur la bande*
+|Un continent pas encore contacté / pas encore contacté sur cette bande.
+
+|*Nouvelle zone CQ* / *Nouvelle zone CQ sur la bande*
+|Une zone CQ pas encore contactée / pas encore contactée sur cette bande.
+
+|*Nouvelle zone UIT* / *Nouvelle zone UIT sur la bande*
+|Une zone UIT pas encore contactée / pas encore contactée sur cette bande.
+
+|*Nouvel État US* / *Nouvel État US sur la bande*
+|L'un des 50 États US pas encore contacté / pas encore contacté sur cette bande.
+L'État est déduit de l'indicatif, ou du locator si celui-ci ne correspond qu'à un seul État.
+
+|*Nouveau locator* / *Nouveau locator sur la bande*
+|Un locator pas encore contacté / pas encore contacté sur cette bande. Seuls les messages avec locator comptent.
+
+|*Mon indicatif*
+|Un message qui vous est adressé.
+
+|*Indicatif DX ou locator DX dans le message*
+|L'indicatif du champ *Indicatif DX*, ou le locator du champ *Locator DX*, apparaît dans un décodage.
+
+|*CQ dans le message*
+|Tout appel CQ.
+
+|*Indicatifs, locators, préfixes et appels directionnels recherchés*
+|Un décodage correspond à vos entrées *Mise en évidence orange* ou *Mise en évidence bleue* de
+l'onglet *Couleurs* (seulement si cette mise en évidence est active), ou à une entrée de la Liste
+blanche lorsque menu:Filtres[Mettre en évidence les entrées de la Liste blanche] est coché.
+
+|*Message reçu*
+|Un message QSY pour votre indicatif ou pour l'indicatif DX arrive. Seuls les messages QSY
+déclenchent cette alerte, elle reste donc rare.
+
+|*Activer les alertes audio*
+|Interrupteur principal : aucun son d'alerte tant qu'il est désactivé. Le bouton devient vert
+lorsqu'il est activé. Sous Windows, WS joue alors aussi un court son de test au démarrage.
+|===
+
+Les catégories au-dessus de la ligne nécessitent *Afficher le statut DXCC, locator et
+déjà contacté* coché dans l'onglet *Général*.
+
+Les alertes fonctionnent indépendamment de la mise en évidence de l'onglet *Couleurs*. Mais
+vous ne voyez quel décodage a déclenché une alerte que si la mise en évidence correspondante
+y est activée ; activez donc les mêmes catégories dans les deux onglets.
+
+NOTE: Les stations de la Liste d'ignorés (ajoutées avec le bouton *Ignorer* sous
+*Locator DX*) ne déclenchent aucune alerte sauf *Mon indicatif*, à moins que la case *BP* (bypass)
+ne soit cochée. Videz la liste avec menu:Fichier[Effacer la Liste d'ignorés].
+
+TIP: Avec le saut de bande désactivé, un clic droit sur le bouton *Saut de bande* de la
+fenêtre principale lance un test plus long du périphérique audio par défaut.

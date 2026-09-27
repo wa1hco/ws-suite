@@ -1,0 +1,73 @@
+= WSユーザーガイド
+:doctype: book
+:lang: ja
+:toc: left
+:toc-title: 目次
+:toclevels: 2
+:icons: font
+:imagesdir: ../en/images
+:experimental:
+:notitle:
+
+image::ws-header.png[WS - 微弱信号デジタルモード スイート,682,126]
+
+[discrete]
+== WSユーザーガイド
+
+[preface]
+== このガイドについて
+
+WSは、アマチュア無線の微弱信号デジタル通信のためのプログラム群です。
+**WS**(メインプログラム)、**WS-MAP**(広帯域Q65/FT8モニター)、
+**EME65**(EME向け広帯域JT65/Q65)で構成されます。WSは
+__WSJT-X__ から派生したもので、以前は __WSJT-X Improved__ と呼ばれていました。
+すべてのモードと基本的な運用手順はWSJT-Xと同じです。それらについては
+https://wsjt.sourceforge.io/wsjtx-doc/wsjtx-main-3.0.0-rc1.html[WSJT-X User Guide]
+を参照してください。
+
+このガイドは意図的に簡潔にしています。WSのすべてのメニューとすべての
+設定、そしてWSがWSJT-Xに追加した機能を説明します。
+
+include::intro-variants.adoc[]
+
+include::main-window.adoc[]
+
+[[MENUS]]
+== メニュー
+
+メニューは3つのGUIバリエーションすべてで共通です。
+
+image::menubar.png[WSのメニューバー]
+
+include::menus-1.adoc[]
+
+include::menus-2.adoc[]
+
+[[SETTINGS]]
+== 設定
+
+**設定** ウィンドウは menu:ファイル[設定] または kbd:[F2] で開きます。
+設定はコンフィグレーションごとに保存されます(<<MENU_CONFIGURATIONS>> を参照)。
+各コントロールにマウスを重ねるとツールチップが表示されます。
+
+include::settings-general.adoc[]
+
+include::settings-radio.adoc[]
+
+include::settings-audio.adoc[]
+
+include::settings-txmacros.adoc[]
+
+include::settings-reporting.adoc[]
+
+include::settings-frequencies.adoc[]
+
+include::settings-colors.adoc[]
+
+include::settings-advanced.adoc[]
+
+include::settings-alerts.adoc[]
+
+include::settings-filters.adoc[]
+
+include::support.adoc[]

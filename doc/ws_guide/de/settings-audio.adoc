@@ -1,0 +1,77 @@
+[[SETTINGS_AUDIO]]
+=== Audio
+
+image::settings-audio.png["Einstellungen, Registerkarte Audio",align="center"]
+
+==== Soundkarte
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Eingang* / *Ausgang*
+|Die mit Ihrem Funkgerät verbundene Soundkarte (z. B. der USB-Audio-CODEC des
+Geräts), eingestellt auf 48000 Hz, 16 Bit. Das Feld rechts daneben wählt den Kanal:
+meist *Mono*, in besonderen Aufbauten *Links*, *Rechts* oder *Beide*.
+
+|*Aktualisieren*
+|Lädt die Geräteliste neu, z. B. nach dem Anstecken eines USB-Funkgeräts.
+
+|*TCI-Audio verwenden (Neustart erforderlich)* / *Rx 0 dB*
+|Nur bei einem TCI-Funkgerät (z. B. einem SDR) sichtbar. Das Audiosignal kommt dann über die
+TCI-Verbindung statt über eine Soundkarte, und als Geräte wird *TCI audio* angezeigt.
+*Rx* senkt den Empfangspegel (0 bis -50 dB). Starten Sie WS nach einer
+Änderung neu.
+
+|*Alphabetisch sortieren*
+|Sortiert die Gerätenamen alphabetisch und listet nur Geräte, die PCM-Audio
+aufnehmen oder wiedergeben können. Ohne Häkchen gilt die Reihenfolge des Systems.
+
+|*ALSA-CARD-Untergeräte ausblenden (nur Linux)*
+|Blendet die meist unbrauchbaren `CARD=`-Einträge aus. Funktioniert nur, wenn
+*Alphabetisch sortieren* aktiviert ist.
+|===
+
+IMPORTANT: Ist das Ausgabegerät zugleich das Standard-Soundgerät Ihres
+Computers, schalten Sie alle Systemklänge ab. Sonst senden Sie sie aus.
+
+==== Speicherverzeichnis
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Speicherort* / *Auswählen*
+|Ordner für die `.wav`-Dateien, die über menu:Speichern[] geschrieben werden. Standardmäßig der Ordner `save`
+im Log-Verzeichnis.
+|===
+
+==== AzEl-Verzeichnis
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Speicherort* / *Auswählen*
+|Ordner für `azel.dat` mit Sonnen- und Mondposition sowie Doppler für
+Antennen-Nachführprogramme. Die Datei wird jede Sekunde aktualisiert, solange das
+Fenster Astronomische Daten geöffnet ist.
+
+|*Zusätzliche Zeile in azel.dat aktivieren*
+|Fügt eine Zeile mit Dpol, MNR, Dgrd und den Echobreiten hinzu, für
+Nachführprogramme, die diese Werte lesen.
+|===
+
+==== Leistungseinstellungen pro Band speichern
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Senden*
+|Merkt sich den Regler *Leist.* für jedes Band und stellt ihn beim Bandwechsel wieder her.
+
+|*Abstimmen*
+|Speichert pro Band eine eigene *Leist.*-Einstellung für *Abstimmen*. Endet das Abstimmen, kehrt der
+Regler auf Ihre Sendeleistung zurück.
+|===

@@ -1,0 +1,34 @@
+[[SETTINGS_TXMACROS]]
+=== Tx-Makros
+
+image::settings-tx_macros.png["Einstellungen, Registerkarte Tx-Makros",align="center"]
+
+Tx-Makros sind kurze Freitextnachrichten, die Sie häufig senden, etwa `TNX 73 GL`.
+Sie erscheinen in der Aufklappliste der Nachricht *Tx5* im Hauptfenster.
+
+==== Makroliste
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|Textfeld und *Hinzufügen*
+|Geben Sie eine Nachricht ein und klicken Sie auf *Hinzufügen*, um sie an die Liste anzuhängen. Nur Zeichen,
+die in Nachrichten erlaubt sind, lassen sich eingeben; der Text wird in Großbuchstaben umgewandelt.
+
+|*Löschen*
+|Entfernt die markierten Nachrichten. Rechtsklick → *Löschen* bewirkt dasselbe oder
+entfernt die Nachricht unter dem Mauszeiger, wenn nichts markiert ist.
+
+|Liste
+|Die Makros in der Reihenfolge der *Tx5*-Aufklappliste. Per Drag & Drop umsortieren.
+Doppelklick auf eine Nachricht bearbeitet sie. Klick, kbd:[Shift]+Klick und
+kbd:[Ctrl]+Klick markieren mehrere Nachrichten.
+|===
+
+NOTE: Eine Freitextnachricht ist auf 13 Zeichen einschließlich Leerzeichen begrenzt.
+
+TIP: Sie können eine Nachricht auch im Hauptfenster in *Tx5* eingeben und
+kbd:[Enter] drücken; sie wird dann in die Liste aufgenommen. In FT8, FT4, FST4, MSK144 und Q65
+wird in einer Nachricht, die mit `$DX` (oder `$DXCALL`) beginnt, dieses Wort beim Senden
+durch das Basisrufzeichen aus *DX-Rufzeichen* ersetzt.

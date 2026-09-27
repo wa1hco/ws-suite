@@ -1,0 +1,34 @@
+[[SETTINGS_TXMACROS]]
+=== Macros TX
+
+image::settings-tx_macros.png["Ajustes, pestaña Macros TX",align="center"]
+
+Las macros de TX son mensajes cortos de texto libre que envía a menudo, como `TNX 73 GL`.
+Aparecen en la lista desplegable del mensaje *Tx5* de la ventana principal.
+
+==== Lista de macros
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|Campo de texto y *Agregar*
+|Escriba un mensaje y haga clic en *Agregar* para añadirlo a la lista. Solo se pueden
+escribir caracteres permitidos en los mensajes; el texto se convierte a mayúsculas.
+
+|*Borrar*
+|Elimina los mensajes seleccionados. Clic derecho → *Borrar* hace lo mismo, o
+elimina el mensaje bajo el cursor si no hay nada seleccionado.
+
+|Lista
+|Las macros en el orden de la lista desplegable de *Tx5*. Arrastre y suelte para reordenarlas.
+Haga doble clic en un mensaje para editarlo. Clic, kbd:[Shift]+clic y
+kbd:[Ctrl]+clic seleccionan varios mensajes.
+|===
+
+NOTE: Un mensaje de texto libre está limitado a 13 caracteres, espacios incluidos.
+
+TIP: También puede escribir un mensaje en *Tx5* en la ventana principal y pulsar
+kbd:[Enter]; se añade a la lista. En FT8, FT4, FST4, MSK144 y Q65,
+en un mensaje que empieza por `$DX` (o `$DXCALL`) esa palabra se sustituye por
+el indicativo base de *Indicativo DX* al enviarlo.

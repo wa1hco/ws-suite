@@ -1,0 +1,323 @@
+[[MENU_FILTERS]]
+=== Szűrők
+
+image::menu-Filters.png[Szűrők menü]
+
+Gyorsszűrők a Sáv-aktivitás panelhez. Az általuk használt listák
+(mellőzési lista, fehérlista, területek) a menu:Fájl[Beállítások > Szűrők]
+alatt állíthatók be, lásd <<SETTINGS_FILTERS>>. Minden szűrő kombinálható.
+A főablak *BP* jelölőnégyzete egy kattintással megkerüli őket. Amíg egy
+elrejtő szűrő be van kapcsolva, az állapotcímke ciánra vált, és a
+"Receiving, Filters On" feliratot mutatja (*BP* esetén zöld "Receiving,
+Filters bypassed").
+
+[cols="2,5",options="header"]
+|===
+|Menüpont |Mire szolgál
+
+|*A sávon korábban forgalmazott állomások elrejtése*
+|Elrejti azoknak a hívójeleknek az üzeneteit, amelyek az aktuális sávon
+már szerepelnek a naplóban.
+
+|*A ma vagy tegnap forgalmazott állomások elrejtése*
+|Elrejti a ma (vagy tegnap) naplózott hívójeleket. A menüpont felirata "A
+ma forgalmazott állomások elrejtése", hacsak a *Szűrők* fül megfelelő
+opciója hozzá nem veszi a tegnapi napot.
+
+|*A mellőzési listán szereplő állomások elrejtése*
+|Elrejti a mellőzési listán szereplő hívójeleket. A *Mellőz* gomb a DX
+hívójelet hozzáadja a listához; a listát a *Fájl* menüből törölheti.
+
+|*A sávon korábban forgalmazott állomások mellőzése*
+|Ezek az állomások láthatók maradnak, de a WS nem válaszol nekik
+automatikusan (CQ: First / Max Dist / Max dB / Min dB, Wait and Pounce,
+Wait and Reply).
+
+|*A ma vagy tegnap forgalmazott állomások mellőzése*
+|Ugyanez a ma (vagy tegnap) naplózott hívójelekre.
+
+|*A mellőzési listán szereplő állomások mellőzése*
+|Ugyanez a mellőzési listán szereplő hívójelekre.
+
+|*Az 1. terület állomásainak elrejtése* ... *4*
+|Elrejti azokat az állomásokat, amelyek országneve tartalmazza az adott
+területhez megadott szöveget. Ha megad egy területet, a menüpont annak
+nevét mutatja (pl. "Italy állomásainak elrejtése").
+
+|*Európai állomások elrejtése*, *Észak-amerikai állomások elrejtése*, *Dél-amerikai állomások elrejtése*, *Ázsiai állomások elrejtése*,
+*Afrikai állomások elrejtése*, *Óceániai állomások elrejtése*, *Antarktiszi állomások elrejtése*
+|Elrejti az adott kontinens összes állomását. Hasznos, ha csak a DX-et
+szeretné látni.
+
+|*A sávon korábban forgalmazott hívójelek kiemelése*
+|Szürke háttér az ezen a sávon már forgalmazott hívójeleknek.
+
+|*A ma vagy tegnap forgalmazott hívójelek kiemelése*
+|Sárga sötétszürkén a ma (vagy tegnap) naplózott hívójeleknek.
+
+|*A mellőzési listán szereplő hívójelek kiemelése*
+|Sárga sötétvörösön a mellőzési listán szereplő hívójeleknek.
+
+|*Az 1. terület állomásainak kiemelése* ... *4*
+|Lila háttér az adott területről származó hívójeleknek.
+
+|*Fehérlista bejegyzések kiemelése*
+|Bíbor háttér azoknak a hívójeleknek, amelyek fehérlista-bejegyzést
+tartalmaznak. Magának a fehérlista-szűrőnek nem kell bekapcsolva lennie.
+|===
+
+[[MENU_DECODE]]
+=== Dekódolás
+
+image::menu-Decode.png[Dekódolás menü]
+
+A WS csak az aktuális módra vonatkozó menüpontokat mutatja. Némelyikhez a
+*VHF és almód funkciók engedélyezése* opció kell
+(menu:Fájl[Beállítások > Általános]).
+
+[cols="2,5",options="header"]
+|===
+|Menüpont |Mire szolgál
+
+|*Gyors*
+|Leggyorsabb dekódolás, legkisebb érzékenység.
+
+|*Normál*
+|Közepes mélység.
+
+|*Mély*
+|Legjobb érzékenység, lassabb, a téves dekódolás esélye kissé nagyobb.
+Echo, FreqCal és VHF funkciókkal használt JT65 módban szürke (nem
+választható).
+
+|*Többszálú FT8 dekóder használata*
+|Csak FT8. Több dekóderszálat futtat párhuzamosan. Zsúfolt sávon ez
+általában több dekódolást ad. Extrém gyenge jeleknél gyakran az egyszálú
+*Mély* dekóder a jobb. Beállítása a *Paraméterek* alatt található.
+
+a|*Paraméterek*
+
+image::menu-Decode-Parameters.png["Dekódolás, Paraméterek almenü"]
+a|A többszálú FT8 dekóder finomhangolása. Csak akkor van hatása, ha a
+*Többszálú FT8 dekóder használata* be van kapcsolva.
+
+[cols="2,5"]
+!===
+!*Szálak száma* +
+image:menu-Decode-Parameters-FT8_threads.png[Szálak száma]
+!Az *Auto* (alapértelmezés) néhány magot szabadon hagy: 2-4 logikai magnál
+eggyel kevesebbet használ, 5-8 magnál kettővel, 9-15 magnál hárommal
+kevesebbet, 16 vagy több magnál pedig 12-t. Az *1*-*12* közvetlenül
+megadja a számot, legfeljebb a magok számáig.
+
+!*Dekódolási ciklusok* +
+image:menu-Decode-Parameters-Decoding_cycles.png[Dekódolási ciklusok]
+!*1*, *2* vagy *3* (alapértelmezés) ciklus, egyenként 3 menettel, azaz 3, 6
+vagy 9 menet. Több ciklus több gyenge jelet talál, de tovább tart. A korai
+dekódolások (lásd *Dekóder indítás*) mindig 2 ciklust használnak.
+
+!*QSO RX frekv. érzékenység* +
+image:menu-Decode-Parameters-QSO_RX_freq_sensitivity.png[QSO RX frekv. érzékenység]
+!*Alacsony*, *Közepes* (alapértelmezés), *Magas*. Egy speciális dekóder
+küszöbértéke, amely QSO közben az Rx frekvencián a DX hívójeltől várt
+üzeneteket keresi. A magasabb érték több dekódolást ad, de több téveset
+is. Hound módban mindig az *Alacsony* érték érvényes.
+
+!*Dekóder érzékenység* +
+image:menu-Decode-Parameters-Decoder_sensitivity.png[Dekóder érzékenység]
+!*Minimális*: normál szinkron-küszöbértékek. *Alacsony küszöbértékek
+használata*: alacsonyabb szinkron-küszöbértékek, így több jelöltet próbál
+meg. *Almenet használata* (alapértelmezés): alacsony küszöbértékek és
+további, gyenge jelekhez szánt almenetek. A nagyobb érzékenység nagyobb
+CPU-terhelést is jelent.
+
+!*Dekóder indítás* +
+image:menu-Decode-Parameters-Decoder_start.png[Dekóder indítás]
+!Mikor kezdődik a dekódolás a 15 s-os perióduson belül.
+*2 fokozatú*: korai dekódolás kb. 11,8 s-nál, végső dekódolás 14,1 s-nál.
+*3 fokozatú*: kb. 11,8, 13,2 és 14,4 s-nál.
+*Korai*: egy dekódolás 13,8 s-nál. *Normál* (alapértelmezés): 14,1 s.
+*Késői*: 14,4 s. A többfokozatú beállítások hamarabb mutatják az erős
+jeleket.
+
+!*Szélessávú DX hívójel keresés*
+!Be (alapértelmezés): AP keresés a DX hívójel üzeneteire a teljes
+áteresztősávban. Ki: csak az Rx frekvencia körüli szűk ablakban.
+
+!*FT8 ismétlődő üzenetek elrejtése*
+!Be (alapértelmezés): ha a szálak egy perióduson belül kétszer dekódolják
+ugyanazt az üzenetet, az csak egyszer jelenik meg, az erősebb riporttal.
+
+!*a8 dekódolások kihagyása*
+!Kikapcsolja az "a8" kísérletet: a DX hívójeltől várt üzenet dekódolását
+az Rx frekvencián, a *DX Hívójel* és a *DX QRA* alapján összeállítva.
+!===
+
+|*Átlagolás engedélyezése*
+|JT4, JT65 és Q65, VHF funkciókkal. Egymást követő periódusokat átlagol,
+hogy dekódolja az egy periódushoz túl gyenge jeleket. A panelek neve
+*Egy periódusú dekódolások* és *Átlag dekódolások* lesz.
+
+|*Mély keresés engedélyezése*
+|JT4 és JT65, VHF funkciókkal. Ha a normál dekódolás nem sikerül, a jelet
+az Ön hívójeléből, a DX hívójelből, a DX lokátorból és a `CALL3.TXT`
+fájlból összeállított valószínű üzenetekkel veti össze.
+
+|*AP engedélyezése*
+|A két menüpont közül az első. Csak FT8: a priori (AP) dekódolás, amely
+az Ön hívójelét, a DX hívójelet és a QSO állapotát használja gyengébb
+üzenetek megtalálásához. Az AP dekódolások jelölése `a1` ... `a8`.
+
+|*AP engedélyezése*
+|A második menüpont. Csak JT65, VHF funkciókkal: AP dekódolás JT65-höz.
+
+
+|*Átlag automatikus törlése a dekódolás után*
+|Az Rx frekvenciától *F Tol* távolságon belüli sikeres dekódolás után
+törli az átlagot, így a következő üzenet tisztán indul.
+
+|*WS-MAP/EME65 kattintási események fogadása*
+|Q65 és JT65, VHF funkciókkal (alapértelmezésben be). Ha a WS-MAP vagy az
+EME65 programban egy állomásra kattint, a WS beállítja a DX hívójelet, a
+lokátort, a frekvenciát és a periódust. Bekapcsolt *Dupla klikk a
+hívójelre, Tx engedélyezése* opcióval a dupla kattintás a QSO-t is
+elindítja. Az EME65 által továbbított dekódolásokat is fogadja.
+
+|*WS-MAP lefoglalása*
+|Akkor látható, ha a kattintási események fogadása be van kapcsolva. Ha
+több WS példány figyeli ugyanazt a WS-MAP/EME65 forrást, csak a
+foglalást tartó példány reagál a kattintásokra. A foglalás automatikusan
+megszűnik, ha a példánya 10 s-ig nem frissíti. A főablak *WS-MAP
+lefoglalása* gombja ugyanezt teszi.
+
+a|*WS-MAP/EME65 forrás*
+
+image::menu-Decode-QMAP_source.png[WS-MAP/EME65 forrás almenü]
+a|Melyik WS-MAP vagy EME65 példányt figyeli a WS.
+
+* *Auto* (alapértelmezés) és *1*: az alapértelmezett példány (a WS-MAP
+beállításaiban Instance ID 1 vagy nincs megadva). Egyetlen WS-MAP esetén
+ezt használja.
+* *2*, *3*, *4*: csak az adott Instance ID-jű példány.
+
+A forrás módosítása feloldja az esetleges foglalást. A változás azonnal
+életbe lép; utána a WS újraindítása ajánlott.
+
+|*Kattintások letiltása a vízesésen*
+|JT65 és Q65, VHF funkciókkal. Megvédi az Rx/Tx eltolásokat a vízesésre
+történő véletlen kattintásoktól. Ha mégis kattintani szeretne, tartsa
+lenyomva a kbd:[Alt] billentyűt.
+
+|*AP információk elrejtése*
+|Csak FT8. Eltávolítja a megjelenített dekódolásokból az `a1` ... `a9` és
+a `?` jelöléseket.
+
+|*Téves dekódolások csökkentése*
+|FT8, speciális üzemmódokon kívül. Elveti a valószínűtlennek tűnő gyenge
+dekódolásokat, például a `/P`, `/R`, `R`, hash-elt hívójelek vagy
+versenyüzenetek furcsa kombinációit alacsony SNR mellett. Ezek a sorok nem
+kerülnek az `ALL.TXT` fájlba. Egyszálú dekóderrel a -20 dB alatti
+dekódolások is rejtve maradnak, ha a hívójelek nem szerepelnek az
+`ALLCALL7.TXT` fájlban, és nem tűnnek érvényes hívójelnek.
+
+|*Full duplex mód*
+|Adás közben is folytatja a vételt és a dekódolást, pl. egy második
+vevő vagy egy WebSDR hangjával. FT8, FT4, Q65, MSK144 és a többi mód
+esetén is működik.
+|===
+
+[[MENU_MODE]]
+=== Üzemmód
+
+image::menu-Mode.png[Üzemmód menü]
+
+Kiválasztja az üzemmódot. Adás közben a menü zárolva van. Az egyes módok
+részleteit lásd a WSJT-X felhasználói kézikönyvben.
+
+[cols="2,5",options="header"]
+|===
+|Menüpont |Tipikus felhasználás
+
+|*FST4*
+|LF/MF és HF gyengejeles QSO-k hosszú periódusokkal (15 s-tól 30 percig).
+
+|*FT2*
+|Nagyon gyors 77 bites mód 3,75 s-os periódusokkal (az FT4 fele). A WSJT-X
+Improved 3.1 vezette be.
+
+|*FT4*
+|Versenyek és gyors HF QSO-k, 7,5 s-os periódusok.
+
+|*FT8*
+|A mindennapi HF/6 m-es mód, 15 s-os periódusok. DXpedíció (Fox/Hound) és
+SuperFox is.
+
+|*JT4*
+|Mikrohullámú EME és Doppler-szórással terhelt földi utak.
+
+|*JT9*
+|HF/LF gyenge jelek, 1 perces periódusok.
+
+|*JT65*
+|EME VHF/UHF sávokon és a klasszikus HF JT65.
+
+|*Q65*
+|EME, ionoszférikus és esőszórás VHF-től a mikrohullámokig. A-E almódok,
+15-300 s-os periódusok. A WS-MAP-pel együtt használatos.
+
+|*MSK144*
+|Meteorszórás 6 m-en és 2 m-en.
+
+|*FST4W*
+|WSPR-hez hasonló jeladó mód LF/MF-re, 2-30 perces periódusok.
+
+|*WSPR*
+|Jeladó adások terjedésvizsgálathoz. A spotok a WSPRnet-re kerülnek.
+
+|*Echo*
+|EME visszhangtesztek: a saját, Holdról visszavert jelet méri.
+
+|*FreqCal*
+|A rádió frekvenciakalibrálása. Lásd <<MENU_TOOLS>>.
+|===
+
+[[MENU_TOOLS]]
+=== Eszközök
+
+image::menu-Tools.png[Eszközök menü]
+
+[cols="2,5",options="header"]
+|===
+|Menüpont |Mire szolgál
+
+|*Referencia spektrum törlése*
+|Törli a mérés alatt álló referencia spektrumot.
+
+|*Referencia spektrum mérése*
+|Elindítja a *Vétel* funkciót, és átlagolja a vett hang spektrumát. A
+*Stop* gombra kattintva a `refspec.dat` fájlba menti. A Széles-grafikonon
+a *Ref.Spekt.* bejelölésével ezzel a szűrővel simíthatja ki a hangot.
+
+|*Fázismenet mérése*
+|Be- vagy kikapcsolja az MSK144 fázistanítást. A WS a DX hívójeltől
+származó dekódolásokon tanul, és a fáziskiegyenlítő együtthatókat az
+adatkönyvtár egy fájljába menti. A tanítás magától véget ér, ha elég adat
+gyűlt össze.
+
+|*Kiegyenlítő eszközök ...*
+|Megnyit egy ablakot, amely ábrázolja a mért, a javasolt és az aktuális
+fázist és csoportkésleltetést, valamint a referencia spektrumot. Itt
+töltheti be (*Fázis ...*), frissítheti vagy vetheti el a
+fáziskiegyenlítési adatokat.
+
+|*Frekvencia kalibráló ciklus végrehajtása*
+|FreqCal módban minden periódus végén a rádiót a
+menu:Fájl[Beállítások > Frekvenciák] alatti következő FreqCal frekvenciára
+hangolja, így egymás után több ismert frekvenciájú állomást mérhet.
+
+|*Kalibrációs paraméterek megoldása*
+|Meredekséget (ppm) és tengelymetszetet (Hz) illeszt az `fmt.all` fájl
+méréseire, és megmutatja az eredményt. Az *Apply* ezeket kalibrációként
+tárolja a menu:Fájl[Beállítások > Frekvenciák] alatt. Az `fmt.all` ezután
+átnevezhető `fmt.bak` névre.
+|===

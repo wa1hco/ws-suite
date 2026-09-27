@@ -1,0 +1,11 @@
+[[SUPPORT]]
+== 支持
+
+获取帮助的最佳途径是
+https://sourceforge.net/projects/wsjt-x-improved/lists/wsjt-x-improved-community/[wsjt-x-improved-community]
+邮件列表或 https://groups.io/g/wsjtgroup[WSJT Group]。很可能已经有
+兴趣和设备相近的人解决过同样的问题。
+必须先加入列表，才能在其中发帖。
+
+错误报告和功能建议请尽量发送到
+wsjt-x-improved-community 列表。

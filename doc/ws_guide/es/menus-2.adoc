@@ -1,0 +1,301 @@
+[[MENU_FILTERS]]
+=== Filtros
+
+image::menu-Filters.png[Menú Filtros]
+
+Filtros rápidos para el panel Actividad en la banda. Las listas que usan (lista
+de ignorados, lista de permitidos, territorios) se configuran en menu:Archivo[Ajustes > Filtros],
+vea <<SETTINGS_FILTERS>>. Todos los filtros se pueden combinar. La casilla *Omitir*
+de la ventana principal los anula con un clic. Mientras hay un filtro *Ocultar*
+activo, la etiqueta de estado se pone cian y muestra "Receiving, Filters On"
+("Receiving, Filters bypassed" en verde con *Omitir*).
+
+[cols="2,5",options="header"]
+|===
+|Elemento del menú |Qué hace
+
+|*Ocultar estaciones trabajadas anteriormente en la banda*
+|Oculta los mensajes de indicativos que ya están en su log en la banda actual.
+
+|*Ocultar estaciones trabajadas hoy o ayer*
+|Oculta los indicativos registrados hoy (o ayer). El elemento muestra "... trabajadas
+hoy" salvo que la opción correspondiente de la pestaña *Filtros* añada el día de ayer.
+
+|*Ocultar estaciones de la lista de ignorados*
+|Oculta los indicativos de la lista de ignorados. El botón *Ignorar* añade el
+Indicativo DX a esa lista; bórrela desde el menú *Archivo*.
+
+|*Ignorar estaciones trabajadas anteriormente en la banda*
+|Esas estaciones siguen visibles, pero WS no les responde automáticamente
+(CQ: First / Max Dist / Max dB / Min dB, Wait and Pounce, Wait and Reply).
+
+|*Ignorar estaciones trabajadas hoy o ayer*
+|Igual, para los indicativos registrados hoy (o ayer).
+
+|*Ignorar estaciones de la lista de ignorados*
+|Igual, para los indicativos de la lista de ignorados.
+
+|*Ocultar estaciones del Territorio 1* ... *4*
+|Oculta las estaciones cuyo nombre de país contiene el texto introducido para ese
+territorio. En cuanto introduce un territorio, el elemento muestra su nombre
+(p. ej. "Ocultar estaciones de Italy").
+
+|*Ocultar estaciones de Europa*, *Norteamérica*, *Suramérica*, *Asia*,
+*África*, *Oceanía*, *Antárctica*
+|Oculta todas las estaciones de ese continente. Práctico para mostrar solo DX.
+
+|*Resaltar los indicativos trabajados anteriormente en la banda*
+|Fondo gris para los indicativos ya trabajados en esta banda.
+
+|*Resaltar los indicativos trabajados hoy o ayer*
+|Amarillo sobre gris oscuro para los indicativos registrados hoy (o ayer).
+
+|*Resaltar indicativos de la lista de ignorados*
+|Amarillo sobre rojo oscuro para los indicativos de la lista de ignorados.
+
+|*Destacar estaciones del Territorio 1* ... *4*
+|Fondo morado para los indicativos de ese territorio.
+
+|*Resaltar entradas de la lista de permitidos*
+|Fondo magenta para los indicativos que contienen una entrada de la lista de
+permitidos. No hace falta que el propio filtro de la lista de permitidos esté activo.
+|===
+
+[[MENU_DECODE]]
+=== Decodificar
+
+image::menu-Decode.png[Menú Decodificar]
+
+WS muestra solo los elementos que se aplican al modo actual. Algunos requieren
+*Habilitar funciones de VHF y submodo* (menu:Archivo[Ajustes > General]).
+
+[cols="2,5",options="header"]
+|===
+|Elemento del menú |Qué hace
+
+|*Rápido*
+|Decodificación más rápida, menor sensibilidad.
+
+|*Normal*
+|Profundidad media.
+
+|*Profundo*
+|La mejor sensibilidad, más lento, con una probabilidad algo mayor de falsas decodificaciones.
+Atenuado en Echo, FreqCal y JT65 con funciones VHF.
+
+|*Utilice un decodificador FT8 multiproceso*
+|Solo FT8. Ejecuta varios hilos de decodificación en paralelo. En una banda
+concurrida suele dar más decodificaciones. Para el trabajo extremo con señales
+débiles, el decodificador *Profundo* de un solo hilo suele ser mejor. Se configura en *Parámetros*.
+
+a|*Parámetros*
+
+image::menu-Decode-Parameters.png["Decodificar, submenú Parámetros"]
+a|Ajuste fino del decodificador FT8 multiproceso. No tiene efecto a menos que
+*Utilice un decodificador FT8 multiproceso* esté activado.
+
+[cols="2,5"]
+!===
+!*Número de hilos* +
+image:menu-Decode-Parameters-FT8_threads.png[Número de hilos]
+!*Auto* (predeterminado) deja algunos núcleos libres: con 2-4 núcleos lógicos
+usa uno menos, con 5-8 dos menos, con 9-15 tres menos, y con 16
+o más usa 12. *1*-*12* fijan el número directamente, limitado al número de núcleos.
+
+!*Ciclos de decodificación* +
+image:menu-Decode-Parameters-Decoding_cycles.png[Ciclos de decodificación]
+!*1*, *2* o *3* (predeterminado) ciclos de 3 pasadas cada uno, es decir, 3, 6 o 9 pasadas.
+Más ciclos encuentran más señales débiles, pero tardan más. Las decodificaciones
+tempranas (vea *Inicio del decodificador*) usan siempre 2 ciclos.
+
+!*Sensibilidad de frecuencia RX del QSO* +
+image:menu-Decode-Parameters-QSO_RX_freq_sensitivity.png[Sensibilidad de frecuencia RX del QSO]
+!*Bajo*, *Medio* (predeterminado), *Alto*. Umbral de un decodificador especial
+que busca los mensajes esperados del Indicativo DX en su frecuencia de RX
+durante un QSO. Un valor más alto da más decodificaciones, pero también más
+falsas. En modo Hound se usa siempre *Bajo*.
+
+!*Sensibilidad del decodificador* +
+image:menu-Decode-Parameters-Decoder_sensitivity.png[Sensibilidad del decodificador]
+!*Mínimo*: umbrales de sincronización normales. *Utilice umbrales bajos*: umbrales
+de sincronización más bajos, de modo que se prueban más candidatos. *Usar subpass*
+(predeterminado): umbrales bajos más subpasadas adicionales para señales débiles.
+Más sensibilidad significa también más carga de CPU.
+
+!*Inicio del decodificador* +
+image:menu-Decode-Parameters-Decoder_start.png[Inicio del decodificador]
+!Cuándo empieza la decodificación dentro del período de 15 s.
+*2 Etapas*: decodificación temprana hacia 11,8 s, decodificación final a 14,1 s.
+*3 etapas*: hacia 11,8, 13,2 y 14,4 s.
+*Temprano*: una decodificación a 13,8 s. *Normal* (predeterminado): 14,1 s.
+*Tarde*: 14,4 s. Los ajustes por etapas muestran antes las señales fuertes.
+
+!*Búsqueda de indicativo DX en banda ancha*
+!Activado (predeterminado): búsqueda AP de los mensajes del Indicativo DX en toda
+la banda de paso. Desactivado: solo en una ventana estrecha alrededor de la frecuencia de RX.
+
+!*Ocultar mensajes duplicados de FT8*
+!Activado (predeterminado): si los hilos decodifican el mismo mensaje dos veces en
+un período, se muestra una sola vez, con el reporte más fuerte.
+
+!*Omitir decodificaciones a8*
+!Desactiva el intento "a8": una decodificación en la frecuencia de RX del
+mensaje esperado del Indicativo DX, construido a partir de *Indicativo DX* y *Locator DX*.
+!===
+
+|*Habilitar el promedio*
+|JT4, JT65 y Q65 con funciones VHF. Promedia períodos sucesivos para
+decodificar señales demasiado débiles para un solo período. Los paneles pasan a ser
+*Decodificaciones de un solo período* y *Promedio de decodificaciones*.
+
+|*Habilitar búsqueda profunda*
+|JT4 y JT65 con funciones VHF. Cuando la decodificación normal falla,
+compara la señal con mensajes probables construidos a partir de su indicativo,
+el Indicativo DX, el Locator DX y `CALL3.TXT`.
+
+|*Habilitar AP*
+|El primero de los dos elementos. Solo FT8: decodificación a priori (AP), que
+usa su indicativo, el Indicativo DX y el estado del QSO para encontrar mensajes más débiles.
+Las decodificaciones AP se marcan con `a1` ... `a8`.
+
+|*Habilitar AP*
+|El segundo elemento. Solo JT65 con funciones VHF: decodificación AP para JT65.
+
+
+|*Auto Clear Avg después de decodificar*
+|Tras una decodificación correcta dentro de *F Tol* de la frecuencia de RX, borra
+el promedio para que el siguiente mensaje empiece de cero.
+
+|*Aceptar eventos de clic de WS-MAP/EME65*
+|Q65 y JT65 con funciones VHF (activado por defecto). Un clic en una estación en
+WS-MAP o EME65 fija en WS el Indicativo DX, el locator, la frecuencia y el período.
+Con *Doble clic en indicativo activa TX* activado, un doble clic también inicia el QSO.
+Además incorpora las decodificaciones que reenvía EME65.
+
+|*Reclamar WS-MAP*
+|Aparece cuando se aceptan eventos de clic. Si varias instancias de WS vigilan
+la misma fuente WS-MAP/EME65, solo la instancia que tiene la reclamación atiende
+los clics. Una reclamación se retira automáticamente si su instancia deja de
+renovarla durante 10 s. El botón *Reclamar WS-MAP* de la ventana principal hace lo mismo.
+
+a|*Fuente WS-MAP/EME65*
+
+image::menu-Decode-QMAP_source.png[Submenú Fuente WS-MAP/EME65]
+a|Qué instancia de WS-MAP o EME65 escucha WS.
+
+* *Auto* (predeterminado) y *1*: la instancia predeterminada (Instance ID 1 o
+sin fijar en los ajustes de WS-MAP). Úselo con un único WS-MAP.
+* *2*, *3*, *4*: solo la instancia con ese Instance ID.
+
+Cambiar la fuente libera cualquier reclamación. El cambio surte efecto al instante;
+se recomienda reiniciar WS después.
+
+|*Deshabilitar clics en cascada (waterfall)*
+|JT65 y Q65 con funciones VHF. Protege sus desplazamientos de RX/TX de clics
+accidentales en la cascada. Mantenga pulsada kbd:[Alt] para hacer clic de todos modos.
+
+|*Ocultar información AP*
+|Solo FT8. Quita las marcas `a1` ... `a9` y `?` de las decodificaciones mostradas.
+
+|*Reducir las falsas decodificaciones*
+|FT8, no en los modos operativos especiales. Descarta decodificaciones débiles que
+parecen inverosímiles, por ejemplo combinaciones extrañas de `/P`, `/R`, `R`, indicativos
+con hash o intercambios de concurso con SNR bajo. Estas líneas no se escriben en `ALL.TXT`.
+Con el decodificador de un solo hilo, también se ocultan las decodificaciones por debajo de -20 dB
+si los indicativos no están en `ALLCALL7.TXT` y no parecen indicativos válidos.
+
+|*Modo Full Duplex*
+|Sigue recibiendo y decodificando mientras transmite, p. ej. con audio de un
+segundo receptor o de un WebSDR. Funciona en FT8, FT4, Q65, MSK144 y los demás modos.
+|===
+
+[[MENU_MODE]]
+=== Modo
+
+image::menu-Mode.png[Menú Modo]
+
+Selecciona el modo de operación. El menú se bloquea mientras transmite. Para
+los detalles de cada modo, vea la guía de usuario de WSJT-X.
+
+[cols="2,5",options="header"]
+|===
+|Elemento del menú |Uso típico
+
+|*FST4*
+|QSO con señales débiles en LF/MF y HF con períodos largos (15 s a 30 min).
+
+|*FT2*
+|Modo de 77 bits muy rápido con períodos de 3,75 s (la mitad que FT4). Introducido por WSJT-X Improved 3.1.
+
+|*FT4*
+|Concursos y QSO rápidos en HF, períodos de 7,5 s.
+
+|*FT8*
+|El modo cotidiano de HF/6 m, períodos de 15 s. También DXpedition (Fox/Hound) y SuperFox.
+
+|*JT4*
+|EME en microondas y trayectos terrestres con dispersión Doppler.
+
+|*JT9*
+|Señales débiles en HF/LF, períodos de 1 minuto.
+
+|*JT65*
+|EME en VHF/UHF y el JT65 clásico de HF.
+
+|*Q65*
+|EME, dispersión ionosférica y por lluvia de VHF a microondas. Submodos A-E,
+períodos de 15-300 s. Se usa con WS-MAP.
+
+|*MSK144*
+|Dispersión meteórica en 6 m y 2 m.
+
+|*FST4W*
+|Modo de baliza similar a WSPR para LF/MF, períodos de 2-30 min.
+
+|*WSPR*
+|Transmisiones de baliza para estudios de propagación. Los spots van a WSPRnet.
+
+|*Eco*
+|Pruebas de eco EME: mide sus propios ecos de la Luna.
+
+|*FreqCal*
+|Calibración de frecuencia de su equipo. Vea <<MENU_TOOLS>>.
+|===
+
+[[MENU_TOOLS]]
+=== Herramientas
+
+image::menu-Tools.png[Menú Herramientas]
+
+[cols="2,5",options="header"]
+|===
+|Elemento del menú |Qué hace
+
+|*Borrar espectro de referencia*
+|Borra el espectro de referencia que se está midiendo.
+
+|*Medir espectro de referencia*
+|Inicia *Monitor* y promedia el espectro del audio recibido. Haga clic en
+*Detener* para guardarlo en `refspec.dat`. Marque
+*Ref Espec* en la ventana Cascada para aplanar el audio con este filtro.
+
+|*Medir la respuesta de fase*
+|Activa o desactiva el entrenamiento de fase de MSK144. WS se entrena con las
+decodificaciones del Indicativo DX y guarda los coeficientes de ecualización de fase
+en un archivo del directorio de datos. El entrenamiento termina solo cuando tiene datos suficientes.
+
+|*Herramientas de ecualización ...*
+|Abre una ventana que representa la fase y el retardo de grupo medidos, propuestos
+y actuales, además del espectro de referencia. Úsela para cargar (*Fase ...*),
+actualizar o descartar datos de ecualización de fase.
+
+|*Ejecutar ciclo de calibración de frecuencia*
+|En modo FreqCal, al final de cada período resintoniza el equipo a la siguiente
+frecuencia FreqCal de menu:Archivo[Ajustes > Frecuencias], para que pueda
+medir sucesivamente varias estaciones de frecuencia conocida.
+
+|*Resolver parámetros de calibración*
+|Ajusta la pendiente (ppm) y la ordenada (Hz) a las mediciones de `fmt.all`
+y muestra el resultado. *Apply* los guarda como su calibración en
+menu:Archivo[Ajustes > Frecuencias]. Después, `fmt.all` se puede renombrar a `fmt.bak`.
+|===

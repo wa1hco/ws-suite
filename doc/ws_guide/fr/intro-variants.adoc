@@ -1,0 +1,36 @@
+== Trois variantes d'interface
+
+WS existe toujours en *trois variantes d'interface*. Elles ont les mêmes fonctions,
+menus et paramètres ; seule la disposition de la fenêtre principale diffère.
+Chaque variante a son propre programme d'installation.
+
+[cols="1,3",options="header"]
+|===
+|Variante |Idéale pour
+
+|*WS* (standard)
+|La disposition habituelle de WSJT-X. C'est le téléchargement par défaut.
+
+|*WS AL* (disposition alternative)
+|Une fenêtre plus compacte avec un volet Activité de la bande plus grand, pour moins défiler.
+
+|*WS Widescreen*
+|Les écrans larges : les contrôles passent sur le côté et les volets de décodage occupent toute la hauteur.
+|===
+
+.WS, disposition standard
+image::WS.png[WS disposition standard,align="center"]
+
+.WS AL, disposition alternative
+image::WS-AL.png[WS disposition AL,align="center"]
+
+.WS Widescreen
+image::WS-widescreen.png[WS disposition widescreen,align="center"]
+
+TIP: Vous pouvez installer les variantes côte à côte dans des dossiers séparés et
+les comparer. Elles utilisent toutes le même fichier de paramètres (`WS.ini`), vous
+conservez donc votre configuration. Au premier démarrage, WS reprend les paramètres
+d'une installation WSJT-X existante.
+
+Pour lancer plusieurs instances en même temps, démarrez chacune avec son propre
+`--rig-name=NAME` ; chaque instance conserve alors son propre fichier de paramètres.

@@ -1,0 +1,168 @@
+[[SETTINGS_ADVANCED]]
+=== Haladó
+
+image::settings-advanced.png["Beállítások, Haladó fül",align="center"]
+
+==== JT65 VHF/UHF/Mikrohullámú dekódolási paraméterek
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Véletlen törlési minták*
+|Mennyire igyekszik a JT65 soft-decision dekóder (legfeljebb 10^n/2^
+minta). A magasabb értékek kissé érzékenyebbek, de lassabbak; a legtöbb
+állomáshoz 6 vagy 7 megfelelő.
+
+|*Agresszív dekódolási szint*
+|A JT65 mély keresés küszöbértéke (0–10). A magasabb szint több
+dekódolást ad, de több téveset is.
+
+|*Kétmenetes dekódolás*
+|JT65: második dekódolási menet, miután az első menetben talált jeleket
+kivonta.
+|===
+
+==== GUI módosítások nagy felbontású monitorokhoz
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*HighDPI skálázás (újraindítás szükséges)*
+|Követi az operációs rendszer kijelzőskálázását, így 4K monitorokon a
+kezelőszervek nagyobbak és arányosak. Alapértelmezésben be van kapcsolva.
+
+|*A fül widget megnövelt magassága (újraindítás szükséges)*
+|Lehetővé teszi, hogy a főablak Tx üzenet-fülei magasabbak legyenek.
+|===
+
+==== Egyebek
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*.wav fájl S/N rontás* / *Vevő sávszélesség*
+|Offline érzékenységi tesztekhez: zajt ad a megnyitott .wav fájlokhoz, a
+megadott dB-lel csökkentve az S/N-t. A pontos értékhez a *Vevő
+sávszélesség* legyen a vevő zajsávszélessége.
+
+|*Tx késleltetés*
+|Minimális idő a PTT és az adási hang kezdete között (0 és 0,5 s között).
+Az FT4 és az FT2 mindig 20 ms-ot használ.
+
+|*Hangok közötti távolság*: *x 2* / *x 4*
+|A normál hangtávolság kétszerese / négyszerese, olyan LF/MF adókhoz,
+amelyek a frekvenciát 2-vel vagy 4-gyel osztják. Egyszerre csak az egyik
+jelölhető be.
+
+|*Vízesés spektrum*: *Kis oldaljelek* / *Legérzékenyebb*
+|A *Kis oldaljelek* (alapértelmezés) ablakozott FFT-t használ, így az erős
+jelek kevésbé terülnek szét a vízesésen. A *Legérzékenyebb* ablakozás
+nélkül dolgozik, és a nagyon gyenge nyomokat kissé jobban mutatja.
+|===
+
+IMPORTANT: A *Tx késleltetés* nem helyettesíti a hardveres szekvenszert. Az
+adás-vétel relék és az előerősítők védelmére használjon ilyet, és
+ellenőrizze, hogy a kapcsolási sorrend helyes.
+
+==== Speciális tevékenység
+
+Jelölje be a négyzetet, és válasszon egy tevékenységet; a WS ezután a
+megfelelő üzenetformátumokat állítja elő.
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*NA VHF*
+|Észak-amerikai VHF/UHF/mikrohullámú versenyek és más olyan versenyek,
+ahol a 4 karakteres lokátor a kontrollszám.
+
+|*NCCC Sprint*
+|Csak *NA VHF* mellett: az NCCC Sprint rövid üzenetes protokollja FT4-hez
+(és FT2-höz).
+
+|*EU VHF Contest*
+|Európai VHF+ versenyek: riport, sorszám és 6 karakteres lokátor.
+
+|*WW Digi Contest* / *ARRL Digi Contest*
+|World-Wide Digi verseny / ARRL International Digital Contest.
+
+|*Q65 Pileup*
+|Riport helyett 4 karakteres lokátort cserél, így a DX operátor q3 szintű
+érzékenységet kap. Különösen hasznos 6 m-es EME DXpedíciókhoz.
+
+|*ARRL Field Day* / *FD Exch*
+|Az Ön kontrollszáma: az adók száma, a kategória és az ARRL/RAC szekció,
+vagy "DX" (pl. `6A SNJ`).
+
+|*FT Roundup üzenetek* / *FT RU Exch*
+|FT Roundup és hasonló versenyek. Kontrollszám: USA állam, kanadai
+tartomány vagy "DX" (Alaszkára és Hawaiira is).
+
+|*Fox* / *Vadász*
+|FT8 DXpedíció mód: *Fox* a DXpedíciónak, *Vadász* az azt hívó
+állomásoknak. Használat előtt olvassa el az FT8 DXpedíció mód felhasználói
+kézikönyvét.
+
+|*SuperFox mód*
+|*Fox* vagy *Vadász* mellett: a SuperFox jelalak adása vagy vétele.
+
+|*OTP* / *Kulcs* / *Időköz*
+|*Fox* vagy *Vadász* mellett: a Fox egyszer használatos jelszavas
+ellenőrzése (internet szükséges). A Fox megadja a 16 karakteres *Kulcs*
+értékét, és minden *Időköz* számú üzenetet aláír (1 = minden üzenetet).
+
+|*OTP üzenetek megjelenítése* / *OTP URL*
+|Hound állomásoknak: a WS a Fox kódjait az *OTP URL* címen ellenőrzi
+(alapértelmezés: `https://www.9dx.cc`). Az *OTP üzenetek megjelenítése* az
+ellenőrző üzeneteket a Sáv-aktivitásban jeleníti meg.
+
+|*CQ egyedi versenynévvel* / *Verseny neve*
+|Pl. `CQ PACC`-t hív CQ TEST, RU vagy WW helyett. *Fox*, *Vadász* vagy
+*Q65 Pileup* mellett nem érhető el.
+|===
+
+==== QSO-k feltöltése Cloudlogba vagy Wavelogba
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*QSO-k feltöltése Cloudlogba vagy Wavelogba*
+|Jelölje be a csoport címét, ha minden naplózott QSO-t el szeretne küldeni
+a Cloudlog vagy Wavelog szerverére.
+
+|*API URL*
+|A telepítés alapcíme, záró perjel nélkül (pl. `https://log.example.com`).
+
+|*API-kulcs* / *Állomás ID*
+|Írási joggal rendelkező API-kulcs és az állomásprofil azonosítója a
+Cloudlogból/Wavelogból.
+
+|*API-kulcs tesztelése*
+|Próba (dry-run) módban tesztelő QSO-t küld. A gomb zöld, ha a kulcs
+írható, narancssárga, ha csak olvasható, piros, ha érvénytelen.
+|===
+
+==== QSO-k feltöltése az eQSL.cc-re
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*QSO-k feltöltése az eQSL.cc-re*
+|Jelölje be a csoport címét, ha minden naplózott QSO-t fel szeretne tölteni
+az eQSL.cc-re.
+
+|*Felhasználónév* / *Jelszó*
+|Az eQSL.cc bejelentkezési adatai.
+
+|*QTH*
+|A QTH beceneve, ha az eQSL.cc-n egynél több QTH-ja van.
+|===
+
+NOTE: Az eQSL.cc jelszó és az API-kulcs titkosítatlanul tárolódik a
+beállításfájlban.

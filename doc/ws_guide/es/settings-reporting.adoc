@@ -1,0 +1,162 @@
+[[SETTINGS_REPORTING]]
+=== Reportes
+
+image::settings-reporting.png["Ajustes, pestaña Reportes",align="center"]
+
+==== Guardado de log
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Ubicación del log* / *Seleccionar*
+|El archivo ADIF en el que WS escribe sus QSO. El predeterminado es `wsjtx_log.adi` en el
+directorio de datos de WS. *Seleccionar* elige un archivo `.adi` existente o da nombre a uno nuevo.
+Tras *OK*, WS cambia a ese archivo y lo vuelve a leer para el estado de trabajado anteriormente.
+
+|*Preguntarme para guardar el QSO*
+|Abre la ventana *Guardar QSO* parcialmente rellenada cuando envía 73 o un mensaje de
+texto libre. Desactiva *Guardar automáticamente*.
+
+|*Indicativo del Operador*
+|El indicativo del operador, si es distinto del indicativo de la estación. Se
+guarda en el campo *Operador* de la entrada del log.
+
+|*Guardar automáticamente*
+|Registra un QSO completado sin mostrar la ventana *Guardar QSO*. Desactiva *Preguntarme
+para guardar el QSO*.
+
+|*Solo concurso*
+|Con *Guardar automáticamente*: registra automáticamente solo durante una actividad
+de concurso (NA VHF, EU VHF, WW Digi, ARRL Digi, Field Day, RTTY Roundup).
+Los demás QSO abren la ventana *Guardar QSO*. Los QSO como Fox se registran siempre automáticamente.
+
+|*Completar locators ausentes con 'ZZ00'*
+|Guarda `ZZ00` como locator cuando la otra estación no envió ninguno.
+
+|*Guardar locators de 4 digitos*
+|Acorta a 4 caracteres en el log los locators de 6 caracteres.
+
+|*Guardar la frecuencia del dial en lugar de la de TX*
+|Guarda la frecuencia del dial del equipo. Desmarcado, WS guarda la frecuencia del dial
+más su desplazamiento de audio de TX.
+
+|*Convertir modo a RTTY*
+|Guarda los QSO de JT9 con el modo RTTY, para programas de log que no conocen JT9.
+
+|*Guardar reportes dB en los comentarios*
+|Escribe el modo y los reportes enviado y recibido en *Comentarios*
+(p. ej. `FT8  Sent: -10  Rcvd: -12`), para programas de log que rechazan estos
+reportes.
+
+|*Actividad operativa especial a comentarios*
+|Escribe la actividad operativa especial activa en *Comentarios*, p. ej.
+"EU VHF Contest" o "F/H mode". Con un nombre de concurso individual como
+PACC se usa "PACC Contest". No se aplica cuando *Guardar reportes dB en los comentarios*
+está activado o el comentario está retenido en la ventana *Guardar QSO*.
+|===
+
+TIP: Las subidas a Cloudlog o Wavelog se configuran en la pestaña *Avanzado*.
+
+==== PSK Reporter
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Activar "spotting" en PSK Reporter*
+|Envía los datos de su estación y las estaciones que decodifica a
+https://pskreporter.info[PSK Reporter]. El texto de la antena procede de
+*Información de la estación* en la pestaña *Frecuencias* para la banda actual.
+Las decodificaciones de archivos grabados no se envían.
+
+|*Usar conexión TCP/IP*
+|Usa TCP en lugar de UDP. Solo es necesario si sus reportes UDP se pierden por el camino.
+|===
+
+==== LiveCQ
+
+LiveCQ es un servicio web que lista en directo la actividad de Q65 (y JT65 en VHF) y
+muestra quién oye a quién.
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Habilitar LiveCQ de Q65*
+|Interruptor general (activado por defecto). Sube sus decodificaciones Q65, y sus decodificaciones
+JT65 en 50 MHz y superiores, a los destinos marcados abajo. En Q65 también
+obtiene las marcas verdes de "quién me ha oído".
+
+|*W3SZ (w3sz.com)* y nombre del programa
+|Envía solo mensajes de tipo CQ al LiveCQ de W3SZ, los mismos reportes que WS-MAP y
+EME65 envían allí. La lista desplegable elige el nombre de programa que se informa:
+*WSJTX* (como antes del cambio de nombre) o *WS*.
+
+|*N6NU (livecq.n6nu.org)*
+|Destino completo (activado por defecto): mensajes CQ y dirigidos. Es la fuente
+de las marcas verdes y es necesario para operar en *Q65 Pileup* (pestaña *Avanzado*).
+
+|*Personalizado:* y URL
+|Envía solo mensajes de tipo CQ a su propio servidor LiveCQ, p. ej.
+`\http://localhost:3000/api/livecq_update`. No hace nada mientras la URL esté vacía.
+Con *N6NU* desactivado, las marcas verdes se obtienen de este servidor.
+|===
+
+NOTE: Las decodificaciones de archivos grabados solo van al servidor N6NU, marcadas para que el
+sitio las oculte por defecto.
+
+==== Servidor UDP
+
+WS envía su estado, sus decodificaciones y los QSO registrados por UDP a programas complementarios
+como JTAlert o GridTracker.
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Servidor UDP*
+|Dirección del programa receptor, normalmente `127.0.0.1` (predeterminado). Con una
+dirección de grupo multicast (p. ej. `239.255.0.1`) varios programas pueden escuchar a
+la vez. Solo direcciones IPv4.
+
+|*Número de puerto del servidor UDP*
+|Puerto del programa receptor, predeterminado 2237. 0 = sin mensajes UDP.
+
+|*Interfaces salientes* / *Multicast TTL*
+|Solo aparecen para una dirección multicast. La interfaz loop-back basta para
+programas en el mismo ordenador. Mantenga el TTL en 1 para que el tráfico no salga de su
+red local.
+
+|*Aceptar solicitudes UDP*
+|Permite que el programa complementario controle WS, p. ej. iniciar un QSO con una estación en la que
+hizo clic allí. Desmarcado, las solicitudes se ignoran.
+
+|*Notificar sobre una solicitud UDP aceptada*
+|Trae la ventana de WS al frente cuando se acepta una solicitud. El efecto
+depende del sistema operativo.
+
+|*Una solicitud UDP aceptada restaura la ventana*
+|Restaura una ventana de WS minimizada cuando se acepta una solicitud.
+
+|*Modo de compatibilidad WSJT-X*
+|Identifica WS como "WSJT-X" en lugar de "WS" (p. ej. "WSJT-X - rig"), para
+programas que solo reconocen WSJT-X. Surte efecto al instante.
+|===
+
+==== Servidor UDP secundario
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Habilita "broadcast" de contacto guardado (ADIF)*
+|Envía cada QSO registrado como registro ADIF por UDP, p. ej. a N1MM Logger+.
+
+|*Nombre del servidor o dirección IP*
+|Dirección del programa receptor, normalmente `127.0.0.1`.
+
+|*Número de puerto del servidor*
+|Puerto UDP del programa receptor; 2333 para N1MM Logger+ (predeterminado).
+0 = no se envía nada.
+|===

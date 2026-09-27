@@ -1,0 +1,34 @@
+[[SETTINGS_TXMACROS]]
+=== TX Makroer
+
+image::settings-tx_macros.png["Indstillinger, fanen TX Makroer",align="center"]
+
+Tx-makroer er korte fritekstmeddelelser, som du ofte sender, f.eks. `TNX 73 GL`.
+De vises i rullelisten for meddelelsen *Tx5* i hovedvinduet.
+
+==== Makroliste
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|Tekstfelt og *Tilføj*
+|Skriv en meddelelse, og klik på *Tilføj* for at føje den til listen. Kun tegn,
+der er tilladt i meddelelser, kan indtastes; teksten konverteres til store bogstaver.
+
+|*Slet*
+|Fjerner de valgte meddelelser. Højreklik → *Slet* gør det samme eller
+fjerner meddelelsen under markøren, hvis intet er valgt.
+
+|Liste
+|Makroerne i samme rækkefølge som i rullelisten *Tx5*. Træk og slip for at ændre rækkefølgen.
+Dobbeltklik på en meddelelse for at redigere den. Klik, kbd:[Shift]+klik og
+kbd:[Ctrl]+klik vælger flere meddelelser.
+|===
+
+NOTE: En fritekstmeddelelse er begrænset til 13 tegn inklusive mellemrum.
+
+TIP: Du kan også skrive en meddelelse i *Tx5* i hovedvinduet og trykke på
+kbd:[Enter]; så føjes den til listen. I FT8, FT4, FST4, MSK144 og Q65
+får en meddelelse, der begynder med `$DX` (eller `$DXCALL`), dette ord erstattet af
+grundkaldesignalet i *DX kaldesignal*, når den sendes.

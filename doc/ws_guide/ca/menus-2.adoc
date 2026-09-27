@@ -1,0 +1,300 @@
+[[MENU_FILTERS]]
+=== Filtres
+
+image::menu-Filters.png[Menú Filtres]
+
+Filtres ràpids per al panell Activitat a la banda. Les llistes que fan servir (llista
+d'ignorats, llista blanca, territoris) es configuren a menu:Arxiu[Configuració > Filtres],
+vegeu <<SETTINGS_FILTERS>>. Tots els filtres es poden combinar. La casella *BP*
+de la finestra principal els omet amb un sol clic. Mentre hi ha un filtre *Amaga*
+actiu, l'etiqueta d'estat es posa cian i mostra "Receiving, Filters On"
+(verd "Receiving, Filters bypassed" amb *BP*).
+
+[cols="2,5",options="header"]
+|===
+|Element del menú |Què fa
+
+|*Amaga les estacions treballades abans a la banda*
+|Amaga els missatges d'indicatius que ja són al teu log a la banda actual.
+
+|*Amaga les estacions treballades avui o ahir*
+|Amaga els indicatius que has registrat avui (o ahir). L'element diu "... treballades
+avui" tret que l'opció corresponent de la pestanya *Filtres* hi afegeixi ahir.
+
+|*Amaga les estacions de la llista d'ignorats*
+|Amaga els indicatius de la llista d'ignorats. El botó *Ignora* afegeix l'indicatiu DX
+a aquesta llista; esborra-la des del menú *Arxiu*.
+
+|*Ignora les estacions treballades abans a la banda*
+|Aquestes estacions continuen visibles, però WS no els respon automàticament
+(CQ: First / Max Dist / Max dB / Min dB, Wait and Pounce, Wait and Reply).
+
+|*Ignora les estacions treballades avui o ahir*
+|El mateix, per als indicatius registrats avui (o ahir).
+
+|*Ignora les estacions de la llista d'ignorats*
+|El mateix, per als indicatius de la llista d'ignorats.
+
+|*Amaga les estacions del territori 1* ... *4*
+|Amaga les estacions el nom de país de les quals conté el text introduït per a aquell
+territori. Un cop introdueixes un territori, l'element en mostra el nom
+(p. ex. "Amaga les estacions de Italy").
+
+|*Amaga les estacions d'Europa*, *Amaga les estacions d'Amèrica del Nord*, *Amaga les estacions d'Amèrica del Sud*, *Amaga les estacions d'Àsia*,
+*Amaga les estacions d'Àfrica*, *Amaga les estacions d'Oceania*, *Amaga les estacions de l'Antàrtida*
+|Amaga totes les estacions d'aquell continent. Pràctic per mostrar només DX.
+
+|*Ressalta els indicatius treballats abans a la banda*
+|Fons gris per als indicatius ja treballats en aquesta banda.
+
+|*Ressalta els indicatius treballats avui o ahir*
+|Groc sobre gris fosc per als indicatius registrats avui (o ahir).
+
+|*Ressalta els indicatius de la llista d'ignorats*
+|Groc sobre vermell fosc per als indicatius de la llista d'ignorats.
+
+|*Ressalta les estacions del territori 1* ... *4*
+|Fons porpra per als indicatius d'aquell territori.
+
+|*Ressalta les entrades de la llista blanca*
+|Fons magenta per als indicatius que contenen una entrada de la llista blanca. No cal
+que el filtre de la llista blanca estigui activat.
+|===
+
+[[MENU_DECODE]]
+=== Descodificar
+
+image::menu-Decode.png[Menú Descodificar]
+
+WS mostra només els elements que s'apliquen al mode actual. Alguns necessiten
+*Activa les funcions de VHF i submode* (menu:Arxiu[Configuració > General]).
+
+[cols="2,5",options="header"]
+|===
+|Element del menú |Què fa
+
+|*Ràpid*
+|Descodificació més ràpida, sensibilitat més baixa.
+
+|*Normal*
+|Profunditat mitjana.
+
+|*Profunda*
+|Millor sensibilitat, més lenta, amb una probabilitat lleugerament més alta de descodificacions falses.
+Desactivada en Eco, FreqCal i JT65 amb les funcions de VHF.
+
+|*Utilitza el descodificador FT8 multifil*
+|Només FT8. Executa diversos fils de descodificació en paral·lel. En una banda concorreguda
+normalment dona més descodificacions. Per al treball amb senyals extremadament febles, el
+descodificador *Profunda* d'un sol fil sovint és millor. Configura'l a *Paràmetres*.
+
+a|*Paràmetres*
+
+image::menu-Decode-Parameters.png["Submenú Descodificar, Paràmetres"]
+a|Ajust fi del descodificador FT8 multifil. No té cap efecte si
+*Utilitza el descodificador FT8 multifil* no està activat.
+
+[cols="2,5"]
+!===
+!*Nombre de fils* +
+image:menu-Decode-Parameters-FT8_threads.png[Nombre de fils]
+!*Auto* (per defecte) deixa alguns nuclis lliures: amb 2-4 nuclis lògics
+en fa servir un menys, amb 5-8 dos menys, amb 9-15 tres menys, i amb 16
+o més en fa servir 12. De *1* a *12* fixen el nombre directament, limitat al nombre de nuclis.
+
+!*Cicles de descodificació* +
+image:menu-Decode-Parameters-Decoding_cycles.png[Cicles de descodificació]
+!*1*, *2* o *3* (per defecte) cicles de 3 passades cadascun, és a dir 3, 6 o 9 passades.
+Més cicles troben més senyals febles però triguen més. Les descodificacions anticipades (vegeu
+*Inici del descodificador*) sempre fan servir 2 cicles.
+
+!*Sensibilitat de freq. de RX del QSO* +
+image:menu-Decode-Parameters-QSO_RX_freq_sensitivity.png[Sensibilitat de freq. de RX del QSO]
+!*Baix*, *Mitjana* (per defecte), *Alt*. Llindar d'un descodificador especial
+que busca els missatges esperats de l'indicatiu DX a la teva freqüència de RX
+durant un QSO. Un valor més alt dona més descodificacions però també més de
+falses. En mode Hound sempre es fa servir *Baix*.
+
+!*Sensibilitat del descodificador* +
+image:menu-Decode-Parameters-Decoder_sensitivity.png[Sensibilitat del descodificador]
+!*Mínima*: llindars de sincronisme normals. *Utilitza llindars baixos*: llindars de
+sincronisme més baixos, de manera que es proven més candidats. *Utilitza subpassada* (per defecte):
+llindars baixos més subpassades addicionals per a senyals febles. Més sensible també vol dir més càrrega de CPU.
+
+!*Inici del descodificador* +
+image:menu-Decode-Parameters-Decoder_start.png[Inici del descodificador]
+!Quan comença la descodificació dins el període de 15 s.
+*2 etapes*: descodificació anticipada cap als 11,8 s, descodificació final als 14,1 s.
+*3 etapes*: cap als 11,8, 13,2 i 14,4 s.
+*Aviat*: una descodificació als 13,8 s. *Normal* (per defecte): 14,1 s.
+*Tard*: 14,4 s. Els ajustos per etapes mostren abans els senyals forts.
+
+!*Cerca d'Indicatiu DX en banda ampla*
+!Activat (per defecte): cerca AP dels missatges de l'indicatiu DX a tota la
+banda passant. Desactivat: només en una finestra estreta al voltant de la freqüència de RX.
+
+!*Amaga els missatges FT8 duplicats*
+!Activat (per defecte): si els fils descodifiquen el mateix missatge dues vegades en un
+període, es mostra una sola vegada, amb el report més fort.
+
+!*Omet les descodificacions a8*
+!Desactiva l'intent "a8": una descodificació a la freqüència de RX del
+missatge esperat de l'indicatiu DX, construït a partir d'*Indicatiu DX* i *Locator DX*.
+!===
+
+|*Activa la mitjana*
+|JT4, JT65 i Q65 amb les funcions de VHF. Fa la mitjana de períodes successius per
+descodificar senyals massa febles per a un sol període. Els panells passen a ser *Descodificacions
+d'un sol període* i *Mitjans descodificats*.
+
+|*Activa la cerca profunda*
+|JT4 i JT65 amb les funcions de VHF. Quan la descodificació normal falla,
+compara el senyal amb missatges probables construïts a partir del teu indicatiu, l'indicatiu
+DX, el locator DX i `CALL3.TXT`.
+
+|*Activa AP*
+|El primer dels dos elements. Només FT8: descodificació a priori (AP), que
+fa servir el teu indicatiu, l'indicatiu DX i l'estat del QSO per trobar missatges més febles.
+Les descodificacions AP es marquen amb `a1` ... `a8`.
+
+|*Activa AP*
+|El segon element. Només JT65 amb les funcions de VHF: descodificació AP per a JT65.
+
+
+|*Esborra la mitjana automàticament després de la descodificació*
+|Després d'una descodificació correcta dins de *F Tol* de la freqüència de RX, esborra
+la mitjana perquè el següent missatge comenci de zero.
+
+|*Accepta els clics de WS-MAP/EME65*
+|Q65 i JT65 amb les funcions de VHF (activat per defecte). Un clic sobre una estació a
+WS-MAP o EME65 fixa a WS l'indicatiu DX, el locator, la freqüència i el període.
+Amb *Fes doble clic sobre els conjunts d'indicatius de TX habilitat* activat, un doble clic també inicia el QSO. També
+incorpora les descodificacions que reenvia EME65.
+
+|*Reclama WS-MAP*
+|Es mostra quan s'accepten els clics. Si diverses instàncies de WS vigilen
+la mateixa font WS-MAP/EME65, només la instància que té la reclamació actua
+amb els clics. Una reclamació s'abandona automàticament si la seva instància deixa de
+renovar-la durant 10 s. El botó *Reclama WS-MAP* de la finestra principal fa el mateix.
+
+a|*Origen WS-MAP/EME65*
+
+image::menu-Decode-QMAP_source.png[Submenú Origen WS-MAP/EME65]
+a|Quina instància de WS-MAP o EME65 escolta WS.
+
+* *Auto* (per defecte) i *1*: la instància per defecte (Instance ID 1 o
+sense definir als ajustos de WS-MAP). Fes servir aquesta opció amb un sol WS-MAP.
+* *2*, *3*, *4*: només la instància amb aquell Instance ID.
+
+Canviar la font allibera qualsevol reclamació. El canvi s'aplica a l'instant;
+es recomana reiniciar WS després.
+
+|*Desactiva els clics a la cascada*
+|JT65 i Q65 amb les funcions de VHF. Protegeix els desplaçaments de RX/TX de clics
+accidentals a la cascada. Mantén premuda kbd:[Alt] per fer clic igualment.
+
+|*Amaga la informació AP*
+|Només FT8. Elimina les marques `a1` ... `a9` i `?` de les descodificacions mostrades.
+
+|*Redueix les descodificacions falses*
+|FT8, no en modes especials d'operació. Descarta descodificacions febles que semblen
+inversemblants, per exemple combinacions estranyes de `/P`, `/R`, `R`, indicatius amb hash
+o intercanvis de concurs amb SNR baixa. Aquestes línies no s'escriuen a `ALL.TXT`.
+Amb el descodificador d'un sol fil, també s'amaguen les descodificacions per sota de -20 dB
+si els indicatius no són a `ALLCALL7.TXT` i no semblen indicatius vàlids.
+
+|*Mode dúplex complet*
+|Continua rebent i descodificant mentre transmets, p. ex. amb l'àudio d'un
+segon receptor o d'un WebSDR. Funciona en FT8, FT4, Q65, MSK144 i els altres modes.
+|===
+
+[[MENU_MODE]]
+=== Mode
+
+image::menu-Mode.png[Menú Mode]
+
+Selecciona el mode d'operació. El menú queda bloquejat mentre transmets. Per als
+detalls de cada mode, vegeu la Guia d'usuari de WSJT-X.
+
+[cols="2,5",options="header"]
+|===
+|Element del menú |Ús típic
+
+|*FST4*
+|QSO amb senyals febles en LF/MF i HF amb períodes llargs (de 15 s a 30 min).
+
+|*FT2*
+|Mode de 77 bits molt ràpid amb períodes de 3,75 s (la meitat que FT4). Introduït per WSJT-X Improved 3.1.
+
+|*FT4*
+|Concursos i QSO ràpids d'HF, períodes de 7,5 s.
+
+|*FT8*
+|El mode de cada dia en HF/6 m, períodes de 15 s. També DXpedition (Fox/Hound) i SuperFox.
+
+|*JT4*
+|EME en microones i trajectes terrestres amb dispersió Doppler.
+
+|*JT9*
+|Senyals febles d'HF/LF, períodes d'1 minut.
+
+|*JT65*
+|EME en VHF/UHF i el JT65 clàssic d'HF.
+
+|*Q65*
+|EME, dispersió ionosfèrica i per pluja de VHF a microones. Submodes A-E,
+períodes de 15-300 s. S'utilitza amb WS-MAP.
+
+|*MSK144*
+|Dispersió meteòrica a 6 m i 2 m.
+
+|*FST4W*
+|Mode de balisa semblant a WSPR per a LF/MF, períodes de 2-30 min.
+
+|*WSPR*
+|Transmissions de balisa per a estudis de propagació. Els spots van a WSPRnet.
+
+|*Eco*
+|Proves d'eco EME: mesura els teus propis ecos a la Lluna.
+
+|*FreqCal*
+|Calibració de freqüència de l'equip. Vegeu <<MENU_TOOLS>>.
+|===
+
+[[MENU_TOOLS]]
+=== Eines
+
+image::menu-Tools.png[Menú Eines]
+
+[cols="2,5",options="header"]
+|===
+|Element del menú |Què fa
+
+|*Esborra l'espectre de referència*
+|Esborra l'espectre de referència que s'està mesurant.
+
+|*Mesura l’espectre de referència*
+|Engega *Monitor* i fa la mitjana de l'espectre d'àudio rebut. Fes clic a
+*Aturar* per desar-lo a `refspec.dat`. Marca
+*Ref Espec* al Gràfic Ampli per aplanar l'àudio amb aquest filtre.
+
+|*Mesura la resposta en fase*
+|Activa o desactiva l'entrenament de fase d'MSK144. WS s'entrena amb les descodificacions de
+l'indicatiu DX i desa els coeficients d'equalització de fase en un arxiu del
+directori de dades. L'entrenament acaba sol quan té prou dades.
+
+|*Eines d'equalització ...*
+|Obre una finestra que representa la fase i el retard de grup mesurats, proposats i actuals,
+a més de l'espectre de referència. Fes-la servir per carregar (*Fase ...*),
+actualitzar o descartar les dades d'equalització de fase.
+
+|*Executa el cicle de calibració de freqüència*
+|En mode FreqCal, torna a sintonitzar l'equip a la següent freqüència FreqCal de
+menu:Arxiu[Configuració > Freqüències] al final de cada període, perquè puguis
+mesurar per torns diverses estacions de freqüència coneguda.
+
+|*Resol els paràmetres de calibratge*
+|Ajusta el pendent (ppm) i la intercepció (Hz) a les mesures de `fmt.all`
+i mostra el resultat. *Apply* les desa com a calibratge a
+menu:Arxiu[Configuració > Freqüències]. Després es pot canviar el nom de `fmt.all` a `fmt.bak`.
+|===

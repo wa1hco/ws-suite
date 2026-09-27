@@ -1,0 +1,83 @@
+[[SETTINGS_ALERTS]]
+=== Alerts
+
+image::settings-alerts.png["Indstillinger, fanen Alerts",align="center"]
+
+WS kan melde udvalgte dekodninger med korte talte alarmer ("New DXCC",
+"My Call" osv.). Alarmerne er en del af enhver WS-installation og
+afspilles altid på computerens standardlydenhed, normalt dens
+højttaler.
+
+WARNING: Lydalarmer kræver en ekstra lydenhed. Din radio må *ikke* være
+tilsluttet via standardlydenheden, ellers bliver alarmerne udsendt.
+En radio med indbygget USB-lydkort (IC-7300, FT-991 og lignende) opfylder
+dette krav. Test før du slår funktionen til (se *Test* nedenfor).
+
+==== Audio Alarm
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Stemmer*
+|Vælger stemmen til alarmerne. En standardinstallation har én stemme, *standard*.
+
+|*Test*
+|Afspiller en testmeddelelse på standardlydenheden, så du kan kontrollere,
+hvor alarmerne kommer ud.
+
+|*Nyt DXCC* / *Nyt DXCC på bånd*
+|Et DXCC-land, du endnu ikke har kørt / ikke har kørt på det aktuelle bånd.
+
+|*Nyt Kontinent* / *Nyt kontinent på bånd*
+|Et kontinent, der endnu ikke er kørt / ikke er kørt på dette bånd.
+
+|*Ny CQ Zone* / *Ny CQ Zone på bånd*
+|En CQ-zone, der endnu ikke er kørt / ikke er kørt på dette bånd.
+
+|*Ny ITU Zone* / *Ny ITU Zone på bånd*
+|En ITU-zone, der endnu ikke er kørt / ikke er kørt på dette bånd.
+
+|*Ny US-stat* / *Ny US-stat på bånd*
+|En af de 50 US-stater, der endnu ikke er kørt / ikke er kørt på dette bånd.
+Staten bestemmes ud fra kaldesignalet eller ud fra grid, hvis den kun peger på én stat.
+
+|*Ny Grid* / *Ny Grind på Bånd*
+|En grid-lokator, der endnu ikke er kørt / ikke er kørt på dette bånd. Kun meddelelser med grid tæller.
+
+|*Mit kaldesignal*
+|En meddelelse, der er adresseret til dig.
+
+|*DX Call eller DX Grid i msg*
+|Kaldesignalet i feltet *DX kaldesignal* eller grid i feltet *DX Grid* optræder i en dekodning.
+
+|*CQ i meddelse*
+|Ethvert CQ-kald.
+
+|*Ønskede kaldesignaler, grids, præfikser og retningskald*
+|En dekodning matcher dine poster i *Highlight orange* eller *Highlight Blå* på
+fanen *Farver* (kun mens denne fremhævning er slået til), eller en post på
+Whitelist, mens menu:Filtre[Fremhæv poster på Whitelist] er markeret.
+
+|*Msg modtaget*
+|Der modtages en QSY-meddelelse til dit kaldesignal eller til DX Call. Kun QSY-meddelelser
+udløser denne alarm, så den forekommer sjældent.
+
+|*Enable Audio Alamer*
+|Hovedafbryder: ingen alarmlyde, mens den er slået fra. Knappen bliver grøn,
+når den er slået til. Under Windows afspiller WS så også en kort testlyd ved opstart.
+|===
+
+Kategorierne over linjen kræver, at *Vis DXCC, gird og Worked B4
+status* er markeret på fanen *Generel*.
+
+Alarmer virker uafhængigt af fremhævningen på fanen *Farver*. Men
+du kan kun se, hvilken dekodning der udløste en alarm, hvis den tilsvarende fremhævning
+er slået til dér, så slå de samme kategorier til på begge faner.
+
+NOTE: Stationer på Ignore-listen (tilføjet med knappen *Ignorer* under
+*DX Grid*) udløser ingen alarmer bortset fra *Mit kaldesignal*, medmindre afkrydsningsfeltet *BP* (bypass)
+er markeret. Ryd listen med menu:Fil[Slet Ignore liste].
+
+TIP: Når båndhopping er slået fra, kan du højreklikke på knappen *Bånd hopping* i
+hovedvinduet for en længere test af standardlydenheden.

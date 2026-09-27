@@ -1,0 +1,187 @@
+[[SETTINGS_GENERAL]]
+=== Allgemein
+
+image::settings-general.png["Einstellungen, Registerkarte Allgemein",align="center"]
+
+==== Stationsdaten
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Mein Rufzeichen*
+|Ihr Rufzeichen.
+
+|*Mein Locator*
+|Ihr Maidenhead-Locator, möglichst 6-stellig (z. B. CM87ux).
+Entfernungen und Azimute werden daraus berechnet.
+
+|*AutoGrid*
+|Erlaubt externen Programmen (z. B. einem GPS-Hilfsprogramm), *Mein Locator* zu ändern.
+
+|*IARU-Region*
+|Region 1: Europa, Afrika, Naher Osten, Nordasien. Region 2: Nord- und
+Südamerika. Region 3: Südasien und Pazifik. Wählt die passenden
+Standardfrequenzen.
+
+|*Nachrichtenerzeugung für Inhaber zusammengesetzter Rufzeichen vom Typ 2*
+|Nur für Rufzeichen mit einem Zusatzpräfix oder -suffix, das nicht in der
+Kurzliste steht (menu:Hilfe[Liste der Typ-1-Präfixe und -Suffixe]). Legt fest, welche
+erzeugte Nachricht (Tx1, Tx3 oder Tx6) Ihr vollständiges Rufzeichen enthält.
+|===
+
+==== Anzeige
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Dekodierungen neuer Perioden oben beginnen*
+|Jede Periode beginnt oben in der Bandaktivität und scrollt nicht
+weg, sodass Sie doppelklicken können, während noch dekodiert wird.
+
+|*Leerzeile zwischen Dekodierperioden*
+|Trennzeile zwischen den Perioden in der Bandaktivität.
+
+|*Leerzeile mit Zeitstempel anzeigen*
+|Die Trennzeile zeigt zusätzlich die UTC der Periode.
+
+|*Entfernung in Meilen anzeigen*
+|Meilen statt Kilometer.
+
+|*DX-Rufzeichen hervorheben* / *DX-Locator hervorheben*
+|Markiert Rufzeichen und Locator Ihres aktuellen QSO-Partners in den Nachrichten.
+
+|*Tx-Nachrichten im Fenster Rx-Frequenz*
+|Ihre eigenen gesendeten Nachrichten erscheinen auch im Bereich Rx-Frequenz.
+
+|*RRR/RR73/73 in Nachrichten an uns hervorheben*
+|Macht das Ende eines QSOs leicht erkennbar.
+
+|*DXCC, Locator und Gearbeitet-Status anzeigen*
+|Ergänzt Dekodierungen um das Land und die Markierungen für neues DXCC / neuen Locator / bereits gearbeitet.
+Erforderlich für die Hervorhebung auf der Registerkarte *Farben*.
+
+|*Hauptpräfix statt Ländername anzeigen*
+|Kürzer: "DL" statt "Fed. Rep. of Germany".
+
+|*DXCC für alle Nachrichten anzeigen*
+|Ergänzt jede Nachricht um das Land, nicht nur CQ-Rufe.
+
+|*Schriftart...* / *Schriftart für dekodierten Text...*
+|Schriftart für das ganze Programm / für die Bereiche Bandaktivität und Rx-Frequenz.
+|===
+
+==== Verhalten
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Monitor beim Start aus*
+|WS startet ohne zu dekodieren, bis Sie auf *Monitor* klicken.
+
+|*Monitor kehrt zur zuletzt genutzten Frequenz zurück*
+|Beim Einschalten von *Monitor* wird zur zuletzt beobachteten Frequenz zurückgekehrt.
+Ohne Häkchen bleibt die aktuelle Frequenz des Funkgeräts erhalten.
+
+|*Doppelklick auf Rufzeichen aktiviert Tx*
+|Ein Doppelklick auf eine Dekodierung startet sofort das Senden.
+
+|*Tx nach 73 deaktivieren*
+|*Tx aktivieren* schaltet sich nach einer 73- oder Freitextnachricht ab.
+
+|*CQ-Ruf erzwingt Call 1st*
+|Wenn Sie CQ rufen, wird *Call 1st* aktiviert, sodass WS dem ersten Anrufer automatisch antwortet.
+
+|*Alternative F1-F6-Belegung*
+|Stellt die Tastenkürzel kbd:[F1]–kbd:[F6] für die Tx-Nachrichten auf die Contest-Belegung
+um (siehe menu:Hilfe[Tastenkürzel]).
+
+|*VHF- und Submodus-Funktionen aktivieren*
+|Zeigt die Bedienelemente für VHF/UHF/Mikrowelle (Submodi, Mittelung, Sh, Auto-QSY
+und so weiter). Auf KW ausschalten: Es deaktiviert die Breitband-Mehrfachdekodierung von JT65.
+
+|*Tx-Frequenzänderungen während des Sendens erlauben*
+|Deaktivieren, wenn Ihr Funkgerät während Tx keine CAT-Befehle verarbeiten kann (bei Split oft nötig).
+
+|*Dekodieren nach EME-Verzögerung*
+|Beginnt in 1-Minuten-Modi später mit dem Dekodieren, sodass um etwa 2,5 s
+verzögerte EME-Signale erfasst werden.
+
+|*Einzeldekodierung*
+|Für JT4, JT65, Q65 und FST4: dekodiert nur in der Nähe der Rx-Frequenz
+(innerhalb *F Tol*), statt den gesamten Durchlassbereich zu durchsuchen. In JT4/JT65/Q65
+werden die beiden Bereiche zu *Einzelperioden-Dekodierungen* und *Gemittelte Dekodierungen*.
+
+|*Abstimm-Watchdog*
+|Beendet *Abstimmen* nach der eingestellten Anzahl Sekunden.
+
+|*MSK144/Q65: Senden, bis 73 empfangen*
+|Sendet weiter, bis die 73 der Gegenstation eintrifft, höchstens 10
+Versuche. Hilfreich bei schwierigen VHF/UHF/SHF-QSOs.
+
+|*Fenster Astronomische Daten automatisch öffnen/schließen*
+|Öffnet das Fenster Astronomische Daten, wenn Sie bei eingeschaltetem *Dekodieren nach EME-Verzögerung*
+auf Q65 oder JT65 umschalten, und schließt es, wenn es nicht mehr gebraucht wird.
+
+|*kHz-Eingabe ohne k (Neustart erforderlich)*
+|Im Frequenzfeld bedeutet "164" gefolgt von kbd:[Enter] +164 kHz innerhalb
+des aktuellen MHz (438,065 -> 438,164 MHz). Praktisch, um über den Ziffernblock zwischen EME-Segmenten
+zu springen.
+
+|*Fortschrittsbalken beim Senden rot färben*
+|Macht Tx auf einen Blick sichtbar.
+
+|*CW-ID nach 73* / *ID-Intervall*
+|Sendet eine CW-Kennung nach jeder 73- oder Freitextnachricht / alle N Minuten (0 = aus),
+immer im ruhigen Teil der Periode.
+
+|*Tx-Watchdog*
+|Beendet unbeaufsichtigte Aussendungen nach der eingestellten Anzahl Minuten.
+|===
+
+==== Zusätzliche Funktionen
+
+Diese Optionen stammen aus WSJT-X Improved und sind in WSJT-X nicht enthalten.
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*US-Bundesstaaten anzeigen*
+|Ordnet Locatoren US-Bundesstaaten und kanadischen Provinzen zu (nützlich ohne
+JTAlert). Manche Locatoren erstrecken sich über mehrere Staaten; dann werden alle aufgeführt.
+
+|*Wait-Funktionen aktivieren*
+|Schaltet *Wait and Reply*, *Wait and Call* und *Wait and Pounce* ein (Standard).
+Siehe <<WAIT_FEATURES>>.
+
+|*DX-Rufzeichen nach QSO löschen* / *DX-Locator nach QSO löschen*
+|Leert das Feld DX-Rufzeichen / DX-Locator, wenn das QSO geloggt wird.
+
+|*Entfernung in Nachrichten mit Locator anzeigen* / *Azimut in Nachrichten mit Locator anzeigen*
+|Ergänzt jede Nachricht mit gültigem Locator um Entfernung und Großkreis-Azimut.
+
+|*Dekodierungen nach Bandwechsel löschen* / *Dekodierungen nach Moduswechsel löschen*
+|Leert die Bandaktivität, wenn Sie das Band / den Modus wechseln.
+
+|*Alternatives Verhalten der Löschen-Schaltfläche*
+|*Löschen* arbeitet wie in JTDX: Linksklick leert die Bandaktivität,
+Rechtsklick leert Rx-Frequenz, Doppelklick leert beide.
+
+|*Rx-Frequenz nach QSO auf Tx-Frequenz setzen*
+|Nach dem Loggen wechselt Rx auf Ihre Tx-Frequenz.
+
+|*Band-Hopping jede Minute*
+|Bei eingeschaltetem Band-Hopping wechselt WS normalerweise jede zweite Minute das Band.
+Aktivieren Sie dies, um jede Minute das Band zu wechseln.
+
+|*DXCC/Entfernung/Azimut ausrichten* und die beiden Zahlenfelder
+|Richtet Land, Entfernung und Azimut in Spalten aus. Das erste Feld legt
+die Leerzeichen zwischen Nachricht und Land fest (auch ohne *DXCC/Entfernung/Azimut ausrichten*), das
+zweite die Leerzeichen zwischen Land und Entfernung/Azimut.
+|===
+
+NOTE: Wenn Sie ein Rufzeichen mit Zusatzpräfix oder -suffix verwenden oder eine solche Station
+arbeiten möchten, lesen Sie _Nonstandard Callsigns_ im WSJT-X User Guide.

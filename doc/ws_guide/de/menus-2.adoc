@@ -1,0 +1,300 @@
+[[MENU_FILTERS]]
+=== Filter
+
+image::menu-Filters.png[Menü Filter]
+
+Schnellfilter für den Bereich Bandaktivität. Die Listen, die sie verwenden (Ignorierliste,
+Positivliste, Gebiete), werden unter menu:Datei[Einstellungen > Filter] festgelegt,
+siehe <<SETTINGS_FILTERS>>. Alle Filter lassen sich kombinieren. Das Kontrollkästchen *BP*
+im Hauptfenster umgeht sie mit einem Klick. Solange ein Ausblenden-Filter
+aktiv ist, wird die Statusanzeige cyanfarben und zeigt "Receiving, Filters On"
+(grün "Receiving, Filters bypassed" mit *BP*).
+
+[cols="2,5",options="header"]
+|===
+|Menüpunkt |Funktion
+
+|*Auf dem Band bereits gearbeitete Stationen ausblenden*
+|Blendet Nachrichten von Rufzeichen aus, die für das aktuelle Band bereits in Ihrem Log stehen.
+
+|*Heute oder gestern gearbeitete Stationen ausblenden*
+|Blendet Rufzeichen aus, die Sie heute (oder gestern) geloggt haben. Der Punkt lautet "Heute
+gearbeitete ...", sofern nicht die zugehörige Option auf der Registerkarte *Filter* gestern hinzunimmt.
+
+|*Stationen der Ignorierliste ausblenden*
+|Blendet Rufzeichen auf der Ignorierliste aus. Die Schaltfläche *Ignorieren* fügt das DX-Rufzeichen
+zu dieser Liste hinzu; gelöscht wird sie über das Menü *Datei*.
+
+|*Auf dem Band bereits gearbeitete Stationen ignorieren*
+|Solche Stationen bleiben sichtbar, aber WS antwortet ihnen nicht automatisch
+(CQ: First / Max Dist / Max dB / Min dB, Wait and Pounce, Wait and Reply).
+
+|*Heute oder gestern gearbeitete Stationen ignorieren*
+|Dasselbe für Rufzeichen, die heute (oder gestern) geloggt wurden.
+
+|*Stationen der Ignorierliste ignorieren*
+|Dasselbe für Rufzeichen auf der Ignorierliste.
+
+|*Stationen aus Gebiet 1 ausblenden* ... *4*
+|Blendet Stationen aus, deren Ländername den für dieses Gebiet eingegebenen Text
+enthält. Sobald Sie ein Gebiet eingeben, zeigt der Menüpunkt dessen Namen
+(z. B. "Stationen aus Italy ausblenden").
+
+|*Stationen aus Europa ausblenden*, *Nordamerika*, *Südamerika*, *Asien*,
+*Afrika*, *Ozeanien*, *Antarktis*
+|Blendet alle Stationen dieses Kontinents aus. Praktisch, um nur DX anzuzeigen.
+
+|*Auf dem Band bereits gearbeitete Rufzeichen hervorheben*
+|Grauer Hintergrund für Rufzeichen, die auf diesem Band bereits gearbeitet wurden.
+
+|*Heute oder gestern gearbeitete Rufzeichen hervorheben*
+|Gelb auf Dunkelgrau für Rufzeichen, die heute (oder gestern) geloggt wurden.
+
+|*Rufzeichen der Ignorierliste hervorheben*
+|Gelb auf Dunkelrot für Rufzeichen auf der Ignorierliste.
+
+|*Stationen aus Gebiet 1 hervorheben* ... *4*
+|Violetter Hintergrund für Rufzeichen aus diesem Gebiet.
+
+|*Einträge der Positivliste hervorheben*
+|Magentafarbener Hintergrund für Rufzeichen, die einen Eintrag der Positivliste enthalten. Der
+Positivlisten-Filter selbst muss dafür nicht aktiv sein.
+|===
+
+[[MENU_DECODE]]
+=== Dekodieren
+
+image::menu-Decode.png[Menü Dekodieren]
+
+WS zeigt nur die Punkte, die für den aktuellen Modus gelten. Einige erfordern
+*VHF- und Submodus-Funktionen aktivieren* (menu:Datei[Einstellungen > Allgemein]).
+
+[cols="2,5",options="header"]
+|===
+|Menüpunkt |Funktion
+
+|*Schnell*
+|Schnellste Dekodierung, geringste Empfindlichkeit.
+
+|*Normal*
+|Mittlere Tiefe.
+
+|*Tief*
+|Beste Empfindlichkeit, langsamer, mit etwas höherer Wahrscheinlichkeit für Fehldekodierungen.
+Ausgegraut in Echo, FreqCal und JT65 mit VHF-Funktionen.
+
+|*Multithread-FT8-Decoder verwenden*
+|Nur FT8. Lässt mehrere Decoder-Threads parallel laufen. Auf einem vollen Band ergibt das
+meist mehr Dekodierungen. Für extreme Weak-Signal-Arbeit ist der
+Single-Thread-Decoder mit *Tief* oft besser. Konfiguriert wird er unter *Parameter*.
+
+a|*Parameter*
+
+image::menu-Decode-Parameters.png["Dekodieren, Untermenü Parameter"]
+a|Feinabstimmung für den Multithread-FT8-Decoder. Ohne Wirkung, solange
+*Multithread-FT8-Decoder verwenden* nicht eingeschaltet ist.
+
+[cols="2,5"]
+!===
+!*Anzahl Threads* +
+image:menu-Decode-Parameters-FT8_threads.png[Anzahl Threads]
+!*Auto* (Standard) lässt einige Kerne frei: Bei 2-4 logischen Kernen
+nutzt es einen weniger, bei 5-8 zwei weniger, bei 9-15 drei weniger, und bei 16
+oder mehr nutzt es 12. *1*-*12* legen die Anzahl direkt fest, begrenzt auf die Zahl der Kerne.
+
+!*Dekodierzyklen* +
+image:menu-Decode-Parameters-Decoding_cycles.png[Dekodierzyklen]
+!*1*, *2* oder *3* (Standard) Zyklen mit je 3 Durchläufen, also 3, 6 oder 9 Durchläufe.
+Mehr Zyklen finden mehr schwache Signale, dauern aber länger. Frühe Dekodierungen (siehe
+*Decoder-Start*) verwenden immer 2 Zyklen.
+
+!*Empfindlichkeit QSO-Rx-Frequenz* +
+image:menu-Decode-Parameters-QSO_RX_freq_sensitivity.png[Empfindlichkeit QSO-Rx-Frequenz]
+!*Niedrig*, *Mittel* (Standard), *Hoch*. Schwelle für einen speziellen Decoder,
+der während eines QSOs auf Ihrer Rx-Frequenz nach den erwarteten Nachrichten des DX-Rufzeichens
+sucht. Höher ergibt mehr Dekodierungen, aber auch mehr
+Fehldekodierungen. Im Hound-Modus wird immer *Niedrig* verwendet.
+
+!*Decoder-Empfindlichkeit* +
+image:menu-Decode-Parameters-Decoder_sensitivity.png[Decoder-Empfindlichkeit]
+!*Minimum*: normale Sync-Schwellen. *Niedrige Schwellwerte verwenden*: niedrigere Sync-Schwellen,
+sodass mehr Kandidaten versucht werden. *Unterdurchlauf verwenden* (Standard): niedrige
+Schwellen plus zusätzliche Unterdurchläufe für schwache Signale. Mehr Empfindlichkeit bedeutet auch mehr CPU-Last.
+
+!*Decoder-Start* +
+image:menu-Decode-Parameters-Decoder_start.png[Decoder-Start]
+!Wann die Dekodierung in der 15-s-Periode beginnt.
+*2-stufig*: frühe Dekodierung bei etwa 11,8 s, endgültige Dekodierung bei 14,1 s.
+*3-stufig*: bei etwa 11,8, 13,2 und 14,4 s.
+*Früh*: eine Dekodierung bei 13,8 s. *Normal* (Standard): 14,1 s.
+*Spät*: 14,4 s. Die gestuften Einstellungen zeigen starke Signale früher.
+
+!*Breitbandsuche nach DX-Rufzeichen*
+!Ein (Standard): AP-Suche nach den Nachrichten des DX-Rufzeichens im gesamten
+Durchlassbereich. Aus: nur in einem schmalen Fenster um die Rx-Frequenz.
+
+!*FT8-Duplikatnachrichten ausblenden*
+!Ein (Standard): Dekodieren die Threads dieselbe Nachricht in einer Periode zweimal,
+wird sie nur einmal angezeigt, mit dem stärkeren Rapport.
+
+!*a8-Dekodierungen überspringen*
+!Schaltet den "a8"-Versuch ab: eine Dekodierung auf der Rx-Frequenz der
+erwarteten Nachricht des DX-Rufzeichens, gebildet aus *DX-Rufzeichen* und *DX-Locator*.
+!===
+
+|*Mittelung aktivieren*
+|JT4, JT65 und Q65 mit VHF-Funktionen. Mittelt aufeinanderfolgende Perioden, um
+Signale zu dekodieren, die für eine einzelne Periode zu schwach sind. Die Bereiche werden zu *Einzelperioden-Dekodierungen*
+und *Gemittelte Dekodierungen*.
+
+|*Tiefensuche aktivieren*
+|JT4 und JT65 mit VHF-Funktionen. Schlägt die normale Dekodierung fehl,
+wird das Signal mit wahrscheinlichen Nachrichten verglichen, die aus Ihrem Rufzeichen, dem DX-Rufzeichen,
+dem DX-Locator und `CALL3.TXT` gebildet werden.
+
+|*AP aktivieren*
+|Der erste der beiden Punkte. Nur FT8: A-priori-Dekodierung (AP), die
+Ihr Rufzeichen, das DX-Rufzeichen und den QSO-Stand nutzt, um schwächere Nachrichten zu finden.
+AP-Dekodierungen sind mit `a1` ... `a8` markiert.
+
+|*AP aktivieren*
+|Der zweite Punkt. Nur JT65 mit VHF-Funktionen: AP-Dekodierung für JT65.
+
+
+|*Mittelung nach Dekodierung automatisch löschen*
+|Löscht nach einer erfolgreichen Dekodierung innerhalb von *F Tol* um die Rx-Frequenz
+die Mittelung, sodass die nächste Nachricht sauber beginnt.
+
+|*Klick-Ereignisse von WS-MAP/EME65 annehmen*
+|Q65 und JT65 mit VHF-Funktionen (standardmäßig an). Ein Klick auf eine Station in
+WS-MAP oder EME65 setzt in WS DX-Rufzeichen, Locator, Frequenz und Periode.
+Mit eingeschaltetem *Doppelklick auf Rufzeichen aktiviert Tx* startet ein Doppelklick auch das QSO. Außerdem
+werden die von EME65 weitergeleiteten Dekodierungen übernommen.
+
+|*WS-MAP beanspruchen*
+|Wird angezeigt, wenn Klick-Ereignisse angenommen werden. Beobachten mehrere WS-Instanzen
+dieselbe WS-MAP/EME65-Quelle, reagiert nur die Instanz, die den Anspruch hält,
+auf Klicks. Ein Anspruch verfällt automatisch, wenn seine Instanz ihn 10 s lang
+nicht erneuert. Die Schaltfläche *WS-MAP beanspruchen* im Hauptfenster bewirkt dasselbe.
+
+a|*WS-MAP/EME65-Quelle*
+
+image::menu-Decode-QMAP_source.png[Untermenü WS-MAP/EME65-Quelle]
+a|Welche WS-MAP- oder EME65-Instanz WS abhört.
+
+* *Auto* (Standard) und *1*: die Standardinstanz (Instance ID 1 oder
+nicht gesetzt in den WS-MAP-Einstellungen). Verwenden Sie dies bei einem einzigen WS-MAP.
+* *2*, *3*, *4*: nur die Instanz mit dieser Instance ID.
+
+Ein Wechsel der Quelle gibt einen bestehenden Anspruch frei. Die Änderung wirkt sofort;
+ein anschließender Neustart von WS wird empfohlen.
+
+|*Klicks im Wasserfall deaktivieren*
+|JT65 und Q65 mit VHF-Funktionen. Schützt Ihre Rx/Tx-Offsets vor versehentlichen
+Klicks in den Wasserfall. Halten Sie kbd:[Alt] gedrückt, um trotzdem zu klicken.
+
+|*AP-Informationen ausblenden*
+|Nur FT8. Entfernt die Markierungen `a1` ... `a9` und `?` aus den angezeigten Dekodierungen.
+
+|*Fehldekodierungen reduzieren*
+|FT8, nicht in besonderen Betriebsarten. Verwirft schwache Dekodierungen, die
+unplausibel aussehen, zum Beispiel seltsame Kombinationen aus `/P`, `/R`, `R`, gehashten
+Rufzeichen oder Contest-Austauschen bei niedrigem SNR. Diese Zeilen werden nicht in `ALL.TXT` geschrieben.
+Mit dem Single-Thread-Decoder werden außerdem Dekodierungen unter -20 dB ausgeblendet,
+wenn die Rufzeichen nicht in `ALLCALL7.TXT` stehen und nicht wie gültige Rufzeichen aussehen.
+
+|*Vollduplex-Modus*
+|Empfängt und dekodiert weiter, während Sie senden, z. B. mit Audio von einem
+zweiten Empfänger oder einem WebSDR. Funktioniert für FT8, FT4, Q65, MSK144 und die anderen Modi.
+|===
+
+[[MENU_MODE]]
+=== Modus
+
+image::menu-Mode.png[Menü Modus]
+
+Wählt die Betriebsart. Während Sie senden, ist das Menü gesperrt. Einzelheiten
+zu den Modi finden Sie im WSJT-X User Guide.
+
+[cols="2,5",options="header"]
+|===
+|Menüpunkt |Typische Verwendung
+
+|*FST4*
+|LF/MF- und KW-Weak-Signal-QSOs mit langen Perioden (15 s bis 30 min).
+
+|*FT2*
+|Sehr schneller 77-Bit-Modus mit 3,75-s-Perioden (halb so lang wie FT4). Eingeführt mit WSJT-X Improved 3.1.
+
+|*FT4*
+|Contests und schnelle KW-QSOs, 7,5-s-Perioden.
+
+|*FT8*
+|Der Alltagsmodus für KW/6 m, 15-s-Perioden. Außerdem DXpedition (Fox/Hound) und SuperFox.
+
+|*JT4*
+|Mikrowellen-EME und terrestrische Strecken mit Doppler-Verbreiterung.
+
+|*JT9*
+|Schwache Signale auf KW/LF, 1-Minuten-Perioden.
+
+|*JT65*
+|EME auf VHF/UHF und klassisches JT65 auf KW.
+
+|*Q65*
+|EME, Ionosphären- und Regenscatter von VHF bis zu den Mikrowellen. Submodi A-E,
+Perioden 15-300 s. Wird mit WS-MAP verwendet.
+
+|*MSK144*
+|Meteorscatter auf 6 m und 2 m.
+
+|*FST4W*
+|WSPR-ähnlicher Bakenmodus für LF/MF, Perioden 2-30 min.
+
+|*WSPR*
+|Bakenaussendungen für Ausbreitungsstudien. Spots gehen an WSPRnet.
+
+|*Echo*
+|EME-Echotests: misst Ihre eigenen Echos vom Mond.
+
+|*FreqCal*
+|Frequenzkalibrierung Ihres Funkgeräts. Siehe <<MENU_TOOLS>>.
+|===
+
+[[MENU_TOOLS]]
+=== Werkzeuge
+
+image::menu-Tools.png[Menü Werkzeuge]
+
+[cols="2,5",options="header"]
+|===
+|Menüpunkt |Funktion
+
+|*Referenzspektrum löschen*
+|Löscht das gerade gemessene Referenzspektrum.
+
+|*Referenzspektrum messen*
+|Startet *Monitor* und mittelt das empfangene Audiospektrum. Ein Klick auf
+*Stopp* speichert es in `refspec.dat`. Aktivieren Sie
+*Ref.-Spek.* in der Breitbandanzeige, um das Audio mit diesem Filter zu glätten.
+
+|*Phasengang messen*
+|Schaltet das MSK144-Phasentraining ein oder aus. WS trainiert mit Dekodierungen des
+DX-Rufzeichens und speichert die Koeffizienten der Phasenentzerrung in einer Datei im
+Datenverzeichnis. Das Training endet von selbst, sobald genügend Daten vorliegen.
+
+|*Entzerrungswerkzeuge ...*
+|Öffnet ein Fenster, das gemessene, vorgeschlagene und aktuelle Phase und
+Gruppenlaufzeit sowie das Referenzspektrum darstellt. Damit laden (*Phase ...*),
+aktualisieren oder verwerfen Sie Phasenentzerrungsdaten.
+
+|*Frequenzkalibrierungszyklus ausführen*
+|Stimmt im Modus FreqCal das Funkgerät am Ende jeder Periode auf die nächste FreqCal-Frequenz aus
+menu:Datei[Einstellungen > Frequenzen] ab, sodass Sie nacheinander mehrere Stationen
+bekannter Frequenz messen können.
+
+|*Kalibrierungsparameter berechnen*
+|Bestimmt Steigung (ppm) und Achsenabschnitt (Hz) aus den Messungen in `fmt.all`
+und zeigt das Ergebnis. *Apply* speichert sie als Ihre Kalibrierung unter
+menu:Datei[Einstellungen > Frequenzen]. `fmt.all` kann danach in `fmt.bak` umbenannt werden.
+|===

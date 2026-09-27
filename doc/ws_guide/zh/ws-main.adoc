@@ -1,0 +1,72 @@
+= WS 用户指南
+:doctype: book
+:lang: zh-CN
+:toc: left
+:toc-title: 目录
+:toclevels: 2
+:icons: font
+:imagesdir: ../en/images
+:experimental:
+:notitle:
+
+image::ws-header.png[WS - 弱信号数字模式套件,682,126]
+
+[discrete]
+== WS 用户指南
+
+[preface]
+== 关于本指南
+
+WS 是一套用于业余无线电弱信号数字通信的程序：**WS**（主程序）、**WS-MAP**（宽带 Q65/FT8
+监听程序）和 **EME65**（用于 EME 的宽带 JT65/Q65）。WS 源自
+__WSJT-X__，曾用名 __WSJT-X Improved__。所有模式和基本操作
+流程都与 WSJT-X 相同；这些内容仍以
+https://wsjt.sourceforge.io/wsjtx-doc/wsjtx-main-3.0.0-rc1.html[WSJT-X 用户指南]
+为准。
+
+本指南刻意保持简短。它说明 WS 的每个菜单和每项
+设置，以及 WS 在 WSJT-X 基础上增加的功能。
+
+include::intro-variants.adoc[]
+
+include::main-window.adoc[]
+
+[[MENUS]]
+== 菜单
+
+三种界面版本的菜单完全相同。
+
+image::menubar.png[WS 菜单栏]
+
+include::menus-1.adoc[]
+
+include::menus-2.adoc[]
+
+[[SETTINGS]]
+== 设置
+
+通过 menu:文件[设置] 或 kbd:[F2] 打开 **设置** 窗口。
+设置按配置分别保存（见 <<MENU_CONFIGURATIONS>>）。
+将鼠标悬停在任一控件上即可看到其提示。
+
+include::settings-general.adoc[]
+
+include::settings-radio.adoc[]
+
+include::settings-audio.adoc[]
+
+include::settings-txmacros.adoc[]
+
+include::settings-reporting.adoc[]
+
+include::settings-frequencies.adoc[]
+
+include::settings-colors.adoc[]
+
+include::settings-advanced.adoc[]
+
+include::settings-alerts.adoc[]
+
+include::settings-filters.adoc[]
+
+include::support.adoc[]

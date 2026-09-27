@@ -1,0 +1,122 @@
+[[SETTINGS_COLORS]]
+=== Colors
+
+image::settings-colors.png["Configuració, pestanya Colors",align="center"]
+
+==== Ressaltat de les descodificacions
+
+WS acoloreix les descodificacions per categories. Tot excepte *CQ al missatge*,
+*El meu Indicatiu en el missatge*, *Missatge transmès* i *Usuari LoTW* necessita
+*Mostra DXCC, Locator i si s'ha treballat abans* a la pestanya *General*.
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|Llista de ressaltat
+|Una línia per categoria; la seva casella l'activa. Arrossega les línies amunt o avall
+per fixar la prioritat: guanya la línia més alta. El primer pla i el fons són
+independents, de manera que un color "sense definir" es pren de la següent línia activada de sota.
+
+|Menú del clic dret
+|*Color del primer pla ...* / *Color de fons ...* trien un color,
+*Desactivar el color del primer pla* / *Elimina el color de fons* l'esborren.
+*Restableix aquest element per defecte* restaura el valor per defecte de WSJT-X per a aquella línia.
+
+|*CQ al missatge*, *El meu Indicatiu en el missatge*, *Missatge transmès*
+|Crides CQ, CQDX i QRZ; descodificacions adreçades a tu; missatges enviats per tu.
+
+|*Nou DXCC*, *Nou Continent*, *Nova Zona CQ*, *Nova Zona ITU*, *Nou estat dels EUA*, *Nou Locator*, *Indicatiu nou*
+|Encara no són al teu log. Les variants *... en banda*: encara no treballat a la
+banda actual.
+
+|*Usuari LoTW*
+|L'estació ha pujat el seu log a LoTW dins del límit d'antiguitat fixat a
+<<LOTW_VALIDATION,Validació de l’usuari a Logbook of the World (LoTW)>>.
+
+|*Restableix el ressaltat al predeterminat de WSJT-X*
+|Els colors i l'ordre originals de WSJT-X. Una instal·lació nova comença amb aquests.
+
+|*Restableix el ressaltat al predeterminat de WS*
+|L'esquema de WS, amb colors pastel que també van bé amb l'estil fosc. Els usuaris de LoTW
+es mostren en negre, les altres estacions en vermell fosc; un CQ d'una estació
+que ja has treballat té el fons gris.
+
+|*Escaneig de nou el log ADIF*
+|Torna a llegir `wsjtx_log.adi` i reconstrueix l'estat de treballat abans. El
+botó mostra el nombre de QSO. Pots substituir aquest arxiu per una exportació ADIF
+del teu programa de log.
+
+|*Ressaltar per mode*
+|L'estat de treballat abans es desa per a cada mode.
+
+|*Només camps de Locator buscats*
+|Un locator només compta com a nou si el seu camp (els dos primers caràcters, p. ex. JO)
+no s'ha treballat.
+
+|*Incloure entitats WAE addicionals*
+|Mostra les entitats addicionals WAE del DARC / CQ Marathon (p. ex. Sicília, Shetland)
+amb el seu propi nom. Si no està marcat, es mostren com el seu país DXCC.
+
+|*Ressalta també els missatges amb 73 o RR73*
+|Els missatges 73 i RR73 es ressalten com els CQ i reben les marques de país i
+de treballat abans. També passen el filtre *només CQ*, que llavors s'anomena
+*CQ/73*. Activat per defecte.
+
+|*Ressalta tots els missatges*
+|Cada missatge descodificat es ressalta com un CQ i rep les marques de país i de
+treballat abans, no només les crides CQ (i els missatges 73 amb l'opció
+anterior). Desactivat per defecte.
+
+|*Ressalta en taronja:* / *Ressalta en blau:*
+|Text blanc sobre fons taronja / blau per als indicatius, locators,
+prefixos i direccions de CQ escrits a la casella de sota. Aquestes entrades també
+activen l'alerta *Wanted* de la pestanya *Alertes*.
+|===
+
+Entrades per a *Ressalta en taronja* i *Ressalta en blau* (majúscules o minúscules):
+
+* Indicatius: una coma després de cada indicatiu, inclòs l'últim: `K1JT, DG2YCB,`
+* Locators: `JO33, JN58,`
+* Prefixos de 2 o 3 caràcters entre punts i comes: `;DL;KH6;`. Un prefix d'una lletra
+  com `;K;` només coincideix amb indicatius que tenen una xifra en segona posició
+  (K1ABC, no KH6ABC).
+* Tots els indicatius que comencen amb una lletra: `;K*;`. Exclou prefixos posant-los
+  entre signes d'exclamació: `;K*;!KH6!KL!KP!`
+* Direccions de CQ amb una coma abans i després: `,EU,` marca "CQ EU ...".
+
+[[LOTW_VALIDATION]]
+==== Validació de l’usuari a Logbook of the World (LoTW)
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*URL de l'arxiu CSV dels usuaris* / *Obtenir ara*
+|Origen de la llista de l'ARRL d'usuaris de LoTW i les dates de la seva última càrrega.
+*Obtenir ara* en descarrega una còpia nova. WS només la descarrega per si mateix quan
+falta l'arxiu i el ressaltat *Usuari LoTW* està activat.
+
+|*Edat de la darrera càrrega inferior a*
+|Les estacions només compten com a usuaris de LoTW si la seva última càrrega és més recent.
+|===
+
+==== Descàrregues
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Descarrega el CTY.dat més recent*
+|Actualitza les dades de països, zones i prefixos des de country-files.com i
+torna a escanejar el log. *Versió de l'arxiu CTY* mostra la versió en ús.
+
+|*Descarrega la base de dades d'estats dels indicatius dels EUA*
+|Dades d'indicatiu a estat per a *Mostra els estats dels EUA* (pestanya *General*), que es fan servir quan un
+missatge no té cap locator útil. *BD d'estats d'indicatius* en mostra la mida i la data.
+
+|*Descarrega CALL3.TXT per a ús terrestre* / *Descarrega CALL3.TXT per a EME*
+|Base de dades d'indicatius i locators per al botó *Cercar* i per a la cerca profunda
+de JT4/JT65; la versió EME està pensada per a la cerca profunda de JT65. L'arxiu anterior
+es conserva com a `CALL3_backup.TXT`. *Versió de l'arxiu CALL3* mostra la versió.
+|===

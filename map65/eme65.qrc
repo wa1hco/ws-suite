@@ -1,0 +1,10 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource>
+    <file alias="eme65_icon_16.png">../icons/app/eme65_icon_16.png</file>
+    <file alias="eme65_icon_32.png">../icons/app/eme65_icon_32.png</file>
+    <file alias="eme65_icon_48.png">../icons/app/eme65_icon_48.png</file>
+    <file alias="eme65_icon_128.png">../icons/app/eme65_icon_128.png</file>
+    <file alias="eme65_icon_256.png">../icons/app/eme65_icon_256.png</file>
+  </qresource>
+</RCC>

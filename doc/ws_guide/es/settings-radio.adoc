@@ -1,0 +1,183 @@
+[[SETTINGS_RADIO]]
+=== Radio
+
+image::settings-radio.png["Ajustes, pestaña Radio",align="center"]
+
+==== Equipo
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Equipo*
+|El modelo de su radio, o un programa de control que gestiona la radio (DX Lab Suite
+Commander, Flrig, Ham Radio Deluxe, Hamlib NET rigctl, OmniRig Rig 1/2,
+TCI Client). *Ninguno* significa sin control CAT.
+
+|*Intervalo de sondeo*
+|Con qué frecuencia lee WS la frecuencia y el modo del equipo. 1–3 s sirve para la
+mayoría de las radios. Atenuado para los equipos que informan de los cambios por sí mismos.
+|===
+
+==== Control CAT
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Puerto*
+|El puerto serie de su interfaz CAT (p. ej. COM3 o /dev/ttyUSB0). Para un
+programa de control pasa a ser *Servidor de red* o *Servidor TCI*
+(`host:port`); déjelo vacío para el valor predeterminado en este ordenador. Para
+algunos kits SDR pasa a ser *Dispositivo USB*.
+
+|*Velocidad de transmisión* / *Bits de datos* / *Bits de parada*
+|Deben coincidir con el menú CAT de su radio. *Por defecto* mantiene el valor que
+Hamlib conoce para su modelo.
+
+|*Handshake*
+|Normalmente *Ninguno*. Algunas radios, en particular algunos Kenwood, necesitan
+*Hardware* (RTS/CTS). Un ajuste erróneo deja el CAT sin respuesta.
+
+|*Forzar "Control de Líneas"* *DTR:* / *RTS:*
+|Mantiene DTR o RTS permanentemente en *Alto* o *Bajo*, p. ej. para alimentar una
+interfaz. Déjelo vacío salvo que sepa que lo necesita. No disponible para una
+línea que se usa para el PTT en el mismo puerto.
+|===
+
+==== Actualizar Hamlib
+
+Estas opciones proceden de WSJT-X Improved y no están en WSJT-X. Solo funcionan
+en Windows; en Linux y macOS el cuadro se llama *Hamlib Version*
+y solo muestra la versión en uso.
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*64-bit* / *32-bit*
+|Qué DLL de Hamlib descargar. Elija la que corresponda a su instalación de WS.
+
+|*Actualizar Hamlib*
+|Descarga la DLL de Hamlib más reciente, que a menudo añade o corrige el soporte de equipos.
+La DLL actual se conserva como copia de seguridad. Reinicie WS para usar la nueva.
+
+|*Revertir actualización*
+|Vuelve a la DLL de la copia de seguridad, también tras reiniciar.
+
+|*En uso* / *Respaldado*
+|La versión de Hamlib que está usando WS y la versión de la copia de seguridad.
+|===
+
+==== Método de PTT
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*VOX*
+|El VOX de la radio activa el transmisor. No necesita interfaz.
+
+|*CAT*
+|PTT por comando CAT, si el equipo lo admite. Suele ser la opción correcta
+con un programa de control como OmniRig o Flrig.
+
+|*DTR* / *RTS*
+|Una línea de control serie activa el equipo. Muchas radios USB pueden asignar esta
+línea al PTT (Icom: USB SEND, Yaesu: PC KEYING). *RTS* no está disponible en el
+puerto CAT con handshake *Hardware*.
+
+|*Puerto*
+|Puerto serie para *DTR* / *RTS*; puede ser el mismo que el puerto CAT. El valor
+*CAT* es para interfaces como OmniRig que conmutan las líneas a distancia.
+
+|*Activar inhibición de TX*
+|Para estaciones que comparten banda con una radio prioritaria (solo PTT por *DTR* / *RTS*):
+otro programa puede mantener WS fuera del aire mientras esa radio transmite.
+|===
+
+==== Fuente de audio de transmisión
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Parte posterior* / *Frontal/Micrófono*
+|Selecciona por CAT la entrada de audio de TX del equipo, si la radio lo admite.
+Solo activo con el método de PTT *CAT*. *Parte posterior* suele ser lo mejor.
+|===
+
+==== Modo
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Ninguno* / *USB* / *Data/Pkt*
+|El modo que WS pone en la radio. *Data/Pkt* si su equipo lo tiene (a menudo
+selecciona la entrada de audio trasera y un filtro más ancho); si no, *USB*.
+*Ninguno* no toca el modo.
+|===
+
+==== Operación en "Split"
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Equipo*
+|Usa el split propio de la radio (VFO A y B).
+
+|*Fingir "Split"*
+|Usa solo el VFO A y lo resintoniza en cada transmisión. Funciona con cualquier equipo.
+
+|*Ninguno*
+|Sin split (no recomendado).
+|===
+
+Con split, WS mueve el dial de TX en pasos de 500 Hz para que el audio de TX
+se mantenga entre 1500 y 2000 Hz. Los armónicos de audio caen entonces fuera del
+filtro de la radio y su señal se mantiene limpia. Esto se aplica en FT4, FT8 y
+FST4, y en todos los modos cuando *Habilitar funciones de VHF y submodo* está desactivado.
+El seguimiento Doppler también necesita split.
+
+==== Probar CAT y Probar PTT
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Probar CAT*
+|Se conecta a la radio con estos ajustes. Verde: correcto. Rojo: error, con
+un mensaje.
+
+|*Probar PTT*
+|Activa el transmisor sin audio; haga clic de nuevo para soltarlo. Compruebe que
+su equipo y su interfaz conmutan como se espera. Con *VOX*, use en su lugar *TX Tono* en la
+ventana principal.
+|===
+
+==== Datos del equipo
+
+Estas opciones proceden de WSJT-X Improved y no están en WSJT-X.
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Mostrar PWR, SWR y ALC*
+|Durante la transmisión muestra la potencia de salida (en vatios, junto al deslizador
+*Pwr*) y la SWR y el ALC en la barra de estado. Una SWR superior a 1,5 pone el campo
+amarillo, superior a 2,0 rojo. Requiere un equipo que informe de estos valores; no
+disponible con *Ninguno*, OmniRig, DX Lab Suite Commander, Ham Radio Deluxe
+ni el Kenwood TS-480/850/870.
+
+|*Detener TX cuando SWR > 2.5*
+|Detiene la transmisión al instante y muestra un aviso. Revise su antena.
+
+|*Resaltar ALC > 50%* / *Resaltar ALC > 90%*
+|Pone el campo de estado amarillo / rojo cuando el ALC supera el límite, para que
+note la sobreexcitación.
+|===
+
+Las tres últimas opciones requieren *Mostrar PWR, SWR y ALC*.

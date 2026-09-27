@@ -1,0 +1,309 @@
+[[MAIN_WINDOW]]
+== Hovedvindue
+
+Hovedvinduet i WS ser ud og fungerer som hovedvinduet i WSJT-X, med
+ekstra knapper og flere musehandlinger. WSJT-X User Guide beskriver
+standardbetjeningen. Dette kapitel omhandler kun det, der er nyt eller
+anderledes i WS: alt det, du betjener uden for menuerne og vinduet
+*Indstillinger*. menu:Hjælp[Specielle muse kommandoer] giver et kort overblik.
+
+image::WS.png[WS hovedvindue,align="center"]
+
+[[WAIT_FEATURES]]
+=== Wait-funktioner
+
+Wait-funktionerne afslutter en QSO for dig, når den anden station ikke
+svarer med det samme eller forsvinder i QSB. De kræver alle, at *Auto Sekv*
+er markeret, og at *Enable wait funktion* er slået til på fanen *Generel*
+(slået til som standard, se <<SETTINGS_GENERAL>>).
+
+WARNING: Når en Wait-funktion er aktiveret, kan en modtaget meddelelse
+skifte din station til sending, uden at du rører noget. Hold forstærker, ATU
+og antenne klar, eller deaktivér funktionen.
+
+[cols="2,5",options="header"]
+|===
+|Funktion |Sådan virker den
+
+|*Wait and Reply*
+|Aktiveres automatisk, når der står et kaldesignal i *DX kaldesignal*, og *Aktiver Tx* er
+slået fra. Når den station kalder dig (en meddelelse med dit og hans kaldesignal,
+uden 73), slår WS *Aktiver Tx* til og fortsætter QSO'en. WS sender også
+RR73 igen, hvis den anden station ikke modtog den første. Virker
+i FT2, FT4, FT8, FST4, JT4, JT9, JT65, MSK144 og Q65. Tx slås fra
+igen efter 8 perioder (12 i MSK144).
+
+|*Wait and Call*
+|Klik på knappen *DX kaldesignal* (den bliver rød). Når stationen i *DX kaldesignal*
+dukker op igen med CQ, RRR, RR73 eller 73, kalder WS ham op til tre gange.
+Virker i FT2, FT4, FT8, FST4, MSK144 og Q65, ved normal drift eller som
+FT8 Hound. Deaktiveres af *Stop Tx*, *Stop*, ved at slå *Aktiver Tx* fra,
+ved at klikke på *DX kaldesignal* igen, eller så snart stationen svarer dig (QSO'en
+fortsætter så normalt).
+
+|*Wait and Pounce*
+|Vælg en *CQ:*-tilstand andet end *CQ: None* (se <<CQ_SELECTOR>>), og
+højreklik så på *Aktiver Tx* (den bliver orange). WS svarer på det næste CQ: det
+første, eller den fjerneste, kraftigste eller svageste station i
+perioden. Højreklik på *Aktiver Tx* igen, eller klik på *Stop Tx* eller *Stop*, for at
+deaktivere. Ikke tilgængelig som Fox.
+|===
+
+Wait and Pounce respekterer filtrene. WS kan for eksempel kun vente på CQ-opkald
+med et bestemt præfiks, locator, kaldesignal eller nøgleord. Med *Filters for
+Wait & Pounce only* forbliver alle dekodninger synlige, men Wait and Pounce svarer
+kun stationer, der passerer filtrene (se <<SETTINGS_FILTERS>>).
+
+*Aktiver Tx* og *DX kaldesignal* bliver gule, når en modtaget meddelelse kan
+slå Tx til: med et kaldesignal i *DX kaldesignal*, *Auto Sekv* slået til og
+Wait-funktionerne aktiveret, og altid i Hound-tilstand. Højreklik på *DX kaldesignal* for at
+rydde *DX kaldesignal*, *DX Grid* og standardmeddelelserne; det deaktiverer Wait
+and Reply og Wait and Call på én gang.
+
+[[CQ_SELECTOR]]
+=== CQ:-vælger og Ignore-liste
+
+Feltet *CQ:* ved siden af *Auto Sekv* er synligt, når *Auto Sekv* er markeret.
+
+[cols="2,5",options="header"]
+|===
+|Valg |Resultat
+
+|*CQ: None*
+|Normal WSJT-X-opførsel.
+
+|*CQ: First*
+|Når du kalder CQ, svarer WS den første station, der kalder dig. Med Wait
+and Pounce svarer den på det første CQ.
+
+|*CQ: Max Dist*
+|Vælger den fjerneste station (en locator er nødvendig for at beregne afstanden).
+
+|*CQ: Max dB* / *CQ: Min dB*
+|Vælger den kraftigste / svageste station.
+|===
+
+Knappen *Ignorer* (eller kbd:[Ctrl+I]) sætter kaldesignalet i *DX kaldesignal* på
+Ignore-listen. Når menu:Filtre[Ignorer stationer fra ignorer listen]
+er markeret, springer *CQ:*-tilstandene (Wait and Pounce) disse stationer over;
+menu:Filtre[Skjul stationer på Ignore listen] fjerner dem fra Bånd
+Aktivitet. Ryd listen med menu:Fil[Slet Ignore liste]. Se
+<<MENU_FILTERS>> for de øvrige *Ignorer*- og *Skjul*-valg.
+
+[[MOUSE_SHORTCUTS]]
+=== Genveje med mus og knapper
+
+==== Wide Graf
+
+[cols="2,5",options="header"]
+|===
+|Handling |Resultat
+
+|Venstreklik
+|Sætter Rx-frekvensen.
+
+|Højreklik / kbd:[Shift]+venstreklik
+|Sætter Tx-frekvensen.
+
+|Højre dobbeltklik / kbd:[Ctrl]+venstreklik
+|Sætter Rx og Tx til samme frekvens (Rx = Tx).
+
+|Afkrydsningsfeltet *Bars*
+|Viser Rx- (grøn) og Tx-frekvensbjælkerne (rød) på vandfaldet.
+
+|Afkrydsningsfeltet *Frekv*
+|Et værktøjstip viser audiofrekvensen under musemarkøren.
+
+|*Tidsstempel*
+|Viser UTC på vandfaldet til *Venstre* eller *Højre*, eller *Off*.
+|===
+
+==== Kaldesignaler på vandfaldet
+
+Med menu:Vis/Se[Kaldesignaler på vandfald > Vis dekodede kaldesignaler] (eller *Vis
+kaldesignaler* i Wide Graf) vises dekodede kaldesignaler som etiketter på
+vandfaldet ved deres frekvens: rød for kaldesignalet i *DX kaldesignal*, grøn for
+CQ, sort for resten. Feltet *× TR* angiver, hvor mange perioder en etiket
+bliver stående; *Clear* fjerner alle etiketter. Venstreklik på en etiket for at sætte kaldesignal og
+locator i *DX kaldesignal* / *DX Grid*, sætte Rx til det signal, sætte *Tx Lige/1st*
+for svaret og generere standardmeddelelserne. Skrifttype, gennemsigtighed og
+placering findes i menuen *Vis/Se* (se <<MENU_VIEW>>). I Q65 slår
+menu:Dekod[Disable klik på Vandfaldet] klik på etiketter fra.
+
+==== Knapper
+
+[cols="2,5",options="header"]
+|===
+|Handling |Resultat
+
+|Højreklik på *Tune*
+|Starter stationens ATU via CAT. Knappen viser *Tuning* i 6 s;
+højreklik igen for at stoppe. Kræver en Hamlib-radiomodel, der understøtter tuning.
+
+|Højreklik på *Aktiver Tx*
+|Aktiverer eller deaktiverer Wait and Pounce (<<WAIT_FEATURES>>).
+
+|Klik på *DX kaldesignal* / højreklik på *DX kaldesignal*
+|Aktiverer Wait and Call / rydder *DX kaldesignal*, *DX Grid* og meddelelserne.
+
+|Højreklik på *Slå op* / *Tilføj* / *Ignorer*
+|Slår kaldesignalet i *DX kaldesignal* op på qrz.com / hamqth.com / qrzcq.com i din browser.
+
+|*Slet*
+|Med *Fuktion af alternativ sletteknap* (<<SETTINGS_GENERAL>>): klik
+rydder Bånd Aktivitet, højreklik rydder Rx frekvens, dobbeltklik rydder
+begge.
+
+|Højreklik på *Dekode*
+|Rydder en dekoder, der hænger.
+
+|Højreklik på *Kun CQ*
+|Viser kun meddelelser, der indeholder kaldesignalet i *DX kaldesignal*. Feltet bliver rødt
+og viser *DX Call*; højreklik igen for at vende tilbage.
+
+|Højreklik på *Tx5*
+|Beholder din Tx5-fritekst (gul), så den ikke ryddes.
+
+|Højreklik på *Tx Lige/1st*
+|Fastfryser afkrydsningsfeltet. Højreklik på knappen *MSK* for at ophæve fastfrysningen.
+// CHECK: Uwe will test whether the FT8 button also unfreezes (Help text and tooltip say so; the code only does it for MSK).
+
+|Højreklik på *H*
+|Slår SuperFox-tilstand til eller fra.
+
+|Højreklik på *FT8*
+|Slår den senest brugte Special Operating Activity til eller fra.
+
+|Højreklik på *Q65* / *JT65*
+|Skifter til Q65 Pileup-tilstand / JT9.
+
+|Musehjul over dial-frekvensen, eller venstreklik / højreklik
+|Ændrer dial-frekvensen med -1 kHz / +1 kHz.
+|===
+
+[[BAND_BUTTONS]]
+=== Båndknapper
+
+menu:Vis/Se[Bånd Knapper] tilføjer en række båndknapper i alle tre GUI-varianter.
+Klik på en knap for at gå til frekvensen for den aktuelle mode i
+din frekvensliste. I FT8, FT4 og FT2 går et højreklik på 80 m til 10 m
+til FT8 DXpedition-frekvensen på det bånd (6 m: kun FT8).
+menu:Vis/Se[VHF /UHF knapper] skifter rækken til båndene fra 8 m til
+13 cm.
+
+På 2 m går et højreklik til 4 m (Region 1 og 3) eller 1,25 m (Region 2);
+på 70 cm går et højreklik til 23 cm.
+
+[[MAIN_FILTERS]]
+=== Filtre i hovedvinduet
+
+Statusfeltet nederst til venstre viser, når filtre skjuler dekodninger: det
+skifter fra grøn *Modtager* til cyan *Receiving, Filters On*. Markér *BP*
+(bypass) for midlertidigt at slå alle filtre fra uden at miste deres
+indstillinger; feltet viser så *Receiving, Filters bypassed*. Filterlisterne
+opsættes på fanen *Filtre* (<<SETTINGS_FILTERS>>); hurtigfiltre
+findes i menuen *Filtre* (<<MENU_FILTERS>>).
+
+[[BAND_ACTIVITY_INFO]]
+=== Afstand, azimut og US-stater
+
+Hvis en meddelelse indeholder en gyldig locator, kan Bånd Aktivitet vise
+afstand og storcirkel-azimut, opstillet i kolonner sammen med landet.
+Med *Vis US-stater* vises også den amerikanske stat eller canadiske provins.
+Slå disse til og indstil kolonneafstanden på fanen *Generel*
+(<<SETTINGS_GENERAL>>).
+
+[[CONTEST_NAME]]
+=== Contest-navn og kommentarer
+
+Med *CQ med inviduel contest navn* og et *Contest navn* på op til 4 bogstaver (f.eks. PACC)
+på fanen *Avanceret* kalder WS "CQ PACC" i stedet for "CQ TEST" eller
+"CQ RU", når en Special Operating Activity er aktiv (FT-modes, MSK144,
+Q65; ikke som Fox eller Hound).
+
+Med *Special operating activitet til kommentarer* på fanen *Rapportering*
+(<<SETTINGS_REPORTING>>) udfyldes kommentaren i *Log QSO* med
+aktiviteten, f.eks. "EU VHF Contest", "ARRL Field Day" eller, med et individuelt
+contest-navn, "PACC Contest". Bevarede kommentarer og *cB rapporter til
+kommentar felt* har forrang.
+
+[[LIVECQ_CHECKS]]
+=== LiveCQ: hvem hørte mig
+
+Med *Aktivér Q65 LiveCQ* på fanen *Rapportering* (<<SETTINGS_REPORTING>>)
+og mode Q65 spørger WS LiveCQ-serveren én gang pr. periode, hvilke stationer
+der har dekodet dit kaldesignal. Disse stationer får et flueben og en klar
+grøn ramme om deres vandfaldsetiket, og et flueben i vinduet Aktive
+stationer i Q65 Pileup-tilstand. Så kan DX-stationen vælge kaldere, der
+faktisk hører ham. Nederst i vinduet Aktive stationer vises
+*LiveCQ connected* eller et rødt *LiveCQ NO CONNECTION*.
+
+[[TX_INHIBIT]]
+=== TX-spærring
+
+Med *Aktivér TX-spærring* på fanen *Radio* (<<SETTINGS_RADIO>>) kan et andet
+program holde WS fra at sende, mens en prioriteret radio på samme bånd
+sender. Statusfeltet viser så *Spærring*.
+
+[[WSMAP_CLICKS]]
+=== Click-to-work fra WS-MAP og EME65
+
+Når menu:Dekod[Accepter klikhændelser fra WS-MAP/EME65] er markeret, sætter et klik på et
+kaldesignal i WS-MAP eller EME65 *DX kaldesignal*, *DX Grid*, frekvensen,
+Tx-perioden og submoden i WS. Et dobbeltklik dér kan også slå
+*Aktiver Tx* til. Dette virker i JT65 og Q65 med *Aktiver VHF and submode
+funktioner*. WS behandler også de dekodninger, som EME65 videresender.
+Dit *DX kaldesignal* og *DX Grid* sendes tilbage, så WS-MAP eller EME65 kan følge
+dem.
+
+Hvis flere WS-instanser lytter på samme kilde, så klik på *Reservér WS-MAP* i den
+instans, der skal reagere på klik. Vælg kilden med
+menu:Dekod[WS-MAP/EME65-kilde] (se <<MENU_DECODE>>).
+
+[[QSY_WINDOWS]]
+=== Message Creator og QSY Monitor
+
+Disse vinduer hjælper dig med at aftale en QSY med din QSO-partner, for eksempel
+fra en EME-frekvens til et andet bånd.
+
+[cols="2,5",options="header"]
+|===
+|Vindue |Funktion
+
+|menu:Vis/Se[Message Creator]
+|Laver en kort QSY-anmodning (bånd, mode og kHz) til stationen i *DX
+kaldesignal*, sætter den i fritekstmeddelelsen og slår *Aktiver Tx* til.
+
+|menu:Vis/Se[Enable _Msg Popup]
+|Når en modtaget meddelelse beder dig om at QSY'e, viser et popup-vindue anmodningen og
+lader dig svare OKQSY eller NOQSY.
+
+|menu:Vis/Se[QSY Monitor]
+|Viser alle hørte QSY-anmodninger med UTC, kaldesignal, frekvens og mode.
+|===
+
+[[DIAGNOSTIC_MODE]]
+=== Diagnostiktilstand
+
+Diagnostiktilstand indsamler data til at finde problemer med WS eller med dens
+radiostyring (Hamlib-fejl, COM-porte der ikke svarer, og så videre).
+
+. Vælg menu:Gem[Diagnostik mode].
+. Luk og genstart WS, og fremkald derefter fejlen igen.
+. Luk WS, så snart fejlen er opstået: logfilerne vokser hurtigt.
+
+WS opretter en mappe `logs` på dit skrivebord (med en undermappe pr.
+`--rig-name`-instans), der indeholder `ws_syslog.log` og `WS_RigControl.log`.
+Åbn dem med en teksteditor, eller send dem til udviklerne. Diagnostiktilstand
+slår sig selv fra, næste gang WS lukkes; for at annullere den før,
+vælg menu:Gem[Default event logging].
+
+[[DARK_STYLE]]
+=== Mørk stil
+
+menu:Vis/Se[Brug Dark Style] skifter straks WS til et mørkt tema, uden
+genstart. Den tilpasser også vandfaldslinjerne og knapfarverne. Med
+mørk stil bør du vælge blødere (pastel) baggrundsfarver på fanen *Farver*.
+Se <<MENU_VIEW>>.
+
+image::WS-AL_dark_style.png[WS AL i mørk stil,align="center"]

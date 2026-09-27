@@ -1,0 +1,12 @@
+[[SUPPORT]]
+== Támogatás
+
+Segítséget legjobban a
+https://sourceforge.net/projects/wsjt-x-improved/lists/wsjt-x-improved-community/[wsjt-x-improved-community]
+levelezőlistán vagy a https://groups.io/g/wsjtgroup[WSJT Group] csoportban
+kaphat. Nagy valószínűséggel valaki hasonló érdeklődéssel és felszereléssel
+már megoldotta ugyanezt a problémát. Egy listára csak csatlakozás után
+írhat.
+
+A hibajelentéseket és a funkciókéréseket lehetőleg a
+wsjt-x-improved-community listára küldje.

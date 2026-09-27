@@ -1,0 +1,72 @@
+= Руководство пользователя WS
+:doctype: book
+:lang: ru
+:toc: left
+:toc-title: Содержание
+:toclevels: 2
+:icons: font
+:imagesdir: ../en/images
+:experimental:
+:notitle:
+
+image::ws-header.png[WS - комплекс программ для цифровых видов связи слабыми сигналами,682,126]
+
+[discrete]
+== Руководство пользователя WS
+
+[preface]
+== Об этом руководстве
+
+WS - это комплекс программ для цифровой связи слабыми сигналами в
+любительском радио: *WS* (основная программа), *WS-MAP* (широкополосный
+монитор Q65/FT8) и *EME65* (широкополосный JT65/Q65 для EME). WS вырос из
+_WSJT-X_ и раньше назывался _WSJT-X Improved_. Все виды связи и основные
+приёмы работы те же, что и в WSJT-X; по ним справочником остаётся
+https://wsjt.sourceforge.io/wsjtx-doc/wsjtx-main-3.0.0-rc1.html[руководство пользователя WSJT-X].
+
+Это руководство намеренно краткое. В нём описаны все меню и все
+настройки WS, а также то, что WS добавляет к WSJT-X.
+
+include::intro-variants.adoc[]
+
+include::main-window.adoc[]
+
+[[MENUS]]
+== Меню
+
+Меню одинаковы во всех трёх вариантах интерфейса.
+
+image::menubar.png[Строка меню WS]
+
+include::menus-1.adoc[]
+
+include::menus-2.adoc[]
+
+[[SETTINGS]]
+== Настройки
+
+Окно *Настройки* открывается через menu:Файл[Настройки...] или клавишей kbd:[F2].
+Настройки сохраняются отдельно для каждой конфигурации (см. <<MENU_CONFIGURATIONS>>).
+Наведите указатель мыши на любой элемент, чтобы увидеть подсказку.
+
+include::settings-general.adoc[]
+
+include::settings-radio.adoc[]
+
+include::settings-audio.adoc[]
+
+include::settings-txmacros.adoc[]
+
+include::settings-reporting.adoc[]
+
+include::settings-frequencies.adoc[]
+
+include::settings-colors.adoc[]
+
+include::settings-advanced.adoc[]
+
+include::settings-alerts.adoc[]
+
+include::settings-filters.adoc[]
+
+include::support.adoc[]

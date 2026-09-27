@@ -1,0 +1,122 @@
+[[SETTINGS_COLORS]]
+=== Couleurs
+
+image::settings-colors.png["Paramètres, onglet Couleurs",align="center"]
+
+==== Mise en évidence des décodages
+
+WS colore les décodages par catégorie. Tout, sauf *CQ dans le message*,
+*Mon indicatif dans le message*, *Message émis* et *Utilisateur LoTW*, nécessite
+*Afficher le statut DXCC, locator et déjà contacté* dans l'onglet *Général*.
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|Liste de mise en évidence
+|Une ligne par catégorie ; sa case à cocher l'active. Faites glisser les lignes vers le haut ou le bas
+pour fixer la priorité : une ligne plus haute l'emporte. Premier plan et fond sont
+indépendants, donc une couleur "non définie" est reprise de la ligne active suivante plus bas.
+
+|Menu contextuel (clic droit)
+|*Couleur de premier plan ...* / *Couleur d'arrière-plan ...* choisissent une couleur,
+*Retirer la couleur de premier plan* / *Retirer la couleur de fond* la suppriment.
+*Réinitialiser cet élément* restaure la valeur par défaut WSJT-X de cette ligne.
+
+|*CQ dans le message*, *Mon indicatif dans le message*, *Message émis*
+|Appels CQ, CQDX et QRZ ; décodages qui vous sont adressés ; messages que vous avez envoyés.
+
+|*Nouveau DXCC*, *Nouveau continent*, *Nouvelle zone CQ*, *Nouvelle zone UIT*, *Nouvel État US*, *Nouveau locator*, *Nouvel indicatif*
+|Pas encore dans votre journal. Les variantes *... sur la bande* : pas encore contacté sur la
+bande en cours.
+
+|*Utilisateur LoTW*
+|La station a envoyé son journal à LoTW dans le délai fixé sous
+<<LOTW_VALIDATION,Validation des utilisateurs Logbook of the World>>.
+
+|*Réinitialiser la mise en évidence (défaut WSJT-X)*
+|Les couleurs et l'ordre d'origine de WSJT-X. Une nouvelle installation démarre avec ceux-ci.
+
+|*Réinitialiser la mise en évidence (défaut WS)*
+|Le schéma WS, avec des couleurs pastel qui conviennent aussi au thème sombre. Les utilisateurs
+LoTW sont affichés en noir, les autres stations en rouge foncé ; un CQ d'une station
+déjà contactée reçoit un fond gris.
+
+|*Réanalyser le journal ADIF*
+|Relit `wsjtx_log.adi` et reconstruit le statut déjà contacté. Le
+bouton indique le nombre de QSO. Vous pouvez remplacer ce fichier par un export ADIF
+de votre logiciel de journal.
+
+|*Mise en évidence par mode*
+|Le statut déjà contacté est conservé par mode.
+
+|*Uniquement les grands carrés recherchés*
+|Un locator ne compte comme nouveau que si son grand carré (les deux premiers caractères, p. ex. JO)
+n'a pas été contacté.
+
+|*Inclure les entités WAE supplémentaires*
+|Affiche sous leur propre nom les entités supplémentaires DARC WAE / CQ Marathon (p. ex. Sicily, Shetland Is.).
+Décoché, elles sont affichées comme leur pays DXCC.
+
+|*Mettre aussi en évidence les messages avec 73 ou RR73*
+|Les messages 73 et RR73 sont mis en évidence comme les CQ et reçoivent les marques de pays et de
+statut déjà contacté. Ils passent aussi le filtre *CQ seulement*, qui s'intitule alors
+*CQ/73*. Activé par défaut.
+
+|*Mettre en évidence tous les messages*
+|Chaque message décodé est mis en évidence comme un CQ et reçoit les marques de pays et de
+statut déjà contacté, pas seulement les appels CQ (et les messages 73 avec l'option
+ci-dessus). Désactivé par défaut.
+
+|*Mise en évidence orange:* / *Mise en évidence bleue:*
+|Texte blanc sur fond orange / bleu pour les indicatifs, locators,
+préfixes et directions de CQ saisis dans le champ en dessous. Ces entrées déclenchent aussi
+l'alerte *Indicatifs, locators, préfixes et appels directionnels recherchés* de l'onglet *Alertes*.
+|===
+
+Entrées pour *Mise en évidence orange* et *Mise en évidence bleue* (majuscules ou minuscules) :
+
+* Indicatifs : une virgule après chaque indicatif, y compris le dernier : `K1JT, DG2YCB,`
+* Locators : `JO33, JN58,`
+* Préfixes de 2 ou 3 caractères entre points-virgules : `;DL;KH6;`. Un préfixe
+  d'une lettre comme `;K;` ne correspond qu'aux indicatifs ayant un chiffre en deuxième position
+  (K1ABC, pas KH6ABC).
+* Tous les indicatifs commençant par une lettre : `;K*;`. Excluez des préfixes en les plaçant
+  entre points d'exclamation : `;K*;!KH6!KL!KP!`
+* Directions de CQ avec une virgule avant et après : `,EU,` marque "CQ EU ...".
+
+[[LOTW_VALIDATION]]
+==== Validation des utilisateurs Logbook of the World
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*URL du fichier CSV des utilisateurs* / *Récupérer*
+|Source de la liste ARRL des utilisateurs LoTW et de leurs dates de dernier envoi.
+*Récupérer* télécharge une copie à jour. WS ne la récupère de lui-même que lorsque le
+fichier est absent et que la mise en évidence *Utilisateur LoTW* est activée.
+
+|*Dernier envoi datant de moins de*
+|Les stations ne comptent comme utilisateurs LoTW que si leur dernier envoi est plus récent.
+|===
+
+==== Téléchargements
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Télécharger le dernier CTY.dat*
+|Met à jour les données de pays, de zones et de préfixes depuis country-files.com et
+réanalyse le journal. *Version du fichier CTY* indique la version utilisée.
+
+|*Télécharger la base des États US par indicatif*
+|Données indicatif-État pour *Afficher les États US* (onglet *Général*), utilisées quand un
+message n'a pas de locator exploitable. *Base États des indicatifs* indique sa taille et sa date.
+
+|*Télécharger CALL3.TXT pour le trafic terrestre* / *Télécharger CALL3.TXT pour l'EME*
+|Base d'indicatifs et de locators pour le bouton *Rechercher* et pour la recherche approfondie JT4/JT65 ;
+la version EME est destinée à la recherche approfondie JT65. Le fichier précédent
+est conservé sous `CALL3_backup.TXT`. *Version du fichier CALL3* indique la version.
+|===

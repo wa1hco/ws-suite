@@ -1,0 +1,194 @@
+[[SETTINGS_RADIO]]
+=== Rádió
+
+image::settings-radio.png["Beállítások, Rádió fül",align="center"]
+
+==== Rig
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Rig*
+|A rádió típusa, vagy a rádiót kezelő vezérlőprogram (DX Lab Suite
+Commander, Flrig, Ham Radio Deluxe, Hamlib NET rigctl, OmniRig Rig 1/2,
+TCI Client). A *Nincs* azt jelenti, hogy nincs CAT-vezérlés.
+
+|*Lekérd.időköz*
+|Milyen gyakran olvassa ki a WS a frekvenciát és az üzemmódot a rádióból.
+A legtöbb rádióhoz 1–3 s megfelelő. Azoknál a rádióknál, amelyek maguktól
+jelzik a változásokat, szürke (nem választható).
+|===
+
+==== CAT Vezérlés
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Port*
+|A CAT-interfész soros portja (pl. COM3 vagy /dev/ttyUSB0). Vezérlőprogram
+esetén *Hálózati Szerver* vagy *TCI szerver* lesz belőle (`host:port`);
+az ezen a számítógépen futó alapértelmezéshez hagyja üresen. Néhány SDR
+készletnél *USB eszköz* lesz belőle.
+
+|*Baud Rate* / *Data Bits* / *Stop Bits*
+|Egyeznie kell a rádió CAT menüjének beállításaival. Az *Alapért.* a
+Hamlib által az adott típushoz ismert értéket tartja meg.
+
+|*Handshake (Áramlás szabályozás)*
+|Általában *Nincs*. Néhány rádió, különösen egyes Kenwoodok, *Hardver*
+(RTS/CTS) beállítást igényel. Hibás beállításnál a CAT nem válaszol.
+
+|*DTR/RTS CAT port vezérlő-vonalak* *DTR:* / *RTS:*
+|A DTR vagy RTS vonalat tartósan *Magas* vagy *Alacsony* szinten tartja,
+pl. egy interfész tápellátásához. Hagyja üresen, hacsak nem tudja
+biztosan, hogy szükség van rá. Nem használható olyan vonalra, amely
+ugyanazon a porton PTT-re szolgál.
+|===
+
+==== Hamlib frissítése
+
+Ezek az opciók a WSJT-X Improved-ból származnak, a WSJT-X-ben nincsenek
+meg. Csak Windows alatt működnek; Linux és macOS alatt a csoport neve
+*Hamlib Version*, és csak a használt verziót mutatja.
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*64-bit* / *32-bit*
+|Melyik Hamlib DLL-t töltse le. Válassza a WS telepítésének megfelelőt.
+
+|*Hamlib frissítése*
+|Letölti a legújabb Hamlib DLL-t, amely gyakran új rádiók támogatását
+hozza vagy javítja. Az aktuális DLL biztonsági másolatként megmarad. Az új
+DLL használatához indítsa újra a WS-t.
+
+|*Frissítés visszavonása*
+|Visszatér a biztonsági másolatként mentett DLL-re, szintén újraindítás
+után.
+
+|*Használatban* / *Biztonsági mentés*
+|A WS által futtatott Hamlib verzió és a biztonsági másolat verziója.
+|===
+
+==== PTT Vezérlés
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*VOX*
+|A rádió VOX-a kapcsolja be az adót. Nem kell hozzá interfész.
+
+|*CAT*
+|PTT CAT paranccsal, ha a rádió támogatja. Vezérlőprogrammal (pl. OmniRig
+vagy Flrig) általában ez a helyes választás.
+
+|*DTR* / *RTS*
+|Egy soros vezérlővonal kapcsolja adásra a rádiót. Sok USB-s rádió ezt a
+vonalat PTT-hez rendelheti (Icom: USB SEND, Yaesu: PC KEYING). Az *RTS*
+nem használható a CAT porton *Hardver* handshake mellett.
+
+|*Port*
+|Soros port a *DTR* / *RTS* számára; lehet ugyanaz, mint a CAT port. A
+*CAT* érték az olyan interfészekhez való, mint az OmniRig, amelyek távolról
+kapcsolják a vonalakat.
+
+|*TX tiltás engedélyezése*
+|Olyan állomásoknak, amelyek egy elsőbbséget élvező rádióval osztoznak egy
+sávon (csak *DTR* / *RTS* PTT esetén): egy másik program visszatarthatja
+a WS-t az adástól, amíg az a rádió ad.
+|===
+
+==== Adás hangforrása
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Hátul/Data* / *Elöl/Mic*
+|CAT-on keresztül kiválasztja a rádió adási hangbemenetét, ha a rádió
+támogatja. Csak *CAT* PTT vezérlésnél aktív. Általában a *Hátul/Data* a
+legjobb.
+|===
+
+==== Üzemmód
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Nincs* / *USB* / *Data/Pkt*
+|Az az üzemmód, amelyet a WS a rádión beállít. *Data/Pkt*, ha a rádión van
+ilyen (gyakran a hátsó hangbemenetet és szélesebb szűrőt választja),
+egyébként *USB*. A *Nincs* nem változtat az üzemmódon.
+|===
+
+==== Osztott (Split) működés
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Rig*
+|A rádió saját split funkcióját használja (VFO A és B).
+
+|*Szimulál*
+|Csak a VFO A-t használja, és minden adáshoz áthangolja. Bármely rádióval
+működik.
+
+|*Nincs*
+|Nincs split (nem ajánlott).
+|===
+
+Split esetén a WS 500 Hz-es lépésekben mozgatja az adási tárcsafrekvenciát,
+hogy az adási hangfrekvencia 1500 és 2000 Hz között maradjon. A hang
+felharmonikusai így a rádió szűrőjén kívül esnek, és a jel tiszta marad. Ez
+FT4, FT8 és FST4 módban érvényes, valamint minden módban, ha a *VHF és
+almód funkciók engedélyezése* ki van kapcsolva. A Doppler-követéshez is
+split kell.
+
+==== CAT ellenőrzése és PTT ellenőrzése
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*CAT ellenőrzése*
+|Ezekkel a beállításokkal csatlakozik a rádióhoz. Zöld: rendben. Piros:
+hiba, üzenettel.
+
+|*PTT ellenőrzése*
+|Hang nélkül adásra kapcsolja az adót; a kikapcsoláshoz kattintson újra.
+Ellenőrizze, hogy a rádió és az interfész a várt módon kapcsol-e. *VOX*
+esetén ehelyett a főablak *Hangolás* gombját használja.
+|===
+
+==== Rig adatok
+
+Ezek az opciók a WSJT-X Improved-ból származnak, a WSJT-X-ben nincsenek
+meg.
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*PWR, SWR és ALC megjelenítése*
+|Adás közben megmutatja a kimenő teljesítményt (wattban, a *Pwr* csúszka
+mellett), valamint az SWR-t és az ALC-t az állapotsorban. 1,5 feletti
+SWR-nél a mező sárga, 2,0 felett piros lesz. Olyan rádió kell hozzá, amely
+jelenti ezeket az értékeket; nem érhető el *Nincs*, OmniRig, DX Lab Suite
+Commander, Ham Radio Deluxe, illetve Kenwood TS-480/850/870 esetén.
+
+|*Tx állj, ha SWR > 2.5*
+|Azonnal leállítja az adást, és figyelmeztetést jelenít meg. Ellenőrizze
+az antennát.
+
+|*ALC > 50% kiemelése* / *ALC > 90% kiemelése*
+|Az állapotmezőt sárgára / pirosra színezi, ha az ALC túllépi a határt,
+így észreveszi a túlvezérlést.
+|===
+
+Az utolsó három opcióhoz a *PWR, SWR és ALC megjelenítése* szükséges.

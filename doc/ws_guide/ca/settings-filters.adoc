@@ -1,0 +1,73 @@
+[[SETTINGS_FILTERS]]
+=== Filtres
+
+image::settings-filters.png["Configuració, pestanya Filtres",align="center"]
+
+Els filtres decideixen quines descodificacions apareixen al panell *Activitat a la banda*. Les
+llistes d'aquesta pestanya funcionen juntament amb els filtres ràpids del menú *Filtres*
+(vegeu <<MENU_FILTERS>>), on també actives i desactives els filtres
+de territori.
+
+Mentre un filtre amaga descodificacions, l'etiqueta d'estat de la part inferior esquerra de
+la finestra principal passa del verd "Rebent" al cian "Receiving, Filters On".
+
+Per tornar a veure-ho tot durant una estona, marca *BP* (bypass) a la finestra
+principal: s'ignoren tots els filtres i l'etiqueta mostra "Receiving, Filters
+bypassed". Desmarca-ho per tornar als teus filtres.
+
+NOTE: La llista negra, la llista blanca i Deixa passar sempre es desactiven automàticament
+en els modes especials d'operació, perquè no et perdis cap estació. La llista negra i la
+llista blanca continuen actives per als Hounds.
+
+==== Llistes de filtres
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Territoris 1-4*
+|Fins a quatre noms de país, o parts de noms, per als elements *Amaga les estacions
+del territori 1-4* i *Ressalta les estacions del territori 1-4* del
+menú *Filtres*; aleshores els elements del menú mostren el teu text. Escriu el nom tal com
+el mostra WS, p. ex. `Japan`, `U.S.A.` o `Canary Is.`.
+
+|*Llista negra* +
+*Amaga els missatges que continguin els indicatius o paraules clau següents:*
+|Amaga els missatges que contenen qualsevol de les entrades: indicatius sencers, parts
+d'indicatius, locators o paraules (p. ex. indicatius pirata o missatges de concurs).
+
+|*Llista blanca* +
+*Mostra només els missatges que continguin els indicatius o paraules clau següents:*
+|Mostra només els missatges que contenen una de les entrades; tots els altres
+s'amaguen, excepte els de la llista Deixa passar sempre.
+
+|*Deixa passar sempre* +
+*Deixa passar sempre els missatges amb les paraules clau següents:*
+|Els missatges amb aquestes entrades es mostren sempre, encara que la llista negra,
+la llista blanca o un element Amaga per a un territori, un continent o estacions
+treballades abans els amagarien.
+|===
+
+Cada llista té dotze camps, una entrada per camp. Les entrades es converteixen
+a majúscules. Una llista només funciona mentre la seva casella està marcada.
+
+==== Opcions
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Aplica els filtres només als indicatius de les estacions que criden*
+|Les llistes es comproven només amb l'estació que crida (normalment la
+segona paraula, la tercera per als CQ direccionals com `CQ NA`). Llavors una entrada
+ha de coincidir amb el començament de l'indicatiu, de manera que un prefix com `JA` funciona.
+Si no està marcat, una entrada coincideix en qualsevol lloc del missatge.
+
+|*Utilitza els filtres només per a Wait and Pounce, CQ: First, etc. (tots els missatges es continuen mostrant)*
+|No s'amaga res a *Activitat a la banda*; els filtres només decideixen a quines
+estacions responen Wait and Pounce i les opcions *CQ:*. Vegeu <<WAIT_FEATURES>>.
+
+|*Filtres ràpids: Amaga/Ignora/Ressalta "treballat avui i ahir" en lloc de "treballat avui" (UTC)*
+|Els tres elements "treballat avui" del menú *Filtres* també inclouen
+les estacions treballades ahir (UTC).
+|===

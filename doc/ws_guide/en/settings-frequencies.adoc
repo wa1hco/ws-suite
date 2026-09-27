@@ -1,0 +1,103 @@
+[[SETTINGS_FREQUENCIES]]
+=== Frequencies
+
+image::settings-frequencies.png["Settings, Frequencies tab",align="center"]
+
+==== Frequency Calibration
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Slope* / *Intercept*
+|Corrects a known dial error of your rig: +
+`rig frequency = Intercept + (1 + Slope / 1 000 000) × f` +
+with *Intercept* in Hz and *Slope* in ppm. Frequencies sent to the rig and
+read back from it are corrected, so WS shows the true frequency. Leave
+both at 0 if your rig is accurate.
+|===
+
+TIP: How to measure these values is described under _Frequency Calibration_
+in the WSJT-X User Guide (FreqCal mode).
+
+==== Working Frequencies
+
+The frequencies offered in the band selector of the main window. WS shows
+only the entries for your *IARU Region* (*General* tab) and the current mode.
+Double-click a cell to edit it.
+
+[cols="2,5",options="header"]
+|===
+|Column |What it does
+
+|*IARU Region* / *Mode*
+|Where and for which mode the entry is offered. Entries with *All* are
+offered everywhere / in every mode.
+
+|*Frequency*
+|The dial frequency in MHz.
+
+|*Pref*
+|The preferred entry for its band and mode. WS uses it when you click a band
+button (menu:View[]) or when it changes band by itself (band hopping). Only
+one entry per band and mode can be preferred.
+
+|*Description*
+|Your own label for the entry, shown in the band selector.
+
+|*Start Date/Time* / *End Date/Time*
+|The entry is offered only in this period, e.g. for a DXpedition. Empty = always.
+|===
+
+Right-click the table for these actions:
+
+[cols="2,5",options="header"]
+|===
+|Menu item |What it does
+
+|*Delete*
+|Removes the selected entries.
+
+|*Insert ...*
+|Adds an entry: *IARU Region*, *Mode*, *Frequency (MHz)*, *Preferred for
+Band/Mode*, *Description* and an optional date range.
+
+|*Load ...*
+|Replaces the list with one from a `.qrg` or `.qrg.json` file (WS asks first).
+
+|*Save as ...*
+|Saves the list to a file; a name ending in `.qrg.json` gives a JSON file.
+If entries are selected, WS asks whether to save only those.
+
+|*Merge ...*
+|Adds the entries of a `.qrg` or `.qrg.json` file to the list.
+
+|*Reset*
+|Restores the default list (WS asks first).
+|===
+
+==== Station Information
+
+Per-band details of your station. Double-click a cell to edit it.
+
+[cols="2,5",options="header"]
+|===
+|Column |What it does
+
+|*Band*
+|The band the row applies to.
+
+|*Offset*
+|Added to the displayed frequency to get the rig frequency, for
+transverters. Example: 144 MHz with a 28 MHz IF needs -116 MHz. Default 0.
+
+|*Antenna Description*
+|Sent to PSK Reporter while you are on this band.
+|===
+
+Right-click the table for *Delete* (removes the selected rows) and
+*Insert ...* (adds a row: *Band*, *Offset (MHz)*, *Antenna*).
+
+TIP: To create rows quickly, select entries in *Working Frequencies* (kbd:[Ctrl]+kbd:[A]
+for all) and drag them onto *Station Information*. Then fill in offsets and
+antennas.

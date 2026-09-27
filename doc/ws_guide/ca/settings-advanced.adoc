@@ -1,0 +1,162 @@
+[[SETTINGS_ADVANCED]]
+=== Avançat
+
+image::settings-advanced.png["Configuració, pestanya Avançat",align="center"]
+
+==== Paràmetres de descodificació JT65 VHF/UHF/Microones
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Patrons d'esborrament aleatoris*
+|Com d'intensament ho intenta el descodificador de decisió suau de JT65 (fins a 10^n/2^ patrons).
+Els valors més alts són una mica més sensibles però més lents; 6 o 7 va bé per a la majoria d'estacions.
+
+|*Nivell de descodificació agressiu*
+|Llindar per a la cerca profunda de JT65 (0–10). Els nivells més alts donen més descodificacions,
+però també més de falses.
+
+|*Descodificació a dos passos*
+|JT65: una segona passada de descodificació després de restar els senyals trobats a la
+primera passada.
+|===
+
+==== Ajustos de la interfície per a monitors d'alta resolució
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Escalat HighDPI (cal reiniciar)*
+|Segueix l'escalat de pantalla del sistema operatiu, de manera que els controls són més grans
+i ben proporcionats en monitors 4K. Activat per defecte.
+
+|*Alçada augmentada del giny de pestanyes (cal reiniciar)*
+|Permet que les pestanyes de missatges de TX de la finestra principal siguin més altes.
+|===
+
+==== Divers
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Grau S/N de l'arxiu .wav* / *Amplada de banda del receptor*
+|Per a proves de sensibilitat fora de línia: afegeix soroll als arxius .wav que obres, reduint
+la S/N en els dB indicats. Ajusta *Amplada de banda del receptor* a l'amplada de banda de soroll
+del teu receptor perquè el valor sigui precís.
+
+|*Retard de TX*
+|Temps mínim entre el PTT i l'inici de l'àudio de TX (de 0 a 0,5 s). FT4 i
+FT2 sempre fan servir 20 ms.
+
+|*Espaiat de to*: *x 2* / *x 4*
+|El doble / el quàdruple de l'espaiat de to normal, per a transmissors de LF/MF que
+divideixen la freqüència per 2 o 4. Només se'n pot marcar un.
+
+|*Espectres de cascades*: *Lòbuls laterals baixos* / *El més sensible*
+|*Lòbuls laterals baixos* (per defecte) fa servir una FFT amb finestra, de manera que els senyals forts s'escampen
+menys per la cascada. *El més sensible* no fa servir finestra i mostra una mica millor
+les traces molt febles.
+|===
+
+IMPORTANT: *Retard de TX* no substitueix un seqüenciador de maquinari. Per protegir
+els relés de T/R i els preamplificadors, fes-ne servir un i comprova que la seqüenciació és correcta.
+
+==== Activitat especial d'operació
+
+Marca la casella i tria una activitat; WS genera llavors els formats de missatge
+corresponents.
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*NA VHF*
+|Concursos nord-americans de VHF/UHF/microones i altres en què l'intercanvi és un locator
+de 4 caràcters.
+
+|*NCCC Sprint*
+|Només amb *NA VHF*: el protocol de missatges curts del NCCC Sprint per a FT4 (i FT2).
+
+|*Concurs EU VHF*
+|Concursos europeus de VHF i superiors: report, número de sèrie i locator de 6 caràcters.
+
+|*Concurs WW Digi* / *Concurs ARRL Digi*
+|Concurs World-Wide Digi / ARRL International Digital Contest.
+
+|*Q65 Pileup*
+|Intercanvia un locator de 4 caràcters en lloc d'un report, cosa que dona a l'operador DX
+una sensibilitat de nivell q3. Especialment útil per a DXpeditions EME a 6 m.
+
+|*ARRL Field Day* / *Intercanvi FD*
+|El teu intercanvi: nombre de transmissors, classe i secció ARRL/RAC, o "DX"
+(p. ex. `6A SNJ`).
+
+|*Missatges FT Roundup* / *Interc. FT RU*
+|FT Roundup i concursos similars. Intercanvi: estat dels EUA, província canadenca o
+"DX" (també per a Alaska i Hawaii).
+
+|*Fox* / *Hound*
+|Mode DXpedition d'FT8: *Fox* per a la DXpedition, *Hound* per cridar-la. Llegeix la
+guia de l'usuari del mode DXpedition d'FT8 abans de fer-lo servir.
+
+|*Mode SuperFox*
+|Amb *Fox* o *Hound*: transmet o rep la forma d'ona SuperFox.
+
+|*OTP* / *Clau* / *Interval*
+|Amb *Fox* o *Hound*: verificació del Fox amb contrasenya d'un sol ús (cal
+internet). El Fox introdueix la seva *Clau* de 16 caràcters i signa cada *Interval*
+missatges (1 = cada missatge).
+
+|*Mostra els missatges OTP* / *URL OTP*
+|Per als Hounds: WS comprova els codis del Fox a l'*URL OTP* (per defecte
+`https://www.9dx.cc`). *Mostra els missatges OTP* mostra els missatges de
+verificació a Activitat a la banda.
+
+|*CQ amb nom de concurs individual* / *Nom del concurs*
+|Crida p. ex. `CQ PACC` en lloc de CQ TEST, RU o WW. No disponible amb
+*Fox*, *Hound* ni *Q65 Pileup*.
+|===
+
+==== Carrega els QSO a Cloudlog o Wavelog
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Carrega els QSO a Cloudlog o Wavelog*
+|Marca el títol del grup per enviar cada QSO registrat al teu servidor Cloudlog o
+Wavelog.
+
+|*URL de l'API*
+|Adreça base de la teva instal·lació, sense barra final
+(p. ex. `https://log.example.com`).
+
+|*Clau API* / *ID d'estació*
+|Una clau API amb permís d'escriptura i l'ID del perfil d'estació de Cloudlog/Wavelog.
+
+|*Prova la clau API*
+|Envia un QSO de prova en mode de simulació. El botó es posa verd si la clau
+permet escriure, taronja si és només de lectura, vermell si no és vàlida.
+|===
+
+==== Carrega els QSO a eQSL.cc
+
+[cols="2,5",options="header"]
+|===
+|Ajust |Què fa
+
+|*Carrega els QSO a eQSL.cc*
+|Marca el títol del grup per pujar cada QSO registrat a eQSL.cc.
+
+|*Nom d'usuari* / *Contrasenya*
+|Les teves dades d'accés a eQSL.cc.
+
+|*QTH*
+|El sobrenom del teu QTH, si en tens més d'un a eQSL.cc.
+|===
+
+NOTE: La contrasenya d'eQSL.cc i la clau API es desen sense xifrar a l'arxiu
+de configuració.

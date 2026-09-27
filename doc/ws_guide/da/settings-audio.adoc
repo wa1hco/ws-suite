@@ -1,0 +1,77 @@
+[[SETTINGS_AUDIO]]
+=== Audio
+
+image::settings-audio.png["Indstillinger, fanen Audio",align="center"]
+
+==== Lydkort
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Input* / *Output*
+|Det lydkort, der er forbundet til din radio (f.eks. radioens USB audio CODEC),
+indstillet til 48000 Hz, 16 bit. Feltet til højre vælger kanalen:
+normalt *Mono*, eller *Venstre*, *Højre* eller *Begge* i særlige opsætninger.
+
+|*Genindlæs*
+|Indlæser enhedslisten igen, f.eks. efter tilslutning af en USB-radio.
+
+|*Brug TCI Audio (genstart kræves)* / *Rx 0 dB*
+|Vises kun med en TCI-radio (f.eks. en SDR). Lyden kommer så via
+TCI-forbindelsen i stedet for et lydkort, og enhederne viser *TCI audio*.
+*Rx* sænker det modtagne lydniveau (0 til -50 dB). Genstart WS efter
+en ændring.
+
+|*Sorter Alfabestisk*
+|Sorterer enhedsnavnene alfabetisk og viser kun enheder, der kan
+optage eller afspille PCM-lyd. Ikke markeret bruges systemets rækkefølge.
+
+|*Hide ALSA CARD subdevices (Linux only)*
+|Skjuler `CARD=`-posterne, som normalt ikke kan bruges. Virker kun, når
+*Sorter Alfabestisk* er markeret.
+|===
+
+IMPORTANT: Hvis output-enheden også er computerens standardlydenhed,
+så slå alle systemlyde fra. Ellers sender du dem ud i luften.
+
+==== Gemme Mappe
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Lokation* / *Vælg*
+|Mappe til de `.wav`-filer, der skrives via menu:Gem[]. Som standard mappen `save`
+i log-mappen.
+|===
+
+==== AzEl Mappe
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Lokation* / *Vælg*
+|Mappe til `azel.dat`, som indeholder Solens og Månens position og Doppler til
+antennestyringsprogrammer. Filen opdateres hvert sekund, mens
+vinduet Astronomiske Data er åbent.
+
+|*Aktiver ekstra linje i azel.dat*
+|Tilføjer en linje med Dpol, MNR, Dgrd og ekkobredderne til
+styringsprogrammer, der læser disse værdier.
+|===
+
+==== Husk power indstilling per Bånd
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Transmit*
+|Husker skyderen *Pwr* for hvert bånd og gendanner den, når du skifter bånd.
+
+|*Tune*
+|Gemmer en separat *Pwr*-indstilling pr. bånd til *Tune*. Når Tune slutter,
+vender skyderen tilbage til din sendeeffekt.
+|===

@@ -1,0 +1,183 @@
+[[SETTINGS_RADIO]]
+=== Radio
+
+image::settings-radio.png["Indstillinger, fanen Radio",align="center"]
+
+==== Rig
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Rig*
+|Din radiomodel eller et styreprogram, der har kontrol over radioen (DX Lab Suite
+Commander, Flrig, Ham Radio Deluxe, Hamlib NET rigctl, OmniRig Rig 1/2,
+TCI Client). *Ingen* betyder ingen CAT-styring.
+
+|*Poll Interval*
+|Hvor ofte WS læser frekvens og mode fra radioen. 1–3 s passer til de fleste
+radioer. Gråtonet for radioer, der selv melder ændringer.
+|===
+
+==== Cat Kontrol
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Port*
+|Den serielle port på dit CAT-interface (f.eks. COM3 eller /dev/ttyUSB0). For et
+styreprogram bliver det til *Netværk Server* eller *TCI Server*
+(`host:port`); lad feltet være tomt for standardværdien på denne computer. For
+nogle få SDR-sæt bliver det til *USB Enhed*.
+
+|*Baud Rate* / *Data Bits* / *Stop Bit*
+|Skal svare til CAT-menuen i din radio. *Default* beholder den værdi, Hamlib
+kender for din model.
+
+|*Handshake*
+|Normalt *Ingen*. Nogle få radioer, især visse Kenwood-modeller, kræver
+*Hardware* (RTS/CTS). En forkert indstilling gør, at CAT ikke svarer.
+
+|*Tving Kontrol Linjer* *DTR:* / *RTS:*
+|Holder DTR eller RTS permanent *Høj* eller *Lav*, f.eks. for at forsyne et
+interface med strøm. Lad være tomt, medmindre du ved, at du har brug for det. Ikke tilgængeligt for en
+linje, der bruges til PTT på samme port.
+|===
+
+==== Opdater Hamlib
+
+Disse indstillinger stammer fra WSJT-X Improved og findes ikke i WSJT-X. De virker
+kun på Windows; på Linux og macOS hedder feltet *Hamlib Version*
+og viser blot den version, der er i brug.
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*64-bit* / *32-bit*
+|Hvilken Hamlib-DLL der skal hentes. Vælg den, der passer til din WS-installation.
+
+|*Opdater Hamlib*
+|Henter den nyeste Hamlib-DLL, som ofte tilføjer eller retter understøttelse af radioer.
+Den nuværende DLL gemmes som backup. Genstart WS for at bruge den nye.
+
+|*Revert Update*
+|Går tilbage til den gemte backup-DLL, igen efter en genstart.
+
+|*I brug* / *Backed up*
+|Den Hamlib-version, WS kører med, og versionen af backuppen.
+|===
+
+==== PTT metode
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*VOX*
+|Radioens VOX nøgler senderen. Kræver intet interface.
+
+|*CAT*
+|PTT via CAT-kommando, hvis radioen understøtter det. Normalt det rigtige valg
+med et styreprogram som OmniRig eller Flrig.
+
+|*DTR* / *RTS*
+|En seriel styrelinje nøgler radioen. Mange USB-radioer kan tildele denne linje
+til PTT (Icom: USB SEND, Yaesu: PC KEYING). *RTS* er ikke tilgængelig på
+CAT-porten med *Hardware*-handshake.
+
+|*Port*
+|Seriel port til *DTR* / *RTS*; kan være den samme som CAT-porten. Værdien
+*CAT* er til interfaces som OmniRig, der skifter linjerne via fjernstyring.
+
+|*Aktivér TX-spærring*
+|Til stationer, der deler et bånd med en radio med forrang (kun PTT via *DTR* / *RTS*):
+et andet program kan holde WS væk fra luften, mens den radio sender.
+|===
+
+==== Tx audio kilde
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Bag/Data* / *Front/Mic*
+|Vælger radioens Tx-lydindgang via CAT, hvis radioen understøtter det.
+Kun aktiv med PTT metode *CAT*. *Bag/Data* er normalt bedst.
+|===
+
+==== Mode
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Ingen* / *USB* / *Data/Pkt*
+|Den mode, WS indstiller på radioen. *Data/Pkt*, hvis din radio har den (vælger ofte
+den bageste lydindgang og et bredere filter), ellers *USB*.
+*Ingen* lader moden være uændret.
+|===
+
+==== Split Operation
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Rig*
+|Bruger radioens egen split (VFO A og B).
+
+|*Fake It*
+|Bruger kun VFO A og omstiller den for hver udsendelse. Virker med alle radioer.
+
+|*Ingen*
+|Ingen split (anbefales ikke).
+|===
+
+Med split flytter WS Tx-frekvensen i trin på 500 Hz, så Tx-lyden
+holder sig mellem 1500 og 2000 Hz. Harmoniske af lyden falder så uden for
+radioens filter, og dit signal forbliver rent. Dette gælder i FT4, FT8 og
+FST4, og i alle modes, når *Aktiver VHF and submode funktioner* er slået fra.
+Doppler-korrektion kræver også split.
+
+==== Test CAT og Test PTT
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Test CAT*
+|Forbinder til radioen med disse indstillinger. Grøn: OK. Rød: fejl, med
+en meddelelse.
+
+|*Test PTT*
+|Nøgler senderen uden lyd; klik igen for at slippe. Kontroller, at
+radio og interface skifter som forventet. Med *VOX* skal du i stedet bruge *Tune* i
+hovedvinduet.
+|===
+
+==== Radio Data
+
+Disse indstillinger stammer fra WSJT-X Improved og findes ikke i WSJT-X.
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Vis PWR, SWR og ALC*
+|Viser under udsendelse udgangseffekten (i watt, ved siden af skyderen *Pwr*)
+samt SWR og ALC i statuslinjen. SWR over 1,5 gør feltet
+gult, over 2,0 rødt. Kræver en radio, der rapporterer disse værdier; ikke
+tilgængeligt med *Ingen*, OmniRig, DX Lab Suite Commander, Ham Radio Deluxe
+eller Kenwood TS-480/850/870.
+
+|*Stop Tx når SWR > 2.5*
+|Stopper udsendelsen med det samme og viser en advarsel. Kontroller din antenne.
+
+|*Fremhæv ALC > 50%* / *Fremhæv ALC > 90%*
+|Gør statusfeltet gult / rødt, når ALC overskrider grænsen, så du
+opdager overstyring.
+|===
+
+De sidste tre indstillinger kræver *Vis PWR, SWR og ALC*.

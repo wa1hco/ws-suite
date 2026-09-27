@@ -1,0 +1,122 @@
+[[SETTINGS_COLORS]]
+=== Colors
+
+image::settings-colors.png["Settings, Colors tab",align="center"]
+
+==== Decode Highlighting
+
+WS colours decodes by category. Everything except *CQ in message*,
+*My Call in message*, *Transmitted message* and *LoTW User* needs
+*Show DXCC, grid, and worked-before status* on the *General* tab.
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|Highlight list
+|One line per category; its check box turns it on. Drag lines up or down
+to set the priority: a higher line wins. Foreground and background are
+separate, so an "unset" colour is taken from the next enabled line below.
+
+|Right-click menu
+|*Foreground color...* / *Background color...* choose a colour,
+*Unset foreground color* / *Unset background color* clear it.
+*Reset this item to defaults* restores the WSJT-X default of that line.
+
+|*CQ in message*, *My Call in message*, *Transmitted message*
+|CQ, CQDX and QRZ calls; decodes addressed to you; messages sent by you.
+
+|*New DXCC*, *New Continent*, *New CQ Zone*, *New ITU Zone*, *New US State*, *New Grid*, *New Call*
+|Not yet in your log. The *... on Band* variants: not yet worked on the
+current band.
+
+|*LoTW User*
+|The station has uploaded its log to LoTW within the age set under
+<<LOTW_VALIDATION,Logbook of the World User Validation>>.
+
+|*Reset Highlighting to WSJT-X default*
+|The original WSJT-X colours and order. A new installation starts with these.
+
+|*Reset Highlighting to WS default*
+|The WS scheme, with pastel colours that also suit the dark style. LoTW
+users are shown in black, other stations in dark red; a CQ from a station
+you have already worked gets a grey background.
+
+|*Rescan ADIF Log*
+|Reads `wsjtx_log.adi` again and rebuilds the worked-before status. The
+button shows the number of QSOs. You may replace this file with an ADIF
+export from your logging program.
+
+|*Highlight by Mode*
+|Worked-before status is kept per mode.
+
+|*Only grid Fields sought*
+|A grid counts as new only if its field (the first two characters, e.g. JO)
+has not been worked.
+
+|*Include extra WAE entities*
+|Shows the extra DARC WAE / CQ Marathon entities (e.g. Sicily, Shetland Is.)
+by their own name. Unchecked, they are shown as their DXCC country.
+
+|*Highlight also messages with 73 or RR73*
+|73 and RR73 messages are highlighted like CQs and get country and
+worked-before marks. They also pass the *CQ only* filter, which is then
+labelled *CQ/73*. On by default.
+
+|*Highlight all messages*
+|Every decoded message is highlighted like a CQ and gets country and
+worked-before marks, not only CQ calls (and 73 messages with the option
+above). Off by default.
+
+|*Highlight orange:* / *Highlight blue:*
+|White text on an orange / blue background for the callsigns, grids,
+prefixes and CQ directions typed into the box below. These entries also
+trigger the *Wanted* alert on the *Alerts* tab.
+|===
+
+Entries for *Highlight orange* and *Highlight blue* (upper or lower case):
+
+* Callsigns: a comma after every call, including the last one: `K1JT, DG2YCB,`
+* Grids: `JO33, JN58,`
+* Prefixes of 2 or 3 characters between semicolons: `;DL;KH6;`. A one-letter
+  prefix such as `;K;` only matches calls with a digit in second place
+  (K1ABC, not KH6ABC).
+* All calls starting with one letter: `;K*;`. Exclude prefixes by putting
+  them between exclamation marks: `;K*;!KH6!KL!KP!`
+* CQ directions with a comma before and after: `,EU,` marks "CQ EU ...".
+
+[[LOTW_VALIDATION]]
+==== Logbook of the World User Validation
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Users CSV file URL* / *Fetch Now*
+|Source of the ARRL list of LoTW users and their last upload dates.
+*Fetch Now* downloads a fresh copy. WS fetches it by itself only when the
+file is missing and *LoTW User* highlighting is on.
+
+|*Age of last upload less than*
+|Stations count as LoTW users only if their last upload is more recent.
+|===
+
+==== Downloads
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Download Latest CTY.dat*
+|Updates the country, zone and prefix data from country-files.com and
+rescans the log. *CTY File Version* shows the version in use.
+
+|*Download US Callsign States database*
+|Callsign-to-state data for *Show US States* (*General* tab), used when a
+message has no usable grid. *Callsign States DB* shows its size and date.
+
+|*Download CALL3.TXT for terrestrial use* / *Download CALL3.TXT for EME*
+|Callsign and grid database for the *Lookup* button and for JT4/JT65 Deep
+Search; the EME version is meant for JT65 Deep Search. The previous file
+is kept as `CALL3_backup.TXT`. *CALL3 File Version* shows the version.
+|===

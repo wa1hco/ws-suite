@@ -1,0 +1,73 @@
+= WS brugervejledning
+:doctype: book
+:lang: da
+:toc: left
+:toc-title: Indhold
+:toclevels: 2
+:icons: font
+:imagesdir: ../en/images
+:experimental:
+:notitle:
+
+image::ws-header.png[WS - Weak Signal Digital Modes Suite,682,126]
+
+[discrete]
+== WS brugervejledning
+
+[preface]
+== Om denne vejledning
+
+WS er en programpakke til digital kommunikation med svage signaler i
+amatørradio: *WS* (hovedprogrammet), *WS-MAP* (bredbåndsmonitor til
+Q65/FT8) og *EME65* (bredbånds-JT65/Q65 til EME). WS udsprang af
+_WSJT-X_ og hed tidligere _WSJT-X Improved_. Alle modes og grundlæggende
+betjeningsprocedurer er de samme som i WSJT-X; for dem er
+https://wsjt.sourceforge.io/wsjtx-doc/wsjtx-main-3.0.0-rc1.html[WSJT-X User Guide]
+fortsat referencen.
+
+Denne vejledning er bevidst kort. Den forklarer alle menuer og alle
+indstillinger i WS, og hvad WS tilføjer til WSJT-X.
+
+include::intro-variants.adoc[]
+
+include::main-window.adoc[]
+
+[[MENUS]]
+== Menuer
+
+Menuerne er de samme i alle tre GUI-varianter.
+
+image::menubar.png[WS menulinje]
+
+include::menus-1.adoc[]
+
+include::menus-2.adoc[]
+
+[[SETTINGS]]
+== Indstillinger
+
+Åbn vinduet *Indstillinger* med menu:Fil[Indstillinger] eller kbd:[F2].
+Indstillingerne gemmes pr. konfiguration (se <<MENU_CONFIGURATIONS>>).
+Hold musen over et kontrolelement for at se dets værktøjstip.
+
+include::settings-general.adoc[]
+
+include::settings-radio.adoc[]
+
+include::settings-audio.adoc[]
+
+include::settings-txmacros.adoc[]
+
+include::settings-reporting.adoc[]
+
+include::settings-frequencies.adoc[]
+
+include::settings-colors.adoc[]
+
+include::settings-advanced.adoc[]
+
+include::settings-alerts.adoc[]
+
+include::settings-filters.adoc[]
+
+include::support.adoc[]

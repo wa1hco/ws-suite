@@ -1,0 +1,300 @@
+[[MENU_FILTERS]]
+=== Filters
+
+image::menu-Filters.png[Filters menu]
+
+Quick filters for the Band Activity pane. The lists they use (Ignore
+List, Whitelist, Territories) are set on menu:File[Settings > Filters],
+see <<SETTINGS_FILTERS>>. All filters can be combined. The *BP* checkbox
+on the main window bypasses them with one click. While a *Hide* filter
+is on, the status label turns cyan and reads "Receiving, Filters On"
+(green "Receiving, Filters bypassed" with *BP*).
+
+[cols="2,5",options="header"]
+|===
+|Menu item |What it does
+
+|*Hide stations worked before on band*
+|Hides messages from calls already in your log on the current band.
+
+|*Hide stations worked today or yesterday*
+|Hides calls you logged today (or yesterday). The item reads "... worked
+today" unless the matching option on the *Filters* tab adds yesterday.
+
+|*Hide stations from Ignore List*
+|Hides calls on the Ignore List. The *Ignore* button adds the DX Call
+to that list; erase it from the *File* menu.
+
+|*Ignore stations worked before on band*
+|Such stations stay visible, but WS does not answer them automatically
+(CQ: First / Max Dist / Max dB / Min dB, Wait and Pounce, Wait and Reply).
+
+|*Ignore stations worked today or yesterday*
+|Same, for calls logged today (or yesterday).
+
+|*Ignore stations from Ignore List*
+|Same, for calls on the Ignore List.
+
+|*Hide stations from Territory 1* ... *4*
+|Hides stations whose country name contains the text entered for that
+territory. Once you enter a territory, the item shows its name
+(e.g. "Hide stations from Italy").
+
+|*Hide stations from Europe*, *North America*, *South America*, *Asia*,
+*Africa*, *Oceania*, *Antarctica*
+|Hides all stations from that continent. Handy for showing only DX.
+
+|*Highlight callsigns worked before on band*
+|Grey background for calls already worked on this band.
+
+|*Highlight callsigns worked today or yesterday*
+|Yellow on dark grey for calls logged today (or yesterday).
+
+|*Highlight callsigns from Ignore List*
+|Yellow on dark red for calls on the Ignore List.
+
+|*Highlight stations from Territory 1* ... *4*
+|Purple background for calls from that territory.
+
+|*Highlight Whitelist entries*
+|Magenta background for calls that contain a Whitelist entry. The
+Whitelist filter itself does not have to be on.
+|===
+
+[[MENU_DECODE]]
+=== Decode
+
+image::menu-Decode.png[Decode menu]
+
+WS shows only the items that apply to the current mode. Some need
+*Enable VHF and submode features* (menu:File[Settings > General]).
+
+[cols="2,5",options="header"]
+|===
+|Menu item |What it does
+
+|*Fast*
+|Fastest decoding, lowest sensitivity.
+
+|*Normal*
+|Medium depth.
+
+|*Deep*
+|Best sensitivity, slower, with a slightly higher chance of false decodes.
+Greyed out in Echo, FreqCal and JT65 with VHF features.
+
+|*Use multithreaded FT8 decoder*
+|FT8 only. Runs several decoder threads in parallel. On a busy band this
+usually gives more decodes. For extreme weak-signal work the
+single-threaded *Deep* decoder is often better. Configure it under *Parameters*.
+
+a|*Parameters*
+
+image::menu-Decode-Parameters.png["Decode, Parameters submenu"]
+a|Fine tuning for the multithreaded FT8 decoder. It has no effect unless
+*Use multithreaded FT8 decoder* is on.
+
+[cols="2,5"]
+!===
+!*Number of threads* +
+image:menu-Decode-Parameters-FT8_threads.png[Number of threads]
+!*Auto* (default) leaves some cores free: with 2-4 logical cores it
+uses one fewer, with 5-8 two fewer, with 9-15 three fewer, and with 16
+or more it uses 12. *1*-*12* set the count directly, capped at the number of cores.
+
+!*Decoding cycles* +
+image:menu-Decode-Parameters-Decoding_cycles.png[Decoding cycles]
+!*1*, *2* or *3* (default) cycles of 3 passes each, so 3, 6 or 9 passes.
+More cycles find more weak signals but take longer. Early decodes (see
+*Decoder start*) always use 2 cycles.
+
+!*QSO RX freq sensitivity* +
+image:menu-Decode-Parameters-QSO_RX_freq_sensitivity.png[QSO RX freq sensitivity]
+!*Low*, *Medium* (default), *High*. Threshold for a special decoder
+that looks for the expected messages from the DX Call at your Rx
+frequency during a QSO. Higher gives more decodes but also more false
+ones. In Hound mode *Low* is always used.
+
+!*Decoder sensitivity* +
+image:menu-Decode-Parameters-Decoder_sensitivity.png[Decoder sensitivity]
+!*Minimum*: normal sync thresholds. *Use low thresholds*: lower sync
+thresholds, so more candidates are tried. *Use subpass* (default): low
+thresholds plus extra weak-signal subpasses. More sensitive also means more CPU load.
+
+!*Decoder start* +
+image:menu-Decode-Parameters-Decoder_start.png[Decoder start]
+!When decoding starts in the 15 s period.
+*2-Stage*: early decode at about 11.8 s, final decode at 14.1 s.
+*3-Stage*: at about 11.8, 13.2 and 14.4 s.
+*Early*: one decode at 13.8 s. *Normal* (default): 14.1 s.
+*Late*: 14.4 s. The staged settings show strong signals sooner.
+
+!*Wideband DX Call search*
+!On (default): AP search for the DX Call's messages across the whole
+passband. Off: only in a narrow window around the Rx frequency.
+
+!*Hide FT8 dupe messages*
+!On (default): if the threads decode the same message twice in one
+period, it is shown once, with the stronger report.
+
+!*Skip a8 decodes*
+!Turns off the "a8" attempt: a decode at the Rx frequency of the
+expected message from the DX Call, built from *DX Call* and *DX Grid*.
+!===
+
+|*Enable averaging*
+|JT4, JT65 and Q65 with VHF features. Averages successive periods to
+decode signals too weak for one period. The panes become *Single-Period
+Decodes* and *Average Decodes*.
+
+|*Enable deep search*
+|JT4 and JT65 with VHF features. When normal decoding fails, it
+compares the signal with likely messages built from your call, the DX
+Call, the DX Grid and `CALL3.TXT`.
+
+|*Enable AP*
+|The first of the two items. FT8 only: a priori (AP) decoding, which
+uses your call, the DX Call and the QSO state to find weaker messages.
+AP decodes are marked `a1` ... `a8`.
+
+|*Enable AP*
+|The second item. JT65 with VHF features only: AP decoding for JT65.
+
+
+|*Auto Clear Avg after decode*
+|After a successful decode within *F Tol* of the Rx frequency, clears
+the average so the next message starts clean.
+
+|*Accept WS-MAP/EME65 click events*
+|Q65 and JT65 with VHF features (default on). Clicking a station in
+WS-MAP or EME65 sets the DX Call, grid, frequency and period in WS.
+With *Double-click on call sets Tx enable* on, a double-click also starts the QSO. It also
+brings in the decodes that EME65 forwards.
+
+|*Claim WS-MAP*
+|Shown when click events are accepted. If several WS instances watch
+the same WS-MAP/EME65 source, only the instance holding the claim acts
+on clicks. A claim is dropped automatically if its instance stops
+refreshing it for 10 s. The *Claim WS-MAP* button on the main window does the same.
+
+a|*WS-MAP/EME65 source*
+
+image::menu-Decode-QMAP_source.png[WS-MAP/EME65 source submenu]
+a|Which WS-MAP or EME65 instance WS listens to.
+
+* *Auto* (default) and *1*: the default instance (Instance ID 1 or
+unset in the WS-MAP settings). Use this with a single WS-MAP.
+* *2*, *3*, *4*: only the instance with that Instance ID.
+
+Changing the source releases any claim. The change takes effect at once;
+restarting WS afterwards is recommended.
+
+|*Disable clicks on waterfall*
+|JT65 and Q65 with VHF features. Protects your Rx/Tx offsets from accidental
+clicks on the waterfall. Hold kbd:[Alt] to click anyway.
+
+|*Hide AP information*
+|FT8 only. Removes the `a1` ... `a9` and `?` marks from displayed decodes.
+
+|*Reduce false decodes*
+|FT8, not in special operating modes. Drops weak decodes that look
+implausible, for example odd combinations of `/P`, `/R`, `R`, hashed
+calls or contest exchanges at low SNR. These lines are not written to `ALL.TXT`.
+With the single-threaded decoder, decodes below -20 dB are also hidden
+if the calls are not in `ALLCALL7.TXT` and do not look like valid callsigns.
+
+|*Full Duplex Mode*
+|Keeps receiving and decoding while you transmit, e.g. with audio from a
+second receiver or a WebSDR. Works for FT8, FT4, Q65, MSK144 and the other modes.
+|===
+
+[[MENU_MODE]]
+=== Mode
+
+image::menu-Mode.png[Mode menu]
+
+Selects the operating mode. The menu is locked while you transmit. For
+details of each mode, see the WSJT-X User Guide.
+
+[cols="2,5",options="header"]
+|===
+|Menu item |Typical use
+
+|*FST4*
+|LF/MF and HF weak-signal QSOs with long periods (15 s to 30 min).
+
+|*FT2*
+|Very fast 77-bit mode with 3.75 s periods (half of FT4). Introduced by WSJT-X Improved 3.1.
+
+|*FT4*
+|Contests and fast HF QSOs, 7.5 s periods.
+
+|*FT8*
+|The everyday HF/6 m mode, 15 s periods. Also DXpedition (Fox/Hound) and SuperFox.
+
+|*JT4*
+|Microwave EME and terrestrial paths with Doppler spread.
+
+|*JT9*
+|HF/LF weak signals, 1-minute periods.
+
+|*JT65*
+|EME on VHF/UHF and classic HF JT65.
+
+|*Q65*
+|EME, ionospheric and rain scatter on VHF to microwaves. Submodes A-E,
+periods 15-300 s. Used with WS-MAP.
+
+|*MSK144*
+|Meteor scatter on 6 m and 2 m.
+
+|*FST4W*
+|WSPR-like beacon mode for LF/MF, periods 2-30 min.
+
+|*WSPR*
+|Beacon transmissions for propagation studies. Spots go to WSPRnet.
+
+|*Echo*
+|EME echo tests: measures your own echoes from the Moon.
+
+|*FreqCal*
+|Frequency calibration of your rig. See <<MENU_TOOLS>>.
+|===
+
+[[MENU_TOOLS]]
+=== Tools
+
+image::menu-Tools.png[Tools menu]
+
+[cols="2,5",options="header"]
+|===
+|Menu item |What it does
+
+|*Erase reference spectrum*
+|Clears the reference spectrum being measured.
+
+|*Measure reference spectrum*
+|Starts *Monitor* and averages the received audio spectrum. Click
+*Stop* to save it to `refspec.dat`. Check
+*Ref Spec* in the Wide Graph to flatten the audio with this filter.
+
+|*Measure phase response*
+|Turns MSK144 phase training on or off. WS trains on decodes from the
+DX Call and saves the phase-equalization coefficients to a file in the
+data directory. Training ends on its own once it has enough data.
+
+|*Equalization tools ...*
+|Opens a window that plots the measured, proposed and current phase and
+group delay, plus the reference spectrum. Use it to load (*Phase ...*),
+refresh or discard phase-equalization data.
+
+|*Execute frequency calibration cycle*
+|In FreqCal mode, retunes the rig to the next FreqCal frequency in
+menu:File[Settings > Frequencies] at the end of each period, so you can
+measure several stations of known frequency in turn.
+
+|*Solve for calibration parameters*
+|Fits slope (ppm) and intercept (Hz) to the measurements in `fmt.all`
+and shows the result. *Apply* stores them as your calibration in
+menu:File[Settings > Frequencies]. `fmt.all` can then be renamed to `fmt.bak`.
+|===

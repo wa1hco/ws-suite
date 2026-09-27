@@ -1,0 +1,162 @@
+[[SETTINGS_ADVANCED]]
+=== Advanced
+
+image::settings-advanced.png["Settings, Advanced tab",align="center"]
+
+==== JT65 VHF/UHF/Microwave decoding parameters
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Random erasure patterns*
+|How hard the JT65 soft-decision decoder tries (up to 10^n/2^ patterns).
+Higher values are slightly more sensitive but slower; 6 or 7 suits most stations.
+
+|*Aggressive decoding level*
+|Threshold for JT65 Deep Search (0–10). Higher levels give more decodes,
+but also more false ones.
+
+|*Two-pass decoding*
+|JT65: a second decoding pass after the signals found in the first pass
+have been subtracted.
+|===
+
+==== GUI tweaks for high-resolution monitors
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*HighDPI scaling (restart required)*
+|Follows the operating system's display scaling, so controls are larger
+and properly proportioned on 4K monitors. On by default.
+
+|*Increased height of the tab widget (restart required)*
+|Lets the Tx message tabs in the main window grow taller.
+|===
+
+==== Miscellaneous
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Degrade S/N of .wav file* / *Receiver bandwidth*
+|For offline sensitivity tests: adds noise to .wav files you open, lowering
+the S/N by the given dB. Set *Receiver bandwidth* to your receiver's noise
+bandwidth so that the value is accurate.
+
+|*Tx delay*
+|Minimum time between PTT and the start of Tx audio (0 to 0.5 s). FT4 and
+FT2 always use 20 ms.
+
+|*Tone spacing*: *x 2* / *x 4*
+|Twice / four times the normal tone spacing, for LF/MF transmitters that
+divide the frequency by 2 or 4. Only one of them can be checked.
+
+|*Waterfall spectra*: *Low sidelobes* / *Most sensitive*
+|*Low sidelobes* (default) uses a windowed FFT, so strong signals spread
+less across the waterfall. *Most sensitive* uses no window and shows very
+weak traces slightly better.
+|===
+
+IMPORTANT: *Tx delay* is no replacement for a hardware sequencer. To protect
+T/R relays and preamplifiers, use one and test that sequencing is correct.
+
+==== Special operating activity
+
+Check the box and choose one activity; WS then generates the matching
+message formats.
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*NA VHF*
+|North American VHF/UHF/microwave contests and others where a 4-character
+grid is the exchange.
+
+|*NCCC Sprint*
+|With *NA VHF* only: the NCCC Sprint short-message protocol for FT4 (and FT2).
+
+|*EU VHF Contest*
+|European VHF+ contests: report, serial number and 6-character locator.
+
+|*WW Digi Contest* / *ARRL Digi Contest*
+|World-Wide Digi contest / ARRL International Digital Contest.
+
+|*Q65 Pileup*
+|Exchanges a 4-character locator instead of a report, giving the DX operator
+q3-level sensitivity. Especially useful for 6 m EME DXpeditions.
+
+|*ARRL Field Day* / *FD Exch*
+|Your exchange: number of transmitters, class and ARRL/RAC section, or "DX"
+(e.g. `6A SNJ`).
+
+|*FT Roundup messages* / *FT RU Exch*
+|FT Roundup and similar contests. Exchange: US state, Canadian province or
+"DX" (also for Alaska and Hawaii).
+
+|*Fox* / *Hound*
+|FT8 DXpedition Mode: *Fox* for the DXpedition, *Hound* to call it. Read the
+FT8 DXpedition Mode User Guide before using it.
+
+|*SuperFox mode*
+|With *Fox* or *Hound*: transmit or receive the SuperFox waveform.
+
+|*OTP* / *Key* / *Interval*
+|With *Fox* or *Hound*: one-time-password verification of the Fox (needs
+internet). The Fox enters its 16-character *Key* and signs every *Interval*
+messages (1 = every message).
+
+|*Show OTP messages* / *OTP URL*
+|For Hounds: WS checks the Fox's codes at the *OTP URL* (default
+`https://www.9dx.cc`). *Show OTP messages* displays the verification
+messages in Band Activity.
+
+|*CQ with individual contest name* / *Contest name*
+|Calls e.g. `CQ PACC` instead of CQ TEST, RU or WW. Not available with
+*Fox*, *Hound* or *Q65 Pileup*.
+|===
+
+==== Upload QSOs to Cloudlog or Wavelog
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Upload QSOs to Cloudlog or Wavelog*
+|Check the group title to send every logged QSO to your Cloudlog or
+Wavelog server.
+
+|*API URL*
+|Base address of your installation, without a trailing slash
+(e.g. `https://log.example.com`).
+
+|*API Key* / *Station ID*
+|A write-enabled API key and the station profile ID from Cloudlog/Wavelog.
+
+|*Test API Key*
+|Sends a test QSO in dry-run mode. The button turns green if the key
+is writable, orange if it is read-only, red if it is invalid.
+|===
+
+==== Upload QSOs to eQSL.cc
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|*Upload QSOs to eQSL.cc*
+|Check the group title to upload every logged QSO to eQSL.cc.
+
+|*Username* / *Password*
+|Your eQSL.cc login.
+
+|*QTH*
+|Your QTH nickname, if you have more than one QTH on eQSL.cc.
+|===
+
+NOTE: The eQSL.cc password and the API key are stored unencrypted in the
+settings file.

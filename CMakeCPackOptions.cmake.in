@@ -1,0 +1,170 @@
+# This file is configured at cmake time, and loaded at cpack time.
+# To pass variables to cpack from cmake, they must be configured
+# in this file.
+
+set (CPACK_PACKAGE_VENDOR "@PROJECT_VENDOR@")
+set (CPACK_PACKAGE_CONTACT "@PROJECT_CONTACT@")
+set (CPACK_RESOURCE_FILE_LICENSE "@PROJECT_SOURCE_DIR@/COPYING")
+# On Windows the NSIS block below makes this C:\WS\<version>. Was
+# ${CPACK_PACKAGE_NAME} under root C:\WSJT, giving C:\WSJT\wsjtx.
+set (CPACK_PACKAGE_INSTALL_DIRECTORY "WS")
+# Pairs are <executable> <shortcut label>; NSIS creates a Start-menu shortcut
+# for each pair, so all three programs are listed. The names follow the
+# renamed binaries (OUTPUT_NAME ws, wsmap and eme65).
+set (CPACK_PACKAGE_EXECUTABLES ws "WS" wsmap "WS-MAP" eme65 "EME65")
+# a desktop icon for each of the three programs, same names as above
+set (CPACK_CREATE_DESKTOP_LINKS ws wsmap eme65)
+set (CPACK_STRIP_FILES TRUE)
+
+#
+# components
+#
+#set (CPACK_COMPONENTS_ALL runtime)
+#set (CPACK_COMPONENT_RUNTIME_DISPLAY_NAME "@PROJECT_NAME@ Application")
+#set (CPACK_COMPONENT_RUNTIME_DESCRIPTION "@WSJTX_DESCRIPTION_SUMMARY@")
+
+if (CPACK_GENERATOR MATCHES "NSIS")
+  set (CPACK_STRIP_FILES FALSE)	# breaks Qt packaging on Windows
+
+  # NSIS builds InstallDir as <root>\<CPACK_PACKAGE_INSTALL_DIRECTORY>, so this
+  # plus the versioned directory below gives C:\WS\<version>.
+  set (CPACK_NSIS_INSTALL_ROOT "C:")
+
+  # One folder per version, so several versions can be installed side by side
+  # and removed one at a time. Everything an uninstaller removes carries the
+  # same version - the uninstall registry key, the Start-menu folder (MUI uses
+  # the package name) and every shortcut label - so no two versions share a
+  # desktop icon. Derived from CPACK_PACKAGE_VERSION at cpack time, so
+  # "cpack -R <version>" gives a genuinely separate installer. Settings and
+  # logbooks in %LocalAppData%\WS stay shared; no uninstaller touches them.
+  set (CPACK_PACKAGE_INSTALL_DIRECTORY "WS\\${CPACK_PACKAGE_VERSION}")
+  set (CPACK_PACKAGE_INSTALL_REGISTRY_KEY "WS ${CPACK_PACKAGE_VERSION}")
+  set (CPACK_NSIS_PACKAGE_NAME "WS ${CPACK_PACKAGE_VERSION}")
+  set (CPACK_PACKAGE_FILE_NAME "WS-${CPACK_PACKAGE_VERSION}-${CPACK_SYSTEM_NAME}")
+  # WS-MAP and EME65 have their own version numbers, so their shortcuts carry
+  # none (a "WS-MAP 3.2.0" shortcut opening WS-MAP v1.0 made no sense, Uwe). In
+  # the Start menu they sit in the versioned "WS <version>" folder. On the
+  # desktop the WS version is added in brackets, so side-by-side installs do
+  # not overwrite, or on uninstall delete, each other's icons.
+  set (CPACK_PACKAGE_EXECUTABLES
+    ws "WS ${CPACK_PACKAGE_VERSION}"
+    wsmap "WS-MAP"
+    eme65 "EME65")
+  set (CPACK_CREATE_DESKTOP_LINKS ws)
+  set (CPACK_NSIS_CREATE_ICONS_EXTRA "
+  \${If} $INSTALL_DESKTOP == 1
+    CreateShortCut \"$DESKTOP\\WS-MAP (WS ${CPACK_PACKAGE_VERSION}).lnk\" \"$INSTDIR\\bin\\wsmap.exe\"
+    CreateShortCut \"$DESKTOP\\EME65 (WS ${CPACK_PACKAGE_VERSION}).lnk\" \"$INSTDIR\\bin\\eme65.exe\"
+  \${EndIf}")
+  set (CPACK_NSIS_DELETE_ICONS_EXTRA "
+  \${If} $INSTALL_DESKTOP == 1
+    Delete \"$DESKTOP\\WS-MAP (WS ${CPACK_PACKAGE_VERSION}).lnk\"
+    Delete \"$DESKTOP\\EME65 (WS ${CPACK_PACKAGE_VERSION}).lnk\"
+  \${EndIf}")
+  # Reinstalling a version that is already registered - including a
+  # pre-release install of it in C:\WS - first offers to uninstall that one.
+  set (CPACK_NSIS_ENABLE_UNINSTALL_BEFORE_INSTALL ON)
+  # Hamlib backup (Uwe): the previously used libhamlib-4.dll / libhamlib-5.dll
+  # stays restorable as bin\<name>_old.dll after an update, and the uninstaller
+  # renames the DLL to _old instead of deleting the backup. The functions are
+  # in CMake/Modules/NSIS.template.in.
+  set (CPACK_NSIS_EXTRA_PREINSTALL_COMMANDS "Call HamlibBackup")
+  set (CPACK_NSIS_EXTRA_INSTALL_COMMANDS "Call HamlibRememberInstallDir")
+  set (CPACK_NSIS_EXTRA_UNINSTALL_COMMANDS "Call un.HamlibBackup")
+
+  # set the install/unistall icon used for the installer itself
+  # There is a bug in NSI that does not handle full unix paths properly.
+  set (CPACK_NSIS_MUI_ICON "@PROJECT_SOURCE_DIR@/icons/windows-icons\\wsjtx.ico")
+  set (CPACK_NSIS_MUI_UNIICON "@PROJECT_SOURCE_DIR@/icons/windows-icons\\wsjtx.ico")
+  # set the package header icon for MUI
+  set (CPACK_PACKAGE_ICON "@PROJECT_SOURCE_DIR@/icons/windows-icons\\installer_logo.bmp")
+  # Start-menu links: home page, download page and, when the User Guide is
+  # built (WSJT_GENERATE_DOCS ON), the installed English guide. A link that
+  # is not a URL is a path below the install folder (forward slashes are fine,
+  # CMake's own installer does the same).
+  # Tested through a variable: if ("ON") with the substituted value
+  # draws a CMP0012 developer warning, as CPack reads this file without
+  # a policy version.
+  set (WS_GENERATE_DOCS @WSJT_GENERATE_DOCS@)
+  set (CPACK_NSIS_MENU_LINKS
+    "https://wsjt-x-improved.sourceforge.io/" "WS Home Page"
+    "https://sourceforge.net/projects/wsjt-x-improved/files/" "WS Download Page"
+    )
+  if (WS_GENERATE_DOCS)
+  list (APPEND CPACK_NSIS_MENU_LINKS
+    "@CMAKE_INSTALL_DOCDIR@/@PROJECT_MANUAL@_en.html" "WS User Guide"
+    )
+  endif ()
+  # Use the icon from wsjtx for add-remove programs
+  set (CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\ws.exe")
+
+  set (CPACK_NSIS_DISPLAY_NAME "${CPACK_PACKAGE_DESCRIPTION_SUMMARY}")
+  # "WS 3.2.0: Weak Signal Digital Modes Suite" in the list of installed apps,
+  # so side-by-side versions can be told apart at a glance
+  string (REPLACE "WS:" "WS ${CPACK_PACKAGE_VERSION}:" CPACK_NSIS_DISPLAY_NAME "${CPACK_NSIS_DISPLAY_NAME}")
+  if (WS_GENERATE_DOCS)
+  set (CPACK_NSIS_HELP_LINK "@PROJECT_MANUAL_DIRECTORY_URL@@PROJECT_MANUAL@_en.html")
+  endif ()
+  set (CPACK_NSIS_URL_INFO_ABOUT "@PROJECT_HOMEPAGE@")
+  set (CPACK_NSIS_CONTACT "${CPACK_PACKAGE_CONTACT}")
+  set (CPACK_NSIS_MUI_FINISHPAGE_RUN "ws.exe")
+  set (CPACK_NSIS_MODIFY_PATH ON)
+
+  # Setup the installer and uninstall VersionInfo resource
+  set (CPACK_NSIS_EXTRA_DEFINES
+    "VIProductVersion @PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@.@PROJECT_VERSION_TWEAK@
+VIFileVersion @PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@.@PROJECT_VERSION_TWEAK@
+VIAddVersionKey /LANG=0 \"ProductName\" \"WS\"
+VIAddVersionKey /LANG=0 \"ProductVersion\" \"v@PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@@BUILD_TYPE_REVISION@\"
+VIAddVersionKey /LANG=0 \"Comments\" \"@PROJECT_DESCRIPTION@\"
+VIAddVersionKey /LANG=0 \"CompanyName\" \"@PROJECT_VENDOR@\"
+VIAddVersionKey /LANG=0 \"LegalCopyright\" \"@PROJECT_COPYRIGHT@\"
+VIAddVersionKey /LANG=0 \"FileDescription\" \"WS Installer\"
+VIAddVersionKey /LANG=0 \"FileVersion\" \"v@PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@@BUILD_TYPE_REVISION@\""
+    )
+endif ()
+
+if ("${CPACK_GENERATOR}" STREQUAL "PackageMaker")
+  set (CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_FILE_NAME}-pkg")
+  set (CPACK_PACKAGE_DEFAULT_LOCATION "/Applications")
+  set (CPACK_PACKAGING_INSTALL_PREFIX "/")
+endif ()
+
+if ("${CPACK_GENERATOR}" STREQUAL "DragNDrop")
+  set (CPACK_DMG_VOLUME_NAME "@PROJECT_BUNDLE_NAME@")
+  set (CPACK_DMG_BACKGROUND_IMAGE "@PROJECT_SOURCE_DIR@/icons/Darwin/DragNDrop Background.png")
+  set (CPACK_DMG_DS_STORE "@PROJECT_SOURCE_DIR@/Darwin/wsjtx_DMG.DS_Store")
+  set (CPACK_BUNDLE_NAME "@WSJTX_BUNDLE_NAME@")
+  set (CPACK_PACKAGE_ICON "@PROJECT_BINARY_DIR@/wsjtx.icns")
+  set (CPACK_BUNDLE_ICON "@PROJECT_BINARY_DIR@/wsjtx.icns")
+  set (CPACK_BUNDLE_STARTUP_COMMAND "@PROJECT_SOURCE_DIR@/Mac-wsjtx-startup.sh")
+endif ()
+
+if ("${CPACK_GENERATOR}" STREQUAL "WIX")
+  # Reset CPACK_PACKAGE_VERSION to deal with WiX restriction.
+  # But the file names still use the full CMake_VERSION value:
+  set (CPACK_PACKAGE_FILE_NAME
+    "${CPACK_PACKAGE_NAME}-@wsjtx_VERSION@-${CPACK_SYSTEM_NAME}")
+  set (CPACK_SOURCE_PACKAGE_FILE_NAME
+    "${CPACK_PACKAGE_NAME}-@wsjtx_VERSION@-Source")
+
+  if (NOT CPACK_WIX_SIZEOF_VOID_P)
+    set (CPACK_WIX_SIZEOF_VOID_P "@CMAKE_SIZEOF_VOID_P@")
+  endif ()
+endif ()
+
+if ("${CPACK_GENERATOR}" STREQUAL "DEB")
+  # Debian policy requires a lower-case package name, so the branded "WS" is
+  # folded here rather than in CPACK_PACKAGE_NAME, which Windows wants capital.
+  string (TOLOWER "${CPACK_PACKAGE_NAME}" CPACK_DEBIAN_PACKAGE_NAME)
+  set (CPACK_PACKAGE_FILE_NAME ${CPACK_DEBIAN_PACKAGE_NAME}_${CPACK_PACKAGE_VERSION}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE})
+  set (CPACK_COMPONENTS_ALL ${CPACK_COMPONENTS_ALL} Debian)
+endif ("${CPACK_GENERATOR}" STREQUAL "DEB")
+
+if ("${CPACK_GENERATOR}" STREQUAL "RPM")
+  # Lower-cased for the same reason as the DEB name above.
+  string (TOLOWER "${CPACK_PACKAGE_NAME}" CPACK_RPM_PACKAGE_NAME)
+  set (CPACK_PACKAGE_FILE_NAME ${CPACK_RPM_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}.${CPACK_RPM_PACKAGE_ARCHITECTURE})
+endif ("${CPACK_GENERATOR}" STREQUAL "RPM")
+
+message (STATUS "CMAKE_INSTALL_PREFIX: ${CMAKE_INSTALL_PREFIX}")

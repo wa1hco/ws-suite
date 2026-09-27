@@ -1,0 +1,93 @@
+[[SETTINGS_ALERTS]]
+=== Riasztások
+
+image::settings-alerts.png["Beállítások, Riasztások fül",align="center"]
+
+A WS rövid hangos riasztásokkal jelezheti a kiválasztott dekódolásokat
+("New DXCC", "My Call" stb.). A riasztások minden WS telepítés részei, és
+mindig a számítógép alapértelmezett hangeszközén szólnak, általában a
+hangszórón.
+
+WARNING: A hangriasztásokhoz második hangeszköz kell. A rádió *nem*
+csatlakozhat az alapértelmezett hangeszközön keresztül, különben a
+riasztások is adásba kerülnek. A beépített USB hangkártyás rádiók (IC-7300,
+FT-991 és hasonlók) megfelelnek ennek a követelménynek. Bekapcsolás előtt
+próbálja ki (lásd alább: *Teszt*).
+
+==== Hangriasztások
+
+[cols="2,5",options="header"]
+|===
+|Beállítás |Mire szolgál
+
+|*Hangok*
+|Kiválasztja a riasztások hangját. Egy szabványos telepítésben egy hang
+van, a *default*.
+
+|*Teszt*
+|Próbabemondást játszik le az alapértelmezett hangeszközön, így
+ellenőrizheti, hol szólnak a riasztások.
+
+|*Új DXCC* / *Új DXCC a Sávban*
+|Olyan DXCC entitás, amellyel még nem volt QSO / az aktuális sávon még nem
+volt QSO.
+
+|*Új Kontinens* / *Új Kontinens a Sávban*
+|Még nem forgalmazott kontinens / ezen a sávon még nem forgalmazott.
+
+|*Új CQ Zóna* / *Új CQ Zóna a Sávban*
+|Még nem forgalmazott CQ zóna / ezen a sávon még nem forgalmazott.
+
+|*Új ITU Zóna* / *Új ITU Zóna a Sávban*
+|Még nem forgalmazott ITU zóna / ezen a sávon még nem forgalmazott.
+
+|*Új USA állam* / *Új USA állam a Sávban*
+|Az 50 USA állam közül egy, amellyel még nem volt QSO / ezen a sávon még
+nem volt. Az államot a hívójelből, vagy ha az csak egy államra mutat, a
+lokátorból állapítja meg.
+
+|*Új QRA* / *Új QRA a Sávban*
+|Még nem forgalmazott lokátor / ezen a sávon még nem forgalmazott. Csak a
+lokátort tartalmazó üzenetek számítanak.
+
+|*Saját hívójel*
+|Önnek címzett üzenet.
+
+|*DX Hívójel vagy DX QRA az üzenetben*
+|A *DX Hívójel* mezőben lévő hívójel vagy a *DX QRA* mezőben lévő lokátor
+megjelenik egy dekódolásban.
+
+|*CQ az üzenetben*
+|Bármilyen CQ-hívás.
+
+|*Keresett hívójelek, QRA-k, prefixek és irányított hívások*
+|Egy dekódolás illeszkedik a *Színek* fülön megadott *Narancssárga
+kiemelés* vagy *Kék kiemelés* bejegyzésekre (csak amíg az a kiemelés be
+van kapcsolva), vagy egy fehérlista-bejegyzésre, amíg a menu:Szűrők[Fehérlista bejegyzések kiemelése]
+be van jelölve.
+
+|*Üzenet érkezett*
+|QSY üzenet érkezik az Ön hívójelére vagy a DX hívójelre. Csak QSY
+üzenetek váltják ki ezt a riasztást, így ritka marad.
+
+|*Hangriasztások engedélyezése*
+|Főkapcsoló: kikapcsolt állapotban nincs riasztási hang. Bekapcsolva a gomb
+zöld. Windows alatt a WS ilyenkor induláskor egy rövid teszthangot is
+lejátszik.
+|===
+
+A vonal feletti kategóriákhoz az *Általános* fülön be kell jelölni a *DXCC,
+QRA és volt QSO állapot megjelenítése* opciót.
+
+A riasztások a *Színek* fül kiemeléseitől függetlenül működnek. Azt
+azonban, hogy melyik dekódolás váltott ki riasztást, csak akkor látja, ha
+ott a megfelelő kiemelés be van kapcsolva, ezért mindkét fülön ugyanazokat
+a kategóriákat engedélyezze.
+
+NOTE: A mellőzési listán szereplő állomások (a *DX QRA* alatti *Mellőz*
+gombbal hozzáadva) a *Saját hívójel* kivételével nem váltanak ki
+riasztást, hacsak a *BP* (bypass) jelölőnégyzet nincs bejelölve. A listát a
+menu:Fájl[Mellőzési lista törlése] törli.
+
+TIP: Kikapcsolt sávugrásnál a főablak *Sáv ugrás* gombjára jobb gombbal
+kattintva hosszabb tesztet végezhet az alapértelmezett hangeszközön.

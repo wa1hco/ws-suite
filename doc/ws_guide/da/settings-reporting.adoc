@@ -1,0 +1,162 @@
+[[SETTINGS_REPORTING]]
+=== Rapportering
+
+image::settings-reporting.png["Indstillinger, fanen Rapportering",align="center"]
+
+==== Logging
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Logbogens placering* / *Vælg*
+|Den ADIF-fil, som WS skriver dine QSO'er til. Standard er `wsjtx_log.adi` i
+WS-datamappen. *Vælg* vælger en eksisterende `.adi`-fil eller navngiver en ny.
+Efter *OK* skifter WS til den fil og læser den igen for worked-before-status.
+
+|*Prompt mig for at logge QSO*
+|Åbner det delvist udfyldte vindue *Log QSO*, når du sender 73 eller en
+fritekstmeddelelse. Slår *Log automatisk* fra.
+
+|*Op kaldesignal*
+|Operatørens kaldesignal, hvis det er forskelligt fra stationens kaldesignal.
+Det skrives i feltet *Operatør* i logposten.
+
+|*Log automatisk*
+|Logger en afsluttet QSO uden at vise vinduet *Log QSO*. Slår *Prompt mig
+for at logge QSO* fra.
+
+|*Kun Contest*
+|Sammen med *Log automatisk*: logger kun automatisk under en contest-aktivitet
+(NA VHF, EU VHF, WW Digi, ARRL Digi, Field Day, RTTY Roundup).
+Andre QSO'er åbner vinduet *Log QSO*. Fox-QSO'er logges altid automatisk.
+
+|*Udfyld manglende grids med 'ZZ00'*
+|Logger `ZZ00` som grid, når den anden station ikke har sendt en.
+
+|*Log 4-digit grids*
+|Forkorter 6-tegns lokatorer til 4 tegn i loggen.
+
+|*Log dial-frekvens i stedet for Tx-frekvens*
+|Logger radioens dial-frekvens. Ikke markeret logger WS dial-frekvensen plus
+din Tx-audio-offset.
+
+|*Konverter mode til RTTY*
+|Logger JT9-QSO'er som mode RTTY, for logprogrammer der ikke kender JT9.
+
+|*cB rapporter til kommentar felt*
+|Skriver mode samt sendt og modtaget rapport i *Kommentar*
+(f.eks. `FT8  Sent: -10  Rcvd: -12`), for logprogrammer der afviser disse
+rapporter.
+
+|*Special operating activitet til kommentarer*
+|Skriver den aktive særlige driftsaktivitet i *Kommentar*, f.eks.
+"EU VHF Contest" eller "F/H mode". Med et individuelt contestnavn som
+PACC bruges "PACC Contest". Anvendes ikke, når *cB rapporter til kommentar felt*
+er slået til, eller kommentaren er bevaret i vinduet *Log QSO*.
+|===
+
+TIP: Upload til Cloudlog eller Wavelog sættes op på fanen *Avanceret*.
+
+==== PSK Reporter
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Aktiver PSK Reporter Spotting*
+|Sender dine stationsoplysninger og de stationer, du dekoder, til
+https://pskreporter.info[PSK Reporter]. Antenneteksten tages fra
+*Stations Information* på fanen *Frekvenser* for det aktuelle bånd.
+Dekodninger fra optagede filer spottes ikke.
+
+|*Brug TCP/IP forbindelse*
+|Bruger TCP i stedet for UDP. Kun nødvendigt, hvis dine UDP-rapporter går tabt undervejs.
+|===
+
+==== LiveCQ
+
+LiveCQ er en webtjeneste, der viser aktuel Q65- (og VHF JT65-) aktivitet og
+viser, hvem der hører hvem.
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Aktivér Q65 LiveCQ*
+|Hovedkontakt (slået til som standard). Uploader dine Q65-dekodninger og dine
+JT65-dekodninger på 50 MHz og derover til de destinationer, der er markeret
+nedenfor. I Q65 henter den også de grønne "who heard me"-flueben.
+
+|*W3SZ (w3sz.com)* og programnavn
+|Sender kun CQ-meddelelser til W3SZ LiveCQ, de samme rapporter som WS-MAP og
+EME65 sender dertil. Rullelisten vælger det programnavn, der rapporteres:
+*WSJTX* (som før omdøbningen) eller *WS*.
+
+|*N6NU (livecq.n6nu.org)*
+|Fuld destination (slået til som standard): CQ og dirigerede meddelelser. Den er
+kilden til de grønne flueben og er påkrævet for *Q65 Pileup*-drift (fanen *Avanceret*).
+
+|*Brugerdefineret:* og URL
+|Sender kun CQ-meddelelser til din egen LiveCQ-server, f.eks.
+`\http://localhost:3000/api/livecq_update`. Gør intet, så længe URL'en er tom.
+Med *N6NU* slået fra hentes de grønne flueben fra denne server.
+|===
+
+NOTE: Dekodninger fra optagede filer sendes kun til N6NU-serveren, markeret så
+siden skjuler dem som standard.
+
+==== UDP Server
+
+WS sender sin status, dekodninger og loggede QSO'er via UDP til
+hjælpeprogrammer som JTAlert eller GridTracker.
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*UDP Server*
+|Adressen på det modtagende program, normalt `127.0.0.1` (standard). Med en
+multicast-gruppeadresse (f.eks. `239.255.0.1`) kan flere programmer lytte
+samtidig. Kun IPv4-adresser.
+
+|*UDP Server port nummer*
+|Porten på det modtagende program, standard 2237. 0 = ingen UDP-meddelelser.
+
+|*Udgående Interface* / *Multicast TTL*
+|Vises kun for en multicast-adresse. Loopback-interfacet er nok til
+programmer på samme computer. Hold TTL på 1, så trafikken bliver i dit
+lokale netværk.
+
+|*Accepter UDP anmodninger*
+|Lader hjælpeprogrammet styre WS, f.eks. starte en QSO med en station, du
+har klikket på der. Ikke markeret ignoreres anmodninger.
+
+|*Meddelse om accepteret UDP anmodning*
+|Bringer WS-vinduet frem, når en anmodning accepteres. Virkningen afhænger
+af styresystemet.
+
+|*Gendan vindue fra minimeret, hvis en UDP anmodning accepteres*
+|Gendanner et minimeret WS-vindue, når en anmodning accepteres.
+
+|*WSJT-X-kompatibilitetstilstand*
+|Identificerer WS som "WSJT-X" i stedet for "WS" (f.eks. "WSJT-X - rig"), for
+programmer der kun genkender WSJT-X. Træder i kraft med det samme.
+|===
+
+==== Sekundær UDP-server
+
+[cols="2,5",options="header"]
+|===
+|Indstilling |Funktion
+
+|*Aktiver Logged kontankt ADIF afsendelse*
+|Sender hver logget QSO som en ADIF-post via UDP, f.eks. til N1MM Logger+.
+
+|*Server navn eller IP adresse*
+|Adressen på det modtagende program, normalt `127.0.0.1`.
+
+|*Server port nummer*
+|UDP-porten på det modtagende program; 2333 for N1MM Logger+ (standard).
+0 = intet sendes.
+|===

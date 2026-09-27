@@ -1,0 +1,187 @@
+[[SETTINGS_GENERAL]]
+=== Général
+
+image::settings-general.png["Paramètres, onglet Général",align="center"]
+
+==== Détails de la station
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Mon indicatif*
+|Votre indicatif.
+
+|*Mon locator*
+|Votre locator Maidenhead, de préférence sur 6 caractères (p. ex. CM87ux).
+Les distances et azimuts sont calculés à partir de celui-ci.
+
+|*Locator auto*
+|Permet à des programmes externes (p. ex. un utilitaire GPS) de modifier *Mon locator*.
+
+|*Région IARU*
+|Région 1 : Europe, Afrique, Moyen-Orient, Asie du Nord. Région 2 : les
+Amériques. Région 3 : Asie du Sud et Pacifique. Sélectionne les fréquences
+par défaut correspondantes.
+
+|*Génération des messages pour les indicatifs composés de type 2*
+|Uniquement pour les indicatifs avec un préfixe ou suffixe additionnel qui ne figure pas dans la
+liste courte (menu:Aide[Liste des préfixes et suffixes de type 1]). Choisit quel
+message généré (Tx1, Tx3 ou Tx6) contient votre indicatif complet.
+|===
+
+==== Affichage
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Nouveaux décodages de période en haut*
+|Chaque période commence en haut de l'Activité de la bande et ne défile pas,
+ce qui permet de double-cliquer alors que le décodage est encore en cours.
+
+|*Ligne vide entre les périodes de décodage*
+|Ligne de séparation entre les périodes dans l'Activité de la bande.
+
+|*Afficher la ligne vide avec horodatage*
+|La ligne de séparation indique aussi l'heure UTC de la période.
+
+|*Afficher la distance en miles*
+|Des miles au lieu des kilomètres.
+
+|*Mettre en évidence l'indicatif DX* / *Mettre en évidence le locator DX*
+|Marque l'indicatif et le locator de votre correspondant actuel dans les messages.
+
+|*Messages Tx dans la fenêtre Fréquence Rx*
+|Vos propres messages émis apparaissent aussi dans le volet Fréquence Rx.
+
+|*Mettre en évidence RRR/RR73/73 dans les messages pour nous*
+|Permet de repérer facilement la fin d'un QSO.
+
+|*Afficher le statut DXCC, locator et déjà contacté*
+|Ajoute aux décodages le pays et les marques nouveau DXCC / nouveau locator / déjà contacté.
+Nécessaire pour la mise en évidence de l'onglet *Couleurs*.
+
+|*Afficher le préfixe principal au lieu du nom du pays*
+|Plus court : "DL" au lieu de "Fed. Rep. of Germany".
+
+|*Afficher le DXCC pour tous les messages*
+|Ajoute le pays à chaque message, pas seulement aux appels CQ.
+
+|*Police...* / *Police du texte décodé...*
+|Police de tout le programme / des volets Activité de la bande et Fréquence Rx.
+|===
+
+==== Comportement
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Écoute désactivée au démarrage*
+|WS démarre sans décoder jusqu'à ce que vous cliquiez sur *Écoute*.
+
+|*Écoute revient à la dernière fréquence utilisée*
+|L'activation de *Écoute* ramène à la dernière fréquence écoutée.
+Décoché, la fréquence actuelle du transceiver est conservée.
+
+|*Double-clic sur un indicatif active Tx*
+|Un double-clic sur un décodage lance immédiatement l'émission.
+
+|*Désactiver Tx après envoi de 73*
+|*Activer Tx* se désactive après un 73 ou un message en texte libre.
+
+|*Appeler CQ force Call 1st*
+|Quand vous appelez CQ, *Call 1st* est coché pour que WS réponde automatiquement au premier appelant.
+
+|*Affectations F1-F6 alternatives*
+|Fait passer les raccourcis kbd:[F1]–kbd:[F6] des messages Tx à l'affectation
+concours (voir menu:Aide[Raccourcis clavier]).
+
+|*Activer les fonctions VHF et sous-mode*
+|Affiche les contrôles VHF/UHF/hyperfréquences (sous-modes, moyennage, Sh, auto-QSY,
+etc.). Désactivez-le en HF : il désactive le multi-décodage JT65 large bande.
+
+|*Autoriser le changement de fréquence Tx pendant l'émission*
+|Décochez-le si votre transceiver ne peut pas traiter de commandes CAT pendant l'émission (souvent nécessaire en split).
+
+|*Décoder après le délai EME*
+|Démarre le décodage plus tard dans les modes à périodes d'une minute, pour inclure les signaux EME retardés
+d'environ 2,5 s.
+
+|*Décodage unique*
+|Pour JT4, JT65, Q65 et FST4 : ne décode qu'autour de la fréquence Rx
+(dans la *Tol F*) au lieu de chercher dans toute la bande passante. En JT4/JT65/Q65,
+les deux volets deviennent *Décodages sur une période* et *Décodages moyennés*.
+
+|*Chien de garde Accord*
+|Arrête *Accord* après le nombre de secondes choisi.
+
+|*MSK144/Q65: Tx jusqu'à réception du 73*
+|Continue d'émettre jusqu'à l'arrivée du 73 de l'autre station, au maximum 10
+tentatives. Utile pour les QSO VHF/UHF/SHF difficiles.
+
+|*Ouvrir/fermer auto. la fenêtre Données astronomiques*
+|Ouvre la fenêtre Données astronomiques quand vous passez en Q65 ou JT65 avec
+*Décoder après le délai EME* activé, et la ferme lorsqu'elle n'est plus nécessaire.
+
+|*Saisie kHz sans k (redémarrage requis)*
+|Dans le champ de fréquence, "164" suivi de kbd:[Enter] signifie +164 kHz dans
+le MHz en cours (438,065 -> 438,164 MHz). Pratique pour sauter entre les segments
+EME depuis le pavé numérique.
+
+|*Barre de progression rouge pendant l'émission*
+|Permet de voir d'un coup d'œil que vous émettez.
+
+|*ID CW après 73* / *Intervalle ID*
+|Envoie une identification CW après chaque 73 ou texte libre / toutes les N minutes (0 = désactivé),
+toujours dans la partie silencieuse de la période.
+
+|*Chien de garde Tx*
+|Arrête les émissions sans surveillance après le nombre de minutes choisi.
+|===
+
+==== Fonctions supplémentaires
+
+Ces options proviennent de WSJT-X Improved et n'existent pas dans WSJT-X.
+
+[cols="2,5",options="header"]
+|===
+|Paramètre |Fonction
+
+|*Afficher les États US*
+|Associe les locators aux États US et aux provinces canadiennes (utile sans
+JTAlert). Certains locators couvrent plusieurs États ; tous sont alors listés.
+
+|*Activer les fonctions Wait*
+|Active *Wait and Reply*, *Wait and Call* et *Wait and Pounce* (par défaut).
+Voir <<WAIT_FEATURES>>.
+
+|*Effacer l'indicatif DX après le QSO* / *Effacer le locator DX après le QSO*
+|Vide le champ Indicatif DX / Locator DX lorsque le QSO est consigné.
+
+|*Afficher la distance dans les messages avec locator* / *Afficher l'azimut dans les messages avec locator*
+|Ajoute la distance et l'azimut orthodromique à chaque message contenant un locator valide.
+
+|*Effacer les décodages après changement de bande* / *Effacer les décodages après changement de mode*
+|Efface l'Activité de la bande quand vous changez de bande / de mode.
+
+|*Autre comportement du bouton Effacer*
+|*Effacer* fonctionne comme dans JTDX : un clic gauche efface l'Activité de la bande,
+un clic droit efface la Fréquence Rx, un double-clic efface les deux.
+
+|*Régler la fréquence Rx sur la fréquence Tx après le QSO*
+|Après la consignation, Rx passe sur votre fréquence Tx.
+
+|*Saut de bande chaque minute*
+|Avec le saut de bande activé, WS change normalement de bande toutes les deux minutes.
+Cochez cette option pour changer de bande chaque minute.
+
+|*Aligner DXCC/distance/azimut* et les deux champs numériques
+|Aligne en colonnes le pays, la distance et l'azimut. Le premier champ fixe
+le nombre d'espaces entre le message et le pays (également sans *Aligner*), le
+second le nombre d'espaces entre le pays et la distance/l'azimut.
+|===
+
+NOTE: Si vous utilisez un indicatif avec un préfixe ou suffixe additionnel, ou si vous voulez
+contacter une telle station, lisez _Nonstandard Callsigns_ dans le guide utilisateur WSJT-X.

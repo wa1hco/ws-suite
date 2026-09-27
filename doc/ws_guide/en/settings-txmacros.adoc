@@ -1,0 +1,34 @@
+[[SETTINGS_TXMACROS]]
+=== Tx Macros
+
+image::settings-tx_macros.png["Settings, Tx Macros tab",align="center"]
+
+Tx macros are short free-text messages you send often, such as `TNX 73 GL`.
+They appear in the drop-down list of the *Tx5* message in the main window.
+
+==== Macro list
+
+[cols="2,5",options="header"]
+|===
+|Setting |What it does
+
+|Text field and *Add*
+|Type a message and click *Add* to append it to the list. Only characters
+allowed in messages can be typed; the text is converted to capitals.
+
+|*Delete*
+|Removes the selected messages. Right-click → *Delete* does the same, or
+removes the message under the cursor if nothing is selected.
+
+|List
+|The macros in the order of the *Tx5* drop-down. Drag and drop to reorder.
+Double-click a message to edit it. Click, kbd:[Shift]+click and
+kbd:[Ctrl]+click select several messages.
+|===
+
+NOTE: A free-text message is limited to 13 characters, including spaces.
+
+TIP: You can also type a message into *Tx5* in the main window and press
+kbd:[Enter]; it is added to the list. In FT8, FT4, FST4, MSK144 and Q65,
+a message that starts with `$DX` (or `$DXCALL`) has that word replaced by
+the base callsign in *DX Call* when it is sent.

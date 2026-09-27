@@ -1,0 +1,73 @@
+[[SETTINGS_FILTERS]]
+=== Filtros
+
+image::settings-filters.png["Ajustes, pestaña Filtros",align="center"]
+
+Los filtros deciden qué decodificaciones aparecen en el panel *Actividad en la banda*. Las
+listas de esta pestaña funcionan junto con los filtros rápidos del menú *Filtros*
+(vea <<MENU_FILTERS>>), donde también se activan y desactivan los filtros de
+territorio.
+
+Mientras un filtro oculta decodificaciones, la etiqueta de estado abajo a la izquierda de
+la ventana principal pasa de "Recibiendo" en verde a "Receiving, Filters On" en cian.
+
+Para volver a verlo todo durante un rato, marque *Omitir* (bypass) en la ventana
+principal: se ignoran todos los filtros y la etiqueta muestra "Receiving, Filters
+bypassed". Desmárquela para volver a sus filtros.
+
+NOTE: La lista negra, la lista de permitidos y Permitir siempre se desactivan automáticamente
+en los modos operativos especiales, para que no se le escape ninguna estación. La lista negra y
+la lista de permitidos siguen activas para los Hounds.
+
+==== Listas de filtros
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Territories 1-4*
+|Hasta cuatro nombres de país, o partes de nombres, para los elementos *Ocultar estaciones del
+Territorio 1-4* y *Destacar estaciones del Territorio 1-4* del menú
+*Filtros*; los elementos del menú muestran entonces su texto. Escriba el nombre tal como
+lo muestra WS, p. ej. `Japan`, `U.S.A.` o `Canary Is.`.
+
+|*Lista negra* +
+*Ocultar mensajes que contengan los siguientes indicativos o palabras clave*
+|Oculta los mensajes que contienen cualquiera de las entradas: indicativos completos, partes
+de indicativos, locators o palabras (p. ej. indicativos piratas o mensajes de concurso).
+
+|*Lista permitidos* +
+*Mostrar sólo mensajes que contengan los siguientes indicativos o palabras clave*
+|Muestra solo los mensajes que contienen una de las entradas; todos los demás se
+ocultan, salvo los de la lista Permitir siempre.
+
+|*Permitir siempre* +
+*Permitir siempre los mensajes con las siguientes palabras clave*
+|Los mensajes con estas entradas se muestran siempre, aunque la lista negra,
+la lista de permitidos o un elemento Ocultar para un territorio, un continente o estaciones
+trabajadas anteriormente los ocultaran.
+|===
+
+Cada lista tiene doce campos, una entrada por campo. Las entradas se convierten
+a mayúsculas. Una lista solo funciona mientras su casilla está marcada.
+
+==== Opciones
+
+[cols="2,5",options="header"]
+|===
+|Ajuste |Qué hace
+
+|*Aplicar filtros solo a los indicativos de las estaciones que llaman*
+|Las listas se comparan solo con la estación que llama (normalmente la
+segunda palabra, la tercera en los CQ direccionales como `CQ NA`). Una entrada
+tiene que coincidir entonces con el principio del indicativo, de modo que funciona un prefijo como `JA`.
+Desmarcado, una entrada coincide en cualquier parte del mensaje.
+
+|*Usar filtros solo para Wait and Pounce, CQ: First, etc. (se siguen mostrando todos los mensajes)*
+|No se oculta nada en *Actividad en la banda*; los filtros solo deciden a qué
+estaciones responden Wait and Pounce y las opciones *CQ:*. Vea <<WAIT_FEATURES>>.
+
+|*Filtros rápidos: Ocultar/Ignorar/Resaltar «trabajado hoy y ayer» en lugar de «trabajado hoy» (UTC)*
+|Los tres elementos "trabajado hoy" del menú *Filtros* incluyen también
+las estaciones trabajadas ayer (UTC).
+|===

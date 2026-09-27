@@ -1,0 +1,162 @@
+[[SETTINGS_REPORTING]]
+=== Berichte
+
+image::settings-reporting.png["Einstellungen, Registerkarte Berichte",align="center"]
+
+==== Logbuch
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Speicherort des Logbuchs* / *Auswählen*
+|Die ADIF-Datei, in die WS Ihre QSOs schreibt. Standard ist `wsjtx_log.adi` im
+WS-Datenverzeichnis. *Auswählen* wählt eine vorhandene `.adi`-Datei oder benennt eine neue.
+Nach *OK* wechselt WS zu dieser Datei und liest sie für den Gearbeitet-Status neu ein.
+
+|*Zum Loggen des QSOs auffordern*
+|Öffnet das teilweise ausgefüllte Fenster *QSO loggen*, wenn Sie 73 oder eine Freitextnachricht
+senden. Schaltet *Automatisch loggen* aus.
+
+|*Op-Rufzeichen*
+|Das Rufzeichen des Operators, falls es vom Stationsrufzeichen abweicht. Es wird
+in das Feld *Operator* des Logeintrags übernommen.
+
+|*Automatisch loggen*
+|Loggt ein abgeschlossenes QSO, ohne das Fenster *QSO loggen* anzuzeigen. Schaltet *Zum Loggen
+des QSOs auffordern* aus.
+
+|*Nur für Contests*
+|Mit *Automatisch loggen*: loggt nur während einer Contest-Aktivität automatisch
+(NA VHF, EU VHF, WW Digi, ARRL Digi, Field Day, RTTY Roundup).
+Andere QSOs öffnen das Fenster *QSO loggen*. Fox-QSOs werden immer automatisch geloggt.
+
+|*Fehlende Locatoren mit 'ZZ00' füllen*
+|Loggt `ZZ00` als Locator, wenn die Gegenstation keinen gesendet hat.
+
+|*4-stellige Locatoren loggen*
+|Kürzt 6-stellige Locatoren im Log auf 4 Stellen.
+
+|*Skalenfrequenz statt Tx-Frequenz loggen*
+|Loggt die Skalenfrequenz des Funkgeräts. Ohne Häkchen loggt WS die Skalenfrequenz plus
+Ihren Tx-Audio-Offset.
+
+|*Modus in RTTY umwandeln*
+|Loggt JT9-QSOs als Modus RTTY, für Logprogramme, die JT9 nicht kennen.
+
+|*dB-Rapporte in Kommentare*
+|Schreibt den Modus sowie den gesendeten und empfangenen Rapport in *Kommentare*
+(z. B. `FT8  Sent: -10  Rcvd: -12`), für Logprogramme, die diese
+Rapporte ablehnen.
+
+|*Besondere Betriebsaktivität in Kommentare*
+|Schreibt die aktive besondere Betriebsaktivität in *Kommentare*, z. B.
+"EU VHF Contest" oder "F/H mode". Mit einem individuellen Contestnamen wie
+PACC wird "PACC Contest" verwendet. Nicht angewendet, wenn *dB-Rapporte in Kommentare*
+eingeschaltet ist oder der Kommentar im Fenster *QSO loggen* beibehalten wird.
+|===
+
+TIP: Uploads zu Cloudlog oder Wavelog werden auf der Registerkarte *Erweitert* eingerichtet.
+
+==== PSK Reporter
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Spotting an PSK Reporter aktivieren*
+|Sendet Ihre Stationsdaten und die von Ihnen dekodierten Stationen an
+https://pskreporter.info[PSK Reporter]. Der Antennentext stammt aus
+*Stationsinformationen* auf der Registerkarte *Frequenzen* für das aktuelle Band.
+Dekodierungen aus aufgezeichneten Dateien werden nicht gespottet.
+
+|*TCP/IP-Verbindung verwenden*
+|Verwendet TCP statt UDP. Nur nötig, wenn Ihre UDP-Meldungen unterwegs verloren gehen.
+|===
+
+==== LiveCQ
+
+LiveCQ ist ein Webdienst, der aktuelle Q65-Aktivität (und VHF-JT65-Aktivität) auflistet und
+zeigt, wer wen hört.
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*Q65 LiveCQ aktivieren*
+|Hauptschalter (standardmäßig an). Lädt Ihre Q65-Dekodierungen und Ihre JT65-Dekodierungen
+ab 50 MHz zu den unten aktivierten Zielen hoch. In Q65 holt er außerdem
+die grünen Häkchen "Wer hat mich gehört?".
+
+|*W3SZ (w3sz.com)* und Programmname
+|Sendet nur CQ-artige Nachrichten an das LiveCQ von W3SZ, dieselben Meldungen, die WS-MAP und
+EME65 dorthin senden. Die Aufklappliste wählt den gemeldeten Programmnamen:
+*WSJTX* (wie vor der Umbenennung) oder *WS*.
+
+|*N6NU (livecq.n6nu.org)*
+|Vollständiges Ziel (standardmäßig an): CQ- und gerichtete Nachrichten. Es ist die Quelle
+der grünen Häkchen und wird für den Betrieb mit *Q65 Pileup* (Registerkarte *Erweitert*) benötigt.
+
+|*Benutzerdefiniert:* und URL
+|Sendet nur CQ-artige Nachrichten an Ihren eigenen LiveCQ-Server, z. B.
+`\http://localhost:3000/api/livecq_update`. Tut nichts, solange die URL leer ist.
+Ist *N6NU* aus, werden die grünen Häkchen von diesem Server geholt.
+|===
+
+NOTE: Dekodierungen aus aufgezeichneten Dateien gehen nur an den N6NU-Server und sind so markiert, dass die
+Website sie standardmäßig ausblendet.
+
+==== UDP-Server
+
+WS sendet seinen Status, Dekodierungen und geloggte QSOs per UDP an Begleitprogramme
+wie JTAlert oder GridTracker.
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*UDP-Server*
+|Adresse des empfangenden Programms, normalerweise `127.0.0.1` (Standard). Mit einer
+Multicast-Gruppenadresse (z. B. `239.255.0.1`) können mehrere Programme
+gleichzeitig mithören. Nur IPv4-Adressen.
+
+|*UDP-Server-Portnummer*
+|Port des empfangenden Programms, Standard 2237. 0 = keine UDP-Nachrichten.
+
+|*Ausgehende Schnittstellen* / *Multicast-TTL*
+|Nur bei einer Multicast-Adresse sichtbar. Für Programme auf demselben Computer genügt die
+Loopback-Schnittstelle. Belassen Sie die TTL auf 1, damit der Verkehr in Ihrem
+lokalen Netzwerk bleibt.
+
+|*UDP-Anfragen akzeptieren*
+|Erlaubt dem Begleitprogramm, WS zu steuern, z. B. ein QSO mit einer Station zu starten, die Sie
+dort angeklickt haben. Ohne Häkchen werden Anfragen ignoriert.
+
+|*Bei akzeptierter UDP-Anfrage benachrichtigen*
+|Holt das WS-Fenster in den Vordergrund, wenn eine Anfrage akzeptiert wird. Die Wirkung
+hängt vom Betriebssystem ab.
+
+|*Akzeptierte UDP-Anfrage stellt Fenster wieder her*
+|Stellt ein minimiertes WS-Fenster wieder her, wenn eine Anfrage akzeptiert wird.
+
+|*WSJT-X-Kompatibilitätsmodus*
+|Meldet WS als "WSJT-X" statt "WS" (z. B. "WSJT-X - rig"), für
+Programme, die nur WSJT-X erkennen. Wirkt sofort.
+|===
+
+==== Sekundärer UDP-Server
+
+[cols="2,5",options="header"]
+|===
+|Einstellung |Funktion
+
+|*ADIF-Broadcast geloggter Kontakte aktivieren*
+|Sendet jedes geloggte QSO als ADIF-Datensatz per UDP, z. B. an N1MM Logger+.
+
+|*Servername oder IP-Adresse*
+|Adresse des empfangenden Programms, meist `127.0.0.1`.
+
+|*Server-Portnummer*
+|UDP-Port des empfangenden Programms; 2333 für N1MM Logger+ (Standard).
+0 = es wird nichts gesendet.
+|===
