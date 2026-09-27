@@ -1,5 +1,10 @@
 #include "HamlibTransceiver.hpp"
+#include "TxInhibit/TxInhibitDrop.hpp"
 #include "TxInhibit/TxInhibitGate.hpp"
+
+#if defined(Q_OS_UNIX)
+#include <sys/ioctl.h>
+#endif
 
 #include <cstring>
 #include <cmath>
@@ -27,6 +32,19 @@ qreal f_alc;
 
 namespace
 {
+  // Not declared in the installed Hamlib headers.
+  extern "C" int ser_set_rts (hamlib_port_t * p, int state);
+  extern "C" int ser_set_dtr (hamlib_port_t * p, int state);
+
+  int drop_ptt_line (void * raw)
+  {
+    hamlib_port_t * port = static_cast<hamlib_port_t *> (raw);
+    if (!port || port->fd < 0) return -1;
+    if (RIG_PTT_SERIAL_RTS == port->type.ptt) return ser_set_rts (port, 0);
+    if (RIG_PTT_SERIAL_DTR == port->type.ptt) return ser_set_dtr (port, 0);
+    return -1;
+  }
+
   // Unfortunately bandwidth is conflated  with mode, this is probably
   // because Icom do  the same. So we have to  care about bandwidth if
   // we want  to set  mode otherwise we  will end up  setting unwanted
@@ -889,9 +907,27 @@ int HamlibTransceiver::do_start ()
 
   do_poll ();
 
-  // After rig_open: optional TX Inhibit (RTS/DTR only). Same thread as CAT.
+  // After rig_open: optional TX Inhibit (RTS/DTR only). The listen socket
+  // is its own thread; the gate object stays on this thread.
   if (use_tx_inhibit_)
     {
+      hamlib_port_t * ptt = &m_->rig_->state.pttport;
+      unsigned bit = 0;
+#if defined(Q_OS_UNIX)
+      if (RIG_PTT_SERIAL_RTS == ptt->type.ptt) bit = TIOCM_RTS;
+      else if (RIG_PTT_SERIAL_DTR == ptt->type.ptt) bit = TIOCM_DTR;
+#else
+      if (RIG_PTT_SERIAL_RTS == ptt->type.ptt
+          || RIG_PTT_SERIAL_DTR == ptt->type.ptt) bit = 1;
+#endif
+      int fd = ptt->fd;
+      // Shared CAT/PTT port: Hamlib copies the rig fd into the PTT port
+      // at open. If that copy is still empty, the rig port fd is the line.
+      if (fd < 0 && bit != 0) fd = m_->rig_->state.rigport.fd;
+      if (fd >= 0 && bit != 0)
+        {
+          TxInhibitDrop::publish (fd, bit, &drop_ptt_line, ptt);
+        }
       start_tx_inhibit_gate ();
     }
 
@@ -911,8 +947,6 @@ void HamlibTransceiver::start_tx_inhibit_gate ()
            this, &HamlibTransceiver::apply_physical_ptt, Qt::DirectConnection);
   connect (inhibit_gate_, &TxInhibitGate::inhibitChanged,
            this, &Transceiver::tx_inhibit_changed);
-  connect (inhibit_gate_, &TxInhibitGate::portBound,
-           this, &Transceiver::tx_inhibit_port_bound);
   // UDP bind problems are non-fatal: keep stock intent→pin path, log only.
   connect (inhibit_gate_, &TxInhibitGate::lineError,
            this, [this] (QString const& msg) {
@@ -926,11 +960,25 @@ void HamlibTransceiver::start_tx_inhibit_gate ()
              Q_EMIT failure (msg);
            });
   inhibit_gate_->start_listening ();
-  CAT_TRACE ("TX Inhibit gate listening (pin filter on do_ptt)");
+  CAT_TRACE ("TX Inhibit gate armed (type 18 on the reporting socket)");
+}
+
+void HamlibTransceiver::tx_inhibit_command (QString const& controller, quint32 ttl_ms,
+                                            QString const& station)
+{
+  if (inhibit_gate_) inhibit_gate_->command (controller, ttl_ms, station);
+}
+
+void HamlibTransceiver::tx_inhibit_invalid (quint64 count)
+{
+  if (inhibit_gate_) inhibit_gate_->note_invalid (count);
 }
 
 void HamlibTransceiver::stop_tx_inhibit_gate ()
 {
+  // Stop new direct clears before the listen thread is joined and the port
+  // is closed. A clear already inside ser_set_rts finishes during shutdown.
+  TxInhibitDrop::clear ();
   if (!inhibit_gate_)
     {
       return;
@@ -1419,8 +1467,12 @@ void HamlibTransceiver::do_ptt (bool on)
   if (inhibit_gate_)
     {
       // Stock sequencing already did Fake It QSY. Intent only; gate mixes
-      // private UDP hold and emits physicalPtt → apply_physical_ptt.
+      // the hold and emits physicalPtt → apply_physical_ptt.
+      // Drop the line before set_intent so a hold cannot lose the race
+      // with this PTT request.
+      if (!on) TxInhibitDrop::drop_direct ();
       inhibit_gate_->set_intent (on);
+      if (!on) TxInhibitDrop::drop_direct ();
       update_PTT (on); // software PTT state follows intent (not pin)
       return;
     }

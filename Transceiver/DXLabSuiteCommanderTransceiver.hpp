@@ -38,6 +38,15 @@ protected:
   void do_tx_frequency (Frequency, MODE, bool no_ignore) override;
   void do_mode (MODE) override;
   void do_ptt (bool on) override;
+  void tx_inhibit_command (QString const& controller, quint32 ttl_ms,
+                           QString const& station) override
+  {
+    if (wrapped_) wrapped_->tx_inhibit_command (controller, ttl_ms, station);
+  }
+  void tx_inhibit_invalid (quint64 count) override
+  {
+    if (wrapped_) wrapped_->tx_inhibit_invalid (count);
+  }
 
   void do_poll () override;
 

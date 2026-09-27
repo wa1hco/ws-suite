@@ -127,8 +127,8 @@ public:
                                 // value "CAT"
     int poll_interval;          // in seconds for interfaces that
                                 // require polling for state changes
-    // When true and ptt_type is RTS/DTR, HamlibTransceiver installs the
-    // TX Inhibit pin filter (UDP KEY-agent holds). Default off (stock path).
+    // True when ptt_type is RTS or DTR. HamlibTransceiver then installs
+    // the TX Inhibit pin filter. CAT and VOX leave it false.
     bool enable_tx_inhibit {false};
 
     bool operator == (ParameterPack const& rhs) const

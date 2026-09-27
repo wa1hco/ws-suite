@@ -1,10 +1,12 @@
 #include "TxInhibitGate.hpp"
+#include "TxInhibitDrop.hpp"
 
+#include <algorithm>
 #include <exception>
 
-#include <QHostAddress>
+#include <QSet>
+#include <QStringList>
 #include <QTimer>
-#include <QUdpSocket>
 
 TxInhibitGate::TxInhibitGate (QObject * parent)
   : QObject {parent}
@@ -39,52 +41,16 @@ qint64 TxInhibitGate::now_ms () const
 void TxInhibitGate::start_listening ()
 {
   stopped_ = false;
-  // On bind failure ensure_udp emits lineError once; gate still applies intent
-  // as a pin filter but never receives holds. Non-fatal for CAT/PTT.
-  (void) ensure_udp ();
-}
-
-bool TxInhibitGate::ensure_udp ()
-{
-  if (udp_)
-    {
-      return true;
-    }
-  if (stopped_)
-    {
-      return false;
-    }
-  udp_ = new QUdpSocket (this);
-  // Prefer well-known port 22372 so KEY agents can use a fixed default.
-  // ShareAddress|ReuseAddressHint lets multiple local WSJT-X stations share 22372;
-  // which process receives a given datagram is OS-dependent — one WSJT-X station per
-  // host (or exclusive bind) is preferred for multi-op.
-  QHostAddress const any4 {QHostAddress::AnyIPv4};
-  if (!udp_->bind (any4, TxInhibit::default_gate_port,
-                   QUdpSocket::ShareAddress | QUdpSocket::ReuseAddressHint))
-    {
-      if (!udp_->bind (any4, quint16 (0)))
-        {
-          QString const err = udp_->errorString ();
-          udp_->deleteLater ();
-          udp_ = nullptr;
-          Q_EMIT lineError (QStringLiteral ("TX Inhibit: UDP bind failed: %1").arg (err));
-          return false;
-        }
-    }
-  bound_port_ = udp_->localPort ();
-  QObject::connect (udp_, &QUdpSocket::readyRead, this, &TxInhibitGate::on_udp_ready);
-  Q_EMIT portBound (bound_port_);
-
   if (!timer_)
     {
       timer_ = new QTimer (this);
-      // hold_timeout_ms poll; UDP hold packets are event-driven.
       timer_->setInterval (20);
       QObject::connect (timer_, &QTimer::timeout, this, &TxInhibitGate::tick);
       timer_->start ();
     }
-  return true;
+  // Advertise Inhibited false so type 17 can start with the heartbeats.
+  last_emitted_inhibited_ = true;
+  emit_state_if_changed ();
 }
 
 void TxInhibitGate::set_intent (bool on)
@@ -119,31 +85,111 @@ void TxInhibitGate::shutdown (bool emit_pin)
       timer_->deleteLater ();
       timer_ = nullptr;
     }
-  if (udp_)
-    {
-      udp_->disconnect (this);
-      udp_->close ();
-      udp_->deleteLater ();
-      udp_ = nullptr;
-      bound_port_ = 0;
-    }
+  holds_.clear ();
 }
 
-void TxInhibitGate::on_udp_ready ()
+namespace
 {
-  if (!udp_ || stopped_)
+  QString const overflow_hold_key;
+
+  QString sanitize_holder (QString const& value)
+  {
+    QString result;
+    result.reserve (std::min (value.size (), 64));
+    for (auto const character : value.left (64))
+      {
+        if (character.isPrint ()) result.append (character);
+      }
+    return result.trimmed ();
+  }
+}
+
+void TxInhibitGate::command (QString controller, quint32 ttl_ms, QString station)
+{
+  if (stopped_) return;
+  auto const now = now_ms ();
+  sweep (now);
+  if (!ttl_ms)
     {
-      return;
+      ++release_rx_;
+      holds_.remove (controller);
     }
-  while (udp_->hasPendingDatagrams ())
+  else if (ttl_ms < 100 || ttl_ms > 30000)
     {
-      QByteArray data;
-      data.resize (static_cast<int> (udp_->pendingDatagramSize ()));
-      udp_->readDatagram (data.data (), data.size ());
-      (void) logic_.on_datagram (data, now_ms ());
+      ++invalid_;
+    }
+  else
+    {
+      ++hold_rx_;
+      auto const expires_at = now + ttl_ms;
+      auto const holder = sanitize_holder (station.isEmpty () ? controller : station);
+      auto existing = holds_.find (controller);
+      if (existing != holds_.end ())
+        {
+          *existing = Hold {expires_at, holder};
+        }
+      else
+        {
+          auto const tracked = holds_.size () - (holds_.contains (overflow_hold_key) ? 1 : 0);
+          if (tracked < maximum_tracked_holds)
+            {
+              holds_.insert (controller, Hold {expires_at, holder});
+            }
+          else
+            {
+              auto overflow = holds_.find (overflow_hold_key);
+              if (overflow == holds_.end ())
+                {
+                  holds_.insert (overflow_hold_key, Hold {expires_at, {}});
+                }
+              else
+                {
+                  overflow->expires_at = std::max (overflow->expires_at, expires_at);
+                }
+            }
+        }
     }
   apply_line ();
   emit_state_if_changed ();
+}
+
+void TxInhibitGate::note_invalid (quint64 count)
+{
+  if (stopped_ || !count) return;
+  invalid_ += static_cast<quint32> (count);
+  emit_state_if_changed ();
+}
+
+void TxInhibitGate::sweep (qint64 now)
+{
+  for (auto it = holds_.begin (); it != holds_.end ();)
+    {
+      if (it->expires_at <= now)
+        {
+          it = holds_.erase (it);
+          ++expiries_;
+        }
+      else
+        {
+          ++it;
+        }
+    }
+}
+
+QString TxInhibitGate::holder_summary () const
+{
+  QStringList holders;
+  QSet<QString> seen;
+  for (auto it = holds_.cbegin (); it != holds_.cend (); ++it)
+    {
+      if (!it->holder.isEmpty () && !seen.contains (it->holder))
+        {
+          seen.insert (it->holder);
+          holders.append (it->holder);
+        }
+    }
+  holders.sort (Qt::CaseInsensitive);
+  return holders.join (QStringLiteral (", "));
 }
 
 void TxInhibitGate::tick ()
@@ -152,7 +198,7 @@ void TxInhibitGate::tick ()
     {
       return;
     }
-  (void) logic_.inhibited (now_ms ());
+  sweep (now_ms ());
   apply_line ();
   emit_state_if_changed ();
 }
@@ -163,8 +209,12 @@ void TxInhibitGate::apply_line ()
     {
       return;
     }
+  sweep (now_ms ());
   // Sole policy: assert PTT ⇔ want_tx and not hold.
-  bool const radiate = intent_ && !logic_.line_inhibited (now_ms ());
+  bool const radiate = intent_ && holds_.isEmpty ();
+  // While a hold is active the modem line is cleared here, not only when
+  // WS thinks it is transmitting. A stuck RTS would otherwise stay high.
+  if (!radiate && !holds_.isEmpty ()) TxInhibitDrop::drop_direct ();
   if (radiate == last_radiate_)
     {
       return;
@@ -217,15 +267,12 @@ void TxInhibitGate::emit_physical_ptt (bool radiate)
 
 void TxInhibitGate::emit_state_if_changed ()
 {
-  qint64 t = now_ms ();
-  bool inh = logic_.line_inhibited (t);
-  auto badge = logic_.badge_text (t);
+  bool const inh = !holds_.isEmpty ();
+  auto const badge = holder_summary ();
   if (inh != last_emitted_inhibited_ || badge != last_badge_)
     {
       last_emitted_inhibited_ = inh;
       last_badge_ = badge;
-      Q_EMIT inhibitChanged (inh, badge
-                             , logic_.hold_rx (), logic_.release_rx ()
-                             , logic_.expiries (), logic_.invalid ());
+      Q_EMIT inhibitChanged (inh, badge, hold_rx_, release_rx_, expiries_, invalid_);
     }
 }

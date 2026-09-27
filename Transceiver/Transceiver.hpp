@@ -237,6 +237,16 @@ public:
   Q_SLOT virtual void enqueue_jtty_pcm (QByteArray const&, TxAudioQueueEpoch, qint64) noexcept {}
   Q_SLOT virtual void clear_jtty_pcm (TxAudioQueueEpoch) noexcept {}
 
+  // Type 18, queued from the GUI. Decorators must forward to the wrapped rig.
+  Q_SLOT virtual void tx_inhibit_command (QString const& controller, quint32 ttl_ms,
+                                          QString const& station)
+  {
+    Q_UNUSED (controller);
+    Q_UNUSED (ttl_ms);
+    Q_UNUSED (station);
+  }
+  Q_SLOT virtual void tx_inhibit_invalid (quint64 count) { Q_UNUSED (count); }
+
   //
   // asynchronous status updates
   //

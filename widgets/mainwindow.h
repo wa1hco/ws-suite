@@ -826,6 +826,7 @@ private:
   // Latest TX Inhibit state, mirrored here so guiUpdate() can report the
   // physical PTT state rather than the sequencer's intent. See docs/TX_INHIBIT.md.
   bool m_tx_inhibited {false};
+  void paint_inhibit_badge ();
   QString m_tx_inhibit_holder;     // station named in the current hold, if any
   bool m_tx_inhibit_warned {false};      // "not reachable" already reported?
   quint16 m_tx_inhibit_warned_port {0};  // port that warning referred to

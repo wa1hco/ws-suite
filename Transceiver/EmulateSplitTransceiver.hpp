@@ -46,6 +46,12 @@ public:
     wrapped_->enqueue_jtty_pcm (samples, epoch, enqueueId);
   }
   void clear_jtty_pcm (TxAudioQueueEpoch epoch) noexcept override {wrapped_->clear_jtty_pcm (epoch);}
+  void tx_inhibit_command (QString const& controller, quint32 ttl_ms,
+                           QString const& station) override
+  {
+    wrapped_->tx_inhibit_command (controller, ttl_ms, station);
+  }
+  void tx_inhibit_invalid (quint64 count) override {wrapped_->tx_inhibit_invalid (count);}
 
 private:
   void handle_update (TransceiverState const&, unsigned seqeunce_number);

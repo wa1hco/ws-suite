@@ -14,20 +14,16 @@
 
 #include <QtTest>
 
-#include <QHostAddress>
 #include <QSignalSpy>
-#include <QUdpSocket>
 
 #include "TxInhibit/TxInhibitGate.hpp"
-#include "TxInhibit/TxInhibitLogic.hpp"
 
 namespace
 {
-  QByteArray hold_packet (int ttl_ms, char const * station = "TEST")
+  void hold (TxInhibitGate& gate, int ttl_ms, char const * station = "TEST")
   {
-    return QByteArray {"{\"tx_inhibit\":1,\"ttl_ms\":"}
-      + QByteArray::number (ttl_ms)
-      + ",\"station\":\"" + station + "\"}";
+    gate.command (QString::fromLatin1 (station), static_cast<quint32> (ttl_ms),
+                  QString::fromLatin1 (station));
   }
 }
 
@@ -45,12 +41,8 @@ private slots:
   {
     TxInhibitGate gate;
     QSignalSpy pin {&gate, &TxInhibitGate::physicalPtt};
-    QSignalSpy bound {&gate, &TxInhibitGate::portBound};
 
     gate.start_listening ();
-    QCOMPARE (bound.count (), 1);
-    auto const port = bound.at (0).at (0).value<quint16> ();
-    QVERIFY2 (port != 0, "gate did not bind any UDP port");
 
     // want_tx on, no hold -> assert
     gate.set_intent (true);
@@ -58,14 +50,13 @@ private slots:
     QCOMPARE (pin.at (0).at (0).toBool (), true);
 
     // hold arrives; want_tx is untouched -> release
-    QUdpSocket agent;
-    agent.writeDatagram (hold_packet (5000), QHostAddress::LocalHost, port);
-    QTRY_COMPARE (pin.count (), 2);
+    hold (gate, 5000);
+    QCOMPARE (pin.count (), 2);
     QCOMPARE (pin.at (1).at (0).toBool (), false);
 
     // explicit release; want_tx still on -> assert again
-    agent.writeDatagram (hold_packet (0), QHostAddress::LocalHost, port);
-    QTRY_COMPARE (pin.count (), 3);
+    hold (gate, 0);
+    QCOMPARE (pin.count (), 3);
     QCOMPARE (pin.at (2).at (0).toBool (), true);
 
     gate.shutdown (false);
@@ -76,17 +67,13 @@ private slots:
   void holdTimeoutRecoversWithoutRelease ()
   {
     TxInhibitGate gate;
-    QSignalSpy bound {&gate, &TxInhibitGate::portBound};
     gate.start_listening ();
-    auto const port = bound.at (0).at (0).value<quint16> ();
 
     gate.set_intent (true);
     QSignalSpy pin {&gate, &TxInhibitGate::physicalPtt};
 
-    QUdpSocket agent;
-    agent.writeDatagram (hold_packet (TxInhibit::hold_timeout_ms_min),
-                         QHostAddress::LocalHost, port);
-    QTRY_COMPARE (pin.count (), 1);
+    hold (gate, 100);
+    QCOMPARE (pin.count (), 1);
     QCOMPARE (pin.at (0).at (0).toBool (), false);   // held
 
     // No release sent. The hold must expire on its own.
@@ -100,15 +87,12 @@ private slots:
   void releaseWithoutIntentDoesNotKey ()
   {
     TxInhibitGate gate;
-    QSignalSpy bound {&gate, &TxInhibitGate::portBound};
     gate.start_listening ();
-    auto const port = bound.at (0).at (0).value<quint16> ();
 
     QSignalSpy pin {&gate, &TxInhibitGate::physicalPtt};
-    QUdpSocket agent;
-    agent.writeDatagram (hold_packet (200), QHostAddress::LocalHost, port);
+    hold (gate, 200);
     QTest::qWait (400);                      // hold applied and expired
-    agent.writeDatagram (hold_packet (0), QHostAddress::LocalHost, port);
+    hold (gate, 0);
     QTest::qWait (100);
 
     QCOMPARE (pin.count (), 0);              // never keyed: want_tx was false
@@ -119,21 +103,17 @@ private slots:
   void reportsStateChangesOnce ()
   {
     TxInhibitGate gate;
-    QSignalSpy bound {&gate, &TxInhibitGate::portBound};
     gate.start_listening ();
-    auto const port = bound.at (0).at (0).value<quint16> ();
 
     QSignalSpy changed {&gate, &TxInhibitGate::inhibitChanged};
-    QUdpSocket agent;
-    agent.writeDatagram (hold_packet (5000, "W1AW"), QHostAddress::LocalHost, port);
-    QTRY_VERIFY (changed.count () >= 1);
-    QCOMPARE (changed.at (0).at (0).toBool (), true);
-    QVERIFY (changed.at (0).at (1).toString ().contains (QStringLiteral ("W1AW")));
+    hold (gate, 5000, "W1AW");
+    QVERIFY (changed.count () >= 1);
+    QCOMPARE (changed.at (changed.count () - 1).at (0).toBool (), true);
+    QVERIFY (changed.at (changed.count () - 1).at (1).toString ().contains (QStringLiteral ("W1AW")));
 
     // A keepalive refreshes the timeout but is not a state change.
     int const before = changed.count ();
-    agent.writeDatagram (hold_packet (5000, "W1AW"), QHostAddress::LocalHost, port);
-    QTest::qWait (100);
+    hold (gate, 5000, "W1AW");
     QCOMPARE (changed.count (), before);
 
     gate.shutdown (false);
@@ -167,18 +147,15 @@ private slots:
   void holdTimingUsesMonotonicBase ()
   {
     TxInhibitGate gate;
-    QSignalSpy bound {&gate, &TxInhibitGate::portBound};
     gate.start_listening ();
-    auto const port = bound.at (0).at (0).value<quint16> ();
     gate.set_intent (true);
 
     QSignalSpy pin {&gate, &TxInhibitGate::physicalPtt};
-    QUdpSocket agent;
 
     QElapsedTimer measured;
     measured.start ();
-    agent.writeDatagram (hold_packet (300), QHostAddress::LocalHost, port);
-    QTRY_COMPARE (pin.count (), 1);          // held
+    hold (gate, 300);
+    QCOMPARE (pin.count (), 1);              // held
     QTRY_COMPARE (pin.count (), 2);          // expired
     auto const elapsed = measured.elapsed ();
 

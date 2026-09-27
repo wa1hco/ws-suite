@@ -26,6 +26,10 @@ public:
                               bool enable_tx_inhibit = false, QObject * parent = nullptr);
   ~HamlibTransceiver ();
 
+  void tx_inhibit_command (QString const& controller, quint32 ttl_ms,
+                           QString const& station) override;
+  void tx_inhibit_invalid (quint64 count) override;
+
 private:
   void load_user_settings ();
   int do_start () override;
@@ -49,7 +53,7 @@ private:
   bool do_swr_;
   bool do_alc_;
 
-  // True when Settings "Enable TX Inhibit" is on and PTT method is RTS/DTR.
+  // True when PTT method is RTS or DTR.
   bool use_tx_inhibit_ = false;
   TxInhibitGate * inhibit_gate_ = nullptr;
 

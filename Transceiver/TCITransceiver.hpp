@@ -127,6 +127,15 @@ public slots:
   void txAudioData(quint32 len, float * data);
   void enqueue_jtty_pcm (QByteArray const& samples, TxAudioQueueEpoch epoch,
                          qint64 enqueueId) noexcept override;
+  void tx_inhibit_command (QString const& controller, quint32 ttl_ms,
+                           QString const& station) override
+  {
+    if (wrapped_) wrapped_->tx_inhibit_command (controller, ttl_ms, station);
+  }
+  void tx_inhibit_invalid (quint64 count) override
+  {
+    if (wrapped_) wrapped_->tx_inhibit_invalid (count);
+  }
   void clear_jtty_pcm (TxAudioQueueEpoch epoch) noexcept override;
 //  void setAudioSampleRate(const quint32 &sr);
 

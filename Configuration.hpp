@@ -404,12 +404,12 @@ public:
   // the "Emulate Split" mode requires PTT information to coordinate
   // frequency changes.
   //
-  // When PTT is DTR/RTS and TX Inhibit is enabled, HamlibTransceiver may
-  // install a pin filter (assert PTT ⇔ want_tx and not hold). Sequencing
-  // and CAT remain stock; Configuration does not drive RTS/DTR itself.
+  // When PTT is DTR or RTS, HamlibTransceiver installs the inhibit pin
+  // filter (assert PTT only when this station wants to transmit and no
+  // type 18 hold is active). Configuration does not drive RTS/DTR itself.
   Q_SLOT void transceiver_ptt (bool = true);
 
-  // Settings: Enable TX Inhibit. Default false.
+  // True when the selected PTT method is RTS or DTR.
   bool enable_tx_inhibit () const;
   // Bound UDP block listen port (0 if not active).
   quint16 tx_inhibit_port () const;
@@ -517,6 +517,10 @@ public:
                                     , quint32 hold_rx, quint32 release_rx
                                     , quint32 expiries, quint32 invalid) const;
   Q_SIGNAL void tx_inhibit_port_changed (quint16 port) const;
+  // Type 18, from MessageClient on the reporting socket to the rig thread.
+  Q_SIGNAL void tx_inhibit_command (QString const& controller, quint32 ttl_ms,
+                                    QString const& station);
+  Q_SIGNAL void tx_inhibit_invalid (quint64 count) const;
 
   // signal announces audio devices are being enumerated
   //

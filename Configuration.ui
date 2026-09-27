@@ -1471,7 +1471,7 @@ radio interface behave as expected.</string>
               <item row="0" column="1">
                <widget class="QRadioButton" name="PTT_DTR_radio_button">
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use the RS-232 DTR control line to toggle your radio's PTT, requires hardware to interface the line.&lt;/p&gt;&lt;p&gt;Some commercial interface units also use this method.&lt;/p&gt;&lt;p&gt;The DTR control line of the CAT serial port may be used for this or a DTR control line on a different serial port may be used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use the RS-232 DTR control line to toggle your radio's PTT, requires hardware to interface the line.&lt;/p&gt;&lt;p&gt;Some commercial interface units also use this method.&lt;/p&gt;&lt;p&gt;The DTR control line of the CAT serial port may be used for this or a DTR control line on a different serial port may be used.&lt;/p&gt;&lt;p&gt;Selecting DTR also arms TX Inhibit. Type 18 commands are accepted on the reporting UDP socket when Accept UDP requests is on.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="text">
                  <string>&amp;DTR</string>
@@ -1502,7 +1502,7 @@ other hardware interface for PTT.</string>
               <item row="1" column="1">
                <widget class="QRadioButton" name="PTT_RTS_radio_button">
                 <property name="toolTip">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use the RS-232 RTS control line to toggle your radio's PTT, requires hardware to interface the line.&lt;/p&gt;&lt;p&gt;Some commercial interface units also use this method.&lt;/p&gt;&lt;p&gt;The RTS control line of the CAT serial port may be used for this or a RTS control line on a different serial port may be used. Note that this option is not available on the CAT serial port when hardware flow control is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Use the RS-232 RTS control line to toggle your radio's PTT, requires hardware to interface the line.&lt;/p&gt;&lt;p&gt;Some commercial interface units also use this method.&lt;/p&gt;&lt;p&gt;The RTS control line of the CAT serial port may be used for this or a RTS control line on a different serial port may be used. Note that this option is not available on the CAT serial port when hardware flow control is used. Selecting RTS also arms TX Inhibit. Type 18 commands are accepted on the reporting UDP socket when Accept UDP requests is on.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="text">
                  <string>R&amp;TS</string>
@@ -1549,16 +1549,6 @@ other hardware interface for PTT.</string>
                   </property>
                   <property name="insertPolicy">
                    <enum>QComboBox::NoInsert</enum>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0" colspan="2">
-                 <widget class="QCheckBox" name="tx_inhibit_check_box">
-                  <property name="toolTip">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;b&gt;TX Inhibit&lt;/b&gt; (RTS/DTR PTT only).&lt;/p&gt;&lt;p&gt;This &lt;b&gt;WS station&lt;/b&gt; is the app, PC, network, radio, and antenna (may be a remote go-box). When enabled, listen for UDP from a KEY agent (default port 22372). The KEY agent &lt;b&gt;tells WS stations not to transmit&lt;/b&gt; while a priority radio is keyed. Physical outcome: &lt;code&gt;assert PTT ⇔ want_tx and not hold&lt;/code&gt;. Sequencing continues; only whether this station may assert PTT is filtered.&lt;/p&gt;&lt;p&gt;Default is off (stock PTT). Co-band multi-op stations that share a band with a priority radio should enable this and run a KEY agent.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                  </property>
-                  <property name="text">
-                   <string>Enable TX &amp;Inhibit</string>
                   </property>
                  </widget>
                 </item>

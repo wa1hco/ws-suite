@@ -534,7 +534,7 @@
  *
  * InhibitStatus  Out      17
  *                         Id (unique key)        utf8
- *                         Inhibit port           quint16
+ *                         Supported              bool
  *                         Inhibited              bool
  *                         Source station         utf8
  *                         Hold rx                quint32
@@ -542,15 +542,27 @@
  *                         Expiries               quint32
  *                         Invalid                quint32
  *
- *      Optional telemetry when TX Inhibit is enabled (Settings → Radio)
- *      and the WSJT-X station block level or badge text changes. KEY-agent UDP
- *      protocol is separate; see docs/TX_INHIBIT.md.
+ *      Supported means the active transceiver uses DTR or RTS PTT, TX Inhibit
+ *      is enabled, and Accept UDP requests is on. A supported snapshot is
+ *      sent when that state changes and after each Heartbeat. A final
+ *      unsupported snapshot withdraws the advertisement. Inhibited means at
+ *      least one hold is active. Source station summarizes the holders.
+ *      Counters are cumulative for the current transceiver lifetime.
  *
- *      Inhibit port: UDP listen port for KEY-agent blocks (usually 22372;
- *      may be ephemeral). Inhibited: block active. Source station: badge
- *      text (may be empty). Four quint32 counters: hold packets received,
- *      explicit release hold, hold timeout expiries (incl. after a deadman),
- *      invalid datagrams (field names hold_rx etc. are historical wire labels).
+ * TxInhibit      In       18
+ *                         Id (target unique key) utf8
+ *                         Controller ID          utf8
+ *                         TTL milliseconds       quint32
+ *                         Station                utf8
+ *
+ *      Send commands to the source address and ephemeral source port learned
+ *      from ordinary WS traffic, using its Id and schema. Accept UDP requests
+ *      authorizes a new command. Disabling requests does not clear existing
+ *      holds. A zero TTL releases only this controller. A TTL from 100 through
+ *      30000 milliseconds creates or refreshes its hold. All unexpired holds
+ *      combine with logical OR. Up to 64 controllers are tracked; further
+ *      identities extend one aggregate hold. Datagrams are limited to 4096
+ *      bytes. Unknown trailing fields are ignored.
  *
  *      Unknown types are ignored; schema number unchanged.
  */
@@ -585,10 +597,14 @@ namespace NetworkMessage
       SwitchConfiguration,
       Configure,
       AnnotationInfo,
-      InhibitStatus,            // Out 17 — see protocol comment above
+      InhibitStatus = 17,
+      TxInhibit = 18,
       maximum_message_type_     // ONLY add new message types
                                 // immediately before here
     };
+
+  static_assert (InhibitStatus == 17, "TX-inhibit protocol type must remain 17");
+  static_assert (TxInhibit == 18, "TX-inhibit command type must remain 18");
 
   quint32 constexpr pulse {15}; // seconds
 

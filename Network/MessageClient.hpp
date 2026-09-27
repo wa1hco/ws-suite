@@ -57,6 +57,11 @@ public:
   // enable incoming messages
   Q_SLOT void enable (bool);
 
+  // Type 18 on this same socket. The socket thread has already cleared
+  // RTS or DTR when the datagram is a hold.
+  Q_SIGNAL void tx_inhibit_command (QString const& controller, quint32 ttl_ms, QString const& station);
+  Q_SIGNAL void tx_inhibit_invalid (quint64 count);
+
   // change the id sent with every message
   Q_SLOT void set_id (QString const& id);
 
@@ -88,8 +93,9 @@ public:
   // of record marker
   Q_SLOT void logged_ADIF (QByteArray const& ADIF_record);
 
-  // TX Inhibit status (NetworkMessage::InhibitStatus) — WSJT-X station telemetry for agents/tools.
-  Q_SLOT void inhibit_status (quint16 inhibit_port, bool inhibited
+  // Type 17. Repeated after each Heartbeat while supported, and sent
+  // again when the snapshot changes. supported false withdraws it.
+  Q_SLOT void inhibit_status (bool supported, bool inhibited
                               , QString const& source_station
                               , quint32 hold_rx, quint32 release_rx
                               , quint32 expiries, quint32 invalid);

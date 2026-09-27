@@ -969,6 +969,10 @@ MainWindow::MainWindow(QDir const& temp_directory, bool multiple,
       }
     });
   connect (m_messageClient, &MessageClient::error, this, &MainWindow::networkError);
+  connect (m_messageClient, &MessageClient::tx_inhibit_command,
+           &m_config, &Configuration::tx_inhibit_command);
+  connect (m_messageClient, &MessageClient::tx_inhibit_invalid,
+           &m_config, &Configuration::tx_inhibit_invalid);
   connect (m_messageClient, &MessageClient::free_text, [this] (QString const& text, bool send) {
       tx_watchdog (false);
       // send + non-empty text means set and send the free text
@@ -4795,62 +4799,65 @@ bool MainWindow::eventFilter (QObject * object, QEvent * event)
 //   * a one-shot status message warns when the operator has opted in but the
 //     station is NOT reachable — the fail-open/fail-silent hole in C4. It fires
 //     only on a change, so it cannot nag.
+void MainWindow::paint_inhibit_badge ()
+{
+  QString title = program_title ();
+  if (!m_qmapConfigName.isEmpty ())
+    {
+      title += QString (" [WS-MAP: %1]").arg (m_qmapConfigName);
+    }
+  if (!m_tx_inhibited)
+    {
+      setWindowTitle (title);
+      if (!m_transmitting)
+        {
+          tx_status_label.setStyleSheet ("QLabel{color: #000000; background-color: #00ff00}");
+          tx_status_label.setText (m_monitoring ? tr ("Receiving") : QString {});
+        }
+      return;
+    }
+  title += QStringLiteral (" — INHIBIT");
+  setWindowTitle (title);
+  if (m_transmitting)
+    {
+      tx_status_label.setStyleSheet (
+        "QLabel{color: #ffffff; background-color: #cc0000; font-weight: bold}");
+    }
+  else
+    {
+      tx_status_label.setStyleSheet (
+        "QLabel{color: #000000; background-color: #80ff80; font-weight: bold}");
+    }
+  tx_status_label.setText (tr ("INHIBIT"));
+}
+
 void MainWindow::update_inhibit_status ()
 {
   if (!m_config.enable_tx_inhibit ())
     {
       tx_status_label.setToolTip ({});
-      m_tx_inhibit_warned_port = 0;
-      m_tx_inhibit_warned = false;
       return;
     }
 
-  // Read the port from Configuration every time rather than caching it:
-  // close_rig() zeroes it without emitting, and a stale copy would describe a
-  // station as protected when nothing is listening.
-  auto const port = m_config.tx_inhibit_port ();
-
-  if (m_tx_inhibited)
+  if (!m_config.accept_udp_requests ())
+    {
+      tx_status_label.setToolTip (
+        tr ("PTT is RTS or DTR, so TX Inhibit is armed, but Accept UDP requests is off.\n"
+            "Type 18 commands are ignored until it is turned on."));
+    }
+  else if (m_tx_inhibited)
     {
       tx_status_label.setToolTip (
         m_tx_inhibit_holder.isEmpty ()
-        ? tr ("TX Inhibit: a KEY agent is holding PTT off (UDP port %1).").arg (port)
-        : tr ("TX Inhibit: held by %1 (UDP port %2).").arg (m_tx_inhibit_holder).arg (port));
-    }
-  else if (!port)
-    {
-      tx_status_label.setToolTip (
-        tr ("TX Inhibit is enabled but NOT listening: no UDP port is bound.\n"
-            "The rig may be closed, PTT method may not be RTS/DTR, or the bind failed.\n"
-            "This station is NOT protected."));
-    }
-  else if (TxInhibit::default_gate_port == port)
-    {
-      tx_status_label.setToolTip (
-        tr ("TX Inhibit: listening for KEY-agent holds on UDP port %1.").arg (port));
+        ? tr ("TX is inhibited by an external interlock controller.")
+        : tr ("TX is inhibited by %1.").arg (m_tx_inhibit_holder));
     }
   else
     {
       tx_status_label.setToolTip (
-        tr ("TX Inhibit: port %1 was busy, so an ephemeral port (%2) is in use.\n"
-            "A KEY agent aimed at %1 will NOT reach this station.")
-        .arg (TxInhibit::default_gate_port).arg (port));
+        tr ("TX Inhibit: type 18 commands are accepted on the reporting UDP socket.\n"
+            "Inhibit status (type 17) is sent with each heartbeat."));
     }
-
-  // Unreachable == enabled but not bound to the well-known port. Warn once per
-  // transition rather than on every refresh.
-  bool const unreachable = !port || TxInhibit::default_gate_port != port;
-  if (unreachable && (!m_tx_inhibit_warned || m_tx_inhibit_warned_port != port))
-    {
-      showStatusMessage (port
-                         ? tr ("TX Inhibit: listening on %1, not %2 — a KEY agent aimed"
-                               " at %2 will not reach this station")
-                           .arg (port).arg (TxInhibit::default_gate_port)
-                         : tr ("TX Inhibit is enabled but no UDP port is bound —"
-                               " this station is NOT protected"));
-    }
-  m_tx_inhibit_warned = unreachable;
-  m_tx_inhibit_warned_port = port;
 }
 
 void MainWindow::createStatusBar()                           //createStatusBar
@@ -4868,10 +4875,12 @@ void MainWindow::createStatusBar()                           //createStatusBar
              m_tx_inhibited = inhibited;
              m_tx_inhibit_holder = inhibited ? source : QString {};
              update_inhibit_status ();
+             paint_inhibit_badge ();
              if (m_messageClient)
                {
                  m_messageClient->inhibit_status (
-                   m_config.tx_inhibit_port (), inhibited, source,
+                   m_config.enable_tx_inhibit (),
+                   inhibited, source,
                    hold_rx, release_rx, expiries, invalid);
                }
            });
@@ -9402,6 +9411,7 @@ void MainWindow::guiUpdate()
     if (!m_qmapConfigName.isEmpty()) {
       title += QString(" [WS-MAP: %1]").arg(m_qmapConfigName);
     }
+    if (m_tx_inhibited) title += QStringLiteral (" — INHIBIT");
     setWindowTitle (title);
   }
 
@@ -9555,6 +9565,7 @@ void MainWindow::guiUpdate()
     if (!m_qmapConfigName.isEmpty()) {
       title += QString(" [WS-MAP: %1]").arg(m_qmapConfigName);
     }
+    if (m_tx_inhibited) title += QStringLiteral (" — INHIBIT");
     setWindowTitle (title);
   }
 
@@ -9761,10 +9772,7 @@ void MainWindow::guiUpdate()
       // reads "Tx: <message>" in transmit-yellow while the radio is silent.
       // Covers Tune too, which also runs through this branch.
       // Last, so it overrides every style/text chosen above.
-      if (m_tx_inhibited) {
-        tx_status_label.setStyleSheet("QLabel{color: #ffffff; background-color: #cc0000; font-weight: bold}");
-        tx_status_label.setText (tr ("Inhibit"));
-      }
+      if (m_tx_inhibited) paint_inhibit_badge ();
     } else if(m_monitoring) {
       if (!m_tx_watchdog) {
         tx_status_label.setStyleSheet("QLabel{color: #000000; background-color: #00ff00}");
@@ -9803,16 +9811,16 @@ void MainWindow::guiUpdate()
         // Receiving with a hold active: nothing is being prevented right now,
         // so this is ambient status rather than an alarm. Staying in the green
         // family keeps the escalation to red (transmit branch) as the signal.
-        if (m_tx_inhibited) {
-          tx_status_label.setStyleSheet("QLabel{color: #000000; background-color: #b3ffb3}");
-          tx_status_label.setText (tr ("Inhibit"));
-        }
+        if (m_tx_inhibited) paint_inhibit_badge ();
       }
       transmitDisplay(false);
     } else if (!m_diskData && !m_tx_watchdog) {
       tx_status_label.setStyleSheet("");
       tx_status_label.setText("");
     }
+    // A hold must stay visible when Monitor is off. Transmit keeps the red
+    // label set above; every other state uses the pale receive badge.
+    if (m_tx_inhibited) paint_inhibit_badge ();
 
     QDateTime t = QDateTime::currentDateTimeUtc();
     QString utc = t.date().toString("yyyy MMM dd") + "\n " +
