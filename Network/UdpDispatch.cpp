@@ -86,22 +86,24 @@ bool UdpDispatchWorker::is_unconnected () const
   return !sock_ || sock_->state () == QAbstractSocket::UnconnectedState;
 }
 
-bool UdpDispatchWorker::is_inhibit_hold (QByteArray const& msg) const
+// 1 = inhibit, 0 = release, -1 = not a command this socket should apply.
+static int inhibit_level (QByteArray const& msg, bool commands_enabled, QString const& id)
 {
-  if (msg.size () < 16) return false;
+  if (!commands_enabled || msg.size () < 16) return -1;
   auto const * bytes = reinterpret_cast<uchar const *> (msg.constData ());
-  if (!commands_enabled_) return false;
-  if (qFromBigEndian<quint32> (bytes) != NetworkMessage::Builder::magic) return false;
-  if (qFromBigEndian<quint32> (bytes + 8) != NetworkMessage::TxInhibit) return false;
+  if (qFromBigEndian<quint32> (bytes) != NetworkMessage::Builder::magic) return -1;
+  if (qFromBigEndian<quint32> (bytes + 8) != NetworkMessage::TxInhibit) return -1;
   quint32 const id_len = qFromBigEndian<quint32> (bytes + 12);
-  if (id_len > 1024 || 16 + int (id_len) + 4 > msg.size ()) return false;
-  if (QString::fromUtf8 (msg.constData () + 16, int (id_len)) != id_) return false;
+  if (id_len > 1024 || 16 + int (id_len) + 4 > msg.size ()) return -1;
+  if (QString::fromUtf8 (msg.constData () + 16, int (id_len)) != id) return -1;
   int off = 16 + int (id_len);
   quint32 const controller_len = qFromBigEndian<quint32> (bytes + off);
   off += 4 + int (controller_len);
-  if (controller_len > 128 || off + 4 > msg.size ()) return false;
+  if (controller_len > 128 || off + 4 > msg.size ()) return -1;
   quint32 const ttl = qFromBigEndian<quint32> (bytes + off);
-  return ttl >= 100 && ttl <= 30000;
+  if (ttl == 0) return 0;
+  if (ttl >= 100 && ttl <= 30000) return 1;
+  return -1;
 }
 
 void UdpDispatchWorker::read_pending ()
@@ -113,10 +115,26 @@ void UdpDispatchWorker::read_pending ()
       data.resize (static_cast<int> (sock_->pendingDatagramSize ()));
       quint16 sender_port = 0;
       if (sock_->readDatagram (data.data (), data.size (), nullptr, &sender_port) < 0) continue;
-      // Type 18 hold: clear RTS/DTR before this datagram is queued.
-      if (is_inhibit_hold (data)) TxInhibitDrop::drop_direct ();
+      int const level = inhibit_level (data, commands_enabled_, id_);
+      // Type 18 changes the pin on this thread, before the GUI sees it.
+      if (level >= 0) TxInhibitDrop::set_inhibit_here (level == 1);
       Q_EMIT gui_datagram (data, sender_port);
     }
+}
+
+void UdpDispatchWorker::apply_pin ()
+{
+  TxInhibitDrop::apply ();
+}
+
+void UdpDispatchWorker::release_if_epoch (quint64 observed)
+{
+  TxInhibitDrop::release_if_epoch (observed);
+}
+
+void UdpDispatchWorker::shutdown_pin ()
+{
+  TxInhibitDrop::shutdown_here ();
 }
 
 void UdpDispatchWorker::on_error ()
@@ -138,10 +156,12 @@ UdpDispatch::UdpDispatch ()
   thread_.setObjectName (QStringLiteral ("udp-dispatch"));
   thread_.start ();
   QMetaObject::invokeMethod (worker_, "init", Qt::BlockingQueuedConnection);
+  TxInhibitDrop::attach (worker_);
 }
 
 UdpDispatch::~UdpDispatch ()
 {
+  TxInhibitDrop::attach (nullptr);
   if (!worker_) return;
   QMetaObject::invokeMethod (worker_, "shutdown", Qt::BlockingQueuedConnection);
   thread_.quit ();

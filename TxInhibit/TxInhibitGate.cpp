@@ -200,6 +200,7 @@ void TxInhibitGate::tick ()
     }
   sweep (now_ms ());
   apply_line ();
+  if (holds_.isEmpty ()) TxInhibitDrop::request_release ();
   emit_state_if_changed ();
 }
 
@@ -210,11 +211,9 @@ void TxInhibitGate::apply_line ()
       return;
     }
   sweep (now_ms ());
-  // Sole policy: assert PTT ⇔ want_tx and not hold.
+  // The inhibit thread writes the pin. This signal is the lease's idea of
+  // radiate, for tests. Hamlib no longer connects it to rig_set_ptt().
   bool const radiate = intent_ && holds_.isEmpty ();
-  // While a hold is active the modem line is cleared here, not only when
-  // WS thinks it is transmitting. A stuck RTS would otherwise stay high.
-  if (!radiate && !holds_.isEmpty ()) TxInhibitDrop::drop_direct ();
   if (radiate == last_radiate_)
     {
       return;

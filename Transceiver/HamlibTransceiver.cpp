@@ -18,7 +18,13 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QDebug>
+#include <cstring>
 #include <hamlib/rig.h>
+#if defined(Q_OS_UNIX)
+#include <fcntl.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
+#endif
 #include "pimpl_impl.hpp"
 #include "Transceiver.hpp"
 #include "moc_HamlibTransceiver.cpp"
@@ -32,19 +38,6 @@ qreal f_alc;
 
 namespace
 {
-  // Not declared in the installed Hamlib headers.
-  extern "C" int ser_set_rts (hamlib_port_t * p, int state);
-  extern "C" int ser_set_dtr (hamlib_port_t * p, int state);
-
-  int drop_ptt_line (void * raw)
-  {
-    hamlib_port_t * port = static_cast<hamlib_port_t *> (raw);
-    if (!port || port->fd < 0) return -1;
-    if (RIG_PTT_SERIAL_RTS == port->type.ptt) return ser_set_rts (port, 0);
-    if (RIG_PTT_SERIAL_DTR == port->type.ptt) return ser_set_dtr (port, 0);
-    return -1;
-  }
-
   // Unfortunately bandwidth is conflated  with mode, this is probably
   // because Icom do  the same. So we have to  care about bandwidth if
   // we want  to set  mode otherwise we  will end up  setting unwanted
@@ -912,22 +905,38 @@ int HamlibTransceiver::do_start ()
   if (use_tx_inhibit_)
     {
       hamlib_port_t * ptt = &m_->rig_->state.pttport;
+      hamlib_port_t * cat = &m_->rig_->state.rigport;
       unsigned bit = 0;
 #if defined(Q_OS_UNIX)
       if (RIG_PTT_SERIAL_RTS == ptt->type.ptt) bit = TIOCM_RTS;
       else if (RIG_PTT_SERIAL_DTR == ptt->type.ptt) bit = TIOCM_DTR;
-#else
-      if (RIG_PTT_SERIAL_RTS == ptt->type.ptt
-          || RIG_PTT_SERIAL_DTR == ptt->type.ptt) bit = 1;
-#endif
-      int fd = ptt->fd;
-      // Shared CAT/PTT port: Hamlib copies the rig fd into the PTT port
-      // at open. If that copy is still empty, the rig port fd is the line.
-      if (fd < 0 && bit != 0) fd = m_->rig_->state.rigport.fd;
-      if (fd >= 0 && bit != 0)
+      if (bit != 0)
         {
-          TxInhibitDrop::publish (fd, bit, &drop_ptt_line, ptt);
+          bool const separate = ptt->pathname[0] != '\0'
+                                && strcmp (ptt->pathname, cat->pathname) != 0;
+          if (!separate)
+            {
+              int fd = ptt->fd >= 0 ? ptt->fd : cat->fd;
+              if (fd >= 0) TxInhibitDrop::publish (fd, bit, false);
+            }
+          else
+            {
+              int fd = ::open (ptt->pathname, O_RDWR | O_NOCTTY | O_NONBLOCK);
+              if (fd >= 0)
+                {
+                  unsigned both = TIOCM_RTS | TIOCM_DTR;
+                  ioctl (fd, TIOCMBIC, &both);
+                  TxInhibitDrop::publish (fd, bit, true);
+                }
+              else
+                {
+                  CAT_TRACE ("TX Inhibit: cannot open PTT port " << ptt->pathname);
+                }
+            }
         }
+#else
+      Q_UNUSED (cat);
+#endif
       start_tx_inhibit_gate ();
     }
 
@@ -943,8 +952,8 @@ void HamlibTransceiver::start_tx_inhibit_gate ()
     }
   // Child of this object → transceiver thread; DirectConnection to pin apply.
   inhibit_gate_ = new TxInhibitGate {this};
-  connect (inhibit_gate_, &TxInhibitGate::physicalPtt,
-           this, &HamlibTransceiver::apply_physical_ptt, Qt::DirectConnection);
+  // physicalPtt stays a test signal. RTS/DTR is written only by the
+  // inhibit thread from ptt_intent and the inhibit flag.
   connect (inhibit_gate_, &TxInhibitGate::inhibitChanged,
            this, &Transceiver::tx_inhibit_changed);
   // UDP bind problems are non-fatal: keep stock intent→pin path, log only.
@@ -976,9 +985,8 @@ void HamlibTransceiver::tx_inhibit_invalid (quint64 count)
 
 void HamlibTransceiver::stop_tx_inhibit_gate ()
 {
-  // Stop new direct clears before the listen thread is joined and the port
-  // is closed. A clear already inside ser_set_rts finishes during shutdown.
-  TxInhibitDrop::clear ();
+  // Drive the pin low on the inhibit thread before the port is closed.
+  if (use_tx_inhibit_) TxInhibitDrop::shutdown ();
   if (!inhibit_gate_)
     {
       return;
@@ -987,10 +995,10 @@ void HamlibTransceiver::stop_tx_inhibit_gate ()
   // rig_set_ptt after rig_close (Hamlib CHECK_RIG_ARG fails if !comm_state).
   disconnect (inhibit_gate_, &TxInhibitGate::physicalPtt,
               this, &HamlibTransceiver::apply_physical_ptt);
-  // Safe pin-low while the port is still open.
+  // CAT PTT still goes through rig_set_ptt(). RTS/DTR already shut down.
   try
     {
-      apply_physical_ptt (false);
+      if (!use_tx_inhibit_) apply_physical_ptt (false);
     }
   catch (...)
     {
@@ -1464,16 +1472,12 @@ void HamlibTransceiver::do_ptt (bool on)
     {
       ptt_on_ = on;
     }
-  if (inhibit_gate_)
+  if (use_tx_inhibit_)
     {
-      // Stock sequencing already did Fake It QSY. Intent only; gate mixes
-      // the hold and emits physicalPtt → apply_physical_ptt.
-      // Drop the line before set_intent so a hold cannot lose the race
-      // with this PTT request.
-      if (!on) TxInhibitDrop::drop_direct ();
-      inhibit_gate_->set_intent (on);
-      if (!on) TxInhibitDrop::drop_direct ();
-      update_PTT (on); // software PTT state follows intent (not pin)
+      // RTS/DTR: publish intent. The inhibit thread writes the pin.
+      // rig_set_ptt() is not called, so it cannot race that write.
+      update_PTT (on);
+      TxInhibitDrop::set_ptt_intent (on);
       return;
     }
   apply_physical_ptt (on);

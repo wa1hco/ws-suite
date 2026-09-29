@@ -22,6 +22,11 @@ add_executable (test_qt_helpers test_qt_helpers.cpp)
 target_link_libraries (test_qt_helpers wsjt_qt Qt5::Test)
 add_test (test_qt_helpers test_qt_helpers)
 
+add_executable (test_pin_combiner test_pin_combiner.cpp)
+target_link_libraries (test_pin_combiner Qt5::Test)
+target_include_directories (test_pin_combiner PRIVATE ${CMAKE_SOURCE_DIR})
+add_test (test_pin_combiner test_pin_combiner)
+
 add_executable (test_tx_inhibit_logic test_tx_inhibit_logic.cpp)
 target_link_libraries (test_tx_inhibit_logic wsjt_qt Qt5::Test Qt5::Network)
 add_test (test_tx_inhibit_logic test_tx_inhibit_logic)

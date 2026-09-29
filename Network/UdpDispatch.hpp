@@ -33,6 +33,9 @@ public slots:
   void do_close ();
   void do_set_ttl (int ttl);
   void do_write (QByteArray message, QString address, quint16 port, QString interface_name);
+  void apply_pin ();
+  void release_if_epoch (quint64 observed);
+  void shutdown_pin ();
   QString read_local_address () const;
   bool is_unconnected () const;
 
@@ -45,8 +48,6 @@ private slots:
   void on_error ();
 
 private:
-  bool is_inhibit_hold (QByteArray const& msg) const;
-
   QUdpSocket * sock_ {nullptr};
   QString id_;
   int ttl_ {1};
