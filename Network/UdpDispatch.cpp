@@ -115,9 +115,12 @@ void UdpDispatchWorker::read_pending ()
       data.resize (static_cast<int> (sock_->pendingDatagramSize ()));
       quint16 sender_port = 0;
       if (sock_->readDatagram (data.data (), data.size (), nullptr, &sender_port) < 0) continue;
+      // After the read returns the thread is on a core. The gap from the
+      // sender's monotonic_ns() to t_pin is the wake plus this work.
+      qint64 const t_rx = TxInhibitDrop::monotonic_ns ();
       int const level = inhibit_level (data, commands_enabled_, id_);
       // Type 18 changes the pin on this thread, before the GUI sees it.
-      if (level >= 0) TxInhibitDrop::set_inhibit_here (level == 1);
+      if (level >= 0) TxInhibitDrop::set_inhibit_here (level == 1, t_rx);
       Q_EMIT gui_datagram (data, sender_port);
     }
 }

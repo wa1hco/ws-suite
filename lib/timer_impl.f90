@@ -19,6 +19,11 @@ module timer_impl
   real :: total,sum,sumf,ut(MAXCALL),ut0(MAXCALL)
 !$ integer :: j, l, m
    integer ntid(MAXCALL)
+  ! Per-thread timer stack. A threadprivate COMMON (timer_common.inc)
+  ! makes gfortran emit .tls_common, which MinGW binutils 2.47 rejects.
+  integer :: level = 0
+  integer :: onlevel(0:10) = 0
+  !$omp threadprivate(level, onlevel)
 
   !
   ! C interoperable callback setup
@@ -79,7 +84,6 @@ contains
     integer :: n,ndiv,ntrace=0
       integer :: tid
     character(len=8) :: tname
-    include 'timer_common.inc'
 
     !$omp critical(timer)
     if(limtrace.lt.0) go to 999
@@ -246,8 +250,8 @@ contains
     use timer_module, only: timer
     implicit none
     character(len=*), optional, intent(in) :: filename
-    include 'timer_common.inc'
-    data level/0/, onlevel/11 * 0/
+    level = 0
+    onlevel = 0
     if (present (filename)) then
        open (newunit=lu, file=filename, status='unknown')
     else

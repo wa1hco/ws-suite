@@ -934,8 +934,58 @@ int HamlibTransceiver::do_start ()
                 }
             }
         }
+#elif defined(Q_OS_WIN)
+      // rig_set_ptt() stays bypassed. A separate PTT port is opened by
+      // Hamlib during rig_open and then closed, leaving fd at -1, so the
+      // inhibit thread opens that COM port and holds it. A shared CAT port
+      // stays open and is driven with ser_set_rts/ser_set_dtr.
+      if (RIG_PTT_SERIAL_RTS == ptt->type.ptt) bit = TxInhibitDrop::kPinRts;
+      else if (RIG_PTT_SERIAL_DTR == ptt->type.ptt) bit = TxInhibitDrop::kPinDtr;
+      if (bit != 0)
+        {
+          bool const separate = ptt->pathname[0] != '\0'
+                                && std::strcmp (ptt->pathname, cat->pathname) != 0;
+          if (!separate)
+            {
+              hamlib_port_t * port = ptt->fd >= 0 ? ptt : cat;
+              if (port->fd >= 0) TxInhibitDrop::publish_port (port, bit);
+              else CAT_TRACE ("TX Inhibit: PTT port is not open");
+            }
+          else
+            {
+              HANDLE handle = CreateFileA (ptt->pathname,
+                                           GENERIC_READ | GENERIC_WRITE,
+                                           0, nullptr, OPEN_EXISTING,
+                                           0, nullptr);
+              if (INVALID_HANDLE_VALUE == handle)
+                {
+                  CAT_TRACE ("TX Inhibit: cannot open PTT port " << ptt->pathname
+                             << " error " << GetLastError ());
+                }
+              else
+                {
+                  DCB dcb;
+                  std::memset (&dcb, 0, sizeof (dcb));
+                  dcb.DCBlength = sizeof (dcb);
+                  if (GetCommState (handle, &dcb))
+                    {
+                      dcb.fRtsControl = RTS_CONTROL_DISABLE;
+                      dcb.fOutxCtsFlow = FALSE;
+                      dcb.fDtrControl = DTR_CONTROL_DISABLE;
+                      dcb.fOutxDsrFlow = FALSE;
+                      SetCommState (handle, &dcb);
+                    }
+                  EscapeCommFunction (handle, CLRRTS);
+                  EscapeCommFunction (handle, CLRDTR);
+                  CAT_TRACE ("TX Inhibit: holding PTT port " << ptt->pathname);
+                  TxInhibitDrop::publish_handle (handle, bit);
+                }
+            }
+        }
 #else
+      Q_UNUSED (ptt);
       Q_UNUSED (cat);
+      Q_UNUSED (bit);
 #endif
       start_tx_inhibit_gate ();
     }

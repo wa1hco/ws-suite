@@ -1,3 +1,3 @@
-  integer :: level, onlevel(0:10)
-  common/timer_private/ level, onlevel
-  !$omp threadprivate(/timer_private/)
+  ! Retired. level and onlevel live in timer_impl as threadprivate
+  ! module variables. A threadprivate COMMON emits .tls_common, which
+  ! the MinGW assembler rejects.

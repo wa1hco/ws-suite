@@ -17,6 +17,7 @@
 
 #include "NetworkMessage.hpp"
 #include "UdpDispatch.hpp"
+#include "TxInhibit/TxInhibitDrop.hpp"
 #include "qt_helpers.hpp"
 #include "pimpl_impl.hpp"
 
@@ -112,7 +113,7 @@ public:
   bool inhibit_available () const;
   void update_inhibit_status (bool supported, bool inhibited, QString const& source_station,
                               quint32 hold_rx, quint32 release_rx, quint32 expiries, quint32 invalid);
-  void send_inhibit_status (bool supported);
+  void send_inhibit_status (bool supported, qint64 t_rx_ns = 0, qint64 t_pin_ns = 0);
   static bool has_our_magic (QByteArray const& datagram)
   {
     if (datagram.size () < static_cast<int> (sizeof (quint32))) return false;
@@ -576,6 +577,14 @@ void MessageClient::impl::update_inhibit_status (
   quint32 hold_rx, quint32 release_rx, quint32 expiries, quint32 invalid)
 {
   auto const was_available = inhibit_available ();
+  qint64 t_rx_ns = 0;
+  qint64 t_pin_ns = 0;
+  // The pair belongs to the edge that reports a new hold. A refresh
+  // and a heartbeat send zeros.
+  if (inhibited && !inhibit_status_.inhibited)
+    {
+      TxInhibitDrop::take_pin_stamps (t_rx_ns, t_pin_ns);
+    }
   inhibit_status_.valid = true;
   inhibit_status_.supported = supported;
   inhibit_status_.inhibited = inhibited;
@@ -584,11 +593,11 @@ void MessageClient::impl::update_inhibit_status (
   inhibit_status_.release_rx = release_rx;
   inhibit_status_.expiries = expiries;
   inhibit_status_.invalid = invalid;
-  if (inhibit_available ()) send_inhibit_status (true);
+  if (inhibit_available ()) send_inhibit_status (true, t_rx_ns, t_pin_ns);
   else if (was_available) send_inhibit_status (false);
 }
 
-void MessageClient::impl::send_inhibit_status (bool supported)
+void MessageClient::impl::send_inhibit_status (bool supported, qint64 t_rx_ns, qint64 t_pin_ns)
 {
   if (!inhibit_status_.valid || !server_port_ || server_.isNull ()) return;
   QByteArray message;
@@ -596,7 +605,8 @@ void MessageClient::impl::send_inhibit_status (bool supported)
   out << supported << inhibit_status_.inhibited
       << inhibit_status_.source_station.toUtf8 ()
       << inhibit_status_.hold_rx << inhibit_status_.release_rx
-      << inhibit_status_.expiries << inhibit_status_.invalid;
+      << inhibit_status_.expiries << inhibit_status_.invalid
+      << static_cast<quint64> (t_rx_ns) << static_cast<quint64> (t_pin_ns);
   TRACE_UDP ("supported:" << supported << "inhibited:" << inhibit_status_.inhibited
              << "source:" << inhibit_status_.source_station);
   send_message (out, message, false, true);
